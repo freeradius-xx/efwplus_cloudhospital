@@ -1,0 +1,60 @@
+时间：2016-05-05 18:12:01		耗时：1545.0884		方法：Books_Wcf@bookWcfController.Test191([100])
+
+时间：2016-05-05 18:15:56		耗时：3046.1742		方法：Books_Wcf@bookWcfController.Test191([100])
+
+时间：2016-05-05 18:44:28		耗时：1892.1083		方法：WcfMainUIFrame@LoginController.UserLogin(["admin","1"])
+
+时间：2016-05-06 12:59:58		耗时：2017.1154		方法：WcfMainUIFrame@LoginController.UserLogin(["admin","1"])
+
+时间：2016-05-06 14:36:27		耗时：1816.1039		方法：WcfMainUIFrame@LoginController.UserLogin(["admin","1"])
+
+时间：2016-05-06 15:37:25		耗时：2838.1623		方法：WcfMainUIFrame@LoginController.UserLogin(["admin","1"])
+
+时间：2016-05-06 17:55:42		耗时：1358.0776		方法：Books_Wcf@bookWcfController.Test191([100])
+
+时间：2016-05-06 18:13:09		耗时：1282.0734		方法：Books_Wcf@bookWcfController.Test191([100])
+
+时间：2016-05-06 18:47:58		耗时：1233.0706		方法：Books_Wcf@bookWcfController.Test191([100])
+
+时间：2016-05-06 22:09:51		耗时：1283.0734		方法：Books_Wcf@bookWcfController.Test191([100])
+
+时间：2016-05-06 22:19:12		耗时：1249.0715		方法：Books_Wcf@bookWcfController.Test191([100])
+
+时间：2016-05-06 22:21:49		耗时：1117.0639		方法：Books_Wcf@bookWcfController.Test191([100])
+
+时间：2016-05-06 22:25:56		耗时：1102.063		方法：Books_Wcf@bookWcfController.Test191([100])
+
+时间：2016-05-06 22:34:11		耗时：1001.0572		方法：Books_Wcf@bookWcfController.Test191([100])
+
+时间：2016-05-06 23:19:47		耗时：3323.1901		方法：Books_Wcf@bookWcfController.Test191([100])
+
+时间：2016-05-07 00:01:59		耗时：1004.0575		方法：Books_Wcf@bookWcfController.Test191([100])
+
+时间：2016-05-11 18:57:13		耗时：1059.0606		方法：Books_Wcf@bookWcfController.Test191([100])
+
+时间：2016-05-12 11:23:05		耗时：9098.5204		方法：Books_Wcf@bookWcfController.GetBooks([])
+
+时间：2016-05-12 11:26:24		耗时：5644.3228		方法：Books_Wcf@bookWcfController.GetBooks([])
+
+时间：2016-05-12 11:29:00		耗时：4048.2316		方法：Books_Wcf@bookWcfController.GetBooks([])
+
+时间：2016-05-12 11:33:53		耗时：5779.3306		方法：Books_Wcf@bookWcfController.GetBooks([])
+
+时间：2016-05-12 11:38:49		耗时：2941.1682		方法：Books_Wcf@bookWcfController.GetBooks([])
+
+时间：2016-05-12 12:13:14		耗时：1093.0625		方法：Books_Wcf@bookWcfController.GetBooks([])
+
+时间：2016-05-12 13:35:46		耗时：1743.0997		方法：WcfMainUIFrame@LoginController.UserLogin(["admin","1"])
+
+时间：2016-05-12 14:05:46		耗时：1106.0633		方法：WcfMainUIFrame@LoginController.UserLogin(["admin","1"])
+
+时间：2016-05-12 19:06:19		耗时：1024.0586		方法：WcfMainUIFrame@LoginController.UserLogin(["admin","1"])
+
+时间：2016-05-12 19:11:03		耗时：1444.0825		方法：WcfMainUIFrame@LoginController.UserLogin(["admin","1"])
+
+时间：2016-05-13 10:51:15		耗时：5869.3357		方法：WcfMainUIFrame@LoginController.UserLogin(["admin","1"])
+
+时间：2016-05-13 10:53:39		耗时：1067.0611		方法：WcfMainUIFrame@LoginController.UserLogin(["admin","1"])
+
+时间：2016-05-13 10:54:12		耗时：23100.3213		方法：Books_Wcf@bookWcfController.GetBooks([])
+

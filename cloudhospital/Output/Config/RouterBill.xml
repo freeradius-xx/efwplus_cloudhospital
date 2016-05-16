@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <record>
+    <address>net.tcp://127.0.0.1:5999/WCFHandlerService</address>
+    <ContractName>WCFHandlerService</ContractName>
+    <ContractNamespace>http://www.efwplus.cn/WCFHandlerService</ContractNamespace>
+    <UpdateTime>2014-08-15</UpdateTime>
+    <UpdateUser>zh</UpdateUser>
+  </record>
+  
+</root>

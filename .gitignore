@@ -1,0 +1,6 @@
+发布打包/
+WebPlugin/
+obj/
+bin/
+*.csproj.user
+*.suo

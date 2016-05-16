@@ -1,0 +1,583 @@
+----------------------------------------
+Timestamp: 2016-05-06 14:49:47
+
+Message: HandlingInstanceID: 1d355b9f-5149-4471-a313-bc6563476ecc
+An exception of type 'System.IO.IOException' occurred and was caught.
+---------------------------------------------------------------------
+05/06/2016 22:49:47
+Type : System.IO.IOException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 读取流时引发异常。
+Source : System.ServiceModel
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : Int32 Read(Byte[], Int32, Int32)
+HResult : -2146232800
+Stack Trace :    在 System.ServiceModel.Dispatcher.StreamFormatter.MessageBodyStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   在 EFWCoreLib.WcfFrame.WcfService.FileTransferHandlerService.UpLoadFile(UpFile filedata) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\WcfService\FileTransferHandlerService.cs:行号 61
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-05-06 14:49:47
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : WCF服务主机.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+	Inner Exception
+	---------------
+	Type : System.ServiceModel.CommunicationException, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+	Message : 套接字连接已中止。这可能是由于处理消息时出错或远程主机超过接收超时或者潜在的网络资源问题导致的。本地套接字超时是“00:10:00”。
+	Source : System.ServiceModel
+	Help link : 
+	Data : System.Collections.ListDictionaryInternal
+	TargetSite : Int32 ReadCore(Byte[], Int32, Int32, System.TimeSpan, Boolean)
+	HResult : -2146233087
+	Stack Trace :    在 System.ServiceModel.Channels.SocketConnection.ReadCore(Byte[] buffer, Int32 offset, Int32 size, TimeSpan timeout, Boolean closing)
+	   在 System.ServiceModel.Channels.SocketConnection.Read(Byte[] buffer, Int32 offset, Int32 size, TimeSpan timeout)
+	   在 System.ServiceModel.Channels.ConnectionStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+	   在 System.ServiceModel.Channels.SingletonConnectionReader.SingletonInputConnectionStream.ReadCore(Byte[] buffer, Int32 offset, Int32 count)
+	   在 System.ServiceModel.Channels.SingletonConnectionReader.SingletonInputConnectionStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+	   在 System.ServiceModel.Channels.DelegatingStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+	   在 System.ServiceModel.Channels.MaxMessageSizeStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+	   在 System.Xml.XmlBufferReader.TryEnsureBytes(Int32 count)
+	   在 System.Xml.XmlBinaryReader.ReadText(XmlTextNode textNode, ValueHandleType type, Int32 length)
+	   在 System.Xml.XmlBinaryReader.ReadPartialBinaryText(Boolean withEndElement, Int32 length)
+	   在 System.Xml.XmlBinaryReader.ReadNode()
+	   在 System.Xml.XmlBaseReader.MoveToContent()
+	   在 System.ServiceModel.Dispatcher.StreamFormatter.MessageBodyStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+
+		Inner Exception
+		---------------
+		Type : System.Net.Sockets.SocketException, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+		Message : 远程主机强迫关闭了一个现有的连接。
+		Source : System
+		Help link : 
+		ErrorCode : 10054
+		SocketErrorCode : ConnectionReset
+		NativeErrorCode : 10054
+		Data : System.Collections.ListDictionaryInternal
+		TargetSite : Int32 Receive(Byte[], Int32, Int32, System.Net.Sockets.SocketFlags)
+		HResult : -2147467259
+		Stack Trace :    在 System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+		   在 System.ServiceModel.Channels.SocketConnection.ReadCore(Byte[] buffer, Int32 offset, Int32 size, TimeSpan timeout, Boolean closing)
+
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: WCF服务主机.exe
+
+ProcessId: 13200
+
+Process Name: D:\工作台\efwplus_wcfframe\Output\WCF服务主机.exe
+
+Thread Name: 
+
+Win32 ThreadId:12896
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-05-06 14:51:34
+
+Message: HandlingInstanceID: 37db036e-50d3-4708-a271-6a14f8491c69
+An exception of type 'System.IO.IOException' occurred and was caught.
+---------------------------------------------------------------------
+05/06/2016 22:51:34
+Type : System.IO.IOException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 读取流时引发异常。
+Source : System.ServiceModel
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : Int32 Read(Byte[], Int32, Int32)
+HResult : -2146232800
+Stack Trace :    在 System.ServiceModel.Dispatcher.StreamFormatter.MessageBodyStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   在 EFWCoreLib.WcfFrame.WcfService.FileTransferHandlerService.UpLoadFile(UpFile filedata) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\WcfService\FileTransferHandlerService.cs:行号 61
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-05-06 14:51:34
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : WCF服务主机.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+	Inner Exception
+	---------------
+	Type : System.ServiceModel.CommunicationException, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+	Message : 套接字连接已中止。这可能是由于处理消息时出错或远程主机超过接收超时或者潜在的网络资源问题导致的。本地套接字超时是“00:10:00”。
+	Source : System.ServiceModel
+	Help link : 
+	Data : System.Collections.ListDictionaryInternal
+	TargetSite : Int32 ReadCore(Byte[], Int32, Int32, System.TimeSpan, Boolean)
+	HResult : -2146233087
+	Stack Trace :    在 System.ServiceModel.Channels.SocketConnection.ReadCore(Byte[] buffer, Int32 offset, Int32 size, TimeSpan timeout, Boolean closing)
+	   在 System.ServiceModel.Channels.SocketConnection.Read(Byte[] buffer, Int32 offset, Int32 size, TimeSpan timeout)
+	   在 System.ServiceModel.Channels.ConnectionStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+	   在 System.ServiceModel.Channels.SingletonConnectionReader.SingletonInputConnectionStream.ReadCore(Byte[] buffer, Int32 offset, Int32 count)
+	   在 System.ServiceModel.Channels.SingletonConnectionReader.SingletonInputConnectionStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+	   在 System.ServiceModel.Channels.DelegatingStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+	   在 System.ServiceModel.Channels.MaxMessageSizeStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+	   在 System.Xml.XmlBufferReader.TryEnsureBytes(Int32 count)
+	   在 System.Xml.XmlBinaryReader.ReadText(XmlTextNode textNode, ValueHandleType type, Int32 length)
+	   在 System.Xml.XmlBinaryReader.ReadPartialBinaryText(Boolean withEndElement, Int32 length)
+	   在 System.Xml.XmlBinaryReader.ReadNode()
+	   在 System.Xml.XmlBaseReader.MoveToContent()
+	   在 System.ServiceModel.Dispatcher.StreamFormatter.MessageBodyStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+
+		Inner Exception
+		---------------
+		Type : System.Net.Sockets.SocketException, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+		Message : 远程主机强迫关闭了一个现有的连接。
+		Source : System
+		Help link : 
+		ErrorCode : 10054
+		SocketErrorCode : ConnectionReset
+		NativeErrorCode : 10054
+		Data : System.Collections.ListDictionaryInternal
+		TargetSite : Int32 Receive(Byte[], Int32, Int32, System.Net.Sockets.SocketFlags)
+		HResult : -2147467259
+		Stack Trace :    在 System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+		   在 System.ServiceModel.Channels.SocketConnection.ReadCore(Byte[] buffer, Int32 offset, Int32 size, TimeSpan timeout, Boolean closing)
+
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: WCF服务主机.exe
+
+ProcessId: 13200
+
+Process Name: D:\工作台\efwplus_wcfframe\Output\WCF服务主机.exe
+
+Thread Name: 
+
+Win32 ThreadId:7052
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-05-06 14:51:41
+
+Message: HandlingInstanceID: 0f497711-c824-4d2d-b301-568d5a9114ab
+An exception of type 'System.IO.IOException' occurred and was caught.
+---------------------------------------------------------------------
+05/06/2016 22:51:41
+Type : System.IO.IOException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 读取流时引发异常。
+Source : System.ServiceModel
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : Int32 Read(Byte[], Int32, Int32)
+HResult : -2146232800
+Stack Trace :    在 System.ServiceModel.Dispatcher.StreamFormatter.MessageBodyStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   在 EFWCoreLib.WcfFrame.WcfService.FileTransferHandlerService.UpLoadFile(UpFile filedata) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\WcfService\FileTransferHandlerService.cs:行号 61
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-05-06 14:51:41
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : WCF服务主机.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+	Inner Exception
+	---------------
+	Type : System.ServiceModel.CommunicationException, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+	Message : 套接字连接已中止。这可能是由于处理消息时出错或远程主机超过接收超时或者潜在的网络资源问题导致的。本地套接字超时是“00:10:00”。
+	Source : System.ServiceModel
+	Help link : 
+	Data : System.Collections.ListDictionaryInternal
+	TargetSite : Int32 ReadCore(Byte[], Int32, Int32, System.TimeSpan, Boolean)
+	HResult : -2146233087
+	Stack Trace :    在 System.ServiceModel.Channels.SocketConnection.ReadCore(Byte[] buffer, Int32 offset, Int32 size, TimeSpan timeout, Boolean closing)
+	   在 System.ServiceModel.Channels.SocketConnection.Read(Byte[] buffer, Int32 offset, Int32 size, TimeSpan timeout)
+	   在 System.ServiceModel.Channels.ConnectionStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+	   在 System.ServiceModel.Channels.SingletonConnectionReader.SingletonInputConnectionStream.ReadCore(Byte[] buffer, Int32 offset, Int32 count)
+	   在 System.ServiceModel.Channels.SingletonConnectionReader.SingletonInputConnectionStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+	   在 System.ServiceModel.Channels.DelegatingStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+	   在 System.ServiceModel.Channels.MaxMessageSizeStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+	   在 System.Xml.XmlBufferReader.TryEnsureBytes(Int32 count)
+	   在 System.Xml.XmlBinaryReader.ReadText(XmlTextNode textNode, ValueHandleType type, Int32 length)
+	   在 System.Xml.XmlBinaryReader.ReadPartialBinaryText(Boolean withEndElement, Int32 length)
+	   在 System.Xml.XmlBinaryReader.ReadNode()
+	   在 System.Xml.XmlBaseReader.MoveToContent()
+	   在 System.ServiceModel.Dispatcher.StreamFormatter.MessageBodyStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+
+		Inner Exception
+		---------------
+		Type : System.Net.Sockets.SocketException, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+		Message : 远程主机强迫关闭了一个现有的连接。
+		Source : System
+		Help link : 
+		ErrorCode : 10054
+		SocketErrorCode : ConnectionReset
+		NativeErrorCode : 10054
+		Data : System.Collections.ListDictionaryInternal
+		TargetSite : Int32 Receive(Byte[], Int32, Int32, System.Net.Sockets.SocketFlags)
+		HResult : -2147467259
+		Stack Trace :    在 System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+		   在 System.ServiceModel.Channels.SocketConnection.ReadCore(Byte[] buffer, Int32 offset, Int32 size, TimeSpan timeout, Boolean closing)
+
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: WCF服务主机.exe
+
+ProcessId: 13200
+
+Process Name: D:\工作台\efwplus_wcfframe\Output\WCF服务主机.exe
+
+Thread Name: 
+
+Win32 ThreadId:13204
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-05-06 14:59:48
+
+Message: HandlingInstanceID: 2bc72873-6e14-4748-a3f1-ef421872c277
+An exception of type 'System.IO.IOException' occurred and was caught.
+---------------------------------------------------------------------
+05/06/2016 22:59:48
+Type : System.IO.IOException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 读取流时引发异常。
+Source : System.ServiceModel
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : Int32 Read(Byte[], Int32, Int32)
+HResult : -2146232800
+Stack Trace :    在 System.ServiceModel.Dispatcher.StreamFormatter.MessageBodyStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   在 EFWCoreLib.WcfFrame.WcfService.FileTransferHandlerService.UpLoadFile(UpFile filedata) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\WcfService\FileTransferHandlerService.cs:行号 62
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-05-06 14:59:48
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : WCF服务主机.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+	Inner Exception
+	---------------
+	Type : System.ServiceModel.CommunicationException, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+	Message : 已超过传入消息(2147483647)的最大消息大小配额。若要增加配额，请使用相应绑定元素上的 MaxReceivedMessageSize 属性。
+	Source : System.ServiceModel
+	Help link : 
+	Data : System.Collections.ListDictionaryInternal
+	TargetSite : Int32 PrepareRead(Int32)
+	HResult : -2146233087
+	Stack Trace :    在 System.ServiceModel.Channels.MaxMessageSizeStream.PrepareRead(Int32 bytesToRead)
+	   在 System.ServiceModel.Channels.MaxMessageSizeStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+	   在 System.Xml.XmlBufferReader.TryEnsureBytes(Int32 count)
+	   在 System.Xml.XmlBinaryReader.ReadText(XmlTextNode textNode, ValueHandleType type, Int32 length)
+	   在 System.Xml.XmlBinaryReader.ReadPartialBinaryText(Boolean withEndElement, Int32 length)
+	   在 System.Xml.XmlBinaryReader.ReadNode()
+	   在 System.Xml.XmlBaseReader.MoveToContent()
+	   在 System.ServiceModel.Dispatcher.StreamFormatter.MessageBodyStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+
+		Inner Exception
+		---------------
+		Type : System.ServiceModel.QuotaExceededException, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+		Message : 已超过传入消息(2147483647)的最大消息大小配额。若要增加配额，请使用相应绑定元素上的 MaxReceivedMessageSize 属性。
+		Source : 
+		Help link : 
+		Data : System.Collections.ListDictionaryInternal
+		TargetSite : 
+		HResult : -2146233087
+		Stack Trace : The stack trace is unavailable.
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: WCF服务主机.exe
+
+ProcessId: 12048
+
+Process Name: D:\工作台\efwplus_wcfframe\Output\WCF服务主机.exe
+
+Thread Name: 
+
+Win32 ThreadId:3856
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-05-06 15:08:50
+
+Message: HandlingInstanceID: fc7e75a4-6662-4607-930f-fc8271833d3a
+An exception of type 'System.IO.IOException' occurred and was caught.
+---------------------------------------------------------------------
+05/06/2016 23:08:50
+Type : System.IO.IOException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 读取流时引发异常。
+Source : System.ServiceModel
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : Int32 Read(Byte[], Int32, Int32)
+HResult : -2146232800
+Stack Trace :    在 System.ServiceModel.Dispatcher.StreamFormatter.MessageBodyStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   在 EFWCoreLib.WcfFrame.WcfService.FileTransferHandlerService.UpLoadFile(UpFile filedata) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\WcfService\FileTransferHandlerService.cs:行号 62
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-05-06 15:08:50
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : WCF服务主机.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+	Inner Exception
+	---------------
+	Type : System.ServiceModel.CommunicationException, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+	Message : 已超过传入消息(2147483647)的最大消息大小配额。若要增加配额，请使用相应绑定元素上的 MaxReceivedMessageSize 属性。
+	Source : System.ServiceModel
+	Help link : 
+	Data : System.Collections.ListDictionaryInternal
+	TargetSite : Int32 PrepareRead(Int32)
+	HResult : -2146233087
+	Stack Trace :    在 System.ServiceModel.Channels.MaxMessageSizeStream.PrepareRead(Int32 bytesToRead)
+	   在 System.ServiceModel.Channels.MaxMessageSizeStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+	   在 System.Xml.XmlBufferReader.TryEnsureBytes(Int32 count)
+	   在 System.Xml.XmlBinaryReader.ReadText(XmlTextNode textNode, ValueHandleType type, Int32 length)
+	   在 System.Xml.XmlBinaryReader.ReadPartialBinaryText(Boolean withEndElement, Int32 length)
+	   在 System.Xml.XmlBinaryReader.ReadNode()
+	   在 System.Xml.XmlBaseReader.MoveToContent()
+	   在 System.ServiceModel.Dispatcher.StreamFormatter.MessageBodyStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+
+		Inner Exception
+		---------------
+		Type : System.ServiceModel.QuotaExceededException, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+		Message : 已超过传入消息(2147483647)的最大消息大小配额。若要增加配额，请使用相应绑定元素上的 MaxReceivedMessageSize 属性。
+		Source : 
+		Help link : 
+		Data : System.Collections.ListDictionaryInternal
+		TargetSite : 
+		HResult : -2146233087
+		Stack Trace : The stack trace is unavailable.
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: WCF服务主机.exe
+
+ProcessId: 5492
+
+Process Name: D:\工作台\efwplus_wcfframe\Output\WCF服务主机.exe
+
+Thread Name: 
+
+Win32 ThreadId:7808
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-05-06 15:11:32
+
+Message: HandlingInstanceID: f9d8e6b3-f61a-4173-9825-c4182ee382c3
+An exception of type 'System.IO.IOException' occurred and was caught.
+---------------------------------------------------------------------
+05/06/2016 23:11:32
+Type : System.IO.IOException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 读取流时引发异常。
+Source : System.ServiceModel
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : Int32 Read(Byte[], Int32, Int32)
+HResult : -2146232800
+Stack Trace :    在 System.ServiceModel.Dispatcher.StreamFormatter.MessageBodyStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   在 EFWCoreLib.WcfFrame.WcfService.FileTransferHandlerService.UpLoadFile(UpFile filedata) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\WcfService\FileTransferHandlerService.cs:行号 62
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-05-06 15:11:32
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : WCF服务主机.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+	Inner Exception
+	---------------
+	Type : System.ServiceModel.CommunicationException, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+	Message : 已超过传入消息(2147483647)的最大消息大小配额。若要增加配额，请使用相应绑定元素上的 MaxReceivedMessageSize 属性。
+	Source : System.ServiceModel
+	Help link : 
+	Data : System.Collections.ListDictionaryInternal
+	TargetSite : Int32 PrepareRead(Int32)
+	HResult : -2146233087
+	Stack Trace :    在 System.ServiceModel.Channels.MaxMessageSizeStream.PrepareRead(Int32 bytesToRead)
+	   在 System.ServiceModel.Channels.MaxMessageSizeStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+	   在 System.Xml.XmlBufferReader.TryEnsureBytes(Int32 count)
+	   在 System.Xml.XmlBinaryReader.ReadText(XmlTextNode textNode, ValueHandleType type, Int32 length)
+	   在 System.Xml.XmlBinaryReader.ReadPartialBinaryText(Boolean withEndElement, Int32 length)
+	   在 System.Xml.XmlBinaryReader.ReadNode()
+	   在 System.Xml.XmlBaseReader.MoveToContent()
+	   在 System.ServiceModel.Dispatcher.StreamFormatter.MessageBodyStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+
+		Inner Exception
+		---------------
+		Type : System.ServiceModel.QuotaExceededException, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+		Message : 已超过传入消息(2147483647)的最大消息大小配额。若要增加配额，请使用相应绑定元素上的 MaxReceivedMessageSize 属性。
+		Source : 
+		Help link : 
+		Data : System.Collections.ListDictionaryInternal
+		TargetSite : 
+		HResult : -2146233087
+		Stack Trace : The stack trace is unavailable.
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: WCF服务主机.exe
+
+ProcessId: 12092
+
+Process Name: D:\工作台\efwplus_wcfframe\Output\WCF服务主机.exe
+
+Thread Name: 
+
+Win32 ThreadId:13068
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-05-06 15:20:38
+
+Message: HandlingInstanceID: 17f83998-0846-45ab-866d-33429cc2b6b3
+An exception of type 'System.IO.IOException' occurred and was caught.
+---------------------------------------------------------------------
+05/06/2016 23:20:38
+Type : System.IO.IOException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 读取流时引发异常。
+Source : System.ServiceModel
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : Int32 Read(Byte[], Int32, Int32)
+HResult : -2146232800
+Stack Trace :    在 System.ServiceModel.Dispatcher.StreamFormatter.MessageBodyStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   在 EFWCoreLib.WcfFrame.WcfService.FileTransferHandlerService.UpLoadFile(UpFile filedata) 位置 d:\工作台\efwplus_wcfframe\EFWCoreLib\WcfFrame\WcfService\FileTransferHandlerService.cs:行号 62
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-05-06 15:20:38
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : WCF服务主机.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+	Inner Exception
+	---------------
+	Type : System.ServiceModel.CommunicationException, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+	Message : 已超过传入消息(2147483647)的最大消息大小配额。若要增加配额，请使用相应绑定元素上的 MaxReceivedMessageSize 属性。
+	Source : System.ServiceModel
+	Help link : 
+	Data : System.Collections.ListDictionaryInternal
+	TargetSite : Int32 PrepareRead(Int32)
+	HResult : -2146233087
+	Stack Trace :    在 System.ServiceModel.Channels.MaxMessageSizeStream.PrepareRead(Int32 bytesToRead)
+	   在 System.ServiceModel.Channels.MaxMessageSizeStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+	   在 System.Xml.XmlBufferReader.TryEnsureBytes(Int32 count)
+	   在 System.Xml.XmlBinaryReader.ReadText(XmlTextNode textNode, ValueHandleType type, Int32 length)
+	   在 System.Xml.XmlBinaryReader.ReadPartialBinaryText(Boolean withEndElement, Int32 length)
+	   在 System.Xml.XmlBinaryReader.ReadNode()
+	   在 System.Xml.XmlBaseReader.MoveToContent()
+	   在 System.ServiceModel.Dispatcher.StreamFormatter.MessageBodyStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+
+		Inner Exception
+		---------------
+		Type : System.ServiceModel.QuotaExceededException, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+		Message : 已超过传入消息(2147483647)的最大消息大小配额。若要增加配额，请使用相应绑定元素上的 MaxReceivedMessageSize 属性。
+		Source : 
+		Help link : 
+		Data : System.Collections.ListDictionaryInternal
+		TargetSite : 
+		HResult : -2146233087
+		Stack Trace : The stack trace is unavailable.
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: WCF服务主机.exe
+
+ProcessId: 12844
+
+Process Name: D:\工作台\efwplus_wcfframe\Output\WCF服务主机.exe
+
+Thread Name: 
+
+Win32 ThreadId:9448
+
+Extended Properties: 
+----------------------------------------

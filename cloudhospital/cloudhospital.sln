@@ -1,0 +1,75 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "appconfig", "appconfig", "{CD4862E8-A561-43E2-9D5A-C738CC457522}"
+	ProjectSection(SolutionItems) = preProject
+		Output_Client\Config\EntLib.config = Output_Client\Config\EntLib.config
+		Output_Client\Config\pluginsys.xml = Output_Client\Config\pluginsys.xml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "实例Books", "实例Books", "{8B24FA62-8400-4E9F-A926-9DA0F66E073E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Books_Wcf.Winform", "实例Books\Books_Wcf.Winform\Books_Wcf.Winform.csproj", "{37492867-21A2-4102-8F30-ECCAFA84EDEA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pluginconfig", "pluginconfig", "{1AADB873-8860-4B47-8127-9956FD0C2E9C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wcfmainuiframe", "wcfmainuiframe", "{FEA0C73D-8B60-4D6F-B6A0-A3D352CC1C00}"
+	ProjectSection(SolutionItems) = preProject
+		Output_Client\ModulePlugin\WcfMainUIFrame\menus.xml = Output_Client\ModulePlugin\WcfMainUIFrame\menus.xml
+		Output_Client\ModulePlugin\WcfMainUIFrame\plugin.xml = Output_Client\ModulePlugin\WcfMainUIFrame\plugin.xml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "books", "books", "{F41603BA-07BF-4D91-B0C5-F79B70AEDB1A}"
+	ProjectSection(SolutionItems) = preProject
+		Output_Client\ModulePlugin\Books_Wcf\plugin.xml = Output_Client\ModulePlugin\Books_Wcf\plugin.xml
+	EndProjectSection
+EndProject
+Project("{911E67C6-3D85-4FCE-B560-20A9C3E3FF48}") = "efwplusClient", "Output_Client\efwplusClient.exe", "{BA4AC09D-9707-4158-A437-9783C818B13A}"
+	ProjectSection(DebuggerProjectSystem) = preProject
+		PortSupplier = 00000000-0000-0000-0000-000000000000
+		Executable = D:\工作台\efwplus产品目录\efwplus_cloudhospital\cloudhospital\Output_Client\efwplusClient.exe
+		RemoteMachine = UALG394S3SBEXSU
+		StartingDirectory = D:\工作台\efwplus产品目录\efwplus_cloudhospital\cloudhospital\Output_Client
+		Environment = 默认值
+		LaunchingEngine = 00000000-0000-0000-0000-000000000000
+		LaunchSQLEngine = No
+		AttachLaunchAction = No
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Books_Wcf", "实例Books\Books_Wcf\Books_Wcf.csproj", "{79168A48-52A6-4486-9CD1-C3E05F9BD94B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "config", "config", "{498A1BA2-D08A-45FD-A618-841FCE47F75C}"
+	ProjectSection(SolutionItems) = preProject
+		Output_Client\efwplusClient.exe.config = Output_Client\efwplusClient.exe.config
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "plugin", "plugin", "{D9CE1A7C-97FF-48D1-8166-EB28703A3D70}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{37492867-21A2-4102-8F30-ECCAFA84EDEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37492867-21A2-4102-8F30-ECCAFA84EDEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37492867-21A2-4102-8F30-ECCAFA84EDEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37492867-21A2-4102-8F30-ECCAFA84EDEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA4AC09D-9707-4158-A437-9783C818B13A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA4AC09D-9707-4158-A437-9783C818B13A}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{79168A48-52A6-4486-9CD1-C3E05F9BD94B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79168A48-52A6-4486-9CD1-C3E05F9BD94B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79168A48-52A6-4486-9CD1-C3E05F9BD94B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79168A48-52A6-4486-9CD1-C3E05F9BD94B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{37492867-21A2-4102-8F30-ECCAFA84EDEA} = {8B24FA62-8400-4E9F-A926-9DA0F66E073E}
+		{79168A48-52A6-4486-9CD1-C3E05F9BD94B} = {8B24FA62-8400-4E9F-A926-9DA0F66E073E}
+		{FEA0C73D-8B60-4D6F-B6A0-A3D352CC1C00} = {1AADB873-8860-4B47-8127-9956FD0C2E9C}
+		{F41603BA-07BF-4D91-B0C5-F79B70AEDB1A} = {1AADB873-8860-4B47-8127-9956FD0C2E9C}
+		{CD4862E8-A561-43E2-9D5A-C738CC457522} = {498A1BA2-D08A-45FD-A618-841FCE47F75C}
+		{1AADB873-8860-4B47-8127-9956FD0C2E9C} = {498A1BA2-D08A-45FD-A618-841FCE47F75C}
+	EndGlobalSection
+EndGlobal
