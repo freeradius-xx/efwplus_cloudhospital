@@ -52,3 +52,21 @@
 
 时间：2016-05-12 19:11:03		耗时：1444.0825		方法：WcfMainUIFrame@LoginController.UserLogin(["admin","1"])
 
+时间：2016-05-17 15:10:44		耗时：1745.0999		方法：WcfMainUIFrame@LoginController.UserLogin(["admin","1"])
+
+时间：2016-05-17 15:11:11		耗时：19242.1006		方法：Books_Wcf@bookWcfController.GetBooks([])
+
+时间：2016-05-17 16:05:45		耗时：1356.0775		方法：WcfMainUIFrame@LoginController.UserLogin(["admin","1"])
+
+时间：2016-05-17 16:05:55		耗时：6937.3968		方法：Books_Wcf@bookWcfController.GetBooks([])
+
+时间：2016-05-17 16:06:25		耗时：20499.1725		方法：Books_Wcf@bookWcfController.SaveBook({"Id":0,"BookName":"1111212","BuyPrice":10.0,"BuyDate":"2016-05-17T16:06:00.5426642+08:00","Flag":0})
+
+时间：2016-05-17 16:06:28		耗时：2695.1542		方法：Books_Wcf@bookWcfController.GetBooks([])
+
+时间：2016-05-17 16:41:04		耗时：48734.7875		方法：Books_Wcf@bookWcfController.SaveBook({"Id":0,"BookName":"1111212","BuyPrice":10.0,"BuyDate":"2016-05-17T16:06:00.5426642+08:00","Flag":0})
+
+时间：2016-05-17 16:41:08		耗时：3744.2142		方法：Books_Wcf@bookWcfController.GetBooks([])
+
+时间：2016-05-17 16:44:15		耗时：25029.4316		方法：Books_Wcf@bookWcfController.SaveBook({"Id":0,"BookName":"1111212","BuyPrice":10.0,"BuyDate":"2016-05-17T16:06:00.5426642+08:00","Flag":0})
+

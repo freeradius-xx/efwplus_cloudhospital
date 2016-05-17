@@ -250,6 +250,8 @@
     <Compile Include="CoreFrame\Business\AbstractEntity.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="UnitTestFrame\BaseDaoUnitTest.cs" />
+    <Compile Include="UnitTestFrame\wcfBaseUnitTest.cs" />
     <Compile Include="WebFrame\WebAPI\FileController.cs" />
     <Compile Include="WebFrame\WebAPI\PluginAssembliesResolver.cs" />
     <Compile Include="WebFrame\WebAPI\PluginHttpControllerActivator.cs" />

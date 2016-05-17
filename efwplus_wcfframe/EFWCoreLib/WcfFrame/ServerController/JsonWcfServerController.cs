@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using EFWCoreLib.CoreFrame.Common;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -93,7 +94,9 @@ namespace EFWCoreLib.WcfFrame.ServerController
         #region IJsonToObject成员
         public T ToObject<T>(string json)
         {
-            return JsonConvert.DeserializeObject<T>(json);
+            T t = NewObject<T>();
+            ConvertExtend.ToObject(JsonConvert.DeserializeObject<T>(json), t);
+            return t;
         }
         public object ToObject(string json)
         {
@@ -182,7 +185,7 @@ namespace EFWCoreLib.WcfFrame.ServerController
             }
             else
             {
-                T obj = (T)Activator.CreateInstance(typeof(T));
+                T obj = NewObject<T>();
                 PropertyInfo[] pros = typeof(T).GetProperties();
                 for (int k = 0; k < pros.Length; k++)
                 {
@@ -204,7 +207,7 @@ namespace EFWCoreLib.WcfFrame.ServerController
                 List<T> list = new List<T>();
                 for (int i = 0; i < (data as JArray).Count; i++)
                 {
-                    T obj = (T)Activator.CreateInstance(typeof(T));
+                    T obj = NewObject<T>();
                     object _data = (data as JArray)[i];
                     for (int k = 0; k < pros.Length; k++)
                     {

@@ -365,6 +365,31 @@ namespace EFWCoreLib.CoreFrame.Common
             return out_obj;
         }
 
+        public static void ToObject(Object in_obj,Object out_obj)
+        {
+            //T out_obj = (T)System.Activator.CreateInstance(typeof(T));
+
+            int in_propertyNum = in_obj.GetType().GetProperties().Length;
+            int out_propertyNum = out_obj.GetType().GetProperties().Length;
+            string in_propertyName, out_propertyName;
+            for (int i = 0; i < in_propertyNum; i++)
+            {
+                for (int j = 0; j < out_propertyNum; j++)
+                {
+                    in_propertyName = in_obj.GetType().GetProperties()[i].Name;
+                    out_propertyName = out_obj.GetType().GetProperties()[j].Name;
+
+                    if (in_propertyName == out_propertyName)
+                    {
+                        object obj = in_obj.GetType().GetProperties()[i].GetValue(in_obj, null);
+                        out_obj.GetType().GetProperties()[j].SetValue(out_obj, obj, null);
+                    }
+                }
+            }
+
+            //return out_obj;
+        }
+
         public static string UrlAddParams(string httpurl, string paramName, string paramValue)
         {
             if (httpurl.IndexOf('?') == -1)

@@ -6,6 +6,7 @@ using EFWCoreLib.CoreFrame.Business.AttributeInfo;
 using EFWCoreLib.WcfFrame.ServerController;
 using Books_Wcf.Entity;
 using System.Data;
+using Books_Wcf.Dao;
 
 namespace Books_Wcf.WcfController
 {
@@ -16,15 +17,15 @@ namespace Books_Wcf.WcfController
         public string SaveBook()
         {
             Books book = ToObject<Books>(ParamJsonData);
-            book.BindDb(oleDb, _container,_cache,_pluginName);//反序列化的对象，必须绑定数据库操作对象
+            //book.BindDb(oleDb, _container,_cache,_pluginName);//反序列化的对象，必须绑定数据库操作对象
             book.save();
-            return "true";
+            return ToJson(true);
         }
 
         [WCFMethod]
         public string GetBooks()
         {
-            DataTable dt = NewObject<Books>().gettable();
+            DataTable dt = NewDao<IBookDao>().GetBooks("", 0);
             return base.ToJson(dt);
         }
 
