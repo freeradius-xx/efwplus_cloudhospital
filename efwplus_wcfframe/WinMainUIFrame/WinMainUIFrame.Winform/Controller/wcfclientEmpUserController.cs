@@ -17,7 +17,7 @@ namespace WinMainUIFrame.Winform.Controller
     [WinformView(Name = "FrmDeptEmp", DllName = "WinMainUIFrame.Winform.dll", ViewTypeName = "WinMainUIFrame.Winform.ViewForm.EmpUserManager.FrmDeptEmp")]
     [WinformView(Name = "frmAddUser", DllName = "WinMainUIFrame.Winform.dll", ViewTypeName = "WinMainUIFrame.Winform.ViewForm.EmpUserManager.frmAddUser")]
     [WinformView(Name = "frmWorker", DllName = "WinMainUIFrame.Winform.dll", ViewTypeName = "WinMainUIFrame.Winform.ViewForm.EmpUserManager.frmWorker")]
-    public class wcfclientEmpUserController : JsonWcfClientController
+    public class wcfclientEmpUserController : WcfClientController
     {
         IfrmDeptEmp frmDeptEmp;
         IfrmWorker frmWorker;
@@ -29,7 +29,7 @@ namespace WinMainUIFrame.Winform.Controller
         [WinformMethod]
         public void LoadDeptData()
         {
-            Object retdata = InvokeWCFService("EmpUserController", "LoadDeptData");
+            Object retdata = InvokeWcfService("WcfMainUIFrame","EmpUserController", "LoadDeptData");
 
             List<BaseDeptLayer> layerlist = ToListObj<BaseDeptLayer>(ToArray(retdata)[0]);
             List<BaseDept> deptlist = ToListObj<BaseDept>(ToArray(retdata)[1]);
@@ -38,43 +38,43 @@ namespace WinMainUIFrame.Winform.Controller
         [WinformMethod]
         public BaseDeptLayer SaveDeptLayer(int layerId, string layername, int pId)
         {
-            Object retdata = InvokeWCFService("EmpUserController", "LoadDeptData",ToJson(layerId,layername,pId));
+            Object retdata = InvokeWcfService("WcfMainUIFrame","EmpUserController", "LoadDeptData",ToJson(layerId,layername,pId));
             return ToObject<BaseDeptLayer>(retdata);
         }
         [WinformMethod]
         public void DeleteDeptLayer(int layerId)
         {
-            InvokeWCFService("EmpUserController", "DeleteDeptLayer", ToJson(layerId));
+            InvokeWcfService("WcfMainUIFrame","EmpUserController", "DeleteDeptLayer", ToJson(layerId));
         }
         [WinformMethod]
         public BaseDept SaveDept(int deptId,string deptname,int layerId)
         {
-            Object retdata = InvokeWCFService("EmpUserController", "SaveDept", ToJson(deptId, deptname, layerId));
+            Object retdata = InvokeWcfService("WcfMainUIFrame","EmpUserController", "SaveDept", ToJson(deptId, deptname, layerId));
             return ToObject<BaseDept>(retdata); ;
         }
         [WinformMethod]
         public void DeleteDept(int deptId)
         {
-            Object retdata = InvokeWCFService("EmpUserController", "DeleteDept", ToJson(deptId));
+            Object retdata = InvokeWcfService("WcfMainUIFrame","EmpUserController", "DeleteDept", ToJson(deptId));
         }
         [WinformMethod]
         public void LoadUserData(int[] deptIds)
         {
-            Object retdata = InvokeWCFService("EmpUserController", "LoadUserData", ToJson(deptIds));
+            Object retdata = InvokeWcfService("WcfMainUIFrame","EmpUserController", "LoadUserData", ToJson(deptIds));
             DataTable dt = ToDataTable(retdata);
             frmDeptEmp.loadUserGrid(dt);
         }
         [WinformMethod]
         public void LoadUserData_Key(string key)
         {
-            Object retdata = InvokeWCFService("EmpUserController", "LoadUserData_Key", ToJson(key));
+            Object retdata = InvokeWcfService("WcfMainUIFrame","EmpUserController", "LoadUserData_Key", ToJson(key));
             DataTable dt = ToDataTable(retdata);
             frmDeptEmp.loadUserGrid(dt);
         }
         [WinformMethod]
         public DialogResult NewUser()
         {
-            Object retdata = InvokeWCFService("EmpUserController", "NewUser");
+            Object retdata = InvokeWcfService("WcfMainUIFrame","EmpUserController", "NewUser");
             BaseEmployee _currEmp = ToObject<BaseEmployee>(ToArray(retdata)[0]);
             BaseUser _currUser = ToObject<BaseUser>(ToArray(retdata)[1]);
             List<BaseGroup> _grouplist = ToListObj<BaseGroup>(ToArray(retdata)[2]);
@@ -86,7 +86,7 @@ namespace WinMainUIFrame.Winform.Controller
         [WinformMethod]
         public void AlterUser(int empid, int userid)
         {
-            Object retdata = InvokeWCFService("EmpUserController", "AlterUser",ToJson(empid,userid));
+            Object retdata = InvokeWcfService("WcfMainUIFrame","EmpUserController", "AlterUser",ToJson(empid,userid));
             BaseEmployee _currEmp = ToObject<BaseEmployee>(ToArray(retdata)[0]);
             int currDeptId = Convert.ToInt32(ToArray(retdata)[1]);
 
@@ -112,7 +112,7 @@ namespace WinMainUIFrame.Winform.Controller
             List<int> currEmpDeptList = (iBaseView["frmAddUser"] as IfrmAddUser).currEmpDeptList;
             int currDefaultEmpDept = (iBaseView["frmAddUser"] as IfrmAddUser).currDefaultEmpDept;
             List<int> currGroupUserList = (iBaseView["frmAddUser"] as IfrmAddUser).currGroupUserList;
-            Object retdata = InvokeWCFService("EmpUserController", "SaveUser",ToJson(emp,user,currEmpDeptList,currDefaultEmpDept,currGroupUserList));
+            Object retdata = InvokeWcfService("WcfMainUIFrame","EmpUserController", "SaveUser",ToJson(emp,user,currEmpDeptList,currDefaultEmpDept,currGroupUserList));
             if (ToBoolean(retdata) == false)
             {
                 throw new Exception("该用户名已存在！");
@@ -121,26 +121,26 @@ namespace WinMainUIFrame.Winform.Controller
         [WinformMethod]
         public void ResetUserPass(int userId)
         {
-            Object retdata = InvokeWCFService("EmpUserController", "ResetUserPass", ToJson(userId));
+            Object retdata = InvokeWcfService("WcfMainUIFrame","EmpUserController", "ResetUserPass", ToJson(userId));
         }
         [WinformMethod]
         public void LoadWorkerList()
         {
-            Object retdata = InvokeWCFService("EmpUserController", "LoadWorkerList");
+            Object retdata = InvokeWcfService("WcfMainUIFrame","EmpUserController", "LoadWorkerList");
             List<BaseWorkers> workerlist = ToListObj<BaseWorkers>(retdata);
             frmWorker.loadWorkerGrid(workerlist);
         }
         [WinformMethod]
         public void GetCurrWorker(int workId)
         {
-            Object retdata = InvokeWCFService("EmpUserController", "GetCurrWorker",ToJson(workId));
+            Object retdata = InvokeWcfService("WcfMainUIFrame","EmpUserController", "GetCurrWorker",ToJson(workId));
             BaseWorkers worker = ToObject<BaseWorkers>(retdata);
             frmWorker.currWorker = worker;
         }
         [WinformMethod]
         public void NewWorker()
         {
-            Object retdata = InvokeWCFService("EmpUserController", "NewWorker");
+            Object retdata = InvokeWcfService("WcfMainUIFrame","EmpUserController", "NewWorker");
             BaseWorkers worker = ToObject<BaseWorkers>(retdata);
             frmWorker.currWorker = worker;
         }
@@ -148,7 +148,7 @@ namespace WinMainUIFrame.Winform.Controller
         public void SaveWorker()
         {
             BaseWorkers worker = frmWorker.currWorker;
-            Object retdata = InvokeWCFService("EmpUserController", "SaveWorker",ToJson(worker));
+            Object retdata = InvokeWcfService("WcfMainUIFrame","EmpUserController", "SaveWorker",ToJson(worker));
             frmWorker.currWorker = ToObject<BaseWorkers>(retdata);
         }
 
@@ -156,7 +156,7 @@ namespace WinMainUIFrame.Winform.Controller
         [WinformMethod]
         public void TurnOnOffWorker(int workId)
         {
-            Object retdata = InvokeWCFService("EmpUserController", "TurnOnOffWorker", ToJson(workId));
+            Object retdata = InvokeWcfService("WcfMainUIFrame","EmpUserController", "TurnOnOffWorker", ToJson(workId));
             BaseWorkers worker = ToObject<BaseWorkers>(ToArray(retdata)[0]);
             string msg = ToArray(retdata)[1].ToString();
             MessageBoxEx.Show(msg, "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);

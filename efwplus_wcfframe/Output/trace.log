@@ -1,0 +1,140 @@
+----------------------------------------
+Timestamp: 2016-05-20 11:04:08
+
+Message: HandlingInstanceID: c92a2ae9-85c5-429d-afaa-ea8610994e62
+An exception of type 'System.IO.IOException' occurred and was caught.
+---------------------------------------------------------------------
+05/20/2016 19:04:08
+Type : System.IO.IOException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 读取流时引发异常。
+Source : System.ServiceModel
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : Int32 Read(Byte[], Int32, Int32)
+HResult : -2146232800
+Stack Trace :    在 System.ServiceModel.Dispatcher.StreamFormatter.MessageBodyStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   在 EFWCoreLib.WcfFrame.WcfService.FileTransferHandlerService.UpLoadFile(UpFile filedata) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\WcfService\FileTransferHandlerService.cs:行号 64
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-05-20 11:04:08
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : efwplusServer.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+	Inner Exception
+	---------------
+	Type : System.ServiceModel.CommunicationException, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+	Message : 套接字连接已中止。这可能是由于处理消息时出错或远程主机超过接收超时或者潜在的网络资源问题导致的。本地套接字超时是“09:59:59.9919996”。
+	Source : System.ServiceModel
+	Help link : 
+	Data : System.Collections.ListDictionaryInternal
+	TargetSite : Int32 ReadCore(Byte[], Int32, Int32, System.TimeSpan, Boolean)
+	HResult : -2146233087
+	Stack Trace :    在 System.ServiceModel.Channels.SocketConnection.ReadCore(Byte[] buffer, Int32 offset, Int32 size, TimeSpan timeout, Boolean closing)
+	   在 System.ServiceModel.Channels.SocketConnection.Read(Byte[] buffer, Int32 offset, Int32 size, TimeSpan timeout)
+	   在 System.ServiceModel.Channels.ConnectionStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+	   在 System.ServiceModel.Channels.SingletonConnectionReader.SingletonInputConnectionStream.ReadCore(Byte[] buffer, Int32 offset, Int32 count)
+	   在 System.ServiceModel.Channels.SingletonConnectionReader.SingletonInputConnectionStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+	   在 System.ServiceModel.Channels.DelegatingStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+	   在 System.ServiceModel.Channels.MaxMessageSizeStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+	   在 System.Xml.XmlBufferReader.TryEnsureBytes(Int32 count)
+	   在 System.Xml.XmlBinaryReader.ReadText(XmlTextNode textNode, ValueHandleType type, Int32 length)
+	   在 System.Xml.XmlBinaryReader.ReadNode()
+	   在 System.Xml.XmlBaseReader.MoveToContent()
+	   在 System.ServiceModel.Dispatcher.StreamFormatter.MessageBodyStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+
+		Inner Exception
+		---------------
+		Type : System.Net.Sockets.SocketException, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+		Message : 远程主机强迫关闭了一个现有的连接。
+		Source : System
+		Help link : 
+		ErrorCode : 10054
+		SocketErrorCode : ConnectionReset
+		NativeErrorCode : 10054
+		Data : System.Collections.ListDictionaryInternal
+		TargetSite : Int32 Receive(Byte[], Int32, Int32, System.Net.Sockets.SocketFlags)
+		HResult : -2147467259
+		Stack Trace :    在 System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+		   在 System.ServiceModel.Channels.SocketConnection.ReadCore(Byte[] buffer, Int32 offset, Int32 size, TimeSpan timeout, Boolean closing)
+
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: efwplusServer.exe
+
+ProcessId: 6960
+
+Process Name: D:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\Output\efwplusServer.exe
+
+Thread Name: 
+
+Win32 ThreadId:8672
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-05-23 03:30:14
+
+Message: HandlingInstanceID: 2dfcf184-8c9b-4562-a4ba-234c48d52de3
+An exception of type 'System.ArgumentException' occurred and was caught.
+------------------------------------------------------------------------
+05/23/2016 11:30:14
+Type : System.ArgumentException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 缓冲区大小至少必须为 8192 字节。
+Source : System.ServiceModel
+Help link : 
+ParamName : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : Int32 Read(Byte[], Int32, Int32)
+HResult : -2147024809
+Stack Trace :    在 System.ServiceModel.Dispatcher.StreamFormatter.MessageBodyStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   在 EFWCoreLib.WcfFrame.WcfService.FileTransferHandlerService.UpLoadFile(UpFile filedata) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\WcfService\FileTransferHandlerService.cs:行号 65
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-05-23 03:30:14
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : efwplusServer.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: efwplusServer.vshost.exe
+
+ProcessId: 7256
+
+Process Name: D:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\Output\efwplusServer.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:7184
+
+Extended Properties: 
+----------------------------------------

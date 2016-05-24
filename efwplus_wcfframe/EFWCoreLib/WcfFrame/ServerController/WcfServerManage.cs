@@ -10,6 +10,7 @@ using System.Reflection;
 using EFWCoreLib.CoreFrame.Init;
 using EFWCoreLib.CoreFrame.Common;
 using System.Drawing;
+using EFWCoreLib.WcfFrame.ClientController;
 
 namespace EFWCoreLib.WcfFrame.ServerController
 {
@@ -18,10 +19,9 @@ namespace EFWCoreLib.WcfFrame.ServerController
     /// </summary>
     public class WcfServerManage
     {
-        /// <summary>
-        /// 客户端列表
-        /// </summary>
+        //客户端列表
         static Dictionary<string, WCFClientInfo> wcfClientDic = new Dictionary<string, WCFClientInfo>();
+        public static string HostName = "";
         public static bool IsDebug = false;
         public static bool IsHeartbeat = false;
         public static int HeartbeatTime = 1;//默认间隔1秒,客户端5倍
@@ -65,6 +65,7 @@ namespace EFWCoreLib.WcfFrame.ServerController
             }
         }
 
+        #region 服务操作
         public static string CreateClient(string sessionId, string ipaddress, DateTime time, IClientService clientService)
         {
             string clientId = Guid.NewGuid().ToString();
@@ -80,7 +81,6 @@ namespace EFWCoreLib.WcfFrame.ServerController
                 throw new FaultException(ex.Source + "：创建客户端运行环境失败！");
             }
         }
-
         public static bool Heartbeat(string clientId)
         {   
             bool b= UpdateHeartbeatClient(clientId);
@@ -92,7 +92,6 @@ namespace EFWCoreLib.WcfFrame.ServerController
             else
                 return false;
         }
-
         public static string ProcessRequest(string clientId, string controller, string method, string jsondata)
         {
             string retJson = null;
@@ -111,19 +110,11 @@ namespace EFWCoreLib.WcfFrame.ServerController
                 if (WcfServerManage.IsDebug == true)
                     ShowHostMsg(Color.Black, DateTime.Now, "客户端[" + clientId + "]正在执行：" + controller + "." + method + "(" + jsondata + ")");
 
+
                 begintime();
                 object[] paramValue = null;//jsondata?
-
-                //解压参数
-                string _jsondata = jsondata;
-                if (WcfServerManage.IsCompressJson)
-                {
-                    _jsondata = ZipComporessor.Decompress(jsondata);
-                    //_jsondata = JsonComporessor.Decompress(jsondata);
-                }
-
                 string[] names = controller.Split(new char[] { '@' });
-                if (names.Length != 2) 
+                if (names.Length != 2)
                     throw new Exception("控制器名称错误!");
                 string pluginname = names[0];
                 string cname = names[1];
@@ -131,22 +122,39 @@ namespace EFWCoreLib.WcfFrame.ServerController
                 Object retObj = null;
                 if (AppPluginManage.PluginDic.ContainsKey(pluginname) == true)
                 {
+                    //解压参数
+                    string _jsondata = jsondata;
+                    if (WcfServerManage.IsCompressJson)
+                    {
+                        _jsondata = ZipComporessor.Decompress(jsondata);
+                        //_jsondata = JsonComporessor.Decompress(jsondata);
+                    }
+
                     EFWCoreLib.CoreFrame.Plugin.ModulePlugin plugin = AppPluginManage.PluginDic[pluginname];
                     retObj = plugin.WcfServerExecuteMethod(cname, method, paramValue, _jsondata, ClientInfo);
+
+                    if (retObj != null)
+                        retJson = retObj.ToString();
+
+
+                    retJson = "{\"flag\":0,\"msg\":" + "\"\"" + ",\"data\":" + retJson + "}";
+                    //压缩结果
+                    if (WcfServerManage.IsCompressJson)
+                    {
+                        retJson = ZipComporessor.Compress(retJson);
+                        //retJson = JsonComporessor.Compress(retJson);
+                    }
                 }
-                else
-                    throw new Exception("请求的插件未找到");
-
-                if (retObj != null)
-                    retJson = retObj.ToString();
-
-
-                retJson = "{\"flag\":0,\"msg\":" + "\"\"" + ",\"data\":" + retJson + "}";
-                //压缩结果
-                if (WcfServerManage.IsCompressJson)
+                else//本地插件找不到，就执行远程插件
                 {
-                    retJson = ZipComporessor.Compress(retJson);
-                    //retJson = JsonComporessor.Compress(retJson);
+                    foreach (var rp in AppPluginManage.RemotePluginDic)
+                    {
+                        if (rp.plugin.ToList().FindIndex(x => x == pluginname) > -1)
+                        {
+                            retJson = rp.clientService.SuperReplyClient(pluginname, cname, method, jsondata);
+                            break;
+                        }
+                    }
                 }
 
                 //System.Threading.Thread.Sleep(20000);//测试并发问题，此处也没有问题
@@ -156,7 +164,7 @@ namespace EFWCoreLib.WcfFrame.ServerController
                 {
                     if (outtime > Convert.ToDouble(WcfServerManage.OverTime * 1000))
                     {
-                        WriterOverTimeLog(outtime, controller + "." + method + "(" + _jsondata + ")");
+                        WriterOverTimeLog(outtime, controller + "." + method + "(" + jsondata + ")");
                     }
                 }
                 //显示调试信息
@@ -165,6 +173,10 @@ namespace EFWCoreLib.WcfFrame.ServerController
 
                 //更新客户端信息
                 UpdateRequestClient(clientId, jsondata == null ? 0 : jsondata.Length, retJson == null ? 0 : retJson.Length);
+
+
+                if (retJson == null)
+                    throw new Exception("请求的插件未获取到有效数据");
 
                 return retJson;
             }
@@ -197,14 +209,12 @@ namespace EFWCoreLib.WcfFrame.ServerController
                 }
             }
         }
-
         public static bool UnClient(string clientId)
         {
             RemoveClient(clientId);
             hostwcfclientinfoList(wcfClientDic.Values.ToList());
             return true;
         }
-
         public static void SendBroadcast(string jsondata)
         {
             lock (wcfClientDic)
@@ -217,7 +227,6 @@ namespace EFWCoreLib.WcfFrame.ServerController
                 }
             }
         }
-
         public static string ServerConfig()
         {
             string IsHeartbeat = WcfServerManage.IsHeartbeat ? "1" : "0";
@@ -241,7 +250,9 @@ namespace EFWCoreLib.WcfFrame.ServerController
             sb.Append(IsEncryptionJson);
             return sb.ToString();
         }
+        #endregion
 
+        #region 界面显示
         public static HostWCFClientInfoListHandler hostwcfclientinfoList;
         public static HostWCFMsgHandler hostwcfMsg;
         private static void AddClient(string sessionId, string clientId, string ipaddress, DateTime time, IClientService clientService)
@@ -258,7 +269,6 @@ namespace EFWCoreLib.WcfFrame.ServerController
             }
             ShowHostMsg(Color.Blue, DateTime.Now, "客户端[" + ipaddress + "]已连接WCF服务主机");
         }
-
         private static bool UpdateRequestClient(string clientId, int rlen, int slen)
         {
             lock (wcfClientDic)
@@ -273,7 +283,6 @@ namespace EFWCoreLib.WcfFrame.ServerController
             }
             return true;
         }
-
         private static bool UpdateHeartbeatClient(string clientId)
         {
             lock (wcfClientDic)
@@ -338,8 +347,9 @@ namespace EFWCoreLib.WcfFrame.ServerController
                 //hostwcfMsg(time, text);
             //}
         }
+        #endregion
 
-
+        #region 定时刷新界面
         //检测客户端是否在线，超时时间为10s
         static System.Timers.Timer timer;
         private static void StartListenClients()
@@ -368,18 +378,15 @@ namespace EFWCoreLib.WcfFrame.ServerController
                             RemoveClient(client.clientId);
                         }
                     }
-
-                    lock (hostwcfclientinfoList)
-                    {
-                        hostwcfclientinfoList(wcfClientDic.Values.ToList());
-                    }
-
+                    hostwcfclientinfoList(wcfClientDic.Values.ToList());
                     WriterOverTimeFile();
                 }
             }
             catch { }
         }
+        #endregion
 
+        #region 超时服务请求记录
         static DateTime begindate;
         static void begintime()
         {
@@ -390,7 +397,6 @@ namespace EFWCoreLib.WcfFrame.ServerController
         {
             return DateTime.Now.Subtract(begindate).TotalMilliseconds;
         }
-
         static StringBuilder overtimesb = new StringBuilder();
         static void WriterOverTimeLog(double overtime, string text)
         {
@@ -400,7 +406,6 @@ namespace EFWCoreLib.WcfFrame.ServerController
                 overtimesb.AppendLine(info);
             }
         }
-
         static void WriterOverTimeFile()
         {
             string info = null;
@@ -420,6 +425,129 @@ namespace EFWCoreLib.WcfFrame.ServerController
                 System.IO.File.AppendAllText(filepath, info);
             }
         }
+        #endregion
+
+        #region 创建中间件与中间件之间的超级连接,通过EFWCore名称来转发
+        static ClientLink superclient;
+        public static void CreateSuperClient()
+        {
+            superclient = new ClientLink(HostName, "EFWCore");
+            superclient.CreateConnection();
+            superclient.RegisterReplyPlugin(HostName, AppPluginManage.PluginDic.Keys.ToArray());
+            (superclient.mConn.ClientService as ReplyClientCallBack).SuperReplyClientAction=((string plugin, string controller, string method, string jsondata)=>{
+                return ProcessReply(plugin,controller,method,jsondata);
+            });
+        }
+
+        public static void UnCreateSuperClient()
+        {
+            if (superclient != null)
+                superclient.Dispose();
+        }
+
+        public static void RegisterReplyPlugin(IClientService callback, string serverHostName, string[] plugin)
+        {
+            if (AppPluginManage.RemotePluginDic.FindIndex(x => x.serverHostName == serverHostName) > -1)
+                AppPluginManage.RemotePluginDic.RemoveAll(x => x.serverHostName == serverHostName);
+
+            RemotePlugin rp = new RemotePlugin();
+            rp.serverHostName = serverHostName;
+            rp.clientService = callback;
+            rp.plugin = plugin;
+            AppPluginManage.RemotePluginDic.Add(rp);
+        }
+
+        private static string ProcessReply(string plugin, string controller, string method, string jsondata)
+        {
+            string retJson = null;
+            
+            try
+            {
+
+                //显示调试信息
+                if (WcfServerManage.IsDebug == true)
+                    ShowHostMsg(Color.Black, DateTime.Now, "客户端[本地回调]正在执行：" + controller + "." + method + "(" + jsondata + ")");
+
+                begintime();
+                object[] paramValue = null;//jsondata?
+
+                Object retObj = null;
+                if (AppPluginManage.PluginDic.ContainsKey(plugin) == true)
+                {
+                    //解压参数
+                    string _jsondata = jsondata;
+                    if (WcfServerManage.IsCompressJson)
+                    {
+                        _jsondata = ZipComporessor.Decompress(jsondata);
+                        //_jsondata = JsonComporessor.Decompress(jsondata);
+                    }
+
+                    EFWCoreLib.CoreFrame.Plugin.ModulePlugin _plugin = AppPluginManage.PluginDic[plugin];
+                    retObj = _plugin.WcfServerExecuteMethod(controller, method, paramValue, _jsondata, null);
+
+                    if (retObj != null)
+                        retJson = retObj.ToString();
+
+
+                    retJson = "{\"flag\":0,\"msg\":" + "\"\"" + ",\"data\":" + retJson + "}";
+                    //压缩结果
+                    if (WcfServerManage.IsCompressJson)
+                    {
+                        retJson = ZipComporessor.Compress(retJson);
+                        //retJson = JsonComporessor.Compress(retJson);
+                    }
+                }
+
+                //System.Threading.Thread.Sleep(20000);//测试并发问题，此处也没有问题
+                double outtime = endtime();
+                //记录超时的方法
+                if (WcfServerManage.IsOverTime == true)
+                {
+                    if (outtime > Convert.ToDouble(WcfServerManage.OverTime * 1000))
+                    {
+                        WriterOverTimeLog(outtime, controller + "." + method + "(" + jsondata + ")");
+                    }
+                }
+                //显示调试信息
+                if (WcfServerManage.IsDebug == true)
+                    ShowHostMsg(Color.Green, DateTime.Now, "客户端[本地回调]收到结果(耗时[" + outtime + "])：" + retJson);
+
+                if (retJson == null)
+                    throw new Exception("请求的插件未获取到有效数据");
+               
+                return retJson;
+            }
+            catch (Exception err)
+            {
+                //记录错误日志
+                //EFWCoreLib.CoreFrame.EntLib.ZhyContainer.CreateException().HandleException(err, "HISPolicy");
+
+                if (err.InnerException == null)
+                {
+                    retJson = "{\"flag\":1,\"msg\":" + "\"" + err.Message + "\"" + "}";
+                    if (WcfServerManage.IsCompressJson)
+                    {
+                        retJson = ZipComporessor.Compress(retJson);
+                        //retJson = JsonComporessor.Compress(retJson);
+                    }
+                    ShowHostMsg(Color.Red, DateTime.Now, "客户端[本地回调]执行失败：" + err.Message);
+                    return retJson;
+                }
+                else
+                {
+                    retJson = "{\"flag\":1,\"msg\":" + "\"" + err.InnerException.Message + "\"" + "}";
+                    if (WcfServerManage.IsCompressJson)
+                    {
+                        retJson = ZipComporessor.Compress(retJson);
+                        //retJson = JsonComporessor.Compress(retJson);
+                    }
+                    ShowHostMsg(Color.Red, DateTime.Now, "客户端[本地回调]执行失败：" + err.InnerException.Message);
+                    return retJson;
+                }
+
+            }
+        }
+        #endregion
     }
 
     /// <summary>

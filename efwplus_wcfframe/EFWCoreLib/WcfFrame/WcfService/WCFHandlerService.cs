@@ -15,7 +15,7 @@ namespace EFWCoreLib.WcfFrame.WcfService
     //InstanceContextMode.Single 所有会话的请求都共用一个服务对象
 
     //ConcurrencyMode = ConcurrencyMode.Multiple  使用这个配置可能会出现不同步问题，WcfServerManage.wcfClientDic对象出现问题
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession, ConcurrencyMode = ConcurrencyMode.Multiple,UseSynchronizationContext=false, IncludeExceptionDetailInFaults = true)]
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession, ConcurrencyMode = ConcurrencyMode.Multiple,UseSynchronizationContext=false, IncludeExceptionDetailInFaults = false)]
     public class WCFHandlerService : MarshalByRefObject, IWCFHandlerService
     {
 
@@ -95,19 +95,29 @@ namespace EFWCoreLib.WcfFrame.WcfService
             //throw new Exception("WCF通道关闭");
         }
 
-       
 
-       
- 
+        #region IWCFHandlerService 成员
+
+
+        public void RegisterReplyPlugin(string serverHostName, string[] plugin)
+        {
+            //客户端回调
+            IClientService mCallBack = OperationContext.Current.GetCallbackChannel<IClientService>();
+            WcfServerManage.RegisterReplyPlugin(mCallBack, serverHostName, plugin);
+        }
+
+        #endregion
     }
 
 
-    class CompletedAsyncResult<T> : IAsyncResult
+    public class CompletedAsyncResult<T> : IAsyncResult
     {
         T data;
 
         public CompletedAsyncResult(T data)
-        { this.data = data; }
+        {
+            this.data = data;
+        }
 
         public T Data
         { get { return data; } }

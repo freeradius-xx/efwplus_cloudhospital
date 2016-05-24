@@ -86,13 +86,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dao\IBookDao.cs" />
+    <Compile Include="Dao\SqlBookDao.cs" />
     <Compile Include="Entity\Books.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitTest\TestDao\TestBookDao.cs" />
+    <Compile Include="UnitTest\TestEntity\unBooks.cs" />
     <Compile Include="WApiController\demoController.cs" />
     <Compile Include="WcfController\bookWcfController.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Dao\" />
     <Folder Include="ObjectModel\" />
   </ItemGroup>
   <ItemGroup>

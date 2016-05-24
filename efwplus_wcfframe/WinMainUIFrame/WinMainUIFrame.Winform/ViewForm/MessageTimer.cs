@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using EFWCoreLib.CoreFrame.Business;
-using EFWCoreLib.WcfFrame.ClientController;
+using EFWCoreLib.WcfFrame;
 
 namespace WinMainUIFrame.Winform.ViewForm
 {
@@ -35,14 +35,14 @@ namespace WinMainUIFrame.Winform.ViewForm
         {
             InitializeComponent();
             //manager = new MessageManager();
-            this.Interval = WcfClientManage.MessageTime*1000;
+            this.Interval = ClientLinkManage.MessageTime * 1000;
             //this.Enabled = true;
             this.Tick += new EventHandler(MessageTimer_Tick);
         }
 
         void MessageTimer_Tick(object sender, EventArgs e)
         {
-            if (WcfClientManage.IsMessage == true)
+            if (ClientLinkManage.IsMessage == true)
             {
                 this.Enabled = false;
                 try { GetMessages(); }

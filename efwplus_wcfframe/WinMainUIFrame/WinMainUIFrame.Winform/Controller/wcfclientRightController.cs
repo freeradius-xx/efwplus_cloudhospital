@@ -13,7 +13,7 @@ namespace WinMainUIFrame.Winform.Controller
     [WinformController(DefaultViewName = "frmMenu")]//与系统菜单对应
     [WinformView(Name = "frmMenu", DllName = "WinMainUIFrame.Winform.dll", ViewTypeName = "WinMainUIFrame.Winform.ViewForm.RightManager.frmMenu")]
     [WinformView(Name = "frmGroupMenu", DllName = "WinMainUIFrame.Winform.dll", ViewTypeName = "WinMainUIFrame.Winform.ViewForm.RightManager.frmGroupMenu")]
-    public class wcfclientRightController : JsonWcfClientController
+    public class wcfclientRightController : WcfClientController
     {
         IfrmMenu frmMenu;
         IfrmGroupMenu frmgroupmenu;
@@ -25,7 +25,7 @@ namespace WinMainUIFrame.Winform.Controller
         [WinformMethod]
         public void InitMenuData()
         {
-            Object retdata = InvokeWCFService("RightController", "InitMenuData");
+            Object retdata = InvokeWcfService("WcfMainUIFrame", "RightController", "InitMenuData");
             List<BaseModule> modulelist = ToListObj<BaseModule>(ToArray(retdata)[0]);
             List<BaseMenu> menulist = ToListObj<BaseMenu>(ToArray(retdata)[1]);
 
@@ -34,7 +34,7 @@ namespace WinMainUIFrame.Winform.Controller
         [WinformMethod]
         public void NewMenu()
         {
-            Object retdata = InvokeWCFService("RightController", "NewMenu");
+            Object retdata = InvokeWcfService("WcfMainUIFrame","RightController", "NewMenu");
             BaseMenu menu = ToObject<BaseMenu>(retdata);
             frmMenu.currentMenu = menu;
 
@@ -42,27 +42,27 @@ namespace WinMainUIFrame.Winform.Controller
         [WinformMethod]
         public void SaveMenu()
         {
-            Object retdata = InvokeWCFService("RightController", "SaveMenu",ToJson( frmMenu.currentMenu));
+            Object retdata = InvokeWcfService("WcfMainUIFrame","RightController", "SaveMenu",ToJson( frmMenu.currentMenu));
             InitMenuData();
         }
         [WinformMethod]
         public void DeleteMenu(int menuId)
         {
-            Object retdata = InvokeWCFService("RightController", "DeleteMenu", ToJson(menuId));
+            Object retdata = InvokeWcfService("WcfMainUIFrame","RightController", "DeleteMenu", ToJson(menuId));
             InitMenuData();
         }
 
         [WinformMethod]
         public void InitGroupData()
         {
-            Object retdata = InvokeWCFService("RightController", "InitGroupData");
+            Object retdata = InvokeWcfService("WcfMainUIFrame","RightController", "InitGroupData");
             List<BaseGroup> grouplist = ToListObj<BaseGroup>(retdata);
             frmgroupmenu.loadGroupGrid(grouplist);
         }
         [WinformMethod]
         public void LoadGroupMenuData(int groupId)
         {
-            Object retdata = InvokeWCFService("RightController", "LoadGroupMenuData",ToJson(groupId));
+            Object retdata = InvokeWcfService("WcfMainUIFrame","RightController", "LoadGroupMenuData",ToJson(groupId));
 
             List<BaseModule> modulelist = ToListObj<BaseModule>(ToArray(retdata)[0]);
             List<BaseMenu> menulist = ToListObj<BaseMenu>(ToArray(retdata)[1]);
@@ -73,7 +73,7 @@ namespace WinMainUIFrame.Winform.Controller
         [WinformMethod]
         public void SetGroupMenu(int groupId, int[] menuIds)
         {
-            Object retdata = InvokeWCFService("RightController", "SetGroupMenu", ToJson(groupId,menuIds));
+            Object retdata = InvokeWcfService("WcfMainUIFrame","RightController", "SetGroupMenu", ToJson(groupId,menuIds));
         }
 
         #region 页面权限
@@ -92,7 +92,7 @@ namespace WinMainUIFrame.Winform.Controller
                 else
                     frmgroupmenu.panelPageEnabled = true;
 
-                Object retdata = InvokeWCFService("RightController", "GetPageMenuData", ToJson(frmgroupmenu.currGroupId, frmgroupmenu.currMenu.MenuId));
+                Object retdata = InvokeWcfService("WcfMainUIFrame","RightController", "GetPageMenuData", ToJson(frmgroupmenu.currGroupId, frmgroupmenu.currMenu.MenuId));
 
                 DataTable dt = ToDataTable(retdata);
                 frmgroupmenu.loadPageMenu(dt);
@@ -101,21 +101,21 @@ namespace WinMainUIFrame.Winform.Controller
         [WinformMethod]
         public void SavePageMenu(int moduleId, int menuId, string code, string name)
         {
-            Object retdata = InvokeWCFService("RightController", "SavePageMenu", ToJson(moduleId, menuId,code,name));
+            Object retdata = InvokeWcfService("WcfMainUIFrame","RightController", "SavePageMenu", ToJson(moduleId, menuId,code,name));
 
             GetPageMenuData();
         }
         [WinformMethod]
         public void DeletePageMenu(int pageId)
         {
-            Object retdata = InvokeWCFService("RightController", "DeletePageMenu", ToJson(pageId));
+            Object retdata = InvokeWcfService("WcfMainUIFrame","RightController", "DeletePageMenu", ToJson(pageId));
 
             GetPageMenuData();
         }
         [WinformMethod]
         public void SetGroupPage(int groupId, int pageId)
         {
-            Object retdata = InvokeWCFService("RightController", "SetGroupPage", ToJson(groupId, pageId));
+            Object retdata = InvokeWcfService("WcfMainUIFrame","RightController", "SetGroupPage", ToJson(groupId, pageId));
 
             GetPageMenuData();
         }

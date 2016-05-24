@@ -77,22 +77,39 @@ namespace EFWCoreLib.WcfFrame.WcfService.Contract
         /// <returns></returns>
         [OperationContract(IsOneWay = false)]
         string WcfServicesAllInfo();
+
+        /// <summary>
+        /// 注册应答插件
+        /// </summary>
+        [OperationContract]
+        void RegisterReplyPlugin(string serverHostName,string[] plugin);
     }
 
     /// <summary>
-    /// 回调Winform界面契约
+    /// 回调契约
     /// </summary>
     [ServiceKnownType(typeof(System.DBNull))]
-    [ServiceContract(Name = "ClientService")]
+    [ServiceContract(Namespace = "http://www.efwplus.cn/", Name = "ClientService", SessionMode = SessionMode.Required)]
     public interface IClientService
     {
         /// <summary>
-        /// 回调界面方法
+        /// 回调客户端
         /// </summary>
         /// <param name="method">方法名</param>
         /// <param name="paramValue">参数</param>
         /// <returns></returns>
         [OperationContract(IsOneWay = true)]
         void ReplyClient(string jsondata);
+
+        /// <summary>
+        /// 超级回调中间件
+        /// </summary>
+        /// <param name="plugin"></param>
+        /// <param name="controller"></param>
+        /// <param name="method"></param>
+        /// <param name="jsondata"></param>
+        /// <returns></returns>
+        [OperationContract(IsOneWay = false)]
+        string SuperReplyClient(string plugin, string controller, string method, string jsondata);
     }
 }

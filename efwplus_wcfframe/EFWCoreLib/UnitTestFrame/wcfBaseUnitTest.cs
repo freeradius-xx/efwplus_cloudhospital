@@ -23,8 +23,8 @@ namespace EFWCoreLib.UnitTestFrame
                 if (_wcfClientLink == null)
                 {
                     //创建对象
-                    ReplyClientCallBack callback = new ReplyClientCallBack();
-                    ClientLink clientlink = new ClientLink("myendpoint", callback, "UnitTest");
+                    //ReplyClientCallBack callback = new ReplyClientCallBack();
+                    ClientLink clientlink = new ClientLink("UnitTest", wcfpluginname);
                     clientlink.CreateConnection();
                     _wcfClientLink = clientlink;
                 }

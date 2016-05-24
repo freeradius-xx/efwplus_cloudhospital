@@ -9,7 +9,7 @@ using EFWCoreLib.CoreFrame.Business.AttributeInfo;
 namespace WinMainUIFrame.WcfController
 {
     [WCFController]
-    public class TestWCFController : JsonWcfServerController
+    public class TestWCFController : WcfServerController
     {
         [WCFMethod(OpenDBKeys = "SQL2005,SQL20052")]
         public string Test()

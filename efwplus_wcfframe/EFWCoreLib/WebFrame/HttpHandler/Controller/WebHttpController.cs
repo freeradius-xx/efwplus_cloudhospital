@@ -169,21 +169,6 @@ namespace EFWCoreLib.WebFrame.HttpHandler.Controller
 
 
         #region 与CHDEP通讯
-        public ClientLink wcfClientLink
-        {
-            get
-            {
-                if (context.Session["wcfClientLink"] == null)
-                {
-                    //创建对象
-                    ReplyClientCallBack callback = new ReplyClientCallBack();
-                    ClientLink clientlink = new ClientLink("myendpoint", callback, GetUserInfo().EmpId.ToString() + "." + GetUserInfo().EmpName);
-                    clientlink.CreateConnection();
-                    context.Session["wcfClientLink"] = clientlink;
-                }
-                return context.Session["wcfClientLink"] as ClientLink;
-            }
-        }
 
         public Object InvokeWcfService(string wcfpluginname, string wcfcontroller, string wcfmethod)
         {
@@ -193,6 +178,7 @@ namespace EFWCoreLib.WebFrame.HttpHandler.Controller
         public Object InvokeWcfService(string wcfpluginname, string wcfcontroller, string wcfmethod, string jsondata)
         {
             if (string.IsNullOrEmpty(jsondata)) jsondata = "[]";
+            ClientLink wcfClientLink = ClientLinkManage.CreateConnection(wcfpluginname);
             string retJson = wcfClientLink.Request(wcfpluginname + "@" + wcfcontroller, wcfmethod, jsondata);
 
             object Result = JsonConvert.DeserializeObject(retJson);
@@ -225,6 +211,7 @@ namespace EFWCoreLib.WebFrame.HttpHandler.Controller
                     action(((Newtonsoft.Json.Linq.JObject)(Result))["data"]);
                 }
             };
+            ClientLink wcfClientLink = ClientLinkManage.CreateConnection(wcfpluginname);
             return wcfClientLink.RequestAsync(wcfpluginname + "@" + wcfcontroller, wcfmethod, jsondata, retAction);
         }
 

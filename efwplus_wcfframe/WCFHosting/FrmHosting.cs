@@ -13,6 +13,7 @@ using EFWCoreLib.WcfFrame.ServerController;
 using EFWCoreLib.WcfFrame.WcfService;
 using System.Diagnostics;
 using EFWCoreLib.WebFrame.WebAPI;
+using WCFHosting.PluginManage;
 
 namespace WCFHosting
 {
@@ -20,6 +21,7 @@ namespace WCFHosting
     {
         ServiceHost mAppHost = null;
         ServiceHost mRouterHost = null;
+        ServiceHost mFileRouterHost = null;
         ServiceHost mFileHost = null;
         WebApiSelfHosting webapiHost = null;
         long timeCount = 0;//运行次数
@@ -69,6 +71,7 @@ namespace WCFHosting
             mAppHost = new ServiceHost(typeof(WCFHandlerService));
             mAppHost.Open();
 
+            WcfServerManage.HostName = HostSettingConfig.GetValue("hostname");
             WcfServerManage.IsDebug = HostSettingConfig.GetValue("debug") == "1" ? true : false;
             WcfServerManage.IsHeartbeat = HostSettingConfig.GetValue("heartbeat") == "1" ? true : false;
             WcfServerManage.HeartbeatTime = Convert.ToInt32(HostSettingConfig.GetValue("heartbeattime"));
@@ -80,16 +83,21 @@ namespace WCFHosting
             WcfServerManage.OverTime = Convert.ToInt32(HostSettingConfig.GetValue("overtimetime"));
             WcfServerManage.StartWCFHost();
 
+            WcfServerManage.CreateSuperClient();
+
             AddMsg(Color.Blue, DateTime.Now, "基础服务启动完成");
         }
         private void StartRouterHost()
         {
-            RouterHandlerService.hostwcfMsg = new HostWCFMsgHandler(AddMsg);
-            RouterHandlerService.hostwcfRouter = new HostWCFRouterListHandler(BindGridRouter);
+            RouterServerManage.hostwcfMsg = new HostWCFMsgHandler(AddMsg);
+            RouterServerManage.hostwcfRouter = new HostWCFRouterListHandler(BindGridRouter);
 
             mRouterHost = new ServiceHost(typeof(RouterHandlerService));
             mRouterHost.Open();
+            mFileRouterHost = new ServiceHost(typeof(FileRouterHandlerService));
+            mFileRouterHost.Open();
 
+            RouterServerManage.Start();
             AddMsg(Color.Blue,DateTime.Now, "路由服务启动完成");
             
         }
@@ -99,6 +107,7 @@ namespace WCFHosting
 
             mFileHost = new ServiceHost(typeof(FileTransferHandlerService));
             mFileHost.Open();
+
 
             AddMsg(Color.Blue, DateTime.Now, "文件传输服务启动完成");
         }
@@ -155,14 +164,16 @@ namespace WCFHosting
                     if (mAppHost != null)
                     {
                         WcfServerManage.StopWCFHost();
+                        WcfServerManage.UnCreateSuperClient();
                         mAppHost.Close();
                         AddMsg(Color.Blue, DateTime.Now, "基础服务已关闭");
                     }
 
-                    if (mRouterHost != null)
+                    if (mRouterHost != null && mFileRouterHost!=null)
                     {
                         mRouterHost.Close();
-                        RouterHandlerService.Dispose();
+                        mFileRouterHost.Close();
+                        RouterServerManage.Stop();
                         AddMsg(Color.Blue, DateTime.Now, "路由服务已关闭");
                     }
 
@@ -242,7 +253,8 @@ namespace WCFHosting
 
         private void BindGridClient(List<WCFClientInfo> dic)
         {
-            setgrid(gridClientList,dic);
+            List<WCFClientInfo> list = new List<WCFClientInfo>(dic);
+            setgrid(gridClientList, list);
         }
         private void AddMsg(Color clr, DateTime time, string msg)
         {
@@ -251,7 +263,8 @@ namespace WCFHosting
         }
         private void BindGridRouter(List<RegistrationInfo> dic)
         {
-            setgrid(gridRouter, dic);
+            List<RegistrationInfo> list = new List<RegistrationInfo>(dic);
+            setgrid(gridRouter, list);
         }
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -375,6 +388,12 @@ namespace WCFHosting
         {
             frmCDKEY cdkey = new frmCDKEY();
             cdkey.ShowDialog();
+        }
+        //路由表
+        private void btnrouter_Click(object sender, EventArgs e)
+        {
+            FrmPluginXML router = new FrmPluginXML(System.Windows.Forms.Application.StartupPath + "\\Config\\RouterBill.xml","路由表配置");
+            router.ShowDialog();
         }
     }
 

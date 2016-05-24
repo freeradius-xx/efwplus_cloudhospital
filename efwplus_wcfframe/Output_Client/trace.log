@@ -114,3 +114,1056 @@ Win32 ThreadId:10020
 
 Extended Properties: 
 ----------------------------------------
+----------------------------------------
+Timestamp: 2016-05-19 11:13:14
+
+Message: HandlingInstanceID: f0ac5388-ca10-4420-b7ee-617dc3fce078
+An exception of type 'System.Exception' occurred and was caught.
+----------------------------------------------------------------
+05/19/2016 19:13:13
+Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 发送到 net.tcp://127.0.0.1:8888/RouterService 的请求操作在配置的超时(00:01:00)内未收到回复。分配给此操作的时间可能已经是更长超时的一部分。这可能由于服务仍在处理操作或服务无法发送回复消息。请考虑增加操作超时(将通道/代理转换为 IContextChannel 并设置 OperationTimeout 属性)并确保服务能够连接到客户端。
+Source : EFWCoreLib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService CreateConnection(EFWCoreLib.WcfFrame.WcfService.Contract.IClientService)
+HResult : -2146233088
+Stack Trace :    在 EFWCoreLib.WcfFrame.ClientController.WcfClientManage.CreateConnection(IClientService client) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientManage.cs:行号 101
+   在 EFWCoreLib.CoreFrame.Init.AppGlobal.AppGlobal_Init() 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\CoreFrame\Init\AppGlobal.cs:行号 276
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-05-19 11:13:14
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : efwplusClient.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: efwplusClient.exe
+
+ProcessId: 10524
+
+Process Name: D:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\Output_Client\efwplusClient.exe
+
+Thread Name: 
+
+Win32 ThreadId:2888
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-05-19 11:17:23
+
+Message: HandlingInstanceID: df2d18be-057e-4fc5-8a30-029745cd2bf2
+An exception of type 'System.Exception' occurred and was caught.
+----------------------------------------------------------------
+05/19/2016 19:17:23
+Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 发送到 net.tcp://127.0.0.1:8888/RouterService 的请求操作在配置的超时(00:00:59.9989999)内未收到回复。分配给此操作的时间可能已经是更长超时的一部分。这可能由于服务仍在处理操作或服务无法发送回复消息。请考虑增加操作超时(将通道/代理转换为 IContextChannel 并设置 OperationTimeout 属性)并确保服务能够连接到客户端。
+Source : EFWCoreLib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService CreateConnection(EFWCoreLib.WcfFrame.WcfService.Contract.IClientService)
+HResult : -2146233088
+Stack Trace :    在 EFWCoreLib.WcfFrame.ClientController.WcfClientManage.CreateConnection(IClientService client) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientManage.cs:行号 101
+   在 EFWCoreLib.CoreFrame.Init.AppGlobal.AppGlobal_Init() 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\CoreFrame\Init\AppGlobal.cs:行号 276
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-05-19 11:17:23
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : efwplusClient.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: efwplusClient.exe
+
+ProcessId: 10796
+
+Process Name: D:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\Output_Client\efwplusClient.exe
+
+Thread Name: 
+
+Win32 ThreadId:9156
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-05-19 11:18:25
+
+Message: HandlingInstanceID: 545a3f36-39d5-448d-8c6f-5fa6652c44a1
+An exception of type 'System.Reflection.TargetInvocationException' occurred and was caught.
+-------------------------------------------------------------------------------------------
+05/19/2016 19:18:25
+Type : System.Reflection.TargetInvocationException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 调用的目标发生了异常。
+Source : mscorlib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.Object InvokeMethod(System.Object, System.Object[], System.Signature, Boolean)
+HResult : -2146232828
+Stack Trace :    在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 EFWCoreLib.WcfFrame.ClientController.WcfClientController.UI_ControllerEvent(String eventname, Object[] objs) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientController.cs:行号 136
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-05-19 11:18:25
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : efwplusClient.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+	Inner Exception
+	---------------
+	Type : System.IO.FileNotFoundException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+	Message : 未能加载文件或程序集“Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed”或它的某一个依赖项。系统找不到指定的文件。
+	Source : EFWCoreLib
+	Help link : 
+	FileName : Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed
+	FusionLog : 警告: 程序集绑定日志记录被关闭。
+要启用程序集绑定失败日志记录，请将注册表值 [HKLM\Software\Microsoft\Fusion!EnableLog] (DWORD)设置为 1。
+注意: 会有一些与程序集绑定失败日志记录关联的性能损失。
+要关闭此功能，请移除注册表值 [HKLM\Software\Microsoft\Fusion!EnableLog]。
+
+	Data : System.Collections.ListDictionaryInternal
+	TargetSite : System.String ToJson(System.Object[])
+	HResult : -2147024894
+	Stack Trace :    在 EFWCoreLib.WcfFrame.ClientController.JsonWcfClientController.ToJson(Object[] data)
+	   在 WinMainUIFrame.Winform.Controller.wcfclientLoginController.UserLogin() 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\WinMainUIFrame\WinMainUIFrame.Winform\Controller\wcfclientLoginController.cs:行号 138
+
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: efwplusClient.exe
+
+ProcessId: 10440
+
+Process Name: D:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\Output_Client\efwplusClient.exe
+
+Thread Name: 
+
+Win32 ThreadId:11376
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-05-19 11:21:23
+
+Message: HandlingInstanceID: 87f6ec0b-ec18-4bba-84d4-d9f5d2bab395
+An exception of type 'System.Reflection.TargetInvocationException' occurred and was caught.
+-------------------------------------------------------------------------------------------
+05/19/2016 19:21:23
+Type : System.Reflection.TargetInvocationException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 调用的目标发生了异常。
+Source : mscorlib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.Object InvokeMethod(System.Object, System.Object[], System.Signature, Boolean)
+HResult : -2146232828
+Stack Trace :    在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 EFWCoreLib.WcfFrame.ClientController.WcfClientController.UI_ControllerEvent(String eventname, Object[] objs) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientController.cs:行号 136
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-05-19 11:21:23
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : efwplusClient.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+	Inner Exception
+	---------------
+	Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+	Message : 发送到 net.tcp://127.0.0.1:8888/RouterService 的请求操作在配置的超时(00:00:59.9990000)内未收到回复。分配给此操作的时间可能已经是更长超时的一部分。这可能由于服务仍在处理操作或服务无法发送回复消息。请考虑增加操作超时(将通道/代理转换为 IContextChannel 并设置 OperationTimeout 属性)并确保服务能够连接到客户端。
+连接服务主机失败，请联系管理员！
+	Source : EFWCoreLib
+	Help link : 
+	Data : System.Collections.ListDictionaryInternal
+	TargetSite : System.String Request(System.String, System.String, System.String)
+	HResult : -2146233088
+	Stack Trace :    在 EFWCoreLib.WcfFrame.ClientController.WcfClientManage.Request(String controller, String method, String jsondata) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientManage.cs:行号 228
+	   在 EFWCoreLib.WcfFrame.ClientController.WcfClientController.InvokeWCFService(String controller, String method, String jsondata) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientController.cs:行号 201
+	   在 WinMainUIFrame.Winform.Controller.wcfclientLoginController.UserLogin() 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\WinMainUIFrame\WinMainUIFrame.Winform\Controller\wcfclientLoginController.cs:行号 138
+
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: efwplusClient.exe
+
+ProcessId: 11960
+
+Process Name: D:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\Output_Client\efwplusClient.exe
+
+Thread Name: 
+
+Win32 ThreadId:11980
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-05-19 11:28:06
+
+Message: HandlingInstanceID: 05201e48-5077-47f9-ba02-a4410b16326d
+An exception of type 'System.Reflection.TargetInvocationException' occurred and was caught.
+-------------------------------------------------------------------------------------------
+05/19/2016 19:28:06
+Type : System.Reflection.TargetInvocationException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 调用的目标发生了异常。
+Source : mscorlib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.Object InvokeMethod(System.Object, System.Object[], System.Signature, Boolean)
+HResult : -2146232828
+Stack Trace :    在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 EFWCoreLib.WcfFrame.ClientController.WcfClientController.UI_ControllerEvent(String eventname, Object[] objs) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientController.cs:行号 136
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-05-19 11:28:06
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : efwplusClient.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+	Inner Exception
+	---------------
+	Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+	Message : 发送到 net.tcp://127.0.0.1:8888/RouterService 的请求操作在配置的超时(00:01:00)内未收到回复。分配给此操作的时间可能已经是更长超时的一部分。这可能由于服务仍在处理操作或服务无法发送回复消息。请考虑增加操作超时(将通道/代理转换为 IContextChannel 并设置 OperationTimeout 属性)并确保服务能够连接到客户端。
+连接服务主机失败，请联系管理员！
+	Source : EFWCoreLib
+	Help link : 
+	Data : System.Collections.ListDictionaryInternal
+	TargetSite : System.String Request(System.String, System.String, System.String)
+	HResult : -2146233088
+	Stack Trace :    在 EFWCoreLib.WcfFrame.ClientController.WcfClientManage.Request(String controller, String method, String jsondata) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientManage.cs:行号 228
+	   在 EFWCoreLib.WcfFrame.ClientController.WcfClientController.InvokeWCFService(String controller, String method, String jsondata) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientController.cs:行号 201
+	   在 EFWCoreLib.WcfFrame.ClientController.WcfClientController.InvokeWCFService(String controller, String method) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientController.cs:行号 195
+	   在 Books_Wcf.Winform.Controller.bookwcfclientController.GetBooks() 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\实例Books\Books_Wcf.Winform\Controller\bookwcfclientController.cs:行号 45
+
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: efwplusClient.exe
+
+ProcessId: 11920
+
+Process Name: D:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\Output_Client\efwplusClient.exe
+
+Thread Name: 
+
+Win32 ThreadId:11472
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-05-20 06:35:29
+
+Message: HandlingInstanceID: 7c026bc5-d5db-4fef-9298-eb7087048fde
+An exception of type 'System.Reflection.TargetInvocationException' occurred and was caught.
+-------------------------------------------------------------------------------------------
+05/20/2016 14:35:29
+Type : System.Reflection.TargetInvocationException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 调用的目标发生了异常。
+Source : mscorlib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.Object InvokeMethod(System.Object, System.Object[], System.Signature, Boolean)
+HResult : -2146232828
+Stack Trace :    在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 EFWCoreLib.WcfFrame.ClientController.WcfClientController.UI_ControllerEvent(String eventname, Object[] objs) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientController.cs:行号 136
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-05-20 06:35:29
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : efwplusClient.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+	Inner Exception
+	---------------
+	Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+	Message : 值不能为 null。
+参数名: channel
+连接服务主机失败，请联系管理员！
+	Source : EFWCoreLib
+	Help link : 
+	Data : System.Collections.ListDictionaryInternal
+	TargetSite : System.String Request(System.String, System.String, System.String)
+	HResult : -2146233088
+	Stack Trace :    在 EFWCoreLib.WcfFrame.ClientLink.Request(String controller, String method, String jsondata) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientLink.cs:行号 198
+	   在 EFWCoreLib.WcfFrame.ClientController.WcfClientController.InvokeWCFService(String controller, String method, String jsondata) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientController.cs:行号 187
+	   在 WinMainUIFrame.Winform.Controller.wcfclientLoginController.UserLogin() 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\WinMainUIFrame\WinMainUIFrame.Winform\Controller\wcfclientLoginController.cs:行号 138
+
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: efwplusClient.vshost.exe
+
+ProcessId: 8900
+
+Process Name: D:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\Output_Client\efwplusClient.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:6972
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-05-20 06:47:08
+
+Message: HandlingInstanceID: 4a678c48-c05a-4000-97c6-b3bb3c5bf6de
+An exception of type 'System.Reflection.TargetInvocationException' occurred and was caught.
+-------------------------------------------------------------------------------------------
+05/20/2016 14:47:08
+Type : System.Reflection.TargetInvocationException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 调用的目标发生了异常。
+Source : mscorlib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.Object InvokeMethod(System.Object, System.Object[], System.Signature, Boolean)
+HResult : -2146232828
+Stack Trace :    在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 EFWCoreLib.WcfFrame.ClientController.WcfClientController.UI_ControllerEvent(String eventname, Object[] objs) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientController.cs:行号 136
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-05-20 06:47:08
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : efwplusClient.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+	Inner Exception
+	---------------
+	Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+	Message : 通信对象 System.ServiceModel.Channels.ServiceChannel 无法用于通信，因为其处于“出错”状态。
+连接服务主机失败，请联系管理员！
+	Source : EFWCoreLib
+	Help link : 
+	Data : System.Collections.ListDictionaryInternal
+	TargetSite : System.String Request(System.String, System.String, System.String)
+	HResult : -2146233088
+	Stack Trace :    在 EFWCoreLib.WcfFrame.ClientLink.Request(String controller, String method, String jsondata) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientLink.cs:行号 198
+	   在 EFWCoreLib.WcfFrame.ClientController.WcfClientController.InvokeWCFService(String controller, String method, String jsondata) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientController.cs:行号 187
+	   在 WinMainUIFrame.Winform.Controller.wcfclientRightController.LoadGroupMenuData(Int32 groupId) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\WinMainUIFrame\WinMainUIFrame.Winform\Controller\wcfclientRightController.cs:行号 65
+
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: efwplusClient.vshost.exe
+
+ProcessId: 10072
+
+Process Name: D:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\Output_Client\efwplusClient.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:9064
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-05-20 07:37:37
+
+Message: HandlingInstanceID: 121c8e5f-d416-42de-875d-276f50632019
+An exception of type 'System.Reflection.TargetInvocationException' occurred and was caught.
+-------------------------------------------------------------------------------------------
+05/20/2016 15:37:37
+Type : System.Reflection.TargetInvocationException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 调用的目标发生了异常。
+Source : mscorlib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.Object InvokeMethod(System.Object, System.Object[], System.Signature, Boolean)
+HResult : -2146232828
+Stack Trace :    在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 EFWCoreLib.WcfFrame.ClientController.WcfClientController.UI_ControllerEvent(String eventname, Object[] objs) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientController.cs:行号 136
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-05-20 07:37:37
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : efwplusClient.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+	Inner Exception
+	---------------
+	Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+	Message : 无法将类型为“System.Int32[]”的对象强制转换为类型“EFWCoreLib.CoreFrame.Business.Interface.IbindDb”。
+	Source : EFWCoreLib
+	Help link : 
+	Data : System.Collections.ListDictionaryInternal
+	TargetSite : System.Object InvokeWCFService(System.String, System.String, System.String)
+	HResult : -2146233088
+	Stack Trace :    在 EFWCoreLib.WcfFrame.ClientController.WcfClientController.InvokeWCFService(String controller, String method, String jsondata) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientController.cs:行号 197
+	   在 WinMainUIFrame.Winform.Controller.wcfclientEmpUserController.LoadUserData(Int32[] deptIds) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\WinMainUIFrame\WinMainUIFrame.Winform\Controller\wcfclientEmpUserController.cs:行号 63
+
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: efwplusClient.vshost.exe
+
+ProcessId: 9772
+
+Process Name: D:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\Output_Client\efwplusClient.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:10208
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-05-20 07:40:56
+
+Message: HandlingInstanceID: 09c02bdc-4285-4a57-8f0d-6a6722074e2e
+An exception of type 'System.Reflection.TargetInvocationException' occurred and was caught.
+-------------------------------------------------------------------------------------------
+05/20/2016 15:40:55
+Type : System.Reflection.TargetInvocationException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 调用的目标发生了异常。
+Source : mscorlib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.Object InvokeMethod(System.Object, System.Object[], System.Signature, Boolean)
+HResult : -2146232828
+Stack Trace :    在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 EFWCoreLib.WcfFrame.ClientController.WcfClientController.UI_ControllerEvent(String eventname, Object[] objs) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientController.cs:行号 136
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-05-20 07:40:55
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : efwplusClient.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+	Inner Exception
+	---------------
+	Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+	Message : 无法将类型为“System.Int32[]”的对象强制转换为类型“EFWCoreLib.CoreFrame.Business.Interface.IbindDb”。
+	Source : EFWCoreLib
+	Help link : 
+	Data : System.Collections.ListDictionaryInternal
+	TargetSite : System.Object InvokeWCFService(System.String, System.String, System.String)
+	HResult : -2146233088
+	Stack Trace :    在 EFWCoreLib.WcfFrame.ClientController.WcfClientController.InvokeWCFService(String controller, String method, String jsondata) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientController.cs:行号 197
+	   在 WinMainUIFrame.Winform.Controller.wcfclientEmpUserController.LoadUserData(Int32[] deptIds) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\WinMainUIFrame\WinMainUIFrame.Winform\Controller\wcfclientEmpUserController.cs:行号 63
+
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: efwplusClient.vshost.exe
+
+ProcessId: 4352
+
+Process Name: D:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\Output_Client\efwplusClient.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:7692
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-05-20 07:41:06
+
+Message: HandlingInstanceID: de644612-de71-492d-a2d1-355a5a94edbd
+An exception of type 'System.Reflection.TargetInvocationException' occurred and was caught.
+-------------------------------------------------------------------------------------------
+05/20/2016 15:41:06
+Type : System.Reflection.TargetInvocationException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 调用的目标发生了异常。
+Source : mscorlib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.Object InvokeMethod(System.Object, System.Object[], System.Signature, Boolean)
+HResult : -2146232828
+Stack Trace :    在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 EFWCoreLib.WcfFrame.ClientController.WcfClientController.UI_ControllerEvent(String eventname, Object[] objs) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientController.cs:行号 136
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-05-20 07:41:06
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : efwplusClient.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+	Inner Exception
+	---------------
+	Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+	Message : 无法将类型为“System.Int32[]”的对象强制转换为类型“EFWCoreLib.CoreFrame.Business.Interface.IbindDb”。
+	Source : EFWCoreLib
+	Help link : 
+	Data : System.Collections.ListDictionaryInternal
+	TargetSite : System.Object InvokeWCFService(System.String, System.String, System.String)
+	HResult : -2146233088
+	Stack Trace :    在 EFWCoreLib.WcfFrame.ClientController.WcfClientController.InvokeWCFService(String controller, String method, String jsondata) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientController.cs:行号 197
+	   在 WinMainUIFrame.Winform.Controller.wcfclientEmpUserController.LoadUserData(Int32[] deptIds) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\WinMainUIFrame\WinMainUIFrame.Winform\Controller\wcfclientEmpUserController.cs:行号 63
+
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: efwplusClient.vshost.exe
+
+ProcessId: 4352
+
+Process Name: D:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\Output_Client\efwplusClient.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:7692
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-05-24 02:28:36
+
+Message: HandlingInstanceID: c8a90b21-cb7a-44ce-b84f-bd3dd68593b2
+An exception of type 'System.Reflection.TargetInvocationException' occurred and was caught.
+-------------------------------------------------------------------------------------------
+05/24/2016 10:28:36
+Type : System.Reflection.TargetInvocationException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 调用的目标发生了异常。
+Source : mscorlib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.Object InvokeMethod(System.Object, System.Object[], System.Signature, Boolean)
+HResult : -2146232828
+Stack Trace :    在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 EFWCoreLib.WcfFrame.ClientController.WcfClientController.UI_ControllerEvent(String eventname, Object[] objs) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientController.cs:行号 93
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-05-24 02:28:36
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : efwplusClient.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+	Inner Exception
+	---------------
+	Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+	Message : 发送到 net.tcp://127.0.0.1:8881/WCFHandlerService 的请求操作在配置的超时(00:01:00)内未收到回复。分配给此操作的时间可能已经是更长超时的一部分。这可能由于服务仍在处理操作或服务无法发送回复消息。请考虑增加操作超时(将通道/代理转换为 IContextChannel 并设置 OperationTimeout 属性)并确保服务能够连接到客户端。
+连接服务主机失败，请联系管理员！
+	Source : EFWCoreLib
+	Help link : 
+	Data : System.Collections.ListDictionaryInternal
+	TargetSite : System.String Request(System.String, System.String, System.String)
+	HResult : -2146233088
+	Stack Trace :    在 EFWCoreLib.WcfFrame.ClientLink.Request(String controller, String method, String jsondata) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientLink.cs:行号 199
+	   在 EFWCoreLib.WcfFrame.ClientController.WcfClientController.InvokeWcfService(String wcfpluginname, String wcfcontroller, String wcfmethod, String jsondata) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientController.cs:行号 115
+	   在 WinMainUIFrame.Winform.Controller.wcfclientEmpUserController.LoadUserData(Int32[] deptIds) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\WinMainUIFrame\WinMainUIFrame.Winform\Controller\wcfclientEmpUserController.cs:行号 63
+
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: efwplusClient.vshost.exe
+
+ProcessId: 7936
+
+Process Name: D:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\Output_Client\efwplusClient.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:7860
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-05-24 02:30:41
+
+Message: HandlingInstanceID: 118bb934-7ffe-4bc2-a7e6-16685c771c2e
+An exception of type 'System.Reflection.TargetInvocationException' occurred and was caught.
+-------------------------------------------------------------------------------------------
+05/24/2016 10:30:41
+Type : System.Reflection.TargetInvocationException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 调用的目标发生了异常。
+Source : mscorlib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.Object InvokeMethod(System.Object, System.Object[], System.Signature, Boolean)
+HResult : -2146232828
+Stack Trace :    在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 EFWCoreLib.WcfFrame.ClientController.WcfClientController.UI_ControllerEvent(String eventname, Object[] objs) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientController.cs:行号 93
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-05-24 02:30:41
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : efwplusClient.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+	Inner Exception
+	---------------
+	Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+	Message : 发送到 net.tcp://127.0.0.1:8881/WCFHandlerService 的请求操作在配置的超时(00:01:00)内未收到回复。分配给此操作的时间可能已经是更长超时的一部分。这可能由于服务仍在处理操作或服务无法发送回复消息。请考虑增加操作超时(将通道/代理转换为 IContextChannel 并设置 OperationTimeout 属性)并确保服务能够连接到客户端。
+连接服务主机失败，请联系管理员！
+	Source : EFWCoreLib
+	Help link : 
+	Data : System.Collections.ListDictionaryInternal
+	TargetSite : System.String Request(System.String, System.String, System.String)
+	HResult : -2146233088
+	Stack Trace :    在 EFWCoreLib.WcfFrame.ClientLink.Request(String controller, String method, String jsondata) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientLink.cs:行号 199
+	   在 EFWCoreLib.WcfFrame.ClientController.WcfClientController.InvokeWcfService(String wcfpluginname, String wcfcontroller, String wcfmethod, String jsondata) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientController.cs:行号 115
+	   在 WinMainUIFrame.Winform.Controller.wcfclientEmpUserController.LoadUserData(Int32[] deptIds) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\WinMainUIFrame\WinMainUIFrame.Winform\Controller\wcfclientEmpUserController.cs:行号 63
+
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: efwplusClient.vshost.exe
+
+ProcessId: 7936
+
+Process Name: D:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\Output_Client\efwplusClient.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:7860
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-05-24 02:32:58
+
+Message: HandlingInstanceID: 4570fba6-1db8-47eb-81c4-0ad4709dbbc9
+An exception of type 'System.Reflection.TargetInvocationException' occurred and was caught.
+-------------------------------------------------------------------------------------------
+05/24/2016 10:32:58
+Type : System.Reflection.TargetInvocationException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 调用的目标发生了异常。
+Source : mscorlib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.Object InvokeMethod(System.Object, System.Object[], System.Signature, Boolean)
+HResult : -2146232828
+Stack Trace :    在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 EFWCoreLib.WcfFrame.ClientController.WcfClientController.UI_ControllerEvent(String eventname, Object[] objs) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientController.cs:行号 93
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-05-24 02:32:58
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : efwplusClient.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+	Inner Exception
+	---------------
+	Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+	Message : 发送到 net.tcp://127.0.0.1:8881/WCFHandlerService 的请求操作在配置的超时(00:00:59.9990000)内未收到回复。分配给此操作的时间可能已经是更长超时的一部分。这可能由于服务仍在处理操作或服务无法发送回复消息。请考虑增加操作超时(将通道/代理转换为 IContextChannel 并设置 OperationTimeout 属性)并确保服务能够连接到客户端。
+连接服务主机失败，请联系管理员！
+	Source : EFWCoreLib
+	Help link : 
+	Data : System.Collections.ListDictionaryInternal
+	TargetSite : System.String Request(System.String, System.String, System.String)
+	HResult : -2146233088
+	Stack Trace :    在 EFWCoreLib.WcfFrame.ClientLink.Request(String controller, String method, String jsondata) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientLink.cs:行号 199
+	   在 EFWCoreLib.WcfFrame.ClientController.WcfClientController.InvokeWcfService(String wcfpluginname, String wcfcontroller, String wcfmethod, String jsondata) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientController.cs:行号 115
+	   在 WinMainUIFrame.Winform.Controller.wcfclientEmpUserController.LoadUserData(Int32[] deptIds) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\WinMainUIFrame\WinMainUIFrame.Winform\Controller\wcfclientEmpUserController.cs:行号 63
+
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: efwplusClient.vshost.exe
+
+ProcessId: 7936
+
+Process Name: D:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\Output_Client\efwplusClient.vshost.exe
+
+Thread Name: 
+
+Win32 ThreadId:7860
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-05-24 07:10:56
+
+Message: HandlingInstanceID: 61ceff7c-0676-472f-8dee-c1238cf3ce28
+An exception of type 'System.Reflection.TargetInvocationException' occurred and was caught.
+-------------------------------------------------------------------------------------------
+05/24/2016 15:10:56
+Type : System.Reflection.TargetInvocationException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 调用的目标发生了异常。
+Source : mscorlib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.Object InvokeMethod(System.Object, System.Object[], System.Signature, Boolean)
+HResult : -2146232828
+Stack Trace :    在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 EFWCoreLib.WcfFrame.ClientController.WcfClientController.UI_ControllerEvent(String eventname, Object[] objs) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientController.cs:行号 93
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-05-24 07:10:56
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : efwplusClient.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+	Inner Exception
+	---------------
+	Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+	Message : 发送到 net.tcp://127.0.0.1:8881/WCFHandlerService 的请求操作在配置的超时(00:00:59.9990000)内未收到回复。分配给此操作的时间可能已经是更长超时的一部分。这可能由于服务仍在处理操作或服务无法发送回复消息。请考虑增加操作超时(将通道/代理转换为 IContextChannel 并设置 OperationTimeout 属性)并确保服务能够连接到客户端。
+连接服务主机失败，请联系管理员！
+	Source : EFWCoreLib
+	Help link : 
+	Data : System.Collections.ListDictionaryInternal
+	TargetSite : System.String Request(System.String, System.String, System.String)
+	HResult : -2146233088
+	Stack Trace :    在 EFWCoreLib.WcfFrame.ClientLink.Request(String controller, String method, String jsondata) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientLink.cs:行号 199
+	   在 EFWCoreLib.WcfFrame.ClientController.WcfClientController.InvokeWcfService(String wcfpluginname, String wcfcontroller, String wcfmethod, String jsondata) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientController.cs:行号 115
+	   在 EFWCoreLib.WcfFrame.ClientController.WcfClientController.InvokeWcfService(String wcfpluginname, String wcfcontroller, String wcfmethod) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientController.cs:行号 108
+	   在 Books_Wcf.Winform.Controller.bookwcfclientController.GetBooks() 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\实例Books\Books_Wcf.Winform\Controller\bookwcfclientController.cs:行号 45
+
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: efwplusClient.exe
+
+ProcessId: 7724
+
+Process Name: D:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\Output_Client\efwplusClient.exe
+
+Thread Name: 
+
+Win32 ThreadId:6224
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-05-24 07:25:54
+
+Message: HandlingInstanceID: dfc00f13-459e-4dd3-91d1-e0daf087def9
+An exception of type 'System.Reflection.TargetInvocationException' occurred and was caught.
+-------------------------------------------------------------------------------------------
+05/24/2016 15:25:54
+Type : System.Reflection.TargetInvocationException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 调用的目标发生了异常。
+Source : mscorlib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.Object InvokeMethod(System.Object, System.Object[], System.Signature, Boolean)
+HResult : -2146232828
+Stack Trace :    在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 EFWCoreLib.WcfFrame.ClientController.WcfClientController.UI_ControllerEvent(String eventname, Object[] objs) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientController.cs:行号 93
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-05-24 07:25:54
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : efwplusClient.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+	Inner Exception
+	---------------
+	Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+	Message : 请求的插件未获取到有效数据
+	Source : EFWCoreLib
+	Help link : 
+	Data : System.Collections.ListDictionaryInternal
+	TargetSite : System.Object InvokeWcfService(System.String, System.String, System.String, System.String)
+	HResult : -2146233088
+	Stack Trace :    在 EFWCoreLib.WcfFrame.ClientController.WcfClientController.InvokeWcfService(String wcfpluginname, String wcfcontroller, String wcfmethod, String jsondata) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientController.cs:行号 125
+	   在 EFWCoreLib.WcfFrame.ClientController.WcfClientController.InvokeWcfService(String wcfpluginname, String wcfcontroller, String wcfmethod) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientController.cs:行号 108
+	   在 Books_Wcf.Winform.Controller.bookwcfclientController.GetBooks() 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\实例Books\Books_Wcf.Winform\Controller\bookwcfclientController.cs:行号 45
+
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: efwplusClient.exe
+
+ProcessId: 11076
+
+Process Name: D:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\Output_Client\efwplusClient.exe
+
+Thread Name: 
+
+Win32 ThreadId:10460
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-05-24 07:29:06
+
+Message: HandlingInstanceID: a717e67d-68e1-4a27-b5c2-e22cb001c403
+An exception of type 'System.Reflection.TargetInvocationException' occurred and was caught.
+-------------------------------------------------------------------------------------------
+05/24/2016 15:29:06
+Type : System.Reflection.TargetInvocationException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 调用的目标发生了异常。
+Source : mscorlib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.Object InvokeMethod(System.Object, System.Object[], System.Signature, Boolean)
+HResult : -2146232828
+Stack Trace :    在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 EFWCoreLib.WcfFrame.ClientController.WcfClientController.UI_ControllerEvent(String eventname, Object[] objs) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientController.cs:行号 93
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-05-24 07:29:06
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : efwplusClient.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+	Inner Exception
+	---------------
+	Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+	Message : 请求的插件未获取到有效数据
+	Source : EFWCoreLib
+	Help link : 
+	Data : System.Collections.ListDictionaryInternal
+	TargetSite : System.Object InvokeWcfService(System.String, System.String, System.String, System.String)
+	HResult : -2146233088
+	Stack Trace :    在 EFWCoreLib.WcfFrame.ClientController.WcfClientController.InvokeWcfService(String wcfpluginname, String wcfcontroller, String wcfmethod, String jsondata) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientController.cs:行号 125
+	   在 EFWCoreLib.WcfFrame.ClientController.WcfClientController.InvokeWcfService(String wcfpluginname, String wcfcontroller, String wcfmethod) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\EFWCoreLib\WcfFrame\ClientController\WcfClientController.cs:行号 108
+	   在 Books_Wcf.Winform.Controller.bookwcfclientController.GetBooks() 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\实例Books\Books_Wcf.Winform\Controller\bookwcfclientController.cs:行号 45
+
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: efwplusClient.exe
+
+ProcessId: 10992
+
+Process Name: D:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\Output_Client\efwplusClient.exe
+
+Thread Name: 
+
+Win32 ThreadId:10932
+
+Extended Properties: 
+----------------------------------------

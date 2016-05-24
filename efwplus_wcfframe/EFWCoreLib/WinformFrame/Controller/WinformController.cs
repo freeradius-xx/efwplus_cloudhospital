@@ -138,7 +138,9 @@ namespace EFWCoreLib.WinformFrame.Controller
             catch (Exception err)
             {
                 //记录错误日志
-                ZhyContainer.CreateException().HandleException(err, "HISPolicy");
+                EFWCoreLib.CoreFrame.EntLib.ZhyContainer.CreateException().HandleException(err, "HISPolicy");
+                if(err.InnerException!=null)
+                    throw new Exception(err.InnerException.Message);
                 throw new Exception(err.Message);
             }
         }

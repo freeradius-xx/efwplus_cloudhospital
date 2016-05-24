@@ -70,3 +70,45 @@
 
 时间：2016-05-17 16:44:15		耗时：25029.4316		方法：Books_Wcf@bookWcfController.SaveBook({"Id":0,"BookName":"1111212","BuyPrice":10.0,"BuyDate":"2016-05-17T16:06:00.5426642+08:00","Flag":0})
 
+时间：2016-05-19 19:20:22		耗时：3584.205		方法：WcfMainUIFrame@LoginController.UserLogin(["admin","1"])
+
+时间：2016-05-19 19:24:52		耗时：1490.0853		方法：WcfMainUIFrame@LoginController.UserLogin(["admin","1"])
+
+时间：2016-05-20 09:06:11		耗时：1609.0921		方法：WcfMainUIFrame@LoginController.UserLogin(["admin","1"])
+
+时间：2016-05-20 14:41:33		耗时：1665.0952		方法：WcfMainUIFrame@LoginController.UserLogin(["admin","1"])
+
+时间：2016-05-20 15:29:19		耗时：24473.3998		方法：Books_Wcf@bookWcfController.Test191([100])
+
+时间：2016-05-20 15:29:22		耗时：2773.1586		方法：Books_Wcf@bookWcfController.Test191([100])
+
+时间：2016-05-20 18:02:46		耗时：1114.0637		方法：Books_Wcf@bookWcfController.Test191([100])
+
+时间：2016-05-20 18:51:33		耗时：2306.1319		方法：Books_Wcf@bookWcfController.Test191([100])
+
+时间：2016-05-20 18:58:32		耗时：1727.0987		方法：Books_Wcf@bookWcfController.Test191([100])
+
+时间：2016-05-20 19:43:38		耗时：1129.0646		方法：Books_Wcf@bookWcfController.Test191([100])
+
+时间：2016-05-24 10:26:14		耗时：3390.1939		方法：WcfMainUIFrame@LoginController.UserLogin(["admin","1"])
+
+时间：2016-05-24 11:08:51		耗时：3312.1895		方法：WcfMainUIFrame@LoginController.UserLogin(["admin","1"])
+
+时间：2016-05-24 15:09:38		耗时：3878.2218		方法：WcfMainUIFrame@LoginController.UserLogin(["admin","1"])
+
+时间：2016-05-24 15:11:13		耗时：14604.8354		方法：bookWcfController.GetBooks([])
+
+时间：2016-05-24 15:11:43		耗时：43721.5008		方法：Books_Wcf@bookWcfController.GetBooks([])
+
+时间：2016-05-24 15:24:39		耗时：3351.1917		方法：WcfMainUIFrame@LoginController.UserLogin(H4sIADNyRFcA/4tWSkzJzcxT0lEyVIoFAF1pxTYNAAAA)
+
+时间：2016-05-24 15:25:53		耗时：32426.8547		方法：bookWcfController.GetBooks(H4sIAE5yRFcA/4uOBQApu0wNAgAAAA==)
+
+时间：2016-05-24 15:25:53		耗时：32597.8645		方法：Books_Wcf@bookWcfController.GetBooks(H4sIAE5yRFcA/4uOBQApu0wNAgAAAA==)
+
+时间：2016-05-24 15:28:44		耗时：3244.1855		方法：WcfMainUIFrame@LoginController.UserLogin(H4sIAChzRFcA/4tWSkzJzcxT0lEyVIoFAF1pxTYNAAAA)
+
+时间：2016-05-24 15:33:59		耗时：3162.1809		方法：WcfMainUIFrame@LoginController.UserLogin(H4sIAGR0RFcA/4tWSkzJzcxT0lEyVIoFAF1pxTYNAAAA)
+
+时间：2016-05-24 15:34:39		耗时：14222.8135		方法：Books_Wcf@bookWcfController.SaveBook(H4sIAIF0RFcA/6tW8kxRsrLUUXLKz8/2S8xNVbJSMjFRAvJLKwOKMpOBfEMDPQMw3yWxBCRtZGBopmtgomtkEmJgaAVEhiD1bjmJ6UpWBrUAKOuQn1EAAAA=)
+

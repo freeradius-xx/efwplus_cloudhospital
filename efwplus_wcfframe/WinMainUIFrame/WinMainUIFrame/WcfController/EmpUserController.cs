@@ -13,7 +13,7 @@ using WinMainUIFrame.ObjectModel.UserLogin;
 namespace WinMainUIFrame.WcfController
 {
     [WCFController]
-    public class EmpUserController : JsonWcfServerController
+    public class EmpUserController : WcfServerController
     {
         [WCFMethod]
         public string LoadDeptData()
@@ -69,7 +69,7 @@ namespace WinMainUIFrame.WcfController
         [WCFMethod]
         public string LoadUserData()
         {
-            int[] deptIds = ToObject<int[]>(ParamJsonData);
+            int[] deptIds = ToArray<int>(ParamJsonData);
             DataTable dt = NewObject<User>().GetUserData(deptIds);
             return ToJson(dt);
         }
@@ -112,9 +112,9 @@ namespace WinMainUIFrame.WcfController
         {
             BaseEmployee emp = ToObject<BaseEmployee>(ToArray(ParamJsonData)[0]);
             BaseUser user = ToObject<BaseUser>(ToArray(ParamJsonData)[1]);
-            int[] currEmpDeptList = ToObject<int[]>(ToArray(ParamJsonData)[2]);
+            int[] currEmpDeptList = ToArray<int>(ToArray(ParamJsonData)[2]);
             int currDefaultEmpDept = Convert.ToInt32(ToArray(ParamJsonData)[3]);
-            int[] currGroupUserList = ToObject<int[]>(ToArray(ParamJsonData)[4]);
+            int[] currGroupUserList = ToArray<int>(ToArray(ParamJsonData)[4]);
 
             emp.BindDb(oleDb, _container,_cache,_pluginName);
             user.BindDb(oleDb, _container, _cache, _pluginName);

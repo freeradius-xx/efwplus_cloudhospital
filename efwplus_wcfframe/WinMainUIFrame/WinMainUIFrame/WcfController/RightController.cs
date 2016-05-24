@@ -11,7 +11,7 @@ using WinMainUIFrame.ObjectModel.RightManager;
 namespace WinMainUIFrame.WcfController
 {
     [WCFController]
-    public class RightController : JsonWcfServerController
+    public class RightController : WcfServerController
     {
         [WCFMethod]
         public string InitMenuData()
@@ -68,7 +68,7 @@ namespace WinMainUIFrame.WcfController
         public string SetGroupMenu()
         {
             int groupId=Convert.ToInt32(ToArray(ParamJsonData)[0]);
-            int[] menuIds = ToObject<int[]>(ToArray(ParamJsonData)[1]);
+            int[] menuIds = ToArray<int>(ToArray(ParamJsonData)[1]);
             NewObject<Group>().SetGroupMenu(groupId, menuIds);
 
             return ToJson(true);

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using EFWCoreLib.CoreFrame.Init;
+using EFWCoreLib.WcfFrame;
 using EFWCoreLib.WcfFrame.ClientController;
 using EFWCoreLib.WcfFrame.ServerController;
 
@@ -66,7 +67,7 @@ namespace TestWcfService
             try
             {
                 btnRequest.Enabled = false;
-                string retjson = WcfClientManage.Request(string.Format("{0}@{1}", cbplugin.Text, cbcontroller.Text), cbmothed.Text, txtparams.Text.Trim());
+                string retjson = clientClink.Request(string.Format("{0}@{1}", cbplugin.Text, cbcontroller.Text), cbmothed.Text, txtparams.Text.Trim());
                 txtResult.Text = retjson;
             }
             catch (Exception err)
@@ -78,22 +79,21 @@ namespace TestWcfService
                 btnRequest.Enabled = true;
             }
         }
-
+        ClientLink clientClink;
         private void FrmTest_Load(object sender, EventArgs e)
         {
             //1.初始化
             AppGlobal.AppStart();
             //2.创建连接
-            ReplyClientCallBack callback = new ReplyClientCallBack();
-            WcfClientManage.CreateConnection(callback);
-
+            clientClink = new ClientLink("TestWcfService", "Test");
+            clientClink.CreateConnection();
             InitTreePlugin();
         }
 
         private void FrmTest_FormClosed(object sender, FormClosedEventArgs e)
         {
             //5.关闭连接
-            WcfClientManage.UnConnection();
+            clientClink.Dispose();
         }
 
 
@@ -101,7 +101,7 @@ namespace TestWcfService
         private void InitTreePlugin()
         {
             treePlugin.Nodes.Clear();
-            plist = WcfClientManage.GetWcfServicesAllInfo();
+            plist = clientClink.GetWcfServicesAllInfo();
 
             cbplugin.ValueMember = "pluginname";
             cbplugin.DisplayMember = "pluginname";

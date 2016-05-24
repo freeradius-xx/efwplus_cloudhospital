@@ -47,6 +47,7 @@ namespace EFWCoreLib.CoreFrame.Plugin
             }
             return pflist;
         }
+
         /// <summary>
         /// 根据插件名获取插件路径
         /// </summary>

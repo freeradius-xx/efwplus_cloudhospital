@@ -15,6 +15,56 @@ namespace EFWCoreLib.WcfFrame.ServerController
     /// </summary>
     public class JsonWcfServerController : WcfServerController
     {
+        #region CHDEP通讯
+
+        public Object InvokeWcfService(string wcfpluginname, string wcfcontroller, string wcfmethod)
+        {
+            return InvokeWcfService(wcfpluginname, wcfcontroller, wcfmethod, "[]");
+        }
+
+        public Object InvokeWcfService(string wcfpluginname, string wcfcontroller, string wcfmethod, string jsondata)
+        {
+            if (string.IsNullOrEmpty(jsondata)) jsondata = "[]";
+
+            ClientLink wcfClientLink = ClientLinkManage.CreateConnection(wcfpluginname);
+
+            string retJson = wcfClientLink.Request(wcfpluginname + "@" + wcfcontroller, wcfmethod, jsondata);
+
+            object Result = JsonConvert.DeserializeObject(retJson);
+            int ret = Convert.ToInt32((((Newtonsoft.Json.Linq.JObject)Result)["flag"]).ToString());
+            string msg = (((Newtonsoft.Json.Linq.JObject)Result)["msg"]).ToString();
+            if (ret == 1)
+            {
+                throw new Exception(msg);
+            }
+            else
+            {
+                return ((Newtonsoft.Json.Linq.JObject)(Result))["data"];
+            }
+        }
+
+        public IAsyncResult InvokeWcfServiceAsync(string wcfpluginname, string wcfcontroller, string wcfmethod, string jsondata, Action<Object> action)
+        {
+            if (string.IsNullOrEmpty(jsondata)) jsondata = "[]";
+            Action<string> retAction = delegate(string retJson)
+            {
+                object Result = JsonConvert.DeserializeObject(retJson);
+                int ret = Convert.ToInt32((((Newtonsoft.Json.Linq.JObject)Result)["flag"]).ToString());
+                string msg = (((Newtonsoft.Json.Linq.JObject)Result)["msg"]).ToString();
+                if (ret == 1)
+                {
+                    throw new Exception(msg);
+                }
+                else
+                {
+                    action(((Newtonsoft.Json.Linq.JObject)(Result))["data"]);
+                }
+            };
+            ClientLink wcfClientLink = ClientLinkManage.CreateConnection(wcfpluginname);
+            return wcfClientLink.RequestAsync(wcfpluginname + "@" + wcfcontroller, wcfmethod, jsondata, retAction);
+        }
+        #endregion
+
         #region  值转换
         private object convertVal(Type t, object _data)
         {

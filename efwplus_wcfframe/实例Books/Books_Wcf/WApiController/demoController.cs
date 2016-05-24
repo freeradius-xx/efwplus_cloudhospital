@@ -1,56 +1,69 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using EFWCoreLib.WebFrame.WebAPI;
 using System.Net;
 using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
 using System.Web.Http;
-using System.Data;
 using Books_Wcf.Entity;
 using EFWCoreLib.CoreFrame.Business.AttributeInfo;
+using EFWCoreLib.WebFrame.WebAPI;
 
 
 namespace Books_Wcf.WApiController
 {
-    [efwplusApiController(PluginName = "Books_Wcf")]
+    //控制器方法默认以get|post|put|delete这个几个字符开头，
+    //或者使用[HttpGet][HttpPost][HttpPut][HttpDelete]这四个标签
+    [efwplusApiController(PluginName="Books_Wcf")]
     public class demoController : WebApiController
     {
-        // GET api/<controller>
-        public List<Books> Get()
+        // GET efwplusApi/<plugin>/<controller>/<action>
+        public IEnumerator<Books> getBooks()
         {
             List<Books> list = NewObject<Books>().getlist<Books>();
-            return list;
+            return list.GetEnumerator();
         }
 
-        // GET api/<controller>/5
-        public Books Get(int id)
+        // GET efwplusApi/<plugin>/<controller>/<action>/5
+        public Books GetBook(int id)
         {
-            //throw new Exception("err");
             return NewObject<Books>().getmodel(id) as Books;
         }
 
-        // GET api/<controller>/5
-        public Books Get(int id,string name)
+        // POST efwplusApi/<plugin>/<controller>/<action>
+        public Books Post([FromBody]Books value)
         {
-            //throw new Exception("err");
-            return NewObject<Books>().getmodel(id) as Books;
+            return value;
         }
 
-        // POST api/<controller>
-        public void Post([FromBody]string value)
+        // PUT efwplusApi/<plugin>/<controller>/<action>/5
+        public Books Put(int id, [FromBody]Books value)
         {
+            return value;
         }
 
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
+        // DELETE efwplusApi/<plugin>/<controller>/<action>/5
+        public int Delete(int id)
         {
+            return id;
         }
 
-        // DELETE api/<controller>/5
-        public void Delete(int id)
+        [HttpGet]//efwplusApi/Books_Wcf/demo/book/1
+        public Books book(int id)
         {
+            Books book = NewObject<Books>().getmodel(id) as Books;
+            //book.BookName = name;
+            return book;
+        }
+
+        [HttpGet]//efwplusApi/Books_Wcf/demo/book/?id=1&name=kakake
+        public Books book(int id, string name)
+        {
+            Books book = NewObject<Books>().getmodel(id) as Books;
+            book.BookName = name;
+            return book;
         }
     }
  

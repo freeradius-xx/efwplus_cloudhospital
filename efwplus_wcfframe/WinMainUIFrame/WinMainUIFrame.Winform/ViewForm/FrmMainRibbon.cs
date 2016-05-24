@@ -363,7 +363,7 @@ namespace WinMainUIFrame.Winform.ViewForm
                 else if (AppGlobal.appType == AppType.WCFClient)
                 {
 #if WcfFrame
-                    EFWCoreLib.WcfFrame.ClientController.WcfClientController basec = EFWCoreLib.WcfFrame.ClientController.ControllerHelper.CreateController(menu.PluginName + "@" + controllername);
+                    WinformController basec = ControllerHelper.CreateController(menu.PluginName + "@" + controllername);
                     if (string.IsNullOrEmpty(viewname))
                         form = (Form)basec.DefaultView;
                     else

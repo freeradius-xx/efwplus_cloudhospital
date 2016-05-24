@@ -48,16 +48,34 @@ namespace WCFHosting
             {
                 node.Attributes["baseAddress"].Value = txtwcf.Text;
             }
-            node = xmldoc_app.DocumentElement.SelectSingleNode("system.serviceModel/services/service[@name='EFWCoreLib.WcfFrame.WcfService.RouterHandlerService']/host/baseAddresses/add");
-            if (node != null)
-            {
-                node.Attributes["baseAddress"].Value = txtrouter.Text;
-            }
+            
             node = xmldoc_app.DocumentElement.SelectSingleNode("system.serviceModel/services/service[@name='EFWCoreLib.WcfFrame.WcfService.FileTransferHandlerService']/host/baseAddresses/add");
             if (node != null)
             {
                 node.Attributes["baseAddress"].Value = txtfile.Text;
             }
+            node = xmldoc_app.DocumentElement.SelectSingleNode("system.serviceModel/services/service[@name='EFWCoreLib.WcfFrame.WcfService.RouterHandlerService']/host/baseAddresses/add");
+            if (node != null)
+            {
+                node.Attributes["baseAddress"].Value = txtrouter.Text;
+            }
+            node = xmldoc_app.DocumentElement.SelectSingleNode("system.serviceModel/services/service[@name='EFWCoreLib.WcfFrame.WcfService.FileRouterHandlerService']/host/baseAddresses/add");
+            if (node != null)
+            {
+                node.Attributes["baseAddress"].Value = txtfilerouter.Text;
+            }
+
+            node = xmldoc_app.DocumentElement.SelectSingleNode("system.serviceModel/client/endpoint[@name='wcfendpoint']");
+            if (node != null)
+            {
+                node.Attributes["address"].Value = txtwcfurl.Text;
+            }
+            node = xmldoc_app.DocumentElement.SelectSingleNode("system.serviceModel/client/endpoint[@name='fileendpoint']");
+            if (node != null)
+            {
+                node.Attributes["address"].Value = txtfileurl.Text;
+            }
+
             node = xmldoc_app.DocumentElement.SelectSingleNode("appSettings/add[@key='WebApiUri']");
             if (node != null)
             {
@@ -115,6 +133,13 @@ namespace WCFHosting
                 txtwcf.Text = address;
             }
 
+            node = xmldoc_app.DocumentElement.SelectSingleNode("system.serviceModel/services/service[@name='EFWCoreLib.WcfFrame.WcfService.FileTransferHandlerService']/host/baseAddresses/add");
+            if (node != null)
+            {
+                string address = node.Attributes["baseAddress"].Value;
+                txtfile.Text = address;
+            }
+
             node = xmldoc_app.DocumentElement.SelectSingleNode("system.serviceModel/services/service[@name='EFWCoreLib.WcfFrame.WcfService.RouterHandlerService']/host/baseAddresses/add");
             if (node != null)
             {
@@ -122,11 +147,24 @@ namespace WCFHosting
                 txtrouter.Text = address;
             }
 
-            node = xmldoc_app.DocumentElement.SelectSingleNode("system.serviceModel/services/service[@name='EFWCoreLib.WcfFrame.WcfService.FileTransferHandlerService']/host/baseAddresses/add");
+            node = xmldoc_app.DocumentElement.SelectSingleNode("system.serviceModel/services/service[@name='EFWCoreLib.WcfFrame.WcfService.FileRouterHandlerService']/host/baseAddresses/add");
             if (node != null)
             {
                 string address = node.Attributes["baseAddress"].Value;
-                txtfile.Text = address;
+                txtfilerouter.Text = address;
+            }
+
+            node = xmldoc_app.DocumentElement.SelectSingleNode("system.serviceModel/client/endpoint[@name='wcfendpoint']");
+            if (node != null)
+            {
+                string address = node.Attributes["address"].Value;
+                txtwcfurl.Text = address;
+            }
+            node = xmldoc_app.DocumentElement.SelectSingleNode("system.serviceModel/client/endpoint[@name='fileendpoint']");
+            if (node != null)
+            {
+                string address = node.Attributes["address"].Value;
+                txtfileurl.Text = address;
             }
 
             node = xmldoc_app.DocumentElement.SelectSingleNode("appSettings/add[@key='WebApiUri']");

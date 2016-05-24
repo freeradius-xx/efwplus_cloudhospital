@@ -58,3 +58,7 @@
 
 时间：2016-05-13 10:54:12		耗时：23100.3213		方法：Books_Wcf@bookWcfController.GetBooks([])
 
+时间：2016-05-18 10:20:14		耗时：21515.2306		方法：Books_Wcf@bookWcfController.GetBooks([])
+
+时间：2016-05-18 10:37:31		耗时：4873.2787		方法：Books_Wcf@bookWcfController.GetBooks([])
+

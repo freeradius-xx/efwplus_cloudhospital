@@ -23,8 +23,8 @@ namespace TestWcfPerformance
         static void TestWebClient()
         {
             //创建对象
-            ReplyClientCallBack callback = new ReplyClientCallBack();
-            ClientLink clientlink = new ClientLink("myendpoint", callback, "kakake");
+            //ReplyClientCallBack callback = new ReplyClientCallBack();
+            ClientLink clientlink = new ClientLink("TestWcfPerformance", "Books_Wcf");
 
             begintime();
             //2.创建连接
@@ -48,15 +48,24 @@ namespace TestWcfPerformance
             Console.Read();
 
             begintime();
+            string s = clientlink.UpLoadFile(@"D:\工具\PowerDesigner15_Evaluation.exe", (delegate(int _num)
+            {
+                Console.WriteLine("4.文件上传进度：%" + _num);
+            }));
+            Console.WriteLine("4.文件上传时间(毫秒)：" + endtime() + "|" + s);
+
+
+            begintime();
             //5.关闭连接
             clientlink.UnConnection();
             Console.WriteLine("6.关闭连接时间(毫秒)：" + endtime());
 
-            Console.Read();
+            Console.ReadLine();
         }
 
         static void TestApp()
         {
+            /*
             begintime();
             //1.初始化
             AppGlobal.AppStart();
@@ -141,7 +150,7 @@ namespace TestWcfPerformance
             ////5.关闭连接
             //WcfClientManage.UnConnection();
             //Console.WriteLine("6.关闭连接时间(毫秒)：" + endtime());
-
+            */
             Console.Read();
         }
 

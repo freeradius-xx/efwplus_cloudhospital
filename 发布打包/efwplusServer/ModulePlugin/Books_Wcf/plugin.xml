@@ -5,7 +5,19 @@
     <section name="plugin" type="EFWCoreLib.CoreFrame.Plugin.PluginSectionHandler, EFWCoreLib" />
   </configSections>
   <unity>
+    <assembly name="Books_Wcf"></assembly>
+    <namespace name="Books_Wcf.Dao"></namespace>
+    <namespace name="Books_Wcf.UnitTest.TestDao.Dao"></namespace>
+    <namespace name="Books_Wcf.Entity"></namespace>
+    <namespace name="Books_Wcf.UnitTest.TestEntity"></namespace>
     <container>
+      <!--真实环境-->
+      <register type="IBookDao" mapTo="SqlBookDao"></register>
+      <!--测试环境-->
+      <!--
+      <register type="IBookDao" mapTo="TestBookDao"></register>
+      <register type="Books" mapTo="unBooks"></register>
+      -->
     </container>
   </unity>
   <plugin name="Books_Wcf" version="1.0" title="Books实例(Wcf版)" author="kakake" plugintype="Wcf" defaultdbkey="SQL2005" defaultcachekey="Cache Manager" isentry="1">

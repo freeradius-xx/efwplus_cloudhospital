@@ -12,7 +12,7 @@ using EFWCoreLib.WcfFrame.WcfService.Contract;
 
 namespace EFWCoreLib.WcfFrame.WcfService
 {
-    //InstanceContextMode.PerCall 文件传输调用次数少，用这种方式即可
+    //文件传输调用次数少，用Single这种方式即可
     //文件流传输是按Read字节数传输的
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Multiple, UseSynchronizationContext = false, IncludeExceptionDetailInFaults = true)]
     public class FileTransferHandlerService : IFileTransfer
@@ -33,10 +33,12 @@ namespace EFWCoreLib.WcfFrame.WcfService
         }
 
         #region IFileTransfer 成员
-        private void getprogress(long filesize, long bufferlen, ref decimal progressnum)
+        private void getprogress(long filesize, long readnum, ref int progressnum)
         {
-            decimal percent = Convert.ToDecimal(100 / Convert.ToDecimal(filesize / bufferlen));
-            progressnum = progressnum + percent > 100 ? 100 : progressnum + percent;
+            //decimal percent = Convert.ToDecimal(100 / Convert.ToDecimal(filesize / bufferlen));
+            //progressnum = progressnum + percent > 100 ? 100 : progressnum + percent;
+            decimal percent = Convert.ToDecimal(readnum) / Convert.ToDecimal(filesize) * 100;
+            progressnum = Convert.ToInt32(Math.Ceiling(percent));
         }
 
         public UpFileResult UpLoadFile(UpFile filedata)
@@ -57,25 +59,27 @@ namespace EFWCoreLib.WcfFrame.WcfService
                 fs = new FileStream(filebufferpath + _filename, FileMode.Create, FileAccess.Write);
 
                 int oldprogressnum = 0;
-                decimal progressnum = 0;
-                long bufferlen = 4096;
+                int progressnum = 0;
+                int bufferlen = 4096;
                 int count = 0;
+                long readnum = 0;
                 byte[] buffer = new byte[bufferlen];
-                while ((count = filedata.FileStream.Read(buffer, 0, buffer.Length)) > 0)
+                while ((count = filedata.FileStream.Read(buffer, 0, bufferlen)) > 0)
                 {
                     fs.Write(buffer, 0, count);
+                    readnum += count;
                     //获取上传进度
-                    getprogress(filedata.FileSize, bufferlen, ref progressnum);
-                    if (oldprogressnum < Convert.ToInt32(Math.Ceiling(progressnum)))
+                    getprogress(filedata.FileSize, readnum, ref progressnum);
+                    if (oldprogressnum < progressnum)
                     {
-                        oldprogressnum = Convert.ToInt32(Math.Ceiling(progressnum));
+                        oldprogressnum = progressnum;
                         if (progressDic_Up.ContainsKey(filedata.UpKey))
                         {
-                            progressDic_Up[filedata.UpKey] = Convert.ToInt32(Math.Ceiling(progressnum));
+                            progressDic_Up[filedata.UpKey] = progressnum;
                         }
                         else
                         {
-                            progressDic_Up.Add(filedata.UpKey, Convert.ToInt32(Math.Ceiling(progressnum)));
+                            progressDic_Up.Add(filedata.UpKey, progressnum);
                         }
                         if (WcfServerManage.IsDebug)
                         {

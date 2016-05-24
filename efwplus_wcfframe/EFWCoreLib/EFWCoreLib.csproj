@@ -252,6 +252,9 @@
     </Compile>
     <Compile Include="UnitTestFrame\BaseDaoUnitTest.cs" />
     <Compile Include="UnitTestFrame\wcfBaseUnitTest.cs" />
+    <Compile Include="WcfFrame\ClientLinkManage.cs" />
+    <Compile Include="WcfFrame\ServerController\ReplyClientManage.cs" />
+    <Compile Include="WcfFrame\ServerController\RouterServerManage.cs" />
     <Compile Include="WebFrame\WebAPI\FileController.cs" />
     <Compile Include="WebFrame\WebAPI\PluginAssembliesResolver.cs" />
     <Compile Include="WebFrame\WebAPI\PluginHttpControllerActivator.cs" />
@@ -327,9 +330,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="WcfFrame\ClientController\BaseForm.resx">
-      <DependentUpon>BaseForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="WinformFrame\Controller\BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -355,22 +355,11 @@
     <Compile Include="CoreFrame\Business\AttributeInfo\WinformViewAttribute.cs" />
     <Compile Include="CoreFrame\Business\AttributeInfo\WCFControllerAttribute.cs" />
     <Compile Include="CoreFrame\Business\AttributeInfo\WCFMethodAttribute.cs" />
-    <Compile Include="WcfFrame\ClientController\BaseForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WcfFrame\ClientController\BaseForm.Designer.cs">
-      <DependentUpon>BaseForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="WcfFrame\ClientController\ControllerHelper.cs" />
-    <Compile Include="WcfFrame\ClientController\IBaseView.cs" />
-    <Compile Include="WcfFrame\ClientController\JsonWcfClientController.cs" />
     <Compile Include="WcfFrame\ClientController\ReplyClientCallBack.cs" />
     <Compile Include="WcfFrame\ClientController\WcfClientController.cs" />
-    <Compile Include="WcfFrame\ClientController\WcfClientManage.cs" />
     <Compile Include="WcfFrame\ClientLink.cs" />
     <Compile Include="WcfFrame\ServerController\ControllerHelper.cs" />
     <Compile Include="WcfFrame\ServerController\DebugWcfServices.cs" />
-    <Compile Include="WcfFrame\ServerController\JsonWcfServerController.cs" />
     <Compile Include="WcfFrame\ServerController\WcfServerController.cs" />
     <Compile Include="WcfFrame\ServerController\WcfServerManage.cs" />
     <Compile Include="WcfFrame\WcfService\Contract\IFileTransfer.cs" />

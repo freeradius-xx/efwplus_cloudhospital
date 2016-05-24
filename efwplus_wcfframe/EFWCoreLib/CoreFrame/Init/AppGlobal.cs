@@ -15,6 +15,7 @@ using EFWCoreLib.CoreFrame.Init.AttributeManager;
 using EFWCoreLib.CoreFrame.Plugin;
 using System.Windows.Forms;
 using System.Reflection;
+using EFWCoreLib.WinformFrame.Controller;
 
 
 namespace EFWCoreLib.CoreFrame.Init
@@ -203,7 +204,7 @@ namespace EFWCoreLib.CoreFrame.Init
                     break;
                 case AppType.WCFClient:
 #if WcfFrame
-                    EFWCoreLib.WcfFrame.ClientController.WcfClientManage.UnConnection();
+                    EFWCoreLib.WcfFrame.ClientLinkManage.UnAllConnection();
 #endif
                     break;
             }
@@ -268,12 +269,12 @@ namespace EFWCoreLib.CoreFrame.Init
                     case AppType.WCFClient:
 #if WcfFrame
                         PluginSysManage.GetWcfClientEntry(out entryplugin, out entrycontroller);
-                        EFWCoreLib.WcfFrame.ClientController.WcfClientController wcfcontroller = EFWCoreLib.WcfFrame.ClientController.ControllerHelper.CreateController(entryplugin + "@" + entrycontroller);
+                        WinformController wcfcontroller = ControllerHelper.CreateController(entryplugin + "@" + entrycontroller);
                         if (wcfcontroller == null)
                             throw new Exception("插件配置的启动项（插件名或控制器名称）不正确！！");
 
-                        EFWCoreLib.WcfFrame.ClientController.ReplyClientCallBack callback = new WcfFrame.ClientController.ReplyClientCallBack();
-                        EFWCoreLib.WcfFrame.ClientController.WcfClientManage.CreateConnection(callback);
+                        //EFWCoreLib.WcfFrame.ClientController.ReplyClientCallBack callback = new WcfFrame.ClientController.ReplyClientCallBack();
+                        //EFWCoreLib.WcfFrame.ClientController.WcfClientManage.CreateConnection();
                         //wcfcontroller.Init();
                         ((System.Windows.Forms.Form)wcfcontroller.DefaultView).Show();
                         winfromMain.MainForm = ((System.Windows.Forms.Form)wcfcontroller.DefaultView);

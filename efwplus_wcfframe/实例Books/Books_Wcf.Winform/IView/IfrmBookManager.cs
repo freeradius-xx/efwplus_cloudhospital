@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using EFWCoreLib.WcfFrame.ClientController;
 using Books_Wcf.Entity;
 using System.Data;
+using EFWCoreLib.WinformFrame.Controller;
 
 namespace Books_Wcf.Winform.IView
 {

@@ -16,7 +16,7 @@ using WinMainUIFrame.ObjectModel.UserLogin;
 namespace WinMainUIFrame.WcfController
 {
     [WCFController]
-    public class LoginController : JsonWcfServerController
+    public class LoginController : WcfServerController
     {
         [WCFMethod]
         public string UserLogin()

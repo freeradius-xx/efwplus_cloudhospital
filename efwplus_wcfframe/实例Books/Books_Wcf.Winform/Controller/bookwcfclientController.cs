@@ -11,7 +11,7 @@ namespace Books_Wcf.Winform.Controller
 {
     [WinformController(DefaultViewName = "frmBookManager")]//在菜单上显示
     [WinformView(Name = "frmBookManager", DllName = "Books_Wcf.Winform.dll", ViewTypeName = "Books_Wcf.Winform.ViewForm.frmBookManager")]//控制器关联的界面
-    public class bookwcfclientController : JsonWcfClientController
+    public class bookwcfclientController : WcfClientController
     {
         IfrmBookManager _ifrmbookmanager;
         public override void Init()
@@ -33,7 +33,7 @@ namespace Books_Wcf.Winform.Controller
         public void bookSave()
         {
             //通过wcf服务调用bookWcfController控制器中的SaveBook方法，并传递参数Book对象
-            InvokeWCFService("bookWcfController", "SaveBook", ToJson(_ifrmbookmanager.currBook));
+            InvokeWcfService("Books_Wcf", "bookWcfController", "SaveBook", ToJson(_ifrmbookmanager.currBook));
             GetBooks();
         }
 
@@ -42,7 +42,7 @@ namespace Books_Wcf.Winform.Controller
         public void GetBooks()
         {
             //通过wcf服务调用bookWcfController控制器中的GetBooks方法
-            Object retdata = InvokeWCFService("bookWcfController", "GetBooks");
+            Object retdata = InvokeWcfService("Books_Wcf", "bookWcfController", "GetBooks");
             DataTable dt = ToDataTable(retdata);
             _ifrmbookmanager.loadbooks(dt);
         }

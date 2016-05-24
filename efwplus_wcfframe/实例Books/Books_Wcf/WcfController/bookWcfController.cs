@@ -11,7 +11,7 @@ using Books_Wcf.Dao;
 namespace Books_Wcf.WcfController
 {
     [WCFController]
-    public class bookWcfController : JsonWcfServerController
+    public class bookWcfController : WcfServerController
     {
         [WCFMethod]
         public string SaveBook()
@@ -57,7 +57,7 @@ namespace Books_Wcf.WcfController
         [WCFMethod]
         public string Test191()
         {
-            int num = Convert.ToInt32(ToArray(ParamJsonData)[0]);
+            int num = Convert.ToInt32(ToArray(ParamJsonData)[0].ToString());
             string strsql = string.Format(@"SELECT TOP {0} * FROM hisdb..books", num);
             DataTable dt = oleDb.GetDataTable(strsql);
 

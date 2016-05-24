@@ -30,7 +30,7 @@ namespace EFWCoreLib.WebFrame.WebAPI
         private IUnityContainer _container = null;
         private ICacheManager _cache = null;
         private string _pluginName = null;
-        private HttpContext _context = HttpContext.Current;
+        //private HttpContext _context = HttpContext.Current;
 
         public AbstractDatabase oleDb
         {
@@ -103,7 +103,7 @@ namespace EFWCoreLib.WebFrame.WebAPI
         protected override void Initialize(System.Web.Http.Controllers.HttpControllerContext controllerContext)
         {
             base.Initialize(controllerContext);
-
+            
             _pluginName = this.SetPluginName();
             if (_pluginName != null)
             {
@@ -118,21 +118,6 @@ namespace EFWCoreLib.WebFrame.WebAPI
 
 
         #region 与CHDEP通讯
-        public ClientLink wcfClientLink
-        {
-            get
-            {
-                if (_context.Session["wcfClientLink"] == null)
-                {
-                    //创建对象
-                    ReplyClientCallBack callback = new ReplyClientCallBack();
-                    ClientLink clientlink = new ClientLink("myendpoint", callback, _context.Session.SessionID);
-                    clientlink.CreateConnection();
-                    _context.Session["wcfClientLink"] = clientlink;
-                }
-                return _context.Session["wcfClientLink"] as ClientLink;
-            }
-        }
 
         public Object InvokeWcfService(string wcfpluginname, string wcfcontroller, string wcfmethod)
         {
@@ -142,6 +127,7 @@ namespace EFWCoreLib.WebFrame.WebAPI
         public Object InvokeWcfService(string wcfpluginname, string wcfcontroller, string wcfmethod, string jsondata)
         {
             if (string.IsNullOrEmpty(jsondata)) jsondata = "[]";
+            ClientLink wcfClientLink = ClientLinkManage.CreateConnection(wcfpluginname);
             string retJson = wcfClientLink.Request(wcfpluginname + "@" + wcfcontroller, wcfmethod, jsondata);
 
             object Result = JsonConvert.DeserializeObject(retJson);
@@ -174,6 +160,7 @@ namespace EFWCoreLib.WebFrame.WebAPI
                     action(((Newtonsoft.Json.Linq.JObject)(Result))["data"]);
                 }
             };
+            ClientLink wcfClientLink = ClientLinkManage.CreateConnection(wcfpluginname);
             return wcfClientLink.RequestAsync(wcfpluginname + "@" + wcfcontroller, wcfmethod, jsondata, retAction);
         }
 

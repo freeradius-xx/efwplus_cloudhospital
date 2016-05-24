@@ -20,6 +20,13 @@ namespace WCFHosting.PluginManage
             pluginfile = _pluginfile;
         }
 
+        public FrmPluginXML(string _RouterBill, string title)
+        {
+            InitializeComponent();
+            pluginfile = _RouterBill;
+            this.Text = title;
+        }
+
         private void btnsave_Click(object sender, EventArgs e)
         {
             FileInfo file = new FileInfo(pluginfile);

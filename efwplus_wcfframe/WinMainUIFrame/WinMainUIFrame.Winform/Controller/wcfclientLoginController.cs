@@ -24,7 +24,7 @@ namespace WinMainUIFrame.Winform.Controller
     [WinformView(Name = "ReDept", DllName = "WinMainUIFrame.Winform.dll", ViewTypeName = "WinMainUIFrame.Winform.ViewForm.ReDept")]
     [WinformView(Name = "FrmPassWord", DllName = "WinMainUIFrame.Winform.dll", ViewTypeName = "WinMainUIFrame.Winform.ViewForm.FrmPassWord")]
     [WinformView(Name = "FrmWeclome", DllName = "WinMainUIFrame.Winform.dll", ViewTypeName = "WinMainUIFrame.Winform.ViewForm.FrmWeclome")]
-    public class wcfclientLoginController : JsonWcfClientController
+    public class wcfclientLoginController : WcfClientController
     {
         public IfrmLogin frmlogin;
         public IfrmMain frmmain;
@@ -135,7 +135,7 @@ namespace WinMainUIFrame.Winform.Controller
         [WinformMethod]
         public void UserLogin()
         {
-            Object retdata = InvokeWCFService("LoginController", "UserLogin", ToJson(frmlogin.usercode, frmlogin.password));
+            Object retdata = InvokeWcfService("WcfMainUIFrame","LoginController", "UserLogin", ToJson(frmlogin.usercode, frmlogin.password));
             object[] vals = ToArray(retdata);
             //MessageBox.Show(vals[0].ToString());
             frmmain.UserName = vals[0].ToString();
@@ -212,7 +212,7 @@ namespace WinMainUIFrame.Winform.Controller
             ((SysLoginRight)EFWCoreLib.CoreFrame.Init.AppGlobal.cache.GetData("RoleUser")).DeptName = dept.Name;
             frmmain.DeptName = dept.Name;
 
-            InvokeWCFService("LoginController", "SaveReDept", ToJson(dept.DeptId, dept.Name));
+            InvokeWcfService("WcfMainUIFrame","LoginController", "SaveReDept", ToJson(dept.DeptId, dept.Name));
         }
         #endregion
 
@@ -229,7 +229,7 @@ namespace WinMainUIFrame.Winform.Controller
             string oldpass = ((IfrmPassWord)iBaseView["FrmPassWord"]).oldpass;
             string newpass = ((IfrmPassWord)iBaseView["FrmPassWord"]).newpass;
 
-            Object retdata = InvokeWCFService("LoginController", "AlterPass", ToJson(LoginUserInfo.UserId, oldpass, newpass));
+            Object retdata = InvokeWcfService("WcfMainUIFrame","LoginController", "AlterPass", ToJson(LoginUserInfo.UserId, oldpass, newpass));
             if (ToBoolean(retdata) == false)
                 throw new Exception("您输入的原始密码不正确！");
         }
@@ -238,14 +238,14 @@ namespace WinMainUIFrame.Winform.Controller
         [WinformMethod]
         public List<BaseMessage> GetNotReadMessages()
         {
-            Object retdata = InvokeWCFService("LoginController", "GetNotReadMessages");
+            Object retdata = InvokeWcfService("WcfMainUIFrame","LoginController", "GetNotReadMessages");
             return ToListObj<BaseMessage>(retdata);
         }
 
         [WinformMethod]
         public void MessageRead(int messageId)
         {
-            Object retdata = InvokeWCFService("LoginController", "MessageRead", ToJson(messageId));
+            Object retdata = InvokeWcfService("WcfMainUIFrame","LoginController", "MessageRead", ToJson(messageId));
         }
 
         [WinformMethod]

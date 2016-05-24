@@ -12,7 +12,7 @@ namespace EFWCoreLib.WcfFrame.WcfService.Contract
     /// 文件传输服务
     /// </summary>
     [ServiceKnownType(typeof(DBNull))]
-    [ServiceContract(Namespace = "http://www.efwplus.cn/", Name = "FileTransferHandlerService", SessionMode = SessionMode.NotAllowed)]
+    [ServiceContract(Namespace = "http://www.efwplus.cn/", Name = "FileTransferHandlerService", SessionMode = SessionMode.Allowed)]
     public interface IFileTransfer
     {
         //上传文件

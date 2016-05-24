@@ -61,8 +61,8 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.gridRouter = new System.Windows.Forms.DataGridView();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -82,6 +82,7 @@
             this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lbRunTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.btnrouter = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.tabMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -101,6 +102,7 @@
             this.btnStop,
             this.toolStripSeparator3,
             this.btnSetting,
+            this.btnrouter,
             this.btnplugin,
             this.toolStripDropDownButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
@@ -167,26 +169,26 @@
             // 帮助ToolStripMenuItem
             // 
             this.帮助ToolStripMenuItem.Name = "帮助ToolStripMenuItem";
-            this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.帮助ToolStripMenuItem.Text = "帮助";
             this.帮助ToolStripMenuItem.Click += new System.EventHandler(this.帮助ToolStripMenuItem_Click);
             // 
             // 注册ToolStripMenuItem
             // 
             this.注册ToolStripMenuItem.Name = "注册ToolStripMenuItem";
-            this.注册ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.注册ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.注册ToolStripMenuItem.Text = "注册";
             this.注册ToolStripMenuItem.Click += new System.EventHandler(this.注册ToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(97, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
             // 
             // 关于ToolStripMenuItem
             // 
             this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
-            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.关于ToolStripMenuItem.Text = "关于";
             this.关于ToolStripMenuItem.Click += new System.EventHandler(this.关于ToolStripMenuItem_Click);
             // 
@@ -362,7 +364,7 @@
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(927, 493);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "路由均衡";
+            this.tabPage3.Text = "路由转发";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // gridRouter
@@ -373,8 +375,8 @@
             this.gridRouter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridRouter.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column5,
-            this.Column6,
             this.Column7,
+            this.Column6,
             this.Column8});
             this.gridRouter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridRouter.Location = new System.Drawing.Point(0, 0);
@@ -387,11 +389,20 @@
             // 
             // Column5
             // 
-            this.Column5.DataPropertyName = "ContractName";
-            this.Column5.HeaderText = "服务名称";
+            this.Column5.DataPropertyName = "HostName";
+            this.Column5.HeaderText = "中间件名称";
+            this.Column5.MinimumWidth = 200;
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
-            this.Column5.Width = 120;
+            this.Column5.Width = 200;
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "ServiceType";
+            this.Column7.HeaderText = "类型";
+            this.Column7.MinimumWidth = 100;
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
             // 
             // Column6
             // 
@@ -402,18 +413,11 @@
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
             // 
-            // Column7
-            // 
-            this.Column7.DataPropertyName = "ContractNamespace";
-            this.Column7.HeaderText = "标识";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            this.Column7.Width = 300;
-            // 
             // Column8
             // 
             this.Column8.DataPropertyName = "ClientNum";
             this.Column8.HeaderText = "分配客户端数";
+            this.Column8.MinimumWidth = 120;
             this.Column8.Name = "Column8";
             this.Column8.ReadOnly = true;
             this.Column8.Width = 120;
@@ -573,6 +577,15 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // btnrouter
+            // 
+            this.btnrouter.Image = ((System.Drawing.Image)(resources.GetObject("btnrouter.Image")));
+            this.btnrouter.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnrouter.Name = "btnrouter";
+            this.btnrouter.Size = new System.Drawing.Size(64, 22);
+            this.btnrouter.Text = "路由表";
+            this.btnrouter.Click += new System.EventHandler(this.btnrouter_Click);
+            // 
             // FrmHosting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -658,9 +671,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.ToolStripButton btnrouter;
 
     }
 }

@@ -18,63 +18,20 @@ using System.Web.Services.Protocols;
 using EFWCoreLib.CoreFrame.Business;
 using EFWCoreLib.CoreFrame.DbProvider;
 using EFWCoreLib.CoreFrame.Init;
-using EFWCoreLib.WcfFrame.WcfService;
-using EFWCoreLib.WcfFrame.WcfService.Contract;
 using Newtonsoft.Json;
 using EFWCoreLib.CoreFrame.Common;
 using System.Windows.Forms;
+using EFWCoreLib.WinformFrame.Controller;
+using Newtonsoft.Json.Linq;
 
 namespace EFWCoreLib.WcfFrame.ClientController
 {
  
     /// <summary>
     /// Winform控制器基类
-    /// 
     /// </summary>
-    public class WcfClientController : AbstractController
+    public class WcfClientController : WinformController
     {
-        //实例化此控制器的菜单ID
-        //public int MenuId { get; set; }
-
-        /// <summary>
-        /// 获取页面子权限
-        /// </summary>
-        //public DataTable GetPageRight
-        //{
-        //    get;set;
-        //}
-
-        protected override SysLoginRight GetUserInfo()
-        {
-            if (EFWCoreLib.CoreFrame.Init.AppGlobal.cache.GetData("RoleUser") != null)
-            {
-                return (SysLoginRight)EFWCoreLib.CoreFrame.Init.AppGlobal.cache.GetData("RoleUser");
-            }
-            return base.GetUserInfo();
-        }
-
-        internal IBaseViewBusiness _defaultView;
-
-        public IBaseViewBusiness DefaultView
-        {
-            get { return _defaultView; }
-            set { _defaultView = value; }
-        }
-
-        private Dictionary<string, IBaseViewBusiness> _iBaseView;
-        public Dictionary<string, IBaseViewBusiness> iBaseView
-        {
-            get { return _iBaseView; }
-            set
-            {
-                _iBaseView = value;
-                foreach (KeyValuePair<string, IBaseViewBusiness> val in _iBaseView)
-                {
-                    val.Value.InvokeController = new ControllerEventHandler(UI_ControllerEvent);
-                }
-            }
-        }
-
         /// <summary>
         /// 创建WinformController的实例
         /// </summary>
@@ -88,7 +45,7 @@ namespace EFWCoreLib.WcfFrame.ClientController
         /// <param name="eventname">事件名称</param>
         /// <param name="objs">参数数组</param>
         /// <returns></returns>
-        public virtual object UI_ControllerEvent(string eventname, params object[] objs)
+        public override object UI_ControllerEvent(string eventname, params object[] objs)
         {
             try
             {
@@ -145,64 +102,21 @@ namespace EFWCoreLib.WcfFrame.ClientController
             }
         }
 
-        public bool InitFinish = false;
-        /// <summary>
-        /// 初始化全局web服务参数对象
-        /// </summary>
-        public virtual void Init() { }
-
-        public virtual IBaseViewBusiness GetView(string frmName)
+        #region CHDEP通讯
+        public Object InvokeWcfService(string wcfpluginname, string wcfcontroller, string wcfmethod)
         {
-            return iBaseView[frmName];
-        }
-       
-        /// <summary>
-        /// 客户端标识
-        /// </summary>
-        public string ClientID
-        {
-            get
-            {
-                return EFWCoreLib.CoreFrame.Init.AppGlobal.cache.GetData("WCFClientID").ToString();
-            }
+            return InvokeWcfService(wcfpluginname, wcfcontroller, wcfmethod, "[]");
         }
 
-        /// <summary>
-        /// wcf服务对象
-        /// </summary>
-        public IWCFHandlerService WCFService
+        public Object InvokeWcfService(string wcfpluginname, string wcfcontroller, string wcfmethod, string jsondata)
         {
-            get
-            {
-                IWCFHandlerService _wcfService = EFWCoreLib.CoreFrame.Init.AppGlobal.cache.GetData("WCFService") as IWCFHandlerService;
-                return _wcfService;
-            }
-        }
-
-        /// <summary>
-        /// WCF双通道回调客户端
-        /// </summary>
-        public static EFWCoreLib.WcfFrame.ClientController.ReplyClientCallBack replyClientCallBack
-        {
-            get
-            {
-                return AppGlobal.cache.GetData("ClientService") as EFWCoreLib.WcfFrame.ClientController.ReplyClientCallBack;
-            }
-        }
-
-        public virtual Object InvokeWCFService(string controller, string method)
-        {
-            return InvokeWCFService(controller, method, "[]");
-        }
-
-        public virtual Object InvokeWCFService(string controller, string method, string jsondata)
-        {
-            if(string.IsNullOrEmpty(jsondata))jsondata="[]";
-            string retJson= WcfClientManage.Request(_pluginName+"@"+controller, method, jsondata);
+            if (string.IsNullOrEmpty(jsondata)) jsondata = "[]";
+            ClientLink wcfClientLink = ClientLinkManage.CreateConnection(wcfpluginname);
+            string retJson = wcfClientLink.Request(wcfpluginname + "@" + wcfcontroller, wcfmethod, jsondata);
 
             object Result = JsonConvert.DeserializeObject(retJson);
-            int ret = Convert.ToInt32((((Newtonsoft.Json.Linq.JObject)(Result))["flag"]).ToString());
-            string msg = ((Newtonsoft.Json.Linq.JObject)(Result))["msg"].ToString();
+            int ret = Convert.ToInt32((((Newtonsoft.Json.Linq.JObject)Result)["flag"]).ToString());
+            string msg = (((Newtonsoft.Json.Linq.JObject)Result)["msg"]).ToString();
             if (ret == 1)
             {
                 throw new Exception(msg);
@@ -213,14 +127,14 @@ namespace EFWCoreLib.WcfFrame.ClientController
             }
         }
 
-        public virtual IAsyncResult InvokeWCFServiceAsync(string controller, string method, string jsondata, Action<Object> action)
+        public IAsyncResult InvokeWcfServiceAsync(string wcfpluginname, string wcfcontroller, string wcfmethod, string jsondata, Action<Object> action)
         {
             if (string.IsNullOrEmpty(jsondata)) jsondata = "[]";
             Action<string> retAction = delegate(string retJson)
             {
                 object Result = JsonConvert.DeserializeObject(retJson);
-                int ret = Convert.ToInt32((((Newtonsoft.Json.Linq.JObject)(Result))["flag"]).ToString());
-                string msg = ((Newtonsoft.Json.Linq.JObject)(Result))["msg"].ToString();
+                int ret = Convert.ToInt32((((Newtonsoft.Json.Linq.JObject)Result)["flag"]).ToString());
+                string msg = (((Newtonsoft.Json.Linq.JObject)Result)["msg"]).ToString();
                 if (ret == 1)
                 {
                     throw new Exception(msg);
@@ -230,29 +144,159 @@ namespace EFWCoreLib.WcfFrame.ClientController
                     action(((Newtonsoft.Json.Linq.JObject)(Result))["data"]);
                 }
             };
-            return WcfClientManage.RequestAsync(_pluginName + "@" + controller, method, jsondata, retAction);
+            ClientLink wcfClientLink = ClientLinkManage.CreateConnection(wcfpluginname);
+            return wcfClientLink.RequestAsync(wcfpluginname + "@" + wcfcontroller, wcfmethod, jsondata, retAction);
         }
 
 
-        /// <summary>
-        /// 执行控制器
-        /// </summary>
-        /// <returns></returns>
-        public Object InvokeController(string puginName, string controllerName, string methodName, params object[] objs)
+        #region ToJson
+
+        public string ToJson(params object[] data)
         {
-            try
-            {
-                WcfClientController icontroller = ControllerHelper.CreateController(puginName + "@" + controllerName);
-                MethodInfo meth = ControllerHelper.CreateMethodInfo(puginName + "@" + controllerName, methodName);
-                return meth.Invoke(icontroller, objs);
-            }
-            catch (Exception err)
-            {
-                //记录错误日志
-                EFWCoreLib.CoreFrame.EntLib.ZhyContainer.CreateException().HandleException(err, "HISPolicy");
-                throw new Exception(err.Message);
-            }
+            string value = JsonConvert.SerializeObject(data);
+            return value;
         }
-       
+        public string ToJson(object model)
+        {
+            string value = JsonConvert.SerializeObject(model);
+            return value;
+        }
+        public string ToJson(System.Data.DataTable dt)
+        {
+            string value = JsonConvert.SerializeObject(dt, Formatting.Indented);
+            return value;
+        }
+        public string ToJson(string data)
+        {
+            object[] objs = new object[] { data };
+            return ToJson(objs);
+        }
+        public string ToJson(int data)
+        {
+            object[] objs = new object[] { data };
+            return ToJson(objs);
+        }
+        public string ToJson(decimal data)
+        {
+            object[] objs = new object[] { data };
+            return ToJson(objs);
+        }
+        public string ToJson(bool data)
+        {
+            object[] objs = new object[] { data };
+            return ToJson(objs);
+        }
+        public string ToJson(DateTime data)
+        {
+            object[] objs = new object[] { data };
+            return ToJson(objs);
+        }
+        #endregion
+
+        #region ToObject
+        private object convertVal(Type t, object _data)
+        {
+            string data = _data.ToString();
+            object val = null;
+            if (t == typeof(Int32))
+                val = Convert.ToInt32(data);
+            else if (t == typeof(DateTime))
+                val = Convert.ToDateTime(data);
+            else if (t == typeof(Decimal))
+                val = Convert.ToDecimal(data);
+            else if (t == typeof(Boolean))
+                val = Convert.ToBoolean(data);
+            else if (t == typeof(String))
+                val = Convert.ToString(data).Trim();
+            else if (t == typeof(Guid))
+                val = new Guid(data.ToString());
+            else if (t == typeof(byte[]))
+                if (data != null && data.ToString().Length > 0)
+                {
+                    val = Convert.FromBase64String(data.ToString());
+                }
+                else
+                {
+                    val = null;
+                }
+            else
+                val = data;
+            return val;
+        }
+
+        public object[] ToArray(object data)
+        {
+            return (data as JArray).ToArray();
+        }
+        public List<T> ToListObj<T>(object data)
+        {
+            if (data is JArray)
+            {
+                PropertyInfo[] pros = typeof(T).GetProperties();
+                List<T> list = new List<T>();
+                for (int i = 0; i < (data as JArray).Count; i++)
+                {
+                    T obj = (T)Activator.CreateInstance(typeof(T));
+                    object _data = (data as JArray)[i];
+                    for (int k = 0; k < pros.Length; k++)
+                    {
+                        object val = convertVal(pros[k].PropertyType, (_data as JObject)[pros[k].Name]);
+                        pros[k].SetValue(obj, val, null);
+                    }
+                    list.Add(obj);
+                }
+                return list;
+            }
+
+            return null;
+        }
+
+        public DataTable ToDataTable(Object data)
+        {
+            return ToDataTable(data.ToString());
+        }
+
+        public DataTable ToDataTable(string data)
+        {
+            return JsonConvert.DeserializeObject<DataTable>(data);
+        }
+        public T ToObject<T>(object data)
+        {
+            T obj = (T)Activator.CreateInstance(typeof(T));
+            PropertyInfo[] pros = typeof(T).GetProperties();
+            for (int k = 0; k < pros.Length; k++)
+            {
+                object val = convertVal(pros[k].PropertyType, (data as JObject)[pros[k].Name]);
+                pros[k].SetValue(obj, val, null);
+            }
+
+            return obj;
+        }
+        public T ToObject<T>(string data)
+        {
+            return JsonConvert.DeserializeObject<T>(data);
+        }
+        public string ToString(object data)
+        {
+            return Convert.ToString(ToArray(data)[0].ToString());
+        }
+        public bool ToBoolean(object data)
+        {
+            return Convert.ToBoolean(ToArray(data)[0].ToString());
+        }
+        public int ToInt32(object data)
+        {
+            return Convert.ToInt32(ToArray(data)[0].ToString());
+        }
+        public decimal ToDecimal(object data)
+        {
+            return Convert.ToDecimal(ToArray(data)[0].ToString());
+        }
+        public DateTime ToDateTime(object data)
+        {
+            return Convert.ToDateTime(ToArray(data)[0].ToString());
+        }
+        #endregion
+        #endregion
     }
 }

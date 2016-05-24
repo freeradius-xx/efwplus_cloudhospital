@@ -6,10 +6,12 @@
   </debug>
   <wcfservice value="1">
   </wcfservice>
-  <router value="0">
+  <router value="1">
   </router>
   <filetransfer value="1">
   </filetransfer>
+  <webapi value="1">
+  </webapi>
   <heartbeat value="1">
   </heartbeat>
   <heartbeattime value="1">

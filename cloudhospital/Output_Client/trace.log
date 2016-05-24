@@ -165,3 +165,181 @@ Win32 ThreadId:10632
 
 Extended Properties: 
 ----------------------------------------
+----------------------------------------
+Timestamp: 2016-05-18 01:52:12
+
+Message: HandlingInstanceID: 8e73c9e5-96a2-4d47-845b-6e58b01cfd23
+An exception of type 'System.Reflection.ReflectionTypeLoadException' occurred and was caught.
+---------------------------------------------------------------------------------------------
+05/18/2016 09:52:12
+Type : System.Reflection.ReflectionTypeLoadException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 无法加载一个或多个请求的类型。有关更多信息，请检索 LoaderExceptions 属性。
+Source : EFWCoreLib
+Help link : 
+Types : System.RuntimeType[]
+LoaderExceptions : System.Exception[]
+Data : System.Collections.ListDictionaryInternal
+TargetSite : Void AppStart()
+HResult : -2146232830
+Stack Trace :    在 EFWCoreLib.CoreFrame.Init.AppGlobal.AppStart()
+   在 EFWCoreLib.CoreFrame.Init.AppGlobal.AppGlobal_Init()
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-05-18 01:52:12
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : efwplusClient.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: efwplusClient.exe
+
+ProcessId: 8000
+
+Process Name: D:\工作台\efwplus产品目录\efwplus_cloudhospital\cloudhospital\Output_Client\efwplusClient.exe
+
+Thread Name: 
+
+Win32 ThreadId:7972
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-05-18 02:09:12
+
+Message: HandlingInstanceID: 94523ed1-93d4-444d-8642-838b18bad883
+An exception of type 'System.Reflection.ReflectionTypeLoadException' occurred and was caught.
+---------------------------------------------------------------------------------------------
+05/18/2016 10:09:12
+Type : System.Reflection.ReflectionTypeLoadException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 无法加载一个或多个请求的类型。有关更多信息，请检索 LoaderExceptions 属性。
+Source : EFWCoreLib
+Help link : 
+Types : System.RuntimeType[]
+LoaderExceptions : System.Exception[]
+Data : System.Collections.ListDictionaryInternal
+TargetSite : Void AppStart()
+HResult : -2146232830
+Stack Trace :    在 EFWCoreLib.CoreFrame.Init.AppGlobal.AppStart()
+   在 EFWCoreLib.CoreFrame.Init.AppGlobal.AppGlobal_Init()
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-05-18 02:09:12
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : efwplusClient.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: efwplusClient.exe
+
+ProcessId: 9044
+
+Process Name: D:\工作台\efwplus产品目录\efwplus_cloudhospital\cloudhospital\Output_Client\efwplusClient.exe
+
+Thread Name: 
+
+Win32 ThreadId:7844
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-05-18 02:10:58
+
+Message: HandlingInstanceID: 9cafb6c4-c295-499e-9b42-f58be030677f
+An exception of type 'System.Reflection.TargetInvocationException' occurred and was caught.
+-------------------------------------------------------------------------------------------
+05/18/2016 10:10:57
+Type : System.Reflection.TargetInvocationException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 调用的目标发生了异常。
+Source : mscorlib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.Object InvokeMethod(System.Object, System.Object[], System.Signature, Boolean)
+HResult : -2146232828
+Stack Trace :    在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 EFWCoreLib.WcfFrame.ClientController.WcfClientController.UI_ControllerEvent(String eventname, Object[] objs)
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-05-18 02:10:58
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : efwplusClient.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+	Inner Exception
+	---------------
+	Type : System.IO.FileLoadException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+	Message : 未能加载文件或程序集“Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed”或它的某一个依赖项。找到的程序集清单定义与程序集引用不匹配。 (异常来自 HRESULT:0x80131040)
+	Source : EFWCoreLib
+	Help link : 
+	FileName : Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed
+	FusionLog : 警告: 程序集绑定日志记录被关闭。
+要启用程序集绑定失败日志记录，请将注册表值 [HKLM\Software\Microsoft\Fusion!EnableLog] (DWORD)设置为 1。
+注意: 会有一些与程序集绑定失败日志记录关联的性能损失。
+要关闭此功能，请移除注册表值 [HKLM\Software\Microsoft\Fusion!EnableLog]。
+
+	Data : System.Collections.ListDictionaryInternal
+	TargetSite : System.String ToJson(System.Object[])
+	HResult : -2146234304
+	Stack Trace :    在 EFWCoreLib.WcfFrame.ClientController.JsonWcfClientController.ToJson(Object[] data)
+	   在 WinMainUIFrame.Winform.Controller.wcfclientLoginController.UserLogin() 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_wcfframe\WinMainUIFrame\WinMainUIFrame.Winform\Controller\wcfclientLoginController.cs:行号 138
+
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: efwplusClient.exe
+
+ProcessId: 8904
+
+Process Name: D:\工作台\efwplus产品目录\efwplus_cloudhospital\cloudhospital\Output_Client\efwplusClient.exe
+
+Thread Name: 
+
+Win32 ThreadId:8640
+
+Extended Properties: 
+----------------------------------------

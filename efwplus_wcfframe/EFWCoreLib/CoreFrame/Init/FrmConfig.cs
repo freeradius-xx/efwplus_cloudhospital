@@ -15,7 +15,7 @@ namespace EFWCoreLib.CoreFrame.Init
     {
         public bool isOk = false;
         private string entlibconfig = AppGlobal.AppRootPath + "Config\\EntLib.config";
-        private string appconfig = AppGlobal.AppRootPath + "EFWWin.exe.config";
+        private string appconfig = AppGlobal.AppRootPath + "efwplusClient.exe.config";
         private XmlDocument xmldoc_entlib;
         private XmlDocument xmldoc_app;
 
@@ -54,7 +54,7 @@ namespace EFWCoreLib.CoreFrame.Init
                 node.Attributes["value"].Value = txtupdate.Text;
             }
 
-            node = xmldoc_app.DocumentElement.SelectSingleNode("system.serviceModel/client/endpoint[@name='myendpoint']");
+            node = xmldoc_app.DocumentElement.SelectSingleNode("system.serviceModel/client/endpoint[@name='wcfendpoint']");
             if (node != null)
             {
                 node.Attributes["address"].Value = txtwcfurl.Text;
@@ -103,7 +103,7 @@ namespace EFWCoreLib.CoreFrame.Init
                 txtupdate.Text = UpdaterUrl;
             }
 
-            node = xmldoc_app.DocumentElement.SelectSingleNode("system.serviceModel/client/endpoint[@name='myendpoint']");
+            node = xmldoc_app.DocumentElement.SelectSingleNode("system.serviceModel/client/endpoint[@name='wcfendpoint']");
             if (node != null)
             {
                 string address = node.Attributes["address"].Value;

@@ -6,9 +6,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using EFWCoreLib.WcfFrame.ClientController;
 using Books_Wcf.Winform.IView;
 using Books_Wcf.Entity;
+using EFWCoreLib.WinformFrame.Controller;
 
 namespace Books_Wcf.Winform.Viewform
 {
