@@ -2,6 +2,8 @@
 <root>
   <hostname value="开发调试中间件">
   </hostname>
+  <cdkey value="gJIZlFfCJCiRTZGUJKDRkcw/F5FivPCQ3pHf/iAoWdI0PPUkQvcrSeS2amoURCIV">
+  </cdkey>
   <debug value="1">
   </debug>
   <wcfservice value="1">
@@ -20,10 +22,12 @@
   </message>
   <messagetime value="1">
   </messagetime>
-  <compress value="1">
+  <compress value="0">
   </compress>
   <encryption value="0">
   </encryption>
+  <serializetype value="2">
+  </serializetype>
   <overtime value="1">
   </overtime>
   <overtimetime value="1">

@@ -14,7 +14,7 @@
   <record>
     <hostname>HIS中间件</hostname>
     <servicetype>文件传输服务</servicetype>
-    <address>net.tcp://127.0.0.1:8881/FileTransferHandlerService</address>
+    <address>net.tcp://127.0.0.1:8882/FileTransferHandlerService</address>
     <ContractName>FileTransferHandlerService</ContractName>
     <ContractNamespace>http://www.efwplus.cn/FileTransferHandlerService</ContractNamespace>
   </record>

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using Books_Wcf.Entity;
 using EFWCoreLib.CoreFrame.Business.AttributeInfo;
+using EFWCoreLib.WcfFrame.ServerController;
 using EFWCoreLib.WebFrame.WebAPI;
 
 
@@ -29,6 +30,8 @@ namespace Books_Wcf.WApiController
         // GET efwplusApi/<plugin>/<controller>/<action>/5
         public Books GetBook(int id)
         {
+            DistributedCacheManage.SetCache("test", id.ToString(), "kakake");
+            DistributedCacheManage.SyncCache("test");
             return NewObject<Books>().getmodel(id) as Books;
         }
 

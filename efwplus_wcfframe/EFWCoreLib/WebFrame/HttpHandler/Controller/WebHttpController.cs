@@ -165,18 +165,40 @@ namespace EFWCoreLib.WebFrame.HttpHandler.Controller
 
 
         #region CHDEP通讯
+        /// <summary>
+        /// 调用wcf服务
+        /// </summary>
+        /// <param name="wcfpluginname">插件名称</param>
+        /// <param name="wcfcontroller">控制器名称</param>
+        /// <param name="wcfmethod">方法名称</param>
+        /// <returns></returns>
         public ServiceResponseData InvokeWcfService(string wcfpluginname, string wcfcontroller, string wcfmethod)
         {
             return InvokeWcfService(wcfpluginname, wcfcontroller, wcfmethod, null);
         }
-
+        /// <summary>
+        /// 调用wcf服务
+        /// </summary>
+        /// <param name="wcfpluginname"></param>
+        /// <param name="wcfcontroller"></param>
+        /// <param name="wcfmethod"></param>
+        /// <param name="requestAction"></param>
+        /// <returns></returns>
         public ServiceResponseData InvokeWcfService(string wcfpluginname, string wcfcontroller, string wcfmethod, Action<ClientRequestData> requestAction)
         {
             ClientLink wcfClientLink = ClientLinkManage.CreateConnection(wcfpluginname);
             ServiceResponseData retData = wcfClientLink.Request(wcfcontroller, wcfmethod, requestAction);
             return retData;
         }
-
+        /// <summary>
+        /// 异步调用wcf服务
+        /// </summary>
+        /// <param name="wcfpluginname"></param>
+        /// <param name="wcfcontroller"></param>
+        /// <param name="wcfmethod"></param>
+        /// <param name="requestAction"></param>
+        /// <param name="responseAction"></param>
+        /// <returns></returns>
         public IAsyncResult InvokeWcfServiceAsync(string wcfpluginname, string wcfcontroller, string wcfmethod, Action<ClientRequestData> requestAction, Action<ServiceResponseData> responseAction)
         {
             ClientLink wcfClientLink = ClientLinkManage.CreateConnection(wcfpluginname);

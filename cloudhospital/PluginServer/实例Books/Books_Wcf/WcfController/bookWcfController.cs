@@ -7,6 +7,7 @@ using EFWCoreLib.WcfFrame.ServerController;
 using Books_Wcf.Entity;
 using System.Data;
 using Books_Wcf.Dao;
+using EFWCoreLib.WcfFrame.DataSerialize;
 
 namespace Books_Wcf.WcfController
 {
@@ -14,54 +15,24 @@ namespace Books_Wcf.WcfController
     public class bookWcfController : WcfServerController
     {
         [WCFMethod]
-        public string SaveBook()
+        public ServiceResponseData SaveBook()
         {
-            Books book = ToObject<Books>(ParamJsonData);
-            //book.BindDb(oleDb, _container,_cache,_pluginName);//反序列化的对象，必须绑定数据库操作对象
+            Books book = requestData.GetData<Books>(0);
+            book.BindDb(oleDb, _container,_cache,_pluginName);//反序列化的对象，必须绑定数据库操作对象
             book.save();
-            return ToJson(true);
+
+            responseData.AddData(true);
+            return responseData;
         }
 
         [WCFMethod]
-        public string GetBooks()
+        public ServiceResponseData GetBooks()
         {
             DataTable dt = NewDao<IBookDao>().GetBooks("", 0);
-            return base.ToJson(dt);
-        }
 
-        [WCFMethod]
-        public string TestData()
-        {
-            DataTable dt = null;
-
-            string retJson = null;
-
-            dt = NewObject<Books>().gettable();
-
-            DataTable _dt = dt.Clone();
-            int num = Convert.ToInt32(ToArray(ParamJsonData)[0]);
-            for (int i = 0; i < num; i++)
-            {
-                foreach (DataRow dr in dt.Rows)
-                {
-                    _dt.Rows.Add(dr.ItemArray);
-                }
-            }
-
-            dt = _dt;
-
-            retJson = ToJson(dt);
-
-            return retJson;
-        }
-        [WCFMethod]
-        public string Test191()
-        {
-            int num = Convert.ToInt32(ToArray(ParamJsonData)[0].ToString());
-            string strsql = string.Format(@"SELECT TOP {0} * FROM hisdb..books", num);
-            DataTable dt = oleDb.GetDataTable(strsql);
-
-            return ToJson(dt);
+            
+            responseData.AddData(dt);
+            return responseData;
         }
     }
 }

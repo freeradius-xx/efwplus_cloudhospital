@@ -57,9 +57,12 @@
     <Reference Include="Books_Wcf, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Output\ModulePlugin\Books_Wcf\dll\Books_Wcf.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="EFWCoreLib">
-      <HintPath>..\..\..\Output_Client\EFWCoreLib.dll</HintPath>
+    <Reference Include="EFWCoreLib, Version=2.1.3.102, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Component\EFWCoreLib.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">

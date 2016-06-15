@@ -1,0 +1,4413 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EFWCoreLib</name>
+    </assembly>
+    <members>
+        <member name="T:EFWCoreLib.CoreFrame.Business.AbstractBusines">
+            <summary>
+            业务抽象基类，后台分层所有对象都继承此对象，包括controller、objectmodel、dao
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Business.AbstractBusines.BindDb(EFWCoreLib.CoreFrame.DbProvider.AbstractDatabase,Microsoft.Practices.Unity.IUnityContainer,Microsoft.Practices.EnterpriseLibrary.Caching.ICacheManager,System.String)">
+            <summary>
+            绑定默认数据库
+            </summary>
+            <param name="Db"></param>
+            <param name="container"></param>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Business.AbstractBusines.BindMoreDb(EFWCoreLib.CoreFrame.DbProvider.AbstractDatabase,System.String)">
+            <summary>
+            绑定其他数据库
+            </summary>
+            <param name="Db"></param>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Business.AbstractController">
+            <summary>
+            抽象控制器
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Business.AbstractController.oleDb">
+            <summary>
+            数据库操作对象
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Business.AbstractController.WorkId">
+            <summary>
+            获取机构ID
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Business.AbstractController.LoginUserInfo">
+            <summary>
+            系统登录用户信息
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Business.AbstractController.GetUserInfo">
+            <summary>
+            实现不同类型控制器获取登录用户，Web模式从Session中获取，Winform模式从Cache中获取，WCF模式从ClientInfo中获取
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Business.AbstractObjectModel">
+            <summary>
+            抽象对象模型类
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Business.AttributeInfo.efwplusApiControllerAttribute">
+            <summary>
+            WebAPI自定义标签
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Business.AttributeInfo.WebformControllerAttribute">
+            <summary>
+            Webform自定义标签
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Business.AttributeInfo.WebMethodAttribute.OpenDBKeys">
+            <summary>
+            打开数据库，中间用,号隔开
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Business.AttributeInfo.WebMethodAttribute.IsAuthentication">
+            <summary>
+            是否身份验证，默认验证
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Business.AttributeInfo.WinformControllerAttribute.DefaultViewName">
+            <summary>
+            菜单对应打开界面
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Business.AttributeInfo.WinformMethodAttribute.OpenDBKeys">
+            <summary>
+            打开数据库，中间用,号隔开
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Business.AttributeInfo.WinformViewAttribute.Name">
+            <summary>
+            界面名称
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Business.AttributeInfo.WinformViewAttribute.DllName">
+            <summary>
+            界面存放的DLL
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Business.AttributeInfo.WinformViewAttribute.ViewTypeName">
+            <summary>
+            界面类型名称
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Business.AttributeInfo.WCFControllerAttribute">
+            <summary>
+            WCF服务对象自定义标签
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Business.AttributeInfo.WCFMethodAttribute.OpenDBKeys">
+            <summary>
+            打开数据库，中间用,号隔开
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Business.AttributeInfo.WCFMethodAttribute.IsAuthentication">
+            <summary>
+            是否身份验证，默认验证
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Business.BaseFormBusiness.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Business.BaseFormBusiness.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Business.BaseFormBusiness.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Business.ControllerEventHandler">
+            <summary>
+            控制器委托
+            </summary>
+            <param name="eventname">方法名称</param>
+            <param name="objs">参数数组</param>
+            <returns></returns>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Business.IBaseViewBusiness">
+            <summary>
+            控制器基础接口
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Business.IBaseViewBusiness.frmName">
+            <summary>
+            控制器事件
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Business.AbstractDao">
+            <summary>
+            数据库访问对象不可能自己创建数据库操作对象
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Business.AbstractEntity">
+            <summary>
+            实体基类
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Business.AbstractService">
+            <summary>
+            WebService基类
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Business.FactoryModel">
+            <summary>
+            创建实体工厂
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Business.Interface.IbindDb">
+            <summary>
+            清除数据库对象的接口，使业务对象能在Session里保存
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Business.Interface.IbindDb.BindDb(EFWCoreLib.CoreFrame.DbProvider.AbstractDatabase,Microsoft.Practices.Unity.IUnityContainer,Microsoft.Practices.EnterpriseLibrary.Caching.ICacheManager,System.String)">
+            <summary>
+            绑定默认数据库操作对象
+            </summary>
+            <param name="Db">默认数据库对象</param>
+            <param name="container"></param>
+            <param name="cache"></param>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Business.Interface.IbindDb.BindMoreDb(EFWCoreLib.CoreFrame.DbProvider.AbstractDatabase,System.String)">
+            <summary>
+            绑定除默认数据库对象外更多数据库对象
+            </summary>
+            <param name="Db"></param>
+            <param name="dbkey"></param>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Business.Interface.IbindDb.BindDb``1(``0)">
+            <summary>
+            给实体绑定数据库对象
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Business.Interface.IbindDb.ListBindDb``1(System.Collections.Generic.List{``0})">
+            <summary>
+            给List实体绑定数据库对象
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Business.Interface.IbindDb.GetDb">
+            <summary>
+            获取默认数据库对象
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Business.Interface.IbindDb.SetDb(EFWCoreLib.CoreFrame.DbProvider.AbstractDatabase)">
+            <summary>
+            设置数据库
+            </summary>
+            <param name="database"></param>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Business.Interface.IbindDb.GetMoreDb">
+            <summary>
+            获取除默认外配置的更多数据库对象
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Business.Interface.IbindDb.GetUnityContainer">
+            <summary>
+            获取企业库中的UnityContainer
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Business.Interface.IbindDb.SetUnityContainer(Microsoft.Practices.Unity.IUnityContainer)">
+            <summary>
+            设置依赖注入容器
+            </summary>
+            <param name="ucontainer"></param>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Business.Interface.IbindDb.UseDb">
+            <summary>
+            切换到默认数据库
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Business.Interface.IbindDb.UseDb(System.String)">
+            <summary>
+            切换数据库
+            </summary>
+            <param name="dbkey">数据库dbkey</param>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Business.Interface.IbindDb.GetCache">
+            <summary>
+            获取缓存
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Business.Interface.IbindDb.SetCache(Microsoft.Practices.EnterpriseLibrary.Caching.ICacheManager)">
+            <summary>
+            设置缓存
+            </summary>
+            <param name="cache"></param>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Business.Interface.INewDao">
+            <summary>
+            创建Dao对象接口
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Business.Interface.INewDao.NewDao``1">
+            <summary>
+            创建Dao
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Business.Interface.INewDao.NewDao``1(System.String)">
+            <summary>
+            创建带别名的Dao
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="unityname"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Business.Interface.INewObject">
+            <summary>
+            创建领域对象接口
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Business.Interface.INewObject.NewObject``1">
+            <summary>
+            创建领域对象
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Business.Interface.INewObject.NewObject``1(System.String)">
+            <summary>
+            根据别名创建领域对象
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="unityname"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Business.SysLoginRight">
+            <summary>
+            系统登录后存在Session中用户的信息
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Business.SysLoginRight.DeptName">
+            <summary>
+            当前登录科室
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Common.TemplateHelper">
+            <summary>
+            针对NVelocity封装
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.TemplateHelper.Put(System.String,System.Object)">
+            <summary>
+            给模板变量赋值
+            </summary>
+            <param name="key">模板变量</param>
+            <param name="value">模板变量值</param>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.TemplateHelper.BuildString(System.String)">
+            <summary>
+            生成字符
+            </summary>
+            <param name="templatFileName">模板文件名</param>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Common.ZipComporessor">
+            <summary>
+            zip压缩帮助类
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.ZipComporessor.Compress(System.String)">
+            <summary>
+            压缩
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.ZipComporessor.Decompress(System.String)">
+            <summary>
+            解压缩
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.ZipComporessor.ZipFile(System.String,System.String,System.String@)">
+            <summary>
+            功能：压缩文件（暂时只压缩文件夹下一级目录中的文件，文件夹及其子级被忽略）
+            </summary>
+            <param name="dirPath">被压缩的文件夹夹路径</param>
+            <param name="zipFilePath">生成压缩文件的路径，为空则默认与被压缩文件夹同一级目录，名称为：文件夹名+.zip</param>
+            <param name="err">出错信息</param>
+            <returns>是否压缩成功</returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.ZipComporessor.UnZipFile(System.String,System.String,System.String@)">
+            <summary>
+            功能：解压zip格式的文件。
+            </summary>
+            <param name="zipFilePath">压缩文件路径</param>
+            <param name="unZipDir">解压文件存放路径,为空时默认与压缩文件同一级目录下，跟压缩文件同名的文件夹</param>
+            <param name="err">出错信息</param>
+            <returns>解压是否成功</returns>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Common.BarCodeHook">
+            <summary>
+            Winform程序接收扫描的条码，非TextBox接收
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Common.CodeBarInput">
+            <summary>
+            条码枪扫码识别类
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.CodeBarInput.EnabledBarCodeScan(System.IntPtr,System.Int32)">
+            <summary>
+            启用条码扫描输入
+            </summary>
+            <param name="hMainHwnd">接收扫描消息的消息句柄</param>
+            <param name="lWndMsgNo">消息号</param>
+            <returns>0 成功</returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.CodeBarInput.DisabledBarCodeScan">
+            <summary>
+            禁用条码扫描输入
+            </summary>
+            <returns>0 成功</returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.CodeBarInput.EnabledRFIDScan(System.IntPtr,System.Int32,System.Byte[])">
+            <summary>
+            启用RFID读卡扫描输入
+            </summary>
+            <param name="hMainHwnd">接收扫描消息的消息句柄</param>
+            <param name="lWndMsgNo">消息号</param>
+            <param name="pDevType">设备类型名称</param>
+            <returns>0 成功</returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.CodeBarInput.DisabledRFIDScan">
+            <summary>
+            禁用RFID读卡扫描输入
+            </summary>
+            <returns>0 成功</returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.CodeBarInput.EnabledIDCardScan(System.IntPtr,System.Int32,System.Byte[])">
+            <summary>
+            启用二代身份证读卡扫描输入
+            </summary>
+            <param name="hMainHwnd">接收扫描消息的消息句柄</param>
+            <param name="lWndMsgNo">消息号</param>
+            <returns>0 成功</returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.CodeBarInput.DisabledIDCardScan">
+            <summary>
+            禁用二代身份证读卡扫描输入
+            </summary>
+            <returns>0 成功</returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.CodeBarInput.EnabledAllCodeBarInput(System.IntPtr)">
+            <summary>
+            启用所有配置好的扫描输入设备
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.CodeBarInput.DisabledAllCodeBarInput">
+            <summary>
+            禁止所有的扫描输入设备
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Common.ExcelHelper">
+            <summary>
+            导出Excel
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.ExcelHelper.Export(System.Data.DataTable,System.String,System.String)">
+            <summary>  
+            DataTable导出到Excel文件  
+            </summary>  
+            <param name="dtSource">源DataTable</param>  
+            <param name="strHeaderText">表头文本</param>  
+            <param name="strFileName">保存位置</param>  
+            <Author></Author>  
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.ExcelHelper.Export(System.Data.DataTable,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>  
+            DataTable导出到Excel的MemoryStream  
+            </summary>  
+            <param name="dtSource">源DataTable</param>  
+            <param name="strHeaderText">表头文本</param>  
+            <Author> 2010-5-8 22:21:41</Author>  
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.ExcelHelper.ExportByWeb(System.Web.HttpContext,System.Data.DataTable,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.String)">
+            <summary>  
+            用于Web导出  
+            </summary>  
+            <param name="dtSource">源DataTable</param>  
+            <param name="strHeaderText">表头文本</param>  
+            <param name="strFileName">文件名</param>  
+            <Author> 2010-5-8 22:21:41</Author>  
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.ExcelHelper.Import(System.String)">
+            <summary>读取excel  
+            默认第一行为标头  
+            </summary>  
+            <param name="strFileName">excel文档路径</param>  
+            <returns></returns>  
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Common.ConvertExtend">
+            <summary>
+            Convert 的摘要说明。
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.ConvertExtend.IsNull(System.Object,System.String)">
+            <summary>
+            将Null值转换为指定值
+            </summary>
+            <param name="obj">待判断的值</param>
+            <param name="nValue">指定值</param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.ConvertExtend.IsNumeric(System.String)">
+             <summary>
+            判断输入字符串是否为数字
+             </summary>
+             <param name="nValue">字符串</param>
+             <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.ConvertExtend.IsInteger(System.String)">
+             <summary>
+            判断输入字符串是否为整数
+             </summary>
+             <param name="nValue">字符串</param>
+             <returns></returns>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Common.DESEncryptor">
+            <summary>
+            加密解密
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Common.DESEncryptor.inputString">
+            <summary>
+            输入字符串
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Common.DESEncryptor.outString">
+            <summary>
+            输出字符串
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Common.DESEncryptor.inputFilePath">
+            <summary>
+            输入文件路径
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Common.DESEncryptor.outFilePath">
+            <summary>
+            输出文件路径
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Common.DESEncryptor.encryptKey">
+            <summary>
+            加密密钥
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Common.DESEncryptor.decryptKey">
+            <summary>
+            解密密钥
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Common.DESEncryptor.noteMessage">
+            <summary>
+            提示信息
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Common.DESEncryptor.InputString">
+            <summary>
+            输入字符串
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Common.DESEncryptor.OutString">
+            <summary>
+            输出字符串
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Common.DESEncryptor.InputFilePath">
+            <summary>
+            输入文件路径
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Common.DESEncryptor.OutFilePath">
+            <summary>
+            输出文件路径
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Common.DESEncryptor.EncryptKey">
+            <summary>
+            加密密钥
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Common.DESEncryptor.DecryptKey">
+            <summary>
+            解密密钥
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Common.DESEncryptor.NoteMessage">
+            <summary>
+            错误信息
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.DESEncryptor.DesEncrypt">
+            <summary>
+            加密字符串
+            注意:密钥必须为８位
+            </summary>
+            <param name="strText">字符串</param>
+            <param name="encryptKey">密钥</param>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.DESEncryptor.DesDecrypt">
+            <summary>
+            解密字符串
+            </summary>
+            <param name="this.inputString.inputString">加了密的字符串</param>
+            <param name="decryptKey">密钥</param>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.DESEncryptor.FileDesEncrypt">
+            <summary>
+            DES加密文件
+            </summary>
+            <param name="this.inputFilePath.inputFilePath">源文件路径</param>
+            <param name="this.outFilePath.outFilePath">输出文件路径</param>
+            <param name="encryptKey">密钥</param>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.DESEncryptor.FileDesDecrypt">
+            <summary>
+            解密文件
+            </summary>
+            <param name="this.inputFilePath.inputFilePath">加密了的文件路径</param>
+            <param name="this.outFilePath.outFilePath">输出文件路径</param>
+            <param name="decryptKey">密钥</param>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.DESEncryptor.MD5Encrypt">
+            <summary>
+            MD5 Encrypt
+            </summary>
+            <param name="strText">text</param>
+            <returns>md5 Encrypt string</returns>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Common.SpellAndWbCode">
+            <summary>
+            拼音五笔码生成
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Common.SpellAndWbCode.xmld">
+            <summary>
+            XMLDoc
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.SpellAndWbCode.getXmlData">
+            <summary>
+            读取XML文件中数据
+            </summary>
+            <returns>返回String[]</returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.SpellAndWbCode.GetSpellCode(System.String,System.Int32,System.Int32)">
+            <summary>
+            获得汉语的拼音码
+            </summary>
+            <param name="strName">汉字</param>
+            <param name="start">搜索的开始位置</param>
+            <param name="end">搜索的结束位置</param>
+            <returns>汉语反义成字符串，该字符串只包含大写的英文字母</returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.SpellAndWbCode.GetSpellCode(System.String)">
+            <summary>
+            获得汉语的拼音码
+            </summary>
+            <param name="strName">汉字</param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.SpellAndWbCode.GetWBCode(System.String,System.Int32,System.Int32)">
+            <summary>
+            获得汉语的五笔码
+            </summary>
+            <param name="strName">汉字</param>
+            <param name="start">搜索的开始位置</param>
+            <param name="end">搜索的结束位置</param>
+            <returns>汉语反义成字符串，该字符串只包含大写的英文字母</returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.SpellAndWbCode.GetWBCode(System.String)">
+            <summary>
+            获得汉语的五笔码
+            </summary>
+            <param name="strName">汉字</param>
+            <returns></returns>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Common.CollectionConverter">
+            <summary>
+            CollectionConverter 用于转换集合内的元素或集合类型。
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.CollectionConverter.ConvertAll``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})">
+            <summary>
+            ConvertAll 将source中的每个元素转换为TResult类型
+            </summary>       
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.CollectionConverter.ConvertSpecification``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1},System.Predicate{``0})">
+            <summary>
+            ConvertSpecification 将source中的符合predicate条件元素转换为TResult类型
+            </summary>       
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.CollectionConverter.ConvertFirstSpecification``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1},System.Predicate{``0})">
+            <summary>
+            ConvertSpecification 将source中的符合predicate条件的第一个元素转换为TResult类型
+            </summary>       
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.CollectionConverter.ConvertListUpper``2(System.Collections.Generic.IList{``1})">
+            <summary>
+            ConvertListUpper 将子类对象集合转换为基类对象集合
+            </summary>        
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.CollectionConverter.ConvertListDown``2(System.Collections.Generic.IList{``0})">
+            <summary>
+            ConvertListDown 将基类对象集合强制转换为子类对象集合
+            </summary>        
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.CollectionConverter.ConvertArrayToList``1(``0[])">
+            <summary>
+            ConverArrayToList 将数组转换为IList
+            </summary>      
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.CollectionConverter.ConvertListToArray``1(System.Collections.Generic.IList{``0})">
+            <summary>
+            ConverListToArray 将IList转换为数组
+            </summary>      
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.CollectionHelper.Find``1(System.Collections.Generic.IEnumerable{``0},System.Predicate{``0})">
+            <summary>
+            Find 从集合中选取符合条件的元素
+            </summary>       
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.CollectionHelper.FindFirstSpecification``1(System.Collections.Generic.IEnumerable{``0},System.Predicate{``0})">
+            <summary>
+            FindFirstSpecification 返回符合条件的第一个元素
+            </summary>      
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.CollectionHelper.ContainsSpecification``1(System.Collections.Generic.IEnumerable{``0},System.Predicate{``0},``0@)">
+            <summary>
+            ContainsSpecification 集合中是否包含满足predicate条件的元素。
+            </summary>       
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.CollectionHelper.ContainsSpecification``1(System.Collections.Generic.IEnumerable{``0},System.Predicate{``0})">
+            <summary>
+            ContainsSpecification 集合中是否包含满足predicate条件的元素。
+            </summary>       
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.CollectionHelper.ActionOnSpecification``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0},System.Predicate{``0})">
+            <summary>
+            ActionOnSpecification 对集合中满足predicate条件的元素执行action。如果没有条件，predicate传入null。
+            </summary>       
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.CollectionHelper.ActionOnEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
+            <summary>
+            ActionOnEach  对集合中的每个元素执行action。
+            </summary>        
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.CollectionHelper.BinarySearch``1(System.Collections.Generic.IList{``0},``0,System.Int32@)">
+            <summary>
+            BinarySearch 从已排序的列表中，采用二分查找找到目标在列表中的位置。
+            如果刚好有个元素与目标相等，则返回true，且minIndex会被赋予该元素的位置；否则，返回false，且minIndex会被赋予比目标小且最接近目标的元素的位置
+            </summary>       
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.CollectionHelper.GetIntersection``1(System.Collections.Generic.List{``0},System.Collections.Generic.List{``0})">
+            <summary>
+            GetIntersection 高效地求两个List元素的交集。
+            </summary>        
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.CollectionHelper.GetUnion``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IList{``0})">
+            <summary>
+            GetUnion 高效地求两个List元素的并集。
+            </summary> 
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Common.EnumDescription">
+            <summary>
+            EnumDescription 用于描述枚举的特性。	
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.EnumDescription.DoGetFieldTexts(System.Type)">
+            <summary>
+            DoGetFieldTexts 得到枚举类型定义的所有枚举值的描述文本		
+            </summary>	
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.EnumDescription.GetEnumDescriptionText(System.Type)">
+            <summary>
+            GetEnumDescriptionText 获取枚举类型的描述文本。
+            </summary>	   
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.EnumDescription.GetEnumTag(System.Type)">
+            <summary>
+            GetEnumTag 获取枚举类型携带的Tag。
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.EnumDescription.GetFieldText(System.Object)">
+            <summary>
+            GetFieldDescriptionText 获得指定枚举值的描述文本。
+            </summary>		
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.EnumDescription.GetFieldTag(System.Object)">
+            <summary>
+            GetFieldTag 获得指定枚举值的Tag。
+            </summary>
+            <param name="enumValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.EnumDescription.GetEnumValueByTag(System.Type,System.Object)">
+            <summary>
+            GetEnumValueByTag 根据描述Tag获取对应的枚举值
+            </summary>     
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Common.ITimingTaskExcuter">
+            <summary>
+            ITimingTaskExcuter 定时任务执行者。即当定时时刻到达时，将执行该接口的ExcuteOnTime方法。
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.ITimingTaskExcuter.ExcuteOnTime(System.DateTime)">
+            <summary>
+            ExcuteOnTime 实现该方法时最好截获可能抛出的所有异常，如果有未截获的异常抛出，将会被忽略。
+            </summary>        
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Common.Date">
+            <summary>
+            Date 表示年月日。
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Common.DateScope">
+            <summary>
+            DateScope 日期范围
+            zhuweisky 2007.03.15
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.DateScope.Contains(EFWCoreLib.CoreFrame.Common.Date)">
+            <summary>
+            Contains 目标时刻是否在时间范围内
+            </summary>       
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Common.DateTimeScope">
+            <summary>
+            DateTimeScope 时间范围。
+            zhuweisky
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Common.ShortTime">
+            <summary>
+            ShortTime 用于指定小时、分钟、秒。比如上班时间、下班时间。
+            zhuweisky 2007.01.08
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.ShortTime.IsOnTime(System.DateTime,System.Int32)">
+            <summary>
+            IsOnTime 目标时间是否与当前对象所表示的时间的差值是否在maxToleranceInSecs范围之内。
+            </summary>       
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Common.ShortTimeScope">
+            <summary>
+            ShortTimeScope 时间范围。
+            zhuweisky 2007.01.08
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.ShortTimeScope.Contains(EFWCoreLib.CoreFrame.Common.ShortTime)">
+            <summary>
+            Contains 目标时刻是否在时间范围内
+            </summary>       
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Common.TimeHelper">
+            <summary>
+            TimeHelper 与DateTime相关的工具类
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.TimeHelper.IsOnTime(System.DateTime,System.DateTime,System.Int32)">
+            <summary>
+            IsOnTime 时间val与requiredTime之间的差值是否在maxToleranceInSecs范围之内。
+            </summary>        
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.TimeHelper.IsOnTime(System.DateTime,System.DateTime,System.Int32,System.Int32)">
+            <summary>
+            IsOnTime 对于循环调用，时间val与startTime之间的差值(>0)对cycleSpanInSecs求余数的结果是否在maxToleranceInSecs范围之内。
+            </summary>        
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Common.Week">
+            <summary>
+            Week 周。表示某一个星期。
+            zhuweisky 2009.05.20
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Common.Week.GetLastMondayDate(System.DateTime)">
+            <summary>
+            GetLastMondayDate 在获取离dt最近的一个周一。
+            </summary>  
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Common.TimingTask">
+            <summary>
+            TimingTask 定时任务。封装了定时任务的执行频率、执行时间、和要执行的目标方法。
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Common.TimingTask.ExcuteTime">
+            <summary>
+            ExcuteTime 任务执行的具体时刻。如果TimingTaskType为PerHour，则将忽略ExcuteTime的Hour属性。
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Common.TimingTask.DayOfWeek">
+            <summary>
+            DayOfWeek 该属性只有在TimingTaskType为PerWeek时才有效，表示在周几执行。
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Common.TimingTask.Day">
+            <summary>
+            Day 该属性只有在TimingTaskType为PerMonth时才有效，表示在每月的几号执行。
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Common.TimingTaskManager">
+            <summary>
+            TimingTaskManager 用于管理所有的定时任务，并在时间到达时，异步执行任务。
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Common.TimingTaskType">
+            <summary>
+            TimingTaskType 定时任务的类型 
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Init.AttributeManager.EntityManager">
+            <summary>
+            实体自定配置管理类
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Init.AttributeManager.EntityManager.LoadAttribute(System.Collections.Generic.List{System.Reflection.Assembly},Microsoft.Practices.EnterpriseLibrary.Caching.ICacheManager,System.String)">
+            <summary>
+            加载自定义标签
+            </summary>
+            <param name="BusinessDll">Dll路径</param>
+            <param name="cache">存入缓存</param>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Init.AttributeManager.ColumnAttributeInfo">
+            <summary>
+            列属性信息
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Init.AttributeManager.ColumnAttributeInfo.Alias">
+            <summary>
+            别名
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Init.AttributeManager.ColumnAttributeInfo.FieldName">
+            <summary>
+            字段名称
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Init.AttributeManager.ColumnAttributeInfo.PropertyName">
+            <summary>
+            属性名称
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Init.AttributeManager.ColumnAttributeInfo.DataKey">
+            <summary>
+            是否为主键
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Init.AttributeManager.ColumnAttributeInfo.IsSingleQuote">
+            <summary>
+            字段类型带不带单引号
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Init.AttributeManager.ColumnAttributeInfo.Match">
+            <summary>
+            值的匹配条件
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Init.AttributeManager.ColumnAttributeInfo.IsInsert">
+            <summary>
+            是否Add到库
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Init.FrmConfig.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Init.FrmConfig.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Init.FrmConfig.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Init.FrmSplash">
+            <summary>
+            frmSplash 的摘要说明。
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Init.FrmSplash.Dispose(System.Boolean)">
+            <summary>
+            清理所有正在使用的资源。
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Init.FrmSplash.InitializeComponent">
+            <summary>
+            设计器支持所需的方法 - 不要使用代码编辑器修改
+            此方法的内容。
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Init.BaseDelegateCode">
+            <summary>
+            委托代码
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Init.BaseDelegateCode.LoadFun(System.Collections.Generic.List{EFWCoreLib.CoreFrame.Init.FunClass})">
+            <summary>
+            导入数据
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Init.BaseDelegateCode.Invoke(System.String,System.Object[])">
+            <summary>
+            调用方法
+            </summary>
+            <param name="funName">方法名称</param>
+            <param name="args">参数</param>
+            <returns></returns>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Init.GlobalExtend">
+            <summary>
+            系统启动与停止扩展
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Init.MultiTask">
+            <summary>
+            定制任务
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:EFWCoreLib.CoreFrame.Init.MultiTask.LoadTask(System.Collections.Generic.List{EFWCoreLib.CoreFrame.Common.TimingTask})" -->
+        <member name="T:EFWCoreLib.CoreFrame.Init.TaskContent">
+            <summary>
+            执行的任务内容
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Init.AppPluginManage">
+            <summary>
+            程序运行后的插件管理
+            插件实现热插拔，有两种方式：
+            1）用AppDomain，但这种方式在这里行不通，因为AppDomain之间传递的对象太复杂
+            2）用内存中读取dll的方式
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Init.AppPluginManage.LoadAllPlugin">
+            <summary>
+            加载所有插件
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Init.AppPluginManage.AddPlugin(System.String)">
+            <summary>
+            加载插件，创建AppDomain来动态加载或卸载dll
+            </summary>
+            <param name="plugfile"></param>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Init.AppPluginManage.RemovePlugin(System.String)">
+            <summary>
+            卸载插件
+            </summary>
+            <param name="plugname"></param>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Init.AppPluginManage.RemoveAllPlugin">
+            <summary>
+            卸载所有插件
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Init.AppGlobal">
+            <summary>
+            系统启动前初始化环境
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Init.AppGlobal.appType">
+            <summary>
+            程序类型
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Init.AppGlobal.AppRootPath">
+            <summary>
+            应用程序根目录，后面不需要跟\\
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Init.AppGlobal.IsRun">
+            <summary>
+            是否启动成功
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Init.AppGlobal.IsSaas">
+            <summary>
+            是否Saas模式，where条件是否加workid
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Init.AppGlobal.container">
+            <summary>
+            默认Unity对象容器
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Init.AppGlobal.cache">
+            <summary>
+            默认企业库缓存
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Init.AppGlobal.database">
+            <summary>
+            默认数据库对象
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Init.AppGlobal.taskList">
+            <summary>
+            定制任务
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Init.AppGlobal.codeList">
+            <summary>
+            委托代码
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Init.AppGlobal.missingDll">
+            <summary>
+            缺失的程序集dll
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Orm.ColumnAttribute">
+            <summary>
+            数据列自定义属性
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.ColumnAttribute.Alias">
+            <summary>
+            别名
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.ColumnAttribute.FieldName">
+            <summary>
+            字段名称
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.ColumnAttribute.DataKey">
+            <summary>
+            是否为主键
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.ColumnAttribute.Match">
+            <summary>
+            值的匹配条件
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.ColumnAttribute.IsInsert">
+            <summary>
+            Add是否插入到数据库
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Orm.RelationNameAttribute">
+            <summary>
+            外键映射名称
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.RelationNameAttribute.TypeName">
+            <summary>
+            缓存集合的名称
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.RelationNameAttribute.PropertyName">
+            <summary>
+            外键Code的映射属性名
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Orm.RelationFunction">
+            <summary>
+            给实体属性赋值
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Orm.RelationFunction.GetRelationName">
+            <summary>
+            缓存集合中根据名称和外键字段值，获取名称值
+            GetRelationName getName = delegate(string typeName,string codeValue){//?};
+            </summary>
+            <param name="typeName">缓存数据源（CommonData）中的名称</param>
+            <param name="codeValue">外键Code的映射字段的值</param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.RelationFunction.GetRelationInfo(System.Object,EFWCoreLib.CoreFrame.Orm.RelationFunction.GetRelationName)">
+            <summary>
+            给定义的实体属性赋值
+            </summary>
+            <param name="model"></param>
+            <param name="relation"></param>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Orm.EntityType">
+            <summary>
+            实体类型
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Orm.EntityType.Table">
+            <summary>表</summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Orm.EntityType.View">
+            <summary>视图</summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Orm.TableAttribute">
+            <summary>
+            数据表自定义属性
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Orm.TableAttribute.KeyFieldName">
+            <summary>
+            主键字段名
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.TableAttribute.Alias">
+            <summary>
+            别名
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.TableAttribute.TableName">
+            <summary>
+            映射的表名
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.TableAttribute.EntityType">
+            <summary>
+            实体类型
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.TableAttribute.IsGB">
+            <summary>
+            是否是国标（共享）
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Orm.CommandFlags">
+            <summary>
+            Additional state flags that control command behaviour
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Orm.CommandFlags.None">
+            <summary>
+            No additional flags
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Orm.CommandFlags.Buffered">
+            <summary>
+            Should data be buffered before returning?
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Orm.CommandFlags.Pipelined">
+            <summary>
+            Can async queries be pipelined?
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Orm.CommandFlags.NoCache">
+            <summary>
+            Should the plan cache be bypassed?
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Orm.CommandDefinition">
+            <summary>
+            Represents the key aspects of a sql operation
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.CommandDefinition.CommandText">
+            <summary>
+            The command (sql or a stored-procedure name) to execute
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.CommandDefinition.Parameters">
+            <summary>
+            The parameters associated with the command
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.CommandDefinition.Transaction">
+            <summary>
+            The active transaction for the command
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.CommandDefinition.CommandTimeout">
+            <summary>
+            The effective timeout for the command
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.CommandDefinition.CommandType">
+            <summary>
+            The type of command that the command-text represents
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.CommandDefinition.Buffered">
+            <summary>
+            Should data be buffered before returning?
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.CommandDefinition.AddToCache">
+            <summary>
+            Should the plan for this query be cached?
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.CommandDefinition.Flags">
+            <summary>
+            Additional state flags against this command
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.CommandDefinition.Pipelined">
+            <summary>
+            Can async queries be pipelined?
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.CommandDefinition.#ctor(System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType},EFWCoreLib.CoreFrame.Orm.CommandFlags)">
+            <summary>
+            Initialize the command definition
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Orm.SqlMapper">
+            <summary>
+            Dapper, a light weight object mapper for ADO.NET
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Orm.SqlMapper.IDynamicParameters">
+            <summary>
+            Implement this interface to pass an arbitrary db specific set of parameters to Dapper
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.IDynamicParameters.AddParameters(System.Data.IDbCommand,EFWCoreLib.CoreFrame.Orm.SqlMapper.Identity)">
+            <summary>
+            Add all the parameters needed to the command just before it executes
+            </summary>
+            <param name="command">The raw command prior to execution</param>
+            <param name="identity">Information about the query</param>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Orm.SqlMapper.IParameterLookup">
+            <summary>
+            Extends IDynamicParameters providing by-name lookup of parameter values
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.SqlMapper.IParameterLookup.Item(System.String)">
+            <summary>
+            Get the value of the specified parameter (return null if not found)
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Orm.SqlMapper.IParameterCallbacks">
+            <summary>
+            Extends IDynamicParameters with facilities for executing callbacks after commands have completed
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.IParameterCallbacks.OnCompleted">
+            <summary>
+            Invoked when the command has executed
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Orm.SqlMapper.ICustomQueryParameter">
+            <summary>
+            Implement this interface to pass an arbitrary db specific parameter to Dapper
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.ICustomQueryParameter.AddParameter(System.Data.IDbCommand,System.String)">
+            <summary>
+            Add the parameter needed to the command before it executes
+            </summary>
+            <param name="command">The raw command prior to execution</param>
+            <param name="name">Parameter name</param>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Orm.SqlMapper.ITypeHandler">
+            <summary>
+            Implement this interface to perform custom type-based parameter handling and value parsing
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.ITypeHandler.SetValue(System.Data.IDbDataParameter,System.Object)">
+            <summary>
+            Assign the value of a parameter before a command executes
+            </summary>
+            <param name="parameter">The parameter to configure</param>
+            <param name="value">Parameter value</param>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.ITypeHandler.Parse(System.Type,System.Object)">
+            <summary>
+            Parse a database value back to a typed value
+            </summary>
+            <param name="value">The value from the database</param>
+            <param name="destinationType">The type to parse to</param>
+            <returns>The typed value</returns>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Orm.SqlMapper.UdtTypeHandler">
+            <summary>
+            A type handler for data-types that are supported by the underlying provider, but which need
+            a well-known UdtTypeName to be specified
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.UdtTypeHandler.#ctor(System.String)">
+            <summary>
+            Creates a new instance of UdtTypeHandler with the specified UdtTypeName
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Orm.SqlMapper.TypeHandler`1">
+            <summary>
+            Base-class for simple type-handlers
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.TypeHandler`1.SetValue(System.Data.IDbDataParameter,`0)">
+            <summary>
+            Assign the value of a parameter before a command executes
+            </summary>
+            <param name="parameter">The parameter to configure</param>
+            <param name="value">Parameter value</param>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.TypeHandler`1.Parse(System.Object)">
+            <summary>
+            Parse a database value back to a typed value
+            </summary>
+            <param name="value">The value from the database</param>
+            <returns>The typed value</returns>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Orm.SqlMapper.ITypeMap">
+            <summary>
+            Implement this interface to change default mapping of reader columns to type members
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.ITypeMap.FindConstructor(System.String[],System.Type[])">
+            <summary>
+            Finds best constructor
+            </summary>
+            <param name="names">DataReader column names</param>
+            <param name="types">DataReader column types</param>
+            <returns>Matching constructor or default one</returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.ITypeMap.FindExplicitConstructor">
+            <summary>
+            Returns a constructor which should *always* be used.
+            
+            Parameters will be default values, nulls for reference types and zero'd for value types.
+            
+            Use this class to force object creation away from parameterless constructors you don't control.
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.ITypeMap.GetConstructorParameter(System.Reflection.ConstructorInfo,System.String)">
+            <summary>
+            Gets mapping for constructor parameter
+            </summary>
+            <param name="constructor">Constructor to resolve</param>
+            <param name="columnName">DataReader column name</param>
+            <returns>Mapping implementation</returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.ITypeMap.GetMember(System.String)">
+            <summary>
+            Gets member mapping for column
+            </summary>
+            <param name="columnName">DataReader column name</param>
+            <returns>Mapping implementation</returns>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Orm.SqlMapper.IMemberMap">
+            <summary>
+            Implements this interface to provide custom member mapping
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.SqlMapper.IMemberMap.ColumnName">
+            <summary>
+            Source DataReader column name
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.SqlMapper.IMemberMap.MemberType">
+            <summary>
+             Target member type
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.SqlMapper.IMemberMap.Property">
+            <summary>
+            Target property
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.SqlMapper.IMemberMap.Field">
+            <summary>
+            Target field
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.SqlMapper.IMemberMap.Parameter">
+            <summary>
+            Target constructor parameter
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Orm.SqlMapper.Link`2">
+            <summary>
+            This is a micro-cache; suitable when the number of terms is controllable (a few hundred, for example),
+            and strictly append-only; you cannot change existing values. All key matches are on **REFERENCE**
+            equality. The type is fully thread-safe.
+            </summary>
+        </member>
+        <member name="E:EFWCoreLib.CoreFrame.Orm.SqlMapper.QueryCachePurged">
+            <summary>
+            Called if the query cache is purged via PurgeQueryCache
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.PurgeQueryCache">
+            <summary>
+            Purge the query cache 
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.GetCachedSQLCount">
+            <summary>
+            Return a count of all the cached queries by dapper
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.GetCachedSQL(System.Int32)">
+            <summary>
+            Return a list of all the queries cached by dapper
+            </summary>
+            <param name="ignoreHitCountAbove"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.GetHashCollissions">
+            <summary>
+            Deep diagnostics only: find any hash collisions in the cache
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.ResetTypeHandlers">
+            <summary>
+            Clear the registered type handlers
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.AddTypeMap(System.Type,System.Data.DbType)">
+            <summary>
+            Configure the specified type to be mapped to a given db-type
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.AddTypeHandler(System.Type,EFWCoreLib.CoreFrame.Orm.SqlMapper.ITypeHandler)">
+            <summary>
+            Configure the specified type to be processed by a custom handler
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.AddTypeHandlerImpl(System.Type,EFWCoreLib.CoreFrame.Orm.SqlMapper.ITypeHandler,System.Boolean)">
+            <summary>
+            Configure the specified type to be processed by a custom handler
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.AddTypeHandler``1(EFWCoreLib.CoreFrame.Orm.SqlMapper.TypeHandler{``0})">
+            <summary>
+            Configure the specified type to be processed by a custom handler
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Orm.SqlMapper.TypeHandlerCache`1">
+            <summary>
+            Not intended for direct usage
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.TypeHandlerCache`1.Parse(System.Object)">
+            <summary>
+            Not intended for direct usage
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.TypeHandlerCache`1.SetValue(System.Data.IDbDataParameter,System.Object)">
+            <summary>
+            Not intended for direct usage
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.GetDbType(System.Object)">
+            <summary>
+            Get the DbType that maps to a given value
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Orm.SqlMapper.Identity">
+            <summary>
+            Identity of a cached query in Dapper, used for extensibility
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.Identity.ForDynamicParameters(System.Type)">
+            <summary>
+            Create an identity for use with DynamicParameters, internal use only
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.Identity.Equals(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Orm.SqlMapper.Identity.sql">
+            <summary>
+            The sql
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Orm.SqlMapper.Identity.commandType">
+            <summary>
+            The command type 
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Orm.SqlMapper.Identity.hashCode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Orm.SqlMapper.Identity.gridIndex">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Orm.SqlMapper.Identity.type">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Orm.SqlMapper.Identity.connectionString">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Orm.SqlMapper.Identity.parametersType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.Identity.GetHashCode">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.Identity.Equals(EFWCoreLib.CoreFrame.Orm.SqlMapper.Identity)">
+            <summary>
+            Compare 2 Identity objects
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.Execute(System.Data.IDbConnection,System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            Execute parameterized SQL  
+            </summary>
+            <returns>Number of rows affected</returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.Execute(System.Data.IDbConnection,EFWCoreLib.CoreFrame.Orm.CommandDefinition)">
+            <summary>
+            Execute parameterized SQL  
+            </summary>
+            <returns>Number of rows affected</returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.ExecuteScalar(System.Data.IDbConnection,System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            Execute parameterized SQL that selects a single value
+            </summary>
+            <returns>The first cell selected</returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.ExecuteScalar``1(System.Data.IDbConnection,System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            Execute parameterized SQL that selects a single value
+            </summary>
+            <returns>The first cell selected</returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.ExecuteScalar(System.Data.IDbConnection,EFWCoreLib.CoreFrame.Orm.CommandDefinition)">
+            <summary>
+            Execute parameterized SQL that selects a single value
+            </summary>
+            <returns>The first cell selected</returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.ExecuteScalar``1(System.Data.IDbConnection,EFWCoreLib.CoreFrame.Orm.CommandDefinition)">
+            <summary>
+            Execute parameterized SQL that selects a single value
+            </summary>
+            <returns>The first cell selected</returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.ExecuteReader(System.Data.IDbConnection,System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            Execute parameterized SQL and return an <see cref="T:System.Data.IDataReader"/>
+            </summary>
+            <returns>An <see cref="T:System.Data.IDataReader"/> that can be used to iterate over the results of the SQL query.</returns>
+            <remarks>
+            This is typically used when the results of a query are not processed by Dapper, for example, used to fill a <see cref="T:System.Data.DataTable"/>
+            or <see cref="T:System.Data.DataSet"/>.
+            </remarks>
+            <example>
+            <code>
+            <![CDATA[
+            DataTable table = new DataTable("MyTable");
+            using (var reader = ExecuteReader(cnn, sql, param))
+            {
+                table.Load(reader);
+            }
+            ]]>
+            </code>
+            </example>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.ExecuteReader(System.Data.IDbConnection,EFWCoreLib.CoreFrame.Orm.CommandDefinition)">
+            <summary>
+            Execute parameterized SQL and return an <see cref="T:System.Data.IDataReader"/>
+            </summary>
+            <returns>An <see cref="T:System.Data.IDataReader"/> that can be used to iterate over the results of the SQL query.</returns>
+            <remarks>
+            This is typically used when the results of a query are not processed by Dapper, for example, used to fill a <see cref="T:System.Data.DataTable"/>
+            or <see cref="T:System.Data.DataSet"/>.
+            </remarks>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.ExecuteReader(System.Data.IDbConnection,EFWCoreLib.CoreFrame.Orm.CommandDefinition,System.Data.CommandBehavior)">
+            <summary>
+            Execute parameterized SQL and return an <see cref="T:System.Data.IDataReader"/>
+            </summary>
+            <returns>An <see cref="T:System.Data.IDataReader"/> that can be used to iterate over the results of the SQL query.</returns>
+            <remarks>
+            This is typically used when the results of a query are not processed by Dapper, for example, used to fill a <see cref="T:System.Data.DataTable"/>
+            or <see cref="T:System.Data.DataSet"/>.
+            </remarks>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.Query(System.Data.IDbConnection,System.String,System.String,System.Object,System.Data.IDbTransaction,System.Boolean,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            Return a list of dynamic objects, reader is closed after the call
+            </summary>
+            <remarks>Note: each row can be accessed via "dynamic", or by casting to an IDictionary&lt;string,object&gt;</remarks>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.Query``1(System.Data.IDbConnection,System.String,System.String,System.Object,System.Data.IDbTransaction,System.Boolean,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            Executes a query, returning the data typed as per T
+            </summary>
+            <remarks>the dynamic param may seem a bit odd, but this works around a major usability issue in vs, if it is Object vs completion gets annoying. Eg type new [space] get new object</remarks>
+            <returns>A sequence of data of the supplied type; if a basic type (int, string, etc) is queried then the data from the first column in assumed, otherwise an instance is
+            created per row, and a direct column-name===member-name mapping is assumed (case insensitive).
+            </returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.Query(System.Data.IDbConnection,System.Type,System.String,System.Object,System.Data.IDbTransaction,System.Boolean,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            Executes a query, returning the data typed as per the Type suggested
+            </summary>
+            <returns>A sequence of data of the supplied type; if a basic type (int, string, etc) is queried then the data from the first column in assumed, otherwise an instance is
+            created per row, and a direct column-name===member-name mapping is assumed (case insensitive).
+            </returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.Query``1(System.Data.IDbConnection,EFWCoreLib.CoreFrame.Orm.CommandDefinition)">
+            <summary>
+            Executes a query, returning the data typed as per T
+            </summary>
+            <remarks>the dynamic param may seem a bit odd, but this works around a major usability issue in vs, if it is Object vs completion gets annoying. Eg type new [space] get new object</remarks>
+            <returns>A sequence of data of the supplied type; if a basic type (int, string, etc) is queried then the data from the first column in assumed, otherwise an instance is
+            created per row, and a direct column-name===member-name mapping is assumed (case insensitive).
+            </returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.QueryMultiple(System.Data.IDbConnection,System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            Execute a command that returns multiple result sets, and access each in turn
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.QueryMultiple(System.Data.IDbConnection,EFWCoreLib.CoreFrame.Orm.CommandDefinition)">
+            <summary>
+            Execute a command that returns multiple result sets, and access each in turn
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.Query``3(System.Data.IDbConnection,System.String,System.String,System.Func{``0,``1,``2},System.Object,System.Data.IDbTransaction,System.Boolean,System.String,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            Maps a query to objects
+            </summary>
+            <typeparam name="TFirst">The first type in the record set</typeparam>
+            <typeparam name="TSecond">The second type in the record set</typeparam>
+            <typeparam name="TReturn">The return type</typeparam>
+            <param name="cnn"></param>
+            <param name="sql"></param>
+            <param name="map"></param>
+            <param name="param"></param>
+            <param name="transaction"></param>
+            <param name="buffered"></param>
+            <param name="splitOn">The Field we should split and read the second object from (default: id)</param>
+            <param name="commandTimeout">Number of seconds before command execution timeout</param>
+            <param name="commandType">Is it a stored proc or a batch?</param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.Query``4(System.Data.IDbConnection,System.String,System.String,System.Func{``0,``1,``2,``3},System.Object,System.Data.IDbTransaction,System.Boolean,System.String,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            Maps a query to objects
+            </summary>
+            <typeparam name="TFirst"></typeparam>
+            <typeparam name="TSecond"></typeparam>
+            <typeparam name="TThird"></typeparam>
+            <typeparam name="TReturn"></typeparam>
+            <param name="cnn"></param>
+            <param name="sql"></param>
+            <param name="map"></param>
+            <param name="param"></param>
+            <param name="transaction"></param>
+            <param name="buffered"></param>
+            <param name="splitOn">The Field we should split and read the second object from (default: id)</param>
+            <param name="commandTimeout">Number of seconds before command execution timeout</param>
+            <param name="commandType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.Query``5(System.Data.IDbConnection,System.String,System.String,System.Func{``0,``1,``2,``3,``4},System.Object,System.Data.IDbTransaction,System.Boolean,System.String,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            Perform a multi mapping query with 4 input parameters
+            </summary>
+            <typeparam name="TFirst"></typeparam>
+            <typeparam name="TSecond"></typeparam>
+            <typeparam name="TThird"></typeparam>
+            <typeparam name="TFourth"></typeparam>
+            <typeparam name="TReturn"></typeparam>
+            <param name="cnn"></param>
+            <param name="sql"></param>
+            <param name="map"></param>
+            <param name="param"></param>
+            <param name="transaction"></param>
+            <param name="buffered"></param>
+            <param name="splitOn"></param>
+            <param name="commandTimeout"></param>
+            <param name="commandType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.Query``6(System.Data.IDbConnection,System.String,System.String,System.Func{``0,``1,``2,``3,``4,``5},System.Object,System.Data.IDbTransaction,System.Boolean,System.String,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            Perform a multi mapping query with 5 input parameters
+            </summary>
+            <typeparam name="TFirst"></typeparam>
+            <typeparam name="TSecond"></typeparam>
+            <typeparam name="TThird"></typeparam>
+            <typeparam name="TFourth"></typeparam>
+            <typeparam name="TFifth"></typeparam>
+            <typeparam name="TReturn"></typeparam>
+            <param name="cnn"></param>
+            <param name="sql"></param>
+            <param name="map"></param>
+            <param name="param"></param>
+            <param name="transaction"></param>
+            <param name="buffered"></param>
+            <param name="splitOn"></param>
+            <param name="commandTimeout"></param>
+            <param name="commandType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.Query``7(System.Data.IDbConnection,System.String,System.String,System.Func{``0,``1,``2,``3,``4,``5,``6},System.Object,System.Data.IDbTransaction,System.Boolean,System.String,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            Perform a multi mapping query with 6 input parameters
+            </summary>
+            <typeparam name="TFirst"></typeparam>
+            <typeparam name="TSecond"></typeparam>
+            <typeparam name="TThird"></typeparam>
+            <typeparam name="TFourth"></typeparam>
+            <typeparam name="TFifth"></typeparam>
+            <typeparam name="TSixth"></typeparam>
+            <typeparam name="TReturn"></typeparam>
+            <param name="cnn"></param>
+            <param name="sql"></param>
+            <param name="map"></param>
+            <param name="param"></param>
+            <param name="transaction"></param>
+            <param name="buffered"></param>
+            <param name="splitOn"></param>
+            <param name="commandTimeout"></param>
+            <param name="commandType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.Query``8(System.Data.IDbConnection,System.String,System.String,System.Func{``0,``1,``2,``3,``4,``5,``6,``7},System.Object,System.Data.IDbTransaction,System.Boolean,System.String,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            Perform a multi mapping query with 7 input parameters
+            </summary>
+            <typeparam name="TFirst"></typeparam>
+            <typeparam name="TSecond"></typeparam>
+            <typeparam name="TThird"></typeparam>
+            <typeparam name="TFourth"></typeparam>
+            <typeparam name="TFifth"></typeparam>
+            <typeparam name="TSixth"></typeparam>
+            <typeparam name="TSeventh"></typeparam>
+            <typeparam name="TReturn"></typeparam>
+            <param name="cnn"></param>
+            <param name="sql"></param>
+            <param name="map"></param>
+            <param name="param"></param>
+            <param name="transaction"></param>
+            <param name="buffered"></param>
+            <param name="splitOn"></param>
+            <param name="commandTimeout"></param>
+            <param name="commandType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.Query``1(System.Data.IDbConnection,System.String,System.Type[],System.Func{System.Object[],``0},System.Object,System.Data.IDbTransaction,System.Boolean,System.String,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})">
+            <summary>
+            Perform a multi mapping query with arbitrary input parameters
+            </summary>
+            <typeparam name="TReturn">The return type</typeparam>
+            <param name="cnn"></param>
+            <param name="sql"></param>
+            <param name="types">array of types in the record set</param>
+            <param name="map"></param>
+            <param name="param"></param>
+            <param name="transaction"></param>
+            <param name="buffered"></param>
+            <param name="splitOn">The Field we should split and read the second object from (default: id)</param>
+            <param name="commandTimeout">Number of seconds before command execution timeout</param>
+            <param name="commandType">Is it a stored proc or a batch?</param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.ReadChar(System.Object)">
+            <summary>
+            Internal use only
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.ReadNullableChar(System.Object)">
+            <summary>
+            Internal use only
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.FindOrAddParameter(System.Data.IDataParameterCollection,System.Data.IDbCommand,System.String)">
+            <summary>
+            Internal use only
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.PackListParameters(System.Data.IDbCommand,System.String,System.Object)">
+            <summary>
+            Internal use only
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Orm.SqlMapper.LiteralToken">
+            <summary>
+            Represents a placeholder for a value that should be replaced as a literal value in the resulting sql
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.SqlMapper.LiteralToken.Token">
+            <summary>
+            The text in the original command that should be replaced
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.SqlMapper.LiteralToken.Member">
+            <summary>
+            The name of the member referred to by the token
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.ReplaceLiterals(EFWCoreLib.CoreFrame.Orm.SqlMapper.IParameterLookup,System.Data.IDbCommand)">
+            <summary>
+            Replace all literal tokens with their text form
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.Format(System.Object)">
+            <summary>
+            Convert numeric values to their string form for SQL literal purposes
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.CreateParamInfoGenerator(EFWCoreLib.CoreFrame.Orm.SqlMapper.Identity,System.Boolean,System.Boolean)">
+            <summary>
+            Internal use only
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.GetTypeMap(System.Type)">
+            <summary>
+            Gets type-map for the given type
+            </summary>
+            <returns>Type map implementation, DefaultTypeMap instance if no override present</returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.SetTypeMap(System.Type,EFWCoreLib.CoreFrame.Orm.SqlMapper.ITypeMap)">
+            <summary>
+            Set custom mapping for type deserializers
+            </summary>
+            <param name="type">Entity type to override</param>
+            <param name="map">Mapping rules impementation, null to remove custom map</param>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.GetTypeDeserializer(System.Type,System.Data.IDataReader,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Internal use only
+            </summary>
+            <param name="type"></param>
+            <param name="reader"></param>
+            <param name="startBound"></param>
+            <param name="length"></param>
+            <param name="returnNullIfFirstMissing"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.ThrowDataException(System.Exception,System.Int32,System.Data.IDataReader,System.Object)">
+            <summary>
+            Throws a data exception, only used internally
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Orm.SqlMapper.DataTableTypeNameKey">
+            <summary>
+            Key used to indicate the type name associated with a DataTable
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.SqlMapper.ConnectionStringComparer">
+            <summary>
+            How should connection strings be compared for equivalence? Defaults to StringComparer.Ordinal.
+            Providing a custom implementation can be useful for allowing multi-tenancy databases with identical
+            schema to share strategies. Note that usual equivalence rules apply: any equivalent connection strings
+            <b>MUST</b> yield the same hash-code.
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Orm.SqlMapper.GridReader">
+            <summary>
+            The grid reader provides interfaces for reading multiple result sets from a Dapper query 
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.GridReader.Read(System.Boolean)">
+            <summary>
+            Read the next grid of results, returned as a dynamic object
+            </summary>
+            <remarks>Note: each row can be accessed via "dynamic", or by casting to an IDictionary&lt;string,object&gt;</remarks>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.GridReader.Read``1(System.Boolean)">
+            <summary>
+            Read the next grid of results
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.GridReader.Read(System.Type,System.Boolean)">
+            <summary>
+            Read the next grid of results
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.GridReader.Read``3(System.Func{``0,``1,``2},System.String,System.Boolean)">
+            <summary>
+            Read multiple objects from a single record set on the grid
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.GridReader.Read``4(System.Func{``0,``1,``2,``3},System.String,System.Boolean)">
+            <summary>
+            Read multiple objects from a single record set on the grid
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.GridReader.Read``5(System.Func{``0,``1,``2,``3,``4},System.String,System.Boolean)">
+            <summary>
+            Read multiple objects from a single record set on the grid
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.GridReader.Read``6(System.Func{``0,``1,``2,``3,``4,``5},System.String,System.Boolean)">
+            <summary>
+            Read multiple objects from a single record set on the grid
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.GridReader.Read``7(System.Func{``0,``1,``2,``3,``4,``5,``6},System.String,System.Boolean)">
+            <summary>
+            Read multiple objects from a single record set on the grid
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.GridReader.Read``8(System.Func{``0,``1,``2,``3,``4,``5,``6,``7},System.String,System.Boolean)">
+            <summary>
+            Read multiple objects from a single record set on the grid
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.SqlMapper.GridReader.IsConsumed">
+            <summary>
+            Has the underlying reader been consumed?
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.GridReader.Dispose">
+            <summary>
+            Dispose the grid, closing and disposing both the underlying reader and command.
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.AsTableValuedParameter(System.Data.DataTable,System.String)">
+            <summary>
+            Used to pass a DataTable as a TableValuedParameter
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.SetTypeName(System.Data.DataTable,System.String)">
+            <summary>
+            Associate a DataTable with a type name
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SqlMapper.GetTypeName(System.Data.DataTable)">
+            <summary>
+            Fetch the type name associated with a DataTable
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Orm.DynamicParameters">
+            <summary>
+            A bag of parameters that can be passed to the Dapper Query and Execute methods
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.DynamicParameters.#ctor">
+            <summary>
+            construct a dynamic parameter bag
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.DynamicParameters.#ctor(System.Object)">
+            <summary>
+            construct a dynamic parameter bag
+            </summary>
+            <param name="template">can be an anonymous type or a DynamicParameters bag</param>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.DynamicParameters.AddDynamicParams(System.Object)">
+            <summary>
+            Append a whole object full of params to the dynamic
+            EG: AddDynamicParams(new {A = 1, B = 2}) // will add property A and B to the dynamic
+            </summary>
+            <param name="param"></param>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.DynamicParameters.Add(System.String,System.Object,System.Nullable{System.Data.DbType},System.Nullable{System.Data.ParameterDirection},System.Nullable{System.Int32})">
+            <summary>
+            Add a parameter to this dynamic parameter list
+            </summary>
+            <param name="name"></param>
+            <param name="value"></param>
+            <param name="dbType"></param>
+            <param name="direction"></param>
+            <param name="size"></param>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.DynamicParameters.RemoveUnused">
+            <summary>
+            If true, the command-text is inspected and only values that are clearly used are included on the connection
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.DynamicParameters.AddParameters(System.Data.IDbCommand,EFWCoreLib.CoreFrame.Orm.SqlMapper.Identity)">
+            <summary>
+            Add all the parameters needed to the command just before it executes
+            </summary>
+            <param name="command">The raw command prior to execution</param>
+            <param name="identity">Information about the query</param>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.DynamicParameters.ParameterNames">
+            <summary>
+            All the names of the param in the bag, use Get to yank them out
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.DynamicParameters.Get``1(System.String)">
+            <summary>
+            Get the value of a parameter
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="name"></param>
+            <returns>The value, note DBNull.Value is not returned, instead the value is returned as null</returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.DynamicParameters.Output``1(``0,System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.Nullable{System.Data.DbType},System.Nullable{System.Int32})">
+            <summary>
+            Allows you to automatically populate a target property/field from output parameters. It actually
+            creates an InputOutput parameter, so you can still pass data in. 
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="target">The object whose property/field you wish to populate.</param>
+            <param name="expression">A MemberExpression targeting a property/field of the target (or descendant thereof.)</param>
+            <param name="dbType"></param>
+            <param name="size">The size to set on the parameter. Defaults to 0, or DbString.DefaultLength in case of strings.</param>
+            <returns>The DynamicParameters instance</returns>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Orm.TableValuedParameter">
+            <summary>
+            Used to pass a DataTable as a TableValuedParameter
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.TableValuedParameter.#ctor(System.Data.DataTable)">
+            <summary>
+            Create a new instance of TableValuedParameter
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.TableValuedParameter.#ctor(System.Data.DataTable,System.String)">
+            <summary>
+            Create a new instance of TableValuedParameter
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Orm.DbString">
+            <summary>
+            This class represents a SQL string, it can be used if you need to denote your parameter is a Char vs VarChar vs nVarChar vs nChar
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.Orm.DbString.DefaultLength">
+            <summary>
+            A value to set the default value of strings
+            going through Dapper. Default is 4000, any value larger than this
+            field will not have the default value applied.
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.DbString.#ctor">
+            <summary>
+            Create a new DbString
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.DbString.IsAnsi">
+            <summary>
+            Ansi vs Unicode 
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.DbString.IsFixedLength">
+            <summary>
+            Fixed length 
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.DbString.Length">
+            <summary>
+            Length of the string -1 for max
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.DbString.Value">
+            <summary>
+            The value of the string
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.DbString.AddParameter(System.Data.IDbCommand,System.String)">
+            <summary>
+            Add the parameter to the command... internal use only
+            </summary>
+            <param name="command"></param>
+            <param name="name"></param>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Orm.FeatureSupport">
+            <summary>
+            Handles variances in features per DBMS
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.FeatureSupport.Get(System.Data.IDbConnection)">
+            <summary>
+            Gets the feature set based on the passed connection
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.FeatureSupport.Arrays">
+            <summary>
+            True if the db supports array columns e.g. Postgresql
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Orm.SimpleMemberMap">
+            <summary>
+            Represents simple member map for one of target parameter or property or field to source DataReader column
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SimpleMemberMap.#ctor(System.String,System.Reflection.PropertyInfo)">
+            <summary>
+            Creates instance for simple property mapping
+            </summary>
+            <param name="columnName">DataReader column name</param>
+            <param name="property">Target property</param>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SimpleMemberMap.#ctor(System.String,System.Reflection.FieldInfo)">
+            <summary>
+            Creates instance for simple field mapping
+            </summary>
+            <param name="columnName">DataReader column name</param>
+            <param name="field">Target property</param>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.SimpleMemberMap.#ctor(System.String,System.Reflection.ParameterInfo)">
+            <summary>
+            Creates instance for simple constructor parameter mapping
+            </summary>
+            <param name="columnName">DataReader column name</param>
+            <param name="parameter">Target constructor parameter</param>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.SimpleMemberMap.ColumnName">
+            <summary>
+            DataReader column name
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.SimpleMemberMap.MemberType">
+            <summary>
+            Target member type
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.SimpleMemberMap.Property">
+            <summary>
+            Target property
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.SimpleMemberMap.Field">
+            <summary>
+            Target field
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.SimpleMemberMap.Parameter">
+            <summary>
+            Target constructor parameter
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Orm.DefaultTypeMap">
+            <summary>
+            Represents default type mapping strategy used by Dapper
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.DefaultTypeMap.#ctor(System.Type)">
+            <summary>
+            Creates default type map
+            </summary>
+            <param name="type">Entity type</param>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.DefaultTypeMap.FindConstructor(System.String[],System.Type[])">
+            <summary>
+            Finds best constructor
+            </summary>
+            <param name="names">DataReader column names</param>
+            <param name="types">DataReader column types</param>
+            <returns>Matching constructor or default one</returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.DefaultTypeMap.FindExplicitConstructor">
+            <summary>
+            Returns the constructor, if any, that has the ExplicitConstructorAttribute on it.
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.DefaultTypeMap.GetConstructorParameter(System.Reflection.ConstructorInfo,System.String)">
+            <summary>
+            Gets mapping for constructor parameter
+            </summary>
+            <param name="constructor">Constructor to resolve</param>
+            <param name="columnName">DataReader column name</param>
+            <returns>Mapping implementation</returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.DefaultTypeMap.GetMember(System.String)">
+            <summary>
+            Gets member mapping for column
+            </summary>
+            <param name="columnName">DataReader column name</param>
+            <returns>Mapping implementation</returns>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.DefaultTypeMap.MatchNamesWithUnderscores">
+            <summary>
+            Should column names like User_Id be allowed to match properties/fields like UserId ?
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Orm.CustomPropertyTypeMap">
+            <summary>
+            Implements custom property mapping by user provided criteria (usually presence of some custom attribute with column to member mapping)
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.CustomPropertyTypeMap.#ctor(System.Type,System.Func{System.Type,System.String,System.Reflection.PropertyInfo})">
+            <summary>
+            Creates custom property mapping
+            </summary>
+            <param name="type">Target entity type</param>
+            <param name="propertySelector">Property selector based on target type and DataReader column name</param>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.CustomPropertyTypeMap.FindConstructor(System.String[],System.Type[])">
+            <summary>
+            Always returns default constructor
+            </summary>
+            <param name="names">DataReader column names</param>
+            <param name="types">DataReader column types</param>
+            <returns>Default constructor</returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.CustomPropertyTypeMap.FindExplicitConstructor">
+            <summary>
+            Always returns null
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.CustomPropertyTypeMap.GetConstructorParameter(System.Reflection.ConstructorInfo,System.String)">
+            <summary>
+            Not implemented as far as default constructor used for all cases
+            </summary>
+            <param name="constructor"></param>
+            <param name="columnName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.CustomPropertyTypeMap.GetMember(System.String)">
+            <summary>
+            Returns property based on selector strategy
+            </summary>
+            <param name="columnName">DataReader column name</param>
+            <returns>Poperty member map</returns>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Orm.IWrappedDataReader">
+            <summary>
+            Describes a reader that controls the lifetime of both a command and a reader,
+            exposing the downstream command/reader as properties.
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.IWrappedDataReader.Reader">
+            <summary>
+            Obtain the underlying reader
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.IWrappedDataReader.Command">
+            <summary>
+            Obtain the underlying command
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Orm.ExplicitConstructorAttribute">
+            <summary>
+            Tell Dapper to use an explicit constructor, passing nulls or 0s for all parameters
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Orm.Interface.IORM">
+            <summary>
+            简易ORM接口,其中alias别名是指实体配置的自定义标签Table属性Alias的值
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.Interface.IORM.save">
+            <summary>
+            插入或更新到数据库
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.Interface.IORM.save(System.String)">
+            <summary>
+            插入或更新到数据库
+            </summary>
+            <param name="alias">实体别名</param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.Interface.IORM.getmodel">
+            <summary>
+            根据ID获取实体数据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.Interface.IORM.getmodel(System.Object,System.String)">
+            <summary>
+            指定key和别名获取实体数据
+            </summary>
+            <param name="key"></param>
+            <param name="alias"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.Interface.IORM.getmodel(System.Object)">
+            <summary>
+            指定key获取实体数据
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.Interface.IORM.delete(System.Object,System.String)">
+            <summary>
+            指定key和别名删除实体数据
+            </summary>
+            <param name="key"></param>
+            <param name="alias"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.Interface.IORM.delete(System.Object)">
+            <summary>
+            指定key删除实体数据
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.Interface.IORM.delete">
+            <summary>
+            根据ID删除实体数据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.Interface.IORM.getlist``1">
+            <summary>
+            获取实体List对象集合
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.Interface.IORM.getlist``1(System.String)">
+            <summary>
+            获取实体List对象集合，根据where条件过滤
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="where"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.Interface.IORM.getlist``1(EFWCoreLib.CoreFrame.DbProvider.SqlPagination.PageInfo,System.String)">
+            <summary>
+            获取实体List对象集合，根据where条件过滤
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="pageInfo">分页</param>
+            <param name="where"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.Interface.IORM.getlist``1(EFWCoreLib.CoreFrame.DbProvider.SqlPagination.PageInfo,System.String,System.String)">
+            <summary>
+            获取实体List对象集合，根据where条件过滤
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="pageInfo"></param>
+            <param name="where"></param>
+            <param name="alias"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.Interface.IORM.gettable">
+            <summary>
+            获取实体datatable
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.Interface.IORM.gettable(System.String)">
+            <summary>
+             获取实体datatable，where条件过滤
+            </summary>
+            <param name="where"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.Interface.IORM.gettable(EFWCoreLib.CoreFrame.DbProvider.SqlPagination.PageInfo,System.String,System.String)">
+            <summary>
+             获取实体datatable，分页
+            </summary>
+            <param name="pageInfo"></param>
+            <param name="where"></param>
+            <param name="alias"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.Interface.IORM.gettable(EFWCoreLib.CoreFrame.DbProvider.SqlPagination.PageInfo,System.String)">
+            <summary>
+             获取实体datatable，分页
+            </summary>
+            <param name="pageInfo"></param>
+            <param name="where"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Orm.OrmAnalysis">
+            <summary>
+            ORM映射关系解析基类
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.OrmAnalysis.Db">
+            <summary>
+            数据库对象
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Orm.OrmAnalysis.Alias">
+            <summary>
+            别名
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Orm.OrmAnalysisFactory">
+            <summary>
+            ORM解析类创建工厂
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Orm.OrmAnalysisFactory.CreateOrmAnalysisObject(EFWCoreLib.CoreFrame.DbProvider.DatabaseType)">
+            <summary>
+            根据数据库类型，创建ORM解析对象
+            </summary>
+            <param name="databaseType"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Orm.SqlServerOrmAnalysis">
+            <summary>
+            基于ORM实现sqlserver数据库的ORM
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.DbProvider.EntLibDb">
+            <summary>
+            EntLibDb
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.DbProvider.AbstractDatabase.connection">
+            <summary>
+            数据库连接
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.DbProvider.AbstractDatabase.command">
+            <summary>
+            数据库对象执行命令
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.DbProvider.AbstractDatabase.database">
+            <summary>
+            企业库数据库访问对象
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.DbProvider.AbstractDatabase.transaction">
+            <summary>
+            数据库事务
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.DbProvider.AbstractDatabase.ConnectionString">
+            <summary>
+            返回数据库连接字符串
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.DbProvider.AbstractDatabase.IsInTransaction">
+            <summary>
+            返回是否处于事务中
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.DbProvider.AbstractDatabase.BeginTransaction">
+            <summary>
+            启动一个事务
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.DbProvider.AbstractDatabase.CommitTransaction">
+            <summary>
+            提交一个事务
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.DbProvider.AbstractDatabase.RollbackTransaction">
+            <summary>
+            回滚一个事务
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.DbProvider.FactoryDatabase">
+            <summary>
+            创建数据库操作对象
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.DbProvider.FactoryDatabase.GetDatabase">
+            <summary>
+            默认数据库
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.DbProvider.FactoryDatabase.GetDatabase(System.String)">
+            <summary>
+            不同数据库之间切换
+            </summary>
+            <param name="dbkey"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.DbProvider.DatabaseType">
+            <summary>
+            数据库类别
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.DbProvider.DatabaseType.UnKnown">
+            <summary>未指定数据库</summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.DbProvider.DatabaseType.IbmDb2">
+            <summary>IBMDB2数据库</summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.DbProvider.DatabaseType.SqlServer2000">
+            <summary>SqlServer2000数据库</summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.DbProvider.DatabaseType.SqlServer2005">
+            <summary>SqlServer2005数据库</summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.DbProvider.DatabaseType.MsAccess">
+            <summary>Access数据库</summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.DbProvider.DatabaseType.MySQL">
+            <summary>MySQL数据库</summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.DbProvider.DatabaseType.Oracle">
+            <summary>Oracle数据库</summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.DbProvider.DatabaseType.MidLinkDB">
+            <summary>
+            中间件
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.DbProvider.SqlPagination.PageInfo">
+            <summary>
+            分页信息
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.DbProvider.SqlPagination.PageInfo.pageSize">
+            <summary>
+            页面大小
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.DbProvider.SqlPagination.PageInfo.pageNo">
+            <summary>
+            要取的页面，默认为0页
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.DbProvider.SqlPagination.PageInfo.totalPage">
+            <summary>
+            总页数
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.DbProvider.SqlPagination.PageInfo.totalRecord">
+            <summary>
+            总记录数
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.DbProvider.SqlPagination.PageInfo.ColumnLength">
+            <summary>
+            列的长度
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.DbProvider.SqlPagination.SqlPage">
+            <summary>
+            SQL语句进行分页包装
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.DbProvider.SqlPagination.SqlPage.FormatSql(System.String,EFWCoreLib.CoreFrame.DbProvider.SqlPagination.PageInfo,EFWCoreLib.CoreFrame.DbProvider.AbstractDatabase)">
+            <summary>
+            格式化SQL语句
+            </summary>
+            <param name="strsql"></param>
+            <param name="pageInfo"></param>
+            <param name="oleDb"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Plugin.ModulePlugin">
+            <summary>
+            模块插件
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Plugin.ModulePlugin.plugin">
+            <summary>
+            插件配置
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Plugin.ModulePlugin.database">
+            <summary>
+            数据库对象
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Plugin.ModulePlugin.container">
+            <summary>
+            Unity对象容器
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Plugin.ModulePlugin.cache">
+            <summary>
+            企业库缓存
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Plugin.ModulePlugin.helper">
+            <summary>
+            执行控制器
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Plugin.ModulePlugin.assemblyPath">
+            <summary>
+            插件程序集的路径
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Plugin.ModulePlugin.DllList">
+            <summary>
+            插件所有程序集
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Plugin.ModulePlugin.LoadPlugin(System.String)">
+            <summary>
+            导入插件配置文件
+            </summary>
+            <param name="plugfile">插件配置文件路径</param>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.Plugin.PluginConfig">
+            <summary>
+            插件配置文件数据
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.Plugin.businessinfoDll.name">
+            <summary>
+            控制器名称
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Plugin.PluginSysManage.GetAllPluginFile">
+            <summary>
+            获取所有插件路径
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.Plugin.PluginSysManage.GetPluginFile(System.String)">
+            <summary>
+            根据插件名获取插件路径
+            </summary>
+            <param name="pluginname"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.SSO.ConvertHelper">
+            <summary>
+            数据转换助手类 
+            add by wildweeds
+            2011-06-08
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.SSO.ConvertHelper.GetInt(System.String,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="str"></param>
+            <param name="defValue">失败时，默认返回值</param>
+            <returns></returns>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.SSO.SsoHelper">
+            <summary>
+            单点登录辅助类
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.SSO.SsoHelper.SignIn(System.String,EFWCoreLib.CoreFrame.SSO.UserInfo,System.Guid@)">
+            <summary>
+            登录
+            </summary>
+            <param name="userId"></param>
+            <param name="tokenid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.SSO.SsoHelper.SignOut(System.Guid)">
+            <summary>
+            注销
+            </summary>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.SSO.SsoHelper.ValidateToken(System.String)">
+            <summary>
+            是否有效登录
+            </summary>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.SSO.SsoHelper.UserActivity(System.Guid)">
+            <summary>
+            定时触发登录码的活动时间，频率必须小于4分钟
+            </summary>
+            <param name="token"></param>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.SSO.SsoHelper.IsUserOnline(System.String)">
+            <summary>
+            用户是否在线
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.SSO.TokenManager">
+            <summary>
+            身份验证令牌管理
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.SSO.TokenManager.#cctor">
+            <summary>
+            令牌集合
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.SSO.Utility.RemoteIp">
+            <summary>
+            客户端ip
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.SSO.Utility.HostIp">
+            <summary>
+            服务器Ip
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.EntLib.Aop.AopCallHandler">
+            <summary>
+            AOP调用管理类
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.EntLib.Aop.AopCallHandler.#ctor(System.Collections.Generic.List{System.Type})">
+            <summary>
+            创建AopCallHandler实例
+            </summary>
+            <param name="list">AOP操作类类型列表</param>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.EntLib.Aop.AopCallHandler.Invoke(Microsoft.Practices.Unity.InterceptionExtension.IMethodInvocation,Microsoft.Practices.Unity.InterceptionExtension.GetNextHandlerDelegate)">
+            <summary>
+            调用执行
+            </summary>
+            <param name="input"></param>
+            <param name="getNext"></param>
+            <returns></returns>
+        </member>
+        <member name="P:EFWCoreLib.CoreFrame.EntLib.Aop.AopCallHandler.Order">
+            <summary>
+            执行顺序
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.EntLib.Aop.AOPAttribute">
+            <summary>
+            AOP标签
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.EntLib.Aop.AOPAttribute.#ctor(System.Type[])">
+            <summary>
+            创建AOPAttribute实例
+            </summary>
+            <param name="types">AOP操作类类型数组</param>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.EntLib.Aop.AOPAttribute.CreateHandler(Microsoft.Practices.Unity.IUnityContainer)">
+            <summary>
+            创建AOP管理对象
+            </summary>
+            <param name="container">示例容器</param>
+            <returns></returns>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.EntLib.Aop.IAopOperator">
+            <summary>
+            IAopOperator AOP操作符接口，包括前处理和后处理
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.EntLib.Aop.IAopOperator.PreProcess(Microsoft.Practices.Unity.InterceptionExtension.IMethodInvocation)">
+            <summary>
+            前处理
+            </summary>
+            <param name="input"></param>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.EntLib.Aop.IAopOperator.PostProcess(Microsoft.Practices.Unity.InterceptionExtension.IMethodInvocation,Microsoft.Practices.Unity.InterceptionExtension.IMethodReturn)">
+            <summary>
+            后处理
+            </summary>
+            <param name="input"></param>
+            <param name="result"></param>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.EntLib.Caching.CacheHelper">
+            <summary>
+            缓存操作类
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.EntLib.Caching.CacheHelper.Add(System.String,System.Object)">
+            <summary>
+            添加缓存
+            </summary>
+            <param name="key">键</param>
+            <param name="value">值</param>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.EntLib.Caching.CacheHelper.Add(System.String,System.Object,System.Boolean)">
+            <summary>
+            添加缓存
+            </summary>
+            <param name="key">键</param>
+            <param name="value">值</param>
+            <param name="isRefresh">是否刷新</param>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.EntLib.Caching.CacheHelper.Contains(System.String)">
+            <summary>
+            缓存是否存在此数据
+            </summary>
+            <param name="key">键</param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.EntLib.Caching.CacheHelper.GetCache(System.String)">
+            <summary>
+            获取缓存对象
+            </summary>
+            <param name="key">键</param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.EntLib.Caching.CacheHelper.RemoveCache(System.String)">
+            <summary>
+            移除缓存对象
+            </summary>
+            <param name="key">键</param>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.EntLib.Caching.MyCacheItemRefreshAction">
+            <summary>
+            自定义缓存刷新操作
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.EntLib.Caching.MyCacheItemRefreshAction.Microsoft#Practices#EnterpriseLibrary#Caching#ICacheItemRefreshAction#Refresh(System.String,System.Object,Microsoft.Practices.EnterpriseLibrary.Caching.CacheItemRemovedReason)">
+            <summary>
+            自定义刷新操作
+            </summary>
+            <param name="removedKey">移除的键</param>
+            <param name="expiredValue">过期的值</param>
+            <param name="removalReason">移除理由</param>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.EntLib.Log.AopTrace">
+            <summary>
+            用AOP拦截跟踪代码
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.EntLib.Log.AopTrace.PreProcess(Microsoft.Practices.Unity.InterceptionExtension.IMethodInvocation)">
+            <summary>
+            前处理
+            </summary>
+            <param name="input"></param>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.EntLib.Log.AopTrace.PostProcess(Microsoft.Practices.Unity.InterceptionExtension.IMethodInvocation,Microsoft.Practices.Unity.InterceptionExtension.IMethodReturn)">
+            <summary>
+            后处理
+            </summary>
+            <param name="input"></param>
+            <param name="result"></param>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.EntLib.Log.Priority">
+            <summary>
+            日志优先级
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.EntLib.Log.Priority.Lowest">
+            <summary>
+            最低级
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.EntLib.Log.Priority.Low">
+            <summary>
+            低级
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.EntLib.Log.Priority.Normal">
+            <summary>
+            一般
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.EntLib.Log.Priority.High">
+            <summary>
+            高级
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.EntLib.Log.Priority.Highest">
+            <summary>
+            最高级
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.EntLib.Log.Category">
+            <summary>
+            日志分类
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.EntLib.Log.Category.FileLog">
+            <summary>
+            文件日志
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.EntLib.Log.Category.ConsoleLog">
+            <summary>
+            控制台日志
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.EntLib.Log.Category.DatabaseLog">
+            <summary>
+            数据库日志
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.CoreFrame.EntLib.Log.Category.EmailLog">
+            <summary>
+            电子邮件日志
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.EntLib.Log.Formatters.ZhyTextFormatter">
+            <summary>
+            文本格式化类
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.EntLib.Log.Formatters.ZhyTextFormatter.#ctor(System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            创建ZhyTextFormatter的实例
+            </summary>
+            <param name="attributes"></param>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.EntLib.Log.Formatters.ZhyTextFormatter.Format(Microsoft.Practices.EnterpriseLibrary.Logging.LogEntry)">
+            <summary>
+            格式化
+            </summary>
+            <param name="log"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.EntLib.Log.Formatters.XmlFormatter">
+            <summary>
+            Xml格式化类
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.EntLib.Log.LogHelper">
+            <summary>
+            日志操作类
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.EntLib.Log.LogHelper.StartTrace">
+            <summary>
+            开始跟踪
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.EntLib.Log.LogHelper.EndTrace(Microsoft.Practices.EnterpriseLibrary.Logging.Tracer)">
+            <summary>
+            结束跟踪
+            </summary>
+            <param name="trace"></param>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.EntLib.Log.TraceListeners.ConsoleTraceListener">
+            <summary>
+            控制台跟踪侦听类
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.EntLib.Log.TraceListeners.ConsoleTraceListener.Write(System.String)">
+            <summary>
+            写指定消息
+            </summary>
+            <param name="message">消息</param>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.EntLib.Log.TraceListeners.ConsoleTraceListener.WriteLine(System.String)">
+            <summary>
+            写指定消息，后跟当前行结束符
+            </summary>
+            <param name="message">消息</param>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.EntLib.Log.TraceListeners.DatabaseTraceListener">
+            <summary>
+            数据库跟踪侦听类
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.EntLib.Log.TraceListeners.DatabaseTraceListener.Write(System.String)">
+            <summary>
+            写指定消息
+            </summary>
+            <param name="message">消息</param>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.EntLib.Log.TraceListeners.DatabaseTraceListener.WriteLine(System.String)">
+            <summary>
+            写指定消息，后跟当前行结束符
+            </summary>
+            <param name="message">消息</param>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.EntLib.Log.TraceListeners.FileTraceListener">
+            <summary>
+            文件跟踪侦听类
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.EntLib.Log.TraceListeners.FileTraceListener.Write(System.String)">
+            <summary>
+            写指定消息
+            </summary>
+            <param name="message">消息</param>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.EntLib.Log.TraceListeners.FileTraceListener.WriteLine(System.String)">
+            <summary>
+            写指定消息，后跟当前行结束符
+            </summary>
+            <param name="message">消息</param>
+        </member>
+        <member name="T:EFWCoreLib.CoreFrame.EntLib.ZhyContainer">
+            <summary>
+            封装企业库容器
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.EntLib.ZhyContainer.CreateUnity">
+            <summary>
+            获取依赖注入容器
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.EntLib.ZhyContainer.CreateDataBase">
+            <summary>
+            获取数据库对象
+            </summary>
+            <returns>数据库对象</returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.EntLib.ZhyContainer.CreateDataBase(System.String)">
+            <summary>
+            获取数据库对象
+            </summary>
+            <param name="name">数据库实例名(默认name为空,调用默认数据库实例)</param>
+            <returns>数据库对象</returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.EntLib.ZhyContainer.CreateLog">
+            <summary>
+            获取日志写入对象
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.EntLib.ZhyContainer.CreateTrace">
+            <summary>
+            获取日志跟踪对象
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.EntLib.ZhyContainer.CreateException">
+            <summary>
+            获取异常处理对象
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.CoreFrame.EntLib.ZhyContainer.CreateCache">
+            <summary>
+            获取缓存对象
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.DataSerialize.ClientRequestData">
+            <summary>
+            客户端请求数据
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.DataSerialize.ClientRequestData.#ctor(System.Boolean,System.Boolean,EFWCoreLib.WcfFrame.DataSerialize.SerializeType)">
+            <summary>
+            初始化
+            </summary>
+            <param name="IsCustomWcfConfig">是否自定义Wcf配置</param>
+            <param name="IsCompress">是否压缩</param>
+            <param name="IsEncrytion">是否加密</param>
+            <param name="SerializeType">序列化方式</param>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.DataSerialize.ClientRequestData.AddData``1(``0)">
+            <summary>
+            添加输入数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="data"></param>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.DataSerialize.ClientRequestData.GetData``1(System.Int32)">
+            <summary>
+            获取指定输入的数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="index">索引</param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.DataSerialize.ClientRequestData.GetJsonData">
+            <summary>
+            得到请求输入的Json数据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.DataSerialize.ClientRequestData.SetJsonData(System.String)">
+            <summary>
+            设置请求输入的Json数据
+            </summary>
+            <param name="retData"></param>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.DataSerialize.ServiceResponseData">
+            <summary>
+            服务输出数据
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.DataSerialize.ServiceResponseData.AddData``1(``0)">
+            <summary>
+            添加输出数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="data"></param>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.DataSerialize.ServiceResponseData.GetData``1(System.Int32)">
+            <summary>
+            获取输出的指定数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="index">索引</param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.DataSerialize.ServiceResponseData.GetJsonData">
+            <summary>
+            获取输出的Json数据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.DataSerialize.ServiceResponseData.SetJsonData(System.String)">
+            <summary>
+            设置输出的Json数据
+            </summary>
+            <param name="retData"></param>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.SDMessageHeader.HeaderParameter">
+            <summary>
+            自定义消息头参数
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WcfFrame.SDMessageHeader.HeaderParameter.iscompressjson">
+            <summary>
+            压缩Json字符
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WcfFrame.SDMessageHeader.HeaderParameter.isencryptionjson">
+            <summary>
+            加密Json字符
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WcfFrame.SDMessageHeader.HeaderParameter.serializetype">
+            <summary>
+            序列化类型
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.ServerController.DistributedCacheManage">
+            <summary>
+            分布式缓存管理
+            1.先下级中间件同步到上级中间件，然后上级中间件触发回调所有下级中间件
+            2.缓存同步的时候先判断标识是否不同，然后再同步标识不同的缓存数据
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ServerController.DistributedCacheManage.SetCache(System.String,System.String,System.String)">
+            <summary>
+            设置缓存,提供给服务控制器调用
+            </summary>
+            <param name="cacheName"></param>
+            <param name="key"></param>
+            <param name="value">Json字符串</param>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ServerController.DistributedCacheManage.RemoveCache(System.String,System.String)">
+            <summary>
+            移除缓存，提供给服务控制器调用
+            </summary>
+            <param name="cacheName"></param>
+            <param name="key"></param>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ServerController.DistributedCacheManage.SyncCache(System.String)">
+            <summary>
+            同步指定缓存给上级中间件
+            </summary>
+            <param name="cacheName"></param>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ServerController.DistributedCacheManage.SyncAllCache">
+            <summary>
+            同步所有缓存给上级中间件
+            </summary>
+            <param name="cacheName"></param>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ServerController.DistributedCacheManage.SyncCache(EFWCoreLib.WcfFrame.ServerController.CacheObject)">
+            <summary>
+            同步指定缓存给所有下级中间件
+            </summary>
+            <param name="cache"></param>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ServerController.DistributedCacheManage.SyncAllCache(EFWCoreLib.WcfFrame.WcfService.Contract.IClientService)">
+            <summary>
+            同步所有缓存给指定下级中间件
+            </summary>
+            <param name="cacheName"></param>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ServerController.DistributedCacheManage.GetCacheIdentify(System.String)">
+            <summary>
+            获取本地缓存的标识
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ServerController.DistributedCacheManage.CompareCache(EFWCoreLib.WcfFrame.ServerController.CacheIdentify)">
+            <summary>
+            比较后不同的标识
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ServerController.DistributedCacheManage.GetStayLocalCache(EFWCoreLib.WcfFrame.ServerController.CacheIdentify)">
+            <summary>
+            获取待同步的缓存
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ServerController.DistributedCacheManage.SyncLocalCache(EFWCoreLib.WcfFrame.ServerController.CacheObject)">
+            <summary>
+            同步本地缓存
+            </summary>
+            <param name="cache"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ServerController.DistributedCacheManage.GetAllCache">
+            <summary>
+            获取待同步的缓存
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ServerController.DistributedCacheManage.DateTimeToTimestamp(System.DateTime)">
+            <summary>
+            日期转换成时间戳
+            </summary>
+            <param name="dateTime"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ServerController.DistributedCacheManage.TimestampToDateTime(System.Double)">
+            <summary>
+            时间戳转换成日期
+            </summary>
+            <param name="timestamp">时间戳（秒）</param>
+            <returns></returns>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.ServerController.CacheObject">
+            <summary>
+            缓存对象
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WcfFrame.ServerController.CacheObject.ServerIdentify">
+            <summary>
+            中间件标识
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WcfFrame.ServerController.CacheObject.cachename">
+            <summary>
+            缓存名称
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WcfFrame.ServerController.CacheObject.identify">
+            <summary>
+            唯一标识
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WcfFrame.ServerController.CacheObject.cacheValue">
+            <summary>
+            缓存数据集合
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.ServerController.CacheData">
+            <summary>
+            缓存数据
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.ServerController.CacheIdentify">
+            <summary>
+            缓存标识
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ServerController.RouterServerManage.AddClient(System.ServiceModel.Channels.Message,EFWCoreLib.WcfFrame.SDMessageHeader.HeaderParameter,System.ServiceModel.EndpointAddress@,System.Uri@)">
+            <summary>
+            从注册表容器中根据Message的Action找到匹配的 binding和 endpointaddress
+            </summary>
+            <param name="requestMessage"></param>
+            <param name="binding"></param>
+            <param name="endpointAddress"></param>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ServerController.RegistrationInfo.LoadRouterBill">
+            <summary>
+            加载路由器的路由表
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.ServerController.DebugWcfServices">
+            <summary>
+            调试服务
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ServerController.DebugWcfServices.getWcfServicesAllInfo">
+            <summary>
+            获取所有的服务信息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.ServerController.dwPlugin">
+            <summary>
+            服务插件对象
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WcfFrame.ServerController.dwPlugin.pluginname">
+            <summary>
+            插件名称
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WcfFrame.ServerController.dwPlugin.controllerlist">
+            <summary>
+            插件内的控制器集合
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.ServerController.dwController">
+            <summary>
+            服务控制器对象
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WcfFrame.ServerController.dwController.controllername">
+            <summary>
+            控制器名称
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WcfFrame.ServerController.dwController.methodlist">
+            <summary>
+            控制器内的方法集合
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.ServerController.WcfServerController">
+            <summary>
+            WCF控制器服务端基类
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ServerController.WcfServerController.#ctor">
+            <summary>
+            创建BaseWCFController的实例
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ServerController.WcfServerController.Init">
+            <summary>
+            初始化全局web服务参数对象
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WcfFrame.ServerController.WcfServerController.requestData">
+            <summary>
+            客户端传递的参数
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WcfFrame.ServerController.WcfServerController.responseData">
+            <summary>
+            服务输出数据
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.ServerController.WcfServerManage">
+            <summary>
+            WCF通讯服务端管理
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ServerController.WcfServerManage.StartWCFHost">
+            <summary>
+            开始服务主机
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ServerController.WcfServerManage.StopWCFHost">
+            <summary>
+            停止服务主机
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.ServerController.WCFClientInfo">
+            <summary>
+            连接客户端信息
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WcfFrame.ServerController.WCFClientInfo.IsConnect">
+            <summary>
+            是否连接
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WcfFrame.ServerController.WCFClientInfo.RequestCount">
+            <summary>
+            请求次数
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WcfFrame.ServerController.WCFClientInfo.receiveData">
+            <summary>
+            接收数据
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WcfFrame.ServerController.WCFClientInfo.sendData">
+            <summary>
+            发送数据
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WcfFrame.ServerController.WCFClientInfo.plugin">
+            <summary>
+            插件名称
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WcfFrame.ServerController.WCFClientInfo.ServerIdentify">
+            <summary>
+            中间件标识，只有超级客户端才有值
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.ServerController.LocalPlgin">
+            <summary>
+            本地插件
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.ServerController.RemotePlugin">
+            <summary>
+            远程插件
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.WcfService.Contract.IDistributedCache">
+            <summary>
+            分布式缓存契约
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.WcfService.Contract.IHeartbeat">
+            <summary>
+            心跳契约
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.WcfService.Contract.IFileTransfer">
+            <summary>
+            文件传输服务
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IFileTransfer.UpLoadFile(EFWCoreLib.WcfFrame.WcfService.Contract.UpFile)">
+            <summary>
+            上传文件
+            </summary>
+            <param name="filestream">文件信息</param>
+            <returns>返回上传结果</returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IFileTransfer.DownLoadFile(EFWCoreLib.WcfFrame.WcfService.Contract.DownFile)">
+            <summary>
+            下载文件
+            </summary>
+            <param name="downfile">文件信息</param>
+            <returns>返回下载结果</returns>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.WcfService.Contract.UpFile">
+            <summary>
+            上传文件结构
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.WcfService.Contract.UpFileResult">
+            <summary>
+            上传文件后返回结果数据
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.WcfService.Contract.DownFile">
+            <summary>
+            下载文件结构
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.WcfService.Contract.DownFileResult">
+            <summary>
+            下载文件后返回结果数据
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.WcfService.Contract.IRouterService">
+            <summary>
+            WCF路由服务
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService">
+            <summary>
+            WCF处理服务
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService.CreateDomain(System.String)">
+            <summary>
+            创建客户端运行环境
+            </summary>
+            <returns>返回clientId</returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService.ProcessRequest(System.String,System.String,System.String,System.String)">
+            <summary>
+            执行请求
+            </summary>
+            <param name="clientId">客户端ID</param>
+            <param name="controller">控制器</param>
+            <param name="method">方法</param>
+            <param name="jsondata">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService.BeginProcessRequest(System.String,System.String,System.String,System.String,System.AsyncCallback,System.Object)">
+            <summary>
+            开始异步请求
+            </summary>
+            <param name="clientId"></param>
+            <param name="controller"></param>
+            <param name="method"></param>
+            <param name="jsondata"></param>
+            <param name="callback"></param>
+            <param name="asyncState"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService.EndProcessRequest(System.IAsyncResult)">
+            <summary>
+            结束异步请求
+            </summary>
+            <param name="result"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService.UnDomain(System.String)">
+            <summary>
+            卸载制定客户端环境
+            </summary>
+            <param name="clientId"></param>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService.Heartbeat(System.String)">
+            <summary>
+            WCF心跳检测
+            </summary>
+            <param name="clientId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService.SendBroadcast(System.String)">
+            <summary>
+            发送广播消息
+            </summary>
+            <param name="jsondata"></param>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService.ServerConfig">
+            <summary>
+            返回服务端配置
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService.WcfServicesAllInfo">
+            <summary>
+            返回所有WCF服务的配置信息，包括插件名称、控制器名称、方法名称
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService.RegisterReplyPlugin(System.String,System.String[])">
+            <summary>
+            注册远程插件
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService.DistributedCacheSyncIdentify(EFWCoreLib.WcfFrame.ServerController.CacheIdentify)">
+            <summary>
+            分布式缓存同步标识
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService.DistributedCacheSync(EFWCoreLib.WcfFrame.ServerController.CacheObject)">
+            <summary>
+            分布式缓存同步
+            </summary>
+            <param name="data"></param>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService.DistributedAllCacheSync(System.Collections.Generic.List{EFWCoreLib.WcfFrame.ServerController.CacheObject})">
+            <summary>
+            分布式缓存同步
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.WcfService.Contract.IClientService">
+            <summary>
+            回调契约
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IClientService.ReplyClient(System.String)">
+            <summary>
+            回调客户端
+            </summary>
+            <param name="jsondata">回调数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IClientService.SuperReplyClient(EFWCoreLib.WcfFrame.SDMessageHeader.HeaderParameter,System.String,System.String,System.String,System.String)">
+            <summary>
+            超级回调中间件
+            </summary>
+            <param name="replyidentify">回调中间件唯一标识</param>
+            <param name="plugin"></param>
+            <param name="controller"></param>
+            <param name="method"></param>
+            <param name="jsondata"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IClientService.DistributedCacheSyncIdentify(EFWCoreLib.WcfFrame.ServerController.CacheIdentify)">
+            <summary>
+            分布式缓存同步标识
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IClientService.DistributedCacheSync(EFWCoreLib.WcfFrame.ServerController.CacheObject)">
+            <summary>
+            分布式缓存同步
+            </summary>
+            <param name="cache"></param>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IClientService.DistributedAllCacheSync(System.Collections.Generic.List{EFWCoreLib.WcfFrame.ServerController.CacheObject})">
+            <summary>
+            分布式缓存同步
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.WcfService.FileTransferHandlerService">
+            <summary>
+            文件传输服务，使用流模式
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.WcfService.RouterHandlerService">
+            <summary>
+            路由服务
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.RouterHandlerService.ProcessMessage(System.ServiceModel.Channels.Message)">
+            <summary>
+            截获从Client端发送的消息转发到目标终结点并获得返回值给Client端
+            </summary>
+            <param name="requestMessage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.FileRouterHandlerService.ProcessMessage(System.ServiceModel.Channels.Message)">
+            <summary>
+            截获从Client端发送的消息转发到目标终结点并获得返回值给Client端
+            </summary>
+            <param name="requestMessage"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.WcfService.CompletedAsyncResult`1">
+            <summary>
+            异步结果
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.ClientController.WcfClientController">
+            <summary>
+            Winform控制器基类
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ClientController.WcfClientController.#ctor">
+            <summary>
+            创建WinformController的实例
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ClientController.WcfClientController.UI_ControllerEvent(System.String,System.Object[])">
+            <summary>
+            界面控制事件
+            </summary>
+            <param name="eventname">事件名称</param>
+            <param name="objs">参数数组</param>
+            <returns></returns>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.ClientLink">
+            <summary>
+            客户端连接对象，一个对象一个会话通道
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.WcfFrame.ClientLink.mConn">
+            <summary>
+            平台连接对象
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ClientLink.#ctor(System.String)">
+            <summary>
+            初始化通讯连接
+            </summary>
+            <param name="pluginname">插件名称</param>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ClientLink.#ctor(System.String,System.String)">
+            <summary>
+            初始化通讯连接
+            </summary>
+            <param name="clientname">客户端名称</param>
+            <param name="pluginname">插件名称</param>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ClientLink.#ctor(System.String,System.String,System.Action{System.Boolean,System.Int32})">
+            <summary>
+            初始化通讯连接
+            </summary>
+            <param name="clientname">客户端名称</param>
+            <param name="pluginname">插件名称</param>
+            <param name="actionConfig">获取消息配置</param>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ClientLink.Finalize">
+            <summary>
+            释放连接
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ClientLink.Dispose">
+            <summary>
+            释放连接
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ClientLink.CreateConnection">
+            <summary>
+            创建连接
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ClientLink.Request(System.String,System.String,System.Action{EFWCoreLib.WcfFrame.DataSerialize.ClientRequestData})">
+            <summary>
+            向服务发送请求
+            </summary>
+            <param name="controller">控制器名称</param>
+            <param name="method">方法名称</param>
+            <param name="requestAction">数据</param>
+            <returns>返回Json数据</returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ClientLink.RequestAsync(System.String,System.String,System.Action{EFWCoreLib.WcfFrame.DataSerialize.ClientRequestData},System.Action{EFWCoreLib.WcfFrame.DataSerialize.ServiceResponseData})">
+            <summary>
+            向服务发送异步请求
+            客户端建议不要用多线程，都采用异步请求方式
+            </summary>
+            <param name="controller">插件名@控制器名称</param>
+            <param name="method">方法名称</param>
+            <param name="jsondata">数据</param>
+            <returns>返回Json数据</returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ClientLink.UnConnection">
+            <summary>
+            卸载连接
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ClientLink.ReConnection(System.Boolean)">
+            <summary>
+            重新连接wcf服务，服务端存在ClientID
+            </summary>
+            <param name="isRequest">是否请求调用</param>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ClientLink.Heartbeat">
+            <summary>
+            发送心跳
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ClientLink.GetWcfServicesAllInfo">
+            <summary>
+            获取所有服务插件的控制器和方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ClientLink.UpLoadFile(System.String)">
+            <summary>
+            上传文件
+            </summary>
+            <param name="filepath">文件本地路径</param>
+            <returns>上传成功后返回的文件名</returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ClientLink.UpLoadFile(System.String,System.Action{System.Int32})">
+            <summary>
+            上传文件，有进度显示
+            </summary>
+            <param name="filepath">文件本地路径</param>
+            <param name="action">进度0-100</param>
+            <returns>上传成功后返回的文件名</returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ClientLink.DownLoadFile(System.String)">
+            <summary>
+            下载文件
+            </summary>
+            <param name="filename">下载文件名</param>
+            <returns>下载成功后返回存储在本地文件路径</returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ClientLink.DownLoadFile(System.String,System.Action{System.Int32})">
+            <summary>
+            下载文件，有进度显示
+            </summary>
+            <param name="filename">下载文件名</param>
+            <param name="action">进度0-100</param>
+            <returns>下载成功后返回存储在本地文件路径</returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ClientLink.RegisterReplyPlugin(System.String,System.String[])">
+            <summary>
+            注册远程插件
+            </summary>
+            <param name="ServerIdentify"></param>
+            <param name="plugin"></param>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.CHDEPConnection">
+            <summary>
+            平台连接对象
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WcfFrame.CHDEPConnection.WcfService">
+            <summary>
+            业务数据服务
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WcfFrame.CHDEPConnection.ClientService">
+            <summary>
+            客户端回调服务
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WcfFrame.CHDEPConnection.ClientID">
+            <summary>
+            客户端ID，服务端生成
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WcfFrame.CHDEPConnection.ClientName">
+            <summary>
+            客户端名称
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WcfFrame.CHDEPConnection.RouterID">
+            <summary>
+            路由ID
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WcfFrame.CHDEPConnection.PluginName">
+            <summary>
+            服务插件名称
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WcfFrame.CHDEPConnection.Token">
+            <summary>
+            客户端令牌
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.ReplyClientCallBack">
+            <summary>
+            客户端回调对象
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WcfFrame.ReplyClientCallBack.ReplyClientAction">
+            <summary>
+            回调委托
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WcfFrame.ReplyClientCallBack.SuperReplyClientAction">
+            <summary>
+            超级回调委托
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ReplyClientCallBack.ReplyClient(System.String)">
+            <summary>
+            回调客户端
+            </summary>
+            <param name="jsondata"></param>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ReplyClientCallBack.SuperReplyClient(EFWCoreLib.WcfFrame.SDMessageHeader.HeaderParameter,System.String,System.String,System.String,System.String)">
+            <summary>
+            超级回调中间件
+            </summary>
+            <param name="para"></param>
+            <param name="plugin"></param>
+            <param name="controller"></param>
+            <param name="method"></param>
+            <param name="jsondata"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.ClientLinkManage">
+            <summary>
+            客户端管理类
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.WcfFrame.ClientLinkManage.IsMessage">
+            <summary>
+            是否开启业务消息
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.WcfFrame.ClientLinkManage.MessageTime">
+            <summary>
+            业务消息触发时间间隔，单位秒
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.WcfFrame.ClientLinkManage.Token">
+            <summary>
+            登陆后缓存令牌
+            </summary>
+        </member>
+        <member name="F:EFWCoreLib.WcfFrame.ClientLinkManage.ClientLinkDic">
+            <summary>
+            缓存的客户连接
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ClientLinkManage.CreateConnection(System.String)">
+            <summary>
+            创建wcf服务连接
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ClientLinkManage.UnConnection(System.String)">
+            <summary>
+            卸载连接
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.ClientLinkManage.UnAllConnection">
+            <summary>
+            关闭所有连接
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WebFrame.WebAPI.FileController">
+            <summary>
+            WepApi 文件传输
+            /efwplusApi/coresys/file/
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WebFrame.WebAPI.LoginController">
+            <summary>
+            WebApi 登陆验证，然后调用wcf服务
+            /efwplusApi/coresys/login/userlogin
+            {"usercode":"admin","password":"1","wcfpluginname":"MainFrame.Service","wcfcontroller":"LoginController","wcfmethod":"UserLogin"}
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WebFrame.WebAPI.LoginRequest">
+            <summary>
+            登录请求
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WebFrame.WebAPI.LoginRequest.usercode">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WebFrame.WebAPI.LoginRequest.password">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WebFrame.WebAPI.LoginRequest.wcfpluginname">
+            <summary>
+            服务插件
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WebFrame.WebAPI.LoginRequest.wcfcontroller">
+            <summary>
+            控制器
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WebFrame.WebAPI.LoginRequest.wcfmethod">
+            <summary>
+            方法名
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WebFrame.WebAPI.LoginResponse">
+            <summary>
+            登录结果
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WebFrame.WebAPI.ServiceController">
+            <summary>
+            WepApi 文件传输
+            /efwplusApi/coresys/service/
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:EFWCoreLib.WebFrame.WebAPI.ServiceController.Get(EFWCoreLib.WebFrame.WebAPI.ServiceParam)" -->
+        <member name="M:EFWCoreLib.WebFrame.WebAPI.ServiceController.Post(EFWCoreLib.WebFrame.WebAPI.ServiceParam)">
+            efwplusApi/coresys/service/post?token=111111
+            {"wcfpluginname":"Books.Service","wcfcontroller":"bookWcfController","wcfmethod":"GetBooks","jsondata":"[]"}
+        </member>
+        <member name="T:EFWCoreLib.WebFrame.WebAPI.PluginHttpControllerSelector">
+            <summary>
+            Represents a area System.Web.Http.Dispatcher.IHttpControllerSelector instance
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WebFrame.WebAPI.PluginHttpControllerSelector.SelectController(System.Net.Http.HttpRequestMessage)">
+            <summary>
+            Selects a System.Web.Http.Controllers.HttpControllerDescriptor for the given System.Net.Http.HttpRequestMessage.
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EFWCoreLib.WebFrame.HttpHandler.AppGlobalHttpModule">
+            <summary>
+            web系统启动调用此对象(已移植到Global中调用)
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WebFrame.HttpHandler.APIHttpHandler">
+            <summary>
+            Http请求处理对象
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WebFrame.HttpHandler.APIHttpHandler.ProcessRequest(System.Web.HttpContext)">
+            <summary>
+            您将需要在您网站的 web.config 文件中配置此处理程序，
+            并向 IIS 注册此处理程序，然后才能进行使用。有关详细信息，
+            请参见下面的链接: http://go.microsoft.com/?linkid=8101007
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WebFrame.HttpHandler.Controller.IToJqueryEasyUIJson">
+            <summary>
+            对象转与JqueryEasyUI匹配的Json格式
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WebFrame.HttpHandler.Controller.JEasyUIController">
+            <summary>
+            基于JqueryEasyUI框架的Web控制器基类
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WebFrame.HttpHandler.Controller.WebHttpController">
+            <summary>
+            WebHttpController控制器
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WebFrame.HttpHandler.Controller.WebHttpController.JsonResult">
+            <summary>
+            Ajax请求返回Json数据
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WebFrame.HttpHandler.Controller.WebHttpController.ViewResult">
+            <summary>
+            URL请求界面
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WebFrame.HttpHandler.Controller.WebHttpController.ViewData">
+            <summary>
+            界面数据
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WebFrame.HttpHandler.Controller.WebHttpController.sessionData">
+            <summary>
+            Session数据传入后台
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WebFrame.HttpHandler.Controller.WebHttpController.PutOutData">
+            <summary>
+            后台传出数据到Session数据
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WebFrame.HttpHandler.Controller.WebHttpController.ClearKey">
+            <summary>
+            清除Session的数据
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WebFrame.HttpHandler.Controller.WebHttpController.ParamsData">
+            <summary>
+            Url参数传递数据
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WebFrame.HttpHandler.Controller.WebHttpController.FormData">
+            <summary>
+            Form提交的数据
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WebFrame.HttpHandler.HttpHandlerInvoker">
+            <summary>
+            执行控制器
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WebFrame.HttpHandler.HttpHandlerInvoker.ControllerName">
+            <summary>
+            控制器名称
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WebFrame.HttpHandler.HttpHandlerInvoker.MethodName">
+            <summary>
+            方法名
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WebFrame.HttpHandler.HttpHandlerInvoker.CmdInvoke(System.Web.HttpContext)">
+            <summary>
+            执行命令
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WebFrame.HttpHandler.Utility.DebugController">
+            <summary>
+            控制器调试
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WebFrame.HttpHandler.Utility.ImageUniqueCode">
+            <summary>
+            登录验证码控制器
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WebFrame.HttpHandler.Utility.kindeditorUpload">
+            <summary>
+            kindeditor控件上传下载的操作控制器
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WebFrame.HttpHandler.Utility.TemplateHelper">
+            <summary>
+            NVelocity模板引擎帮助类
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WebFrame.HttpHandler.Utility.TemplateHelper.Put(System.String,System.Object)">
+            <summary>
+            给模板变量赋值
+            </summary>
+            <param name="key">模板变量</param>
+            <param name="value">模板变量值</param>
+        </member>
+        <member name="M:EFWCoreLib.WebFrame.HttpHandler.Utility.TemplateHelper.BuildString(System.String)">
+            <summary>
+            生成字符
+            </summary>
+            <param name="templatFileName">模板文件名</param>
+        </member>
+        <member name="T:EFWCoreLib.WebFrame.HttpHandler.Utility.UploadifyController">
+            <summary>
+            文件上传
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WebFrame.HttpHandler.Utility.WebFusionChart.CreateChartXML(System.String)">
+            <summary>
+            根据XML数据文件创建对象
+            </summary>
+            <param name="filename"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WebFrame.HttpHandler.Utility.WebFusionChart.AddgraphAttribute(System.Xml.XmlDocument,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="chartXML"></param>
+            <param name="AttributeName"></param>
+            <param name="AttributeValue"></param>
+        </member>
+        <member name="M:EFWCoreLib.WebFrame.HttpHandler.Utility.WebFusionChart.CreateLineXMLData(System.Data.DataTable,EFWCoreLib.WebFrame.HttpHandler.Utility.DelegateChart,System.Collections.Hashtable,System.String,System.String[],System.Collections.Hashtable[])">
+            <summary>
+            创建图表线数据源的方法
+            </summary>
+            <param name="dt">数据集</param>
+            <param name="chart">回调函数用来数据源属性</param>
+            <param name="chartAttribute">数据源根节点属性</param>
+            <param name="categoriesColumn">指定dt数据集中列名一致的列值为X轴内容</param>
+            <param name="valueColumns">指定dt数据集中列名一致的数组列值为线的值，可以有多条线</param>
+            <param name="valueAttributes">给每条线赋相关属性值</param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WebFrame.HttpHandler.Utility.WebFusionChart.CreateColumnXMLData(System.Data.DataTable,EFWCoreLib.WebFrame.HttpHandler.Utility.DelegateChart,System.Collections.Hashtable,System.String,System.String[],System.Collections.Hashtable[])">
+            <summary>
+            创建图表具状图数据源的方法
+            </summary>
+            <param name="dt">数据集</param>
+            <param name="chart">回调函数用来数据源属性</param>
+            <param name="chartAttribute">数据源根节点属性</param>
+            <param name="categoriesColumn">指定dt数据集中列名一致的列值为X轴内容</param>
+            <param name="valueColumns">指定dt数据集中列名一致的数组列值为线的值，可以有多条线</param>
+            <param name="valueAttributes">给每条线赋相关属性值</param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WebFrame.HttpHandler.Utility.WebFusionChart.CreatePieXMLData(System.Data.DataTable,EFWCoreLib.WebFrame.HttpHandler.Utility.DelegateChart,System.Collections.Hashtable,System.String,System.String[],System.Collections.Hashtable[])">
+            <summary>
+            创建图表饼图数据源的方法
+            </summary>
+            <param name="dt">数据集</param>
+            <param name="chart">回调函数用来数据源属性</param>
+            <param name="chartAttribute">数据源根节点属性</param>
+            <param name="categoriesColumn">指定dt数据集中列名一致的列值为X轴内容</param>
+            <param name="valueColumns">指定dt数据集中列名一致的数组列值为线的值，可以有多条线</param>
+            <param name="valueAttributes">给每条线赋相关属性值</param>
+            <returns></returns>
+        </member>
+        <member name="T:EFWCoreLib.WebFrame.HttpHandler.Utility.RAXmlDataSource">
+            <summary>
+            根据主从表的信息输出XML
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WebFrame.HttpHandler.Utility.RAXmlDataSource.SetMaster(System.Data.DataTable,System.String)">
+            <summary>
+            设置主表信息
+            </summary>
+            <param name="dt">指定主表对象。</param>
+            <param name="fields">指定输出的字段列表，例子："field1,field2"，空串代表全部字段。</param>
+        </member>
+        <member name="M:EFWCoreLib.WebFrame.HttpHandler.Utility.RAXmlDataSource.AddDetail(System.String,System.Data.DataTable,System.String,System.String)">
+            <summary>
+            增加明细表信息
+            </summary>
+            <param name="detailID">指定标识明细表对象的唯一ID值。</param>
+            <param name="dt">指定明细表对象。</param>
+            <param name="relation">指定明细表与主记录集的关系；主表字段在等号左侧，明细记录集在等号右侧。</param>
+            <param name="fields">指定输出的字段列表，例子："field1,field2"，空串代表全部字段。</param>
+        </member>
+        <member name="M:EFWCoreLib.WebFrame.HttpHandler.Utility.RAXmlDataSource.deleteDetail(System.String)">
+            <summary>
+            删除明细表信息
+            </summary>
+            <param name="detailID">指定标识明细表的唯一ID值。</param>
+        </member>
+        <member name="M:EFWCoreLib.WebFrame.HttpHandler.Utility.RAXmlDataSource.clearDetail">
+            <summary>
+            清空明细表信息
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WebFrame.HttpHandler.Utility.RAXmlDataSource.ExportToXML(System.IO.TextWriter)">
+            <summary>
+            输出XML字符串
+            </summary>
+            <param name="write">指定接收XML字符串的写入对象</param>
+        </member>
+        <member name="M:EFWCoreLib.WebFrame.HttpHandler.Utility.RAXmlDataSource.ExportToJson">
+            <summary>
+            输出XML字符串
+            </summary>
+            <param name="write">指定接收XML字符串的写入对象</param>
+        </member>
+        <member name="P:EFWCoreLib.WebFrame.HttpHandler.Utility.RAXmlDataSource.Encoding">
+            <summary>
+            指定XML的字符编码格式 
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WebFrame.HttpHandler.Utility.RAXmlDataSource.WriteTransferred(System.IO.TextWriter,System.String)">
+            <summary>
+            转义输出字符
+            </summary>
+            <param name="write">字符输出对象</param>
+            <param name="str">待输出的字符</param>
+        </member>
+        <member name="M:EFWCoreLib.WebFrame.HttpHandler.Utility.RAXmlDataSource.WriteTransferred(System.Text.StringBuilder,System.String)">
+            <summary>
+            转义输出字符
+            </summary>
+            <param name="write">字符输出对象</param>
+            <param name="str">待输出的字符</param>
+        </member>
+        <member name="T:EFWCoreLib.WebFrame.HttpHandler.Utility.WebReportAll">
+            <summary>
+            Web报表封装帮助类
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WebFrame.HttpHandler.Utility.WebReportAll.ToReportData(System.Data.DataTable)">
+            <summary>
+            转换为报表数据
+            </summary>
+            <param name="dtDetail">明细数据内容</param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WebFrame.HttpHandler.Utility.WebReportAll.ToReportData(System.Data.DataTable,System.Data.DataTable)">
+            <summary>
+            转换为报表数据
+            </summary>
+            <param name="dtMaster">报表页眉数据内容</param>
+            <param name="dtDetail">明细数据内容</param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WebFrame.HttpHandler.Utility.WebReportAll.ToReportData(System.Data.DataTable,System.Data.DataTable[])">
+            <summary>
+            转换为报表数据
+            </summary>
+            <param name="dtMaster">报表页眉数据内容</param>
+            <param name="dtDetails">多个明细数据内容</param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WebFrame.HttpHandler.Utility.WebReportAll.ToReportData(System.Data.DataTable,System.IO.TextWriter)">
+            <summary>
+            转换为报表数据
+            </summary>
+            <param name="dtDetail">明细数据内容</param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WebFrame.HttpHandler.Utility.WebReportAll.ToReportData(System.Data.DataTable,System.Data.DataTable,System.IO.TextWriter)">
+            <summary>
+            转换为报表数据
+            </summary>
+            <param name="dtMaster">报表页眉数据内容</param>
+            <param name="dtDetail">明细数据内容</param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WebFrame.HttpHandler.Utility.WebReportAll.ToReportData(System.Data.DataTable,System.Data.DataTable[],System.IO.TextWriter)">
+            <summary>
+            转换为报表数据
+            </summary>
+            <param name="dtMaster">报表页眉数据内容</param>
+            <param name="dtDetails">多个明细数据内容</param>
+            <returns></returns>
+        </member>
+        <member name="T:EFWCoreLib.WebFrame.HttpHandler.WebServiceInvoker">
+            <summary>
+            WebService处理对象
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WebFrame.Utility.ExcelHelper">
+            <summary>
+            导出Excel
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WebFrame.Utility.ExcelHelper.Export(System.Data.DataTable,System.String,System.String)">
+            <summary>  
+            DataTable导出到Excel文件  
+            </summary>  
+            <param name="dtSource">源DataTable</param>  
+            <param name="strHeaderText">表头文本</param>  
+            <param name="strFileName">保存位置</param>  
+            <Author></Author>  
+        </member>
+        <member name="M:EFWCoreLib.WebFrame.Utility.ExcelHelper.Export(System.Data.DataTable,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>  
+            DataTable导出到Excel的MemoryStream  
+            </summary>  
+            <param name="dtSource">源DataTable</param>  
+            <param name="strHeaderText">表头文本</param>  
+            <Author> 2010-5-8 22:21:41</Author>  
+        </member>
+        <member name="M:EFWCoreLib.WebFrame.Utility.ExcelHelper.ExportByWeb(System.Web.HttpContext,System.Data.DataTable,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.String)">
+            <summary>  
+            用于Web导出  
+            </summary>  
+            <param name="dtSource">源DataTable</param>  
+            <param name="strHeaderText">表头文本</param>  
+            <param name="strFileName">文件名</param>  
+            <Author> 2010-5-8 22:21:41</Author>  
+        </member>
+        <member name="M:EFWCoreLib.WebFrame.Utility.ExcelHelper.Import(System.String)">
+            <summary>读取excel  
+            默认第一行为标头  
+            </summary>  
+            <param name="strFileName">excel文档路径</param>  
+            <returns></returns>  
+        </member>
+        <member name="T:EFWCoreLib.Properties.Resources">
+            <summary>
+              一个强类型的资源类，用于查找本地化的字符串等。
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.Properties.Resources.ResourceManager">
+            <summary>
+              返回此类使用的缓存的 ResourceManager 实例。
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.Properties.Resources.Culture">
+            <summary>
+              使用此强类型资源类，为所有资源查找
+              重写当前线程的 CurrentUICulture 属性。
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.Properties.Resources.CodeConfig">
+             <summary>
+               查找类似 &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+            &lt;CodeConfig&gt;
+              &lt;SpellCode&gt;
+                &lt;A&gt;阿啊锕嗄厑哎哀唉埃挨溾锿鎄啀捱皑凒溰嘊敳皚癌毐昹嗳矮蔼躷噯藹譪霭靄艾伌爱砹硋隘嗌塧嫒愛碍暧瑷僾壒嬡懓薆曖璦鴱皧瞹馤鑀鱫安侒峖桉氨庵谙萻腤鹌蓭誝鞌鞍盦馣鮟盫韽啽雸垵俺唵埯铵隌揞罯銨犴岸按荌案胺豻堓婩暗貋儑錌黯肮岇昂昻枊盎醠凹坳垇柪軪爊敖厫隞嗷嗸嶅廒滶獒獓遨熬璈蔜翱聱螯翶謷翺鳌鏖鰲鷔鼇芺袄媪镺襖岙扷岰傲奡奥嫯慠骜奧嶴澳懊擙謸鏊&lt;/A&gt;
+                &lt;B&gt;八仈巴叭扒朳玐吧夿岜芭疤哵捌笆粑紦羓蚆釟豝鲃魞叐犮抜坺妭拔茇炦癹胈釛菝詙跋軷魃把靶坝弝爸垻罢鲅鮁覇矲霸壩灞欛挀掰白百佰柏栢捭竡粨摆擺襬呗拝败拜唄敗稗粺鞁薭贁兡瓸扳攽班般颁斑搬斒瘢螁癍辬阪坂岅昄板版瓪钣粄舨鈑蝂魬办半伴扮姅怑拌绊秚絆鉡靽辦瓣邦峀垹帮捠梆浜邫幇幚縍幫鞤绑綁榜膀玤蚌傍棒谤塝稖蒡蜯磅镑艕謗勹包佨孢苞胞笣煲龅蕔褒闁齙窇嫑雹宝怉饱保鸨珤堡堢媬葆寚飹飽褓駂鳵緥鴇賲藵寳寶靌勽报抱豹趵菢鲍靤骲暴髱虣儤曓爆忁鑤萡陂卑杯盃桮悲揹碑鹎藣鵯喺北鉳贝狈貝邶备昁牬苝背钡俻倍悖狽被偝偹梖珼鄁備僃惫焙軰辈愂碚禙蓓蛽犕褙誖骳輩鋇憊糒鞴 [字符串的其余部分被截断]&quot;; 的本地化字符串。
+             </summary>
+        </member>
+        <member name="P:EFWCoreLib.Properties.Resources.msn">
+            <summary>
+              查找类似于 (Icon) 的 System.Drawing.Icon 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WinformFrame.Controller.WinformController">
+            <summary>
+            Winform控制器基类
+            
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WinformFrame.Controller.WinformController.GetUserInfo">
+            <summary>
+            获取页面子权限
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WinformFrame.Controller.WinformController.#ctor">
+            <summary>
+            创建WinformController的实例
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WinformFrame.Controller.WinformController.UI_ControllerEvent(System.String,System.Object[])">
+            <summary>
+            界面控制事件
+            </summary>
+            <param name="eventname">事件名称</param>
+            <param name="objs">参数数组</param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WinformFrame.Controller.WinformController.Init">
+            <summary>
+            初始化全局web服务参数对象
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WinformFrame.Controller.WinformController.InvokeController(System.String,System.String,System.String,System.Object[])">
+            <summary>
+            执行控制器
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:EFWCoreLib.WinformFrame.Controller.BaseForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WinformFrame.Controller.BaseForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:EFWCoreLib.WinformFrame.Controller.BaseForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WinformFrame.Controller.IBaseView">
+            <summary>
+            控制器基础接口
+            </summary>
+        </member>
+    </members>
+</doc>

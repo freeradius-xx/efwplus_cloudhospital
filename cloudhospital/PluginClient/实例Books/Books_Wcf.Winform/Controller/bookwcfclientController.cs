@@ -6,6 +6,7 @@ using EFWCoreLib.WcfFrame.ClientController;
 using EFWCoreLib.CoreFrame.Business.AttributeInfo;
 using Books_Wcf.Winform.IView;
 using System.Data;
+using EFWCoreLib.WcfFrame.DataSerialize;
 
 namespace Books_Wcf.Winform.Controller
 {
@@ -23,8 +24,13 @@ namespace Books_Wcf.Winform.Controller
         [WinformMethod]
         public void bookSave()
         {
+            Action<ClientRequestData> requestAction = ((ClientRequestData request) =>
+            {
+                request.AddData(_ifrmbookmanager.currBook);
+            });
+
             //通过wcf服务调用bookWcfController控制器中的SaveBook方法，并传递参数Book对象
-            InvokeWcfService("Books.Service", "bookWcfController", "SaveBook", ToJson(_ifrmbookmanager.currBook));
+            InvokeWcfService("Books.Service", "bookWcfController", "SaveBook", requestAction);
             GetBooks();
         }
 
@@ -33,8 +39,8 @@ namespace Books_Wcf.Winform.Controller
         public void GetBooks()
         {
             //通过wcf服务调用bookWcfController控制器中的GetBooks方法
-            Object retdata = InvokeWcfService("Books.Service", "bookWcfController", "GetBooks");
-            DataTable dt = ToDataTable(retdata);
+            ServiceResponseData retdata = InvokeWcfService("Books.Service", "bookWcfController", "GetBooks");
+            DataTable dt = retdata.GetData<DataTable>(0);
             _ifrmbookmanager.loadbooks(dt);
         }
     }

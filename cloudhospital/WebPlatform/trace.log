@@ -1,0 +1,550 @@
+----------------------------------------
+Timestamp: 2016-05-11 07:47:45
+
+Message: HandlingInstanceID: ff7a42e6-0d62-48bc-8f99-b8107d63fb25
+An exception of type 'System.NullReferenceException' occurred and was caught.
+-----------------------------------------------------------------------------
+05/11/2016 15:47:45
+Type : System.NullReferenceException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 未将对象引用设置到对象的实例。
+Source : EFWCoreLib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : EFWCoreLib.CoreFrame.Init.AttributeManager.WebControllerAttributeInfo GetPluginWebControllerAttributeInfo(System.String, System.String, EFWCoreLib.CoreFrame.Plugin.ModulePlugin ByRef)
+HResult : -2147467261
+Stack Trace :    在 EFWCoreLib.CoreFrame.Init.AppPluginManage.GetPluginWebControllerAttributeInfo(String pluginname, String name, ModulePlugin& mp) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_webframe\EFWCoreLib\CoreFrame\Init\AppPluginManage.cs:行号 116
+   在 EFWCoreLib.WebFrame.HttpHandler.Controller.ControllerHelper.CreateController(String controllername) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_webframe\EFWCoreLib\WebFrame\HttpHandler\Controller\ControllerHelper.cs:行号 22
+   在 EFWCoreLib.WebFrame.HttpHandler.HttpHandlerInvoker.CmdInvoke(HttpContext context) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_webframe\EFWCoreLib\WebFrame\HttpHandler\HttpHandlerInvoker.cs:行号 42
+   在 EFWCoreLib.WebFrame.HttpHandler.APIHttpHandler.ProcessRequest(HttpContext context) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_webframe\EFWCoreLib\WebFrame\HttpHandler\APIHttpHandler.cs:行号 47
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-05-11 07:47:45
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : e90c06dc-1-131074264578499095
+ThreadIdentity : UALG394S3SBEXSU\Administrator
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: e90c06dc-1-131074264578499095
+
+ProcessId: 9992
+
+Process Name: C:\Program Files (x86)\Common Files\Microsoft Shared\DevServer\11.0\WebDev.WebServer40.exe
+
+Thread Name: 
+
+Win32 ThreadId:8248
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-05-11 07:47:54
+
+Message: HandlingInstanceID: c452e2a2-b888-4ad4-b9ee-df6081edc394
+An exception of type 'System.NullReferenceException' occurred and was caught.
+-----------------------------------------------------------------------------
+05/11/2016 15:47:54
+Type : System.NullReferenceException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 未将对象引用设置到对象的实例。
+Source : EFWCoreLib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : EFWCoreLib.CoreFrame.Init.AttributeManager.WebControllerAttributeInfo GetPluginWebControllerAttributeInfo(System.String, System.String, EFWCoreLib.CoreFrame.Plugin.ModulePlugin ByRef)
+HResult : -2147467261
+Stack Trace :    在 EFWCoreLib.CoreFrame.Init.AppPluginManage.GetPluginWebControllerAttributeInfo(String pluginname, String name, ModulePlugin& mp) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_webframe\EFWCoreLib\CoreFrame\Init\AppPluginManage.cs:行号 116
+   在 EFWCoreLib.WebFrame.HttpHandler.Controller.ControllerHelper.CreateController(String controllername) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_webframe\EFWCoreLib\WebFrame\HttpHandler\Controller\ControllerHelper.cs:行号 22
+   在 EFWCoreLib.WebFrame.HttpHandler.HttpHandlerInvoker.CmdInvoke(HttpContext context) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_webframe\EFWCoreLib\WebFrame\HttpHandler\HttpHandlerInvoker.cs:行号 42
+   在 EFWCoreLib.WebFrame.HttpHandler.APIHttpHandler.ProcessRequest(HttpContext context) 位置 d:\工作台\efwplus产品目录\efwplus_cloudhospital\efwplus_webframe\EFWCoreLib\WebFrame\HttpHandler\APIHttpHandler.cs:行号 47
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-05-11 07:47:54
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : e90c06dc-1-131074264578499095
+ThreadIdentity : UALG394S3SBEXSU\Administrator
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: e90c06dc-1-131074264578499095
+
+ProcessId: 9992
+
+Process Name: C:\Program Files (x86)\Common Files\Microsoft Shared\DevServer\11.0\WebDev.WebServer40.exe
+
+Thread Name: 
+
+Win32 ThreadId:10192
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016/6/15 08:29:13
+
+Message: HandlingInstanceID: e458a42d-b7c4-4539-acc7-55ddbf345d2a
+An exception of type 'System.Reflection.TargetInvocationException' occurred and was caught.
+-------------------------------------------------------------------------------------------
+06/15/2016 16:29:13
+Type : System.Reflection.TargetInvocationException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 调用的目标发生了异常。
+Source : mscorlib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.Object InvokeMethod(System.Object, System.Object[], System.Signature, Boolean)
+HResult : -2146232828
+Stack Trace :    在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 EFWCoreLib.WebFrame.HttpHandler.HttpHandlerInvoker.CmdInvoke(HttpContext context)
+   在 EFWCoreLib.WebFrame.HttpHandler.APIHttpHandler.ProcessRequest(HttpContext context)
+
+Additional Info:
+
+MachineName : MS-20160219JFVJ
+TimeStamp : 2016/6/15 08:29:13
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : /LM/W3SVC/2/ROOT-1-131104529089582699
+ThreadIdentity : 
+WindowsIdentity : MS-20160219JFVJ\Administrator
+	Inner Exception
+	---------------
+	Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+	Message : 在 ServiceModel 客户端配置部分中，找不到名称“wcfendpoint”和协定“EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService”的终结点元素。这可能是因为未找到应用程序的配置文件，或者是因为客户端元素中找不到与此名称匹配的终结点元素。
+	Source : EFWCoreLib
+	Help link : 
+	Data : System.Collections.ListDictionaryInternal
+	TargetSite : EFWCoreLib.WcfFrame.ClientLink CreateConnection(System.String)
+	HResult : -2146233088
+	Stack Trace :    在 EFWCoreLib.WcfFrame.ClientLinkManage.CreateConnection(String pluginname)
+	   在 EFWCoreLib.WebFrame.HttpHandler.Controller.WebHttpController.InvokeWcfService(String wcfpluginname, String wcfcontroller, String wcfmethod, Action`1 requestAction)
+	   在 EFWCoreLib.WebFrame.HttpHandler.Controller.WebHttpController.InvokeWcfService(String wcfpluginname, String wcfcontroller, String wcfmethod)
+	   在 Books_Web.WebController.bookController.SearchBook() 位置 D:\efwplus_cloudhospital\efwplus_webframe\Plugin\实例Books\Books_Web\WebController\bookController.cs:行号 34
+
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: MS-20160219JFVJ
+
+App Domain: /LM/W3SVC/2/ROOT-1-131104529089582699
+
+ProcessId: 4832
+
+Process Name: C:\Program Files\IIS Express\iisexpress.exe
+
+Thread Name: 
+
+Win32 ThreadId:7680
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016/6/15 08:30:39
+
+Message: HandlingInstanceID: fe155905-a0b8-41ef-a006-98b2166b108b
+An exception of type 'System.Reflection.TargetInvocationException' occurred and was caught.
+-------------------------------------------------------------------------------------------
+06/15/2016 16:30:39
+Type : System.Reflection.TargetInvocationException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 调用的目标发生了异常。
+Source : mscorlib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.Object InvokeMethod(System.Object, System.Object[], System.Signature, Boolean)
+HResult : -2146232828
+Stack Trace :    在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 EFWCoreLib.WebFrame.HttpHandler.HttpHandlerInvoker.CmdInvoke(HttpContext context)
+   在 EFWCoreLib.WebFrame.HttpHandler.APIHttpHandler.ProcessRequest(HttpContext context)
+
+Additional Info:
+
+MachineName : MS-20160219JFVJ
+TimeStamp : 2016/6/15 08:30:39
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : /LM/W3SVC/2/ROOT-1-131104529089582699
+ThreadIdentity : 
+WindowsIdentity : MS-20160219JFVJ\Administrator
+	Inner Exception
+	---------------
+	Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+	Message : 在 ServiceModel 客户端配置部分中，找不到名称“wcfendpoint”和协定“EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService”的终结点元素。这可能是因为未找到应用程序的配置文件，或者是因为客户端元素中找不到与此名称匹配的终结点元素。
+	Source : EFWCoreLib
+	Help link : 
+	Data : System.Collections.ListDictionaryInternal
+	TargetSite : EFWCoreLib.WcfFrame.ClientLink CreateConnection(System.String)
+	HResult : -2146233088
+	Stack Trace :    在 EFWCoreLib.WcfFrame.ClientLinkManage.CreateConnection(String pluginname)
+	   在 EFWCoreLib.WebFrame.HttpHandler.Controller.WebHttpController.InvokeWcfService(String wcfpluginname, String wcfcontroller, String wcfmethod, Action`1 requestAction)
+	   在 EFWCoreLib.WebFrame.HttpHandler.Controller.WebHttpController.InvokeWcfService(String wcfpluginname, String wcfcontroller, String wcfmethod)
+	   在 Books_Web.WebController.bookController.SearchBook() 位置 D:\efwplus_cloudhospital\efwplus_webframe\Plugin\实例Books\Books_Web\WebController\bookController.cs:行号 34
+
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: MS-20160219JFVJ
+
+App Domain: /LM/W3SVC/2/ROOT-1-131104529089582699
+
+ProcessId: 4832
+
+Process Name: C:\Program Files\IIS Express\iisexpress.exe
+
+Thread Name: 
+
+Win32 ThreadId:2920
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016/6/15 08:48:47
+
+Message: HandlingInstanceID: 250d33a9-bf78-4dd8-847b-92d3574673c0
+An exception of type 'System.Reflection.TargetInvocationException' occurred and was caught.
+-------------------------------------------------------------------------------------------
+06/15/2016 16:48:46
+Type : System.Reflection.TargetInvocationException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 调用的目标发生了异常。
+Source : mscorlib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.Object InvokeMethod(System.Object, System.Object[], System.Signature, Boolean)
+HResult : -2146232828
+Stack Trace :    在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 EFWCoreLib.WebFrame.HttpHandler.HttpHandlerInvoker.CmdInvoke(HttpContext context)
+   在 EFWCoreLib.WebFrame.HttpHandler.APIHttpHandler.ProcessRequest(HttpContext context)
+
+Additional Info:
+
+MachineName : MS-20160219JFVJ
+TimeStamp : 2016/6/15 08:48:46
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : /LM/W3SVC/2/ROOT-1-131104540916043536
+ThreadIdentity : 
+WindowsIdentity : MS-20160219JFVJ\Administrator
+	Inner Exception
+	---------------
+	Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+	Message : 在 ServiceModel 客户端配置部分中，找不到名称“wcfendpoint”和协定“EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService”的终结点元素。这可能是因为未找到应用程序的配置文件，或者是因为客户端元素中找不到与此名称匹配的终结点元素。
+	Source : EFWCoreLib
+	Help link : 
+	Data : System.Collections.ListDictionaryInternal
+	TargetSite : EFWCoreLib.WcfFrame.ClientLink CreateConnection(System.String)
+	HResult : -2146233088
+	Stack Trace :    在 EFWCoreLib.WcfFrame.ClientLinkManage.CreateConnection(String pluginname)
+	   在 EFWCoreLib.WebFrame.HttpHandler.Controller.WebHttpController.InvokeWcfService(String wcfpluginname, String wcfcontroller, String wcfmethod, Action`1 requestAction)
+	   在 EFWCoreLib.WebFrame.HttpHandler.Controller.WebHttpController.InvokeWcfService(String wcfpluginname, String wcfcontroller, String wcfmethod)
+	   在 Books_Web.WebController.bookController.SearchBook() 位置 D:\efwplus_cloudhospital\efwplus_webframe\Plugin\实例Books\Books_Web\WebController\bookController.cs:行号 34
+
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: MS-20160219JFVJ
+
+App Domain: /LM/W3SVC/2/ROOT-1-131104540916043536
+
+ProcessId: 5028
+
+Process Name: C:\Program Files\IIS Express\iisexpress.exe
+
+Thread Name: 
+
+Win32 ThreadId:5156
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016/6/15 08:54:29
+
+Message: HandlingInstanceID: 27f2547f-b69c-4d1b-a41c-bc4ff269d5e6
+An exception of type 'System.Reflection.TargetInvocationException' occurred and was caught.
+-------------------------------------------------------------------------------------------
+06/15/2016 16:54:29
+Type : System.Reflection.TargetInvocationException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 调用的目标发生了异常。
+Source : mscorlib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.Object InvokeMethod(System.Object, System.Object[], System.Signature, Boolean)
+HResult : -2146232828
+Stack Trace :    在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 EFWCoreLib.WebFrame.HttpHandler.HttpHandlerInvoker.CmdInvoke(HttpContext context)
+   在 EFWCoreLib.WebFrame.HttpHandler.APIHttpHandler.ProcessRequest(HttpContext context)
+
+Additional Info:
+
+MachineName : MS-20160219JFVJ
+TimeStamp : 2016/6/15 08:54:29
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : /LM/W3SVC/2/ROOT-1-131104544479537357
+ThreadIdentity : 
+WindowsIdentity : MS-20160219JFVJ\Administrator
+	Inner Exception
+	---------------
+	Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+	Message : 本地插件找不到指定的插件
+连接服务主机失败，请联系管理员！
+	Source : EFWCoreLib
+	Help link : 
+	Data : System.Collections.ListDictionaryInternal
+	TargetSite : EFWCoreLib.WcfFrame.DataSerialize.ServiceResponseData Request(System.String, System.String, System.Action`1[EFWCoreLib.WcfFrame.DataSerialize.ClientRequestData])
+	HResult : -2146233088
+	Stack Trace :    在 EFWCoreLib.WcfFrame.ClientLink.Request(String controller, String method, Action`1 requestAction)
+	   在 EFWCoreLib.WebFrame.HttpHandler.Controller.WebHttpController.InvokeWcfService(String wcfpluginname, String wcfcontroller, String wcfmethod, Action`1 requestAction)
+	   在 EFWCoreLib.WebFrame.HttpHandler.Controller.WebHttpController.InvokeWcfService(String wcfpluginname, String wcfcontroller, String wcfmethod)
+	   在 Books_Web.WebController.bookController.SearchBook() 位置 D:\efwplus_cloudhospital\efwplus_webframe\Plugin\实例Books\Books_Web\WebController\bookController.cs:行号 34
+
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: MS-20160219JFVJ
+
+App Domain: /LM/W3SVC/2/ROOT-1-131104544479537357
+
+ProcessId: 9612
+
+Process Name: C:\Program Files\IIS Express\iisexpress.exe
+
+Thread Name: 
+
+Win32 ThreadId:3392
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016/6/15 08:56:00
+
+Message: HandlingInstanceID: 8a83bbbc-aa78-4e5c-b193-d5ab301617f5
+An exception of type 'System.Reflection.TargetInvocationException' occurred and was caught.
+-------------------------------------------------------------------------------------------
+06/15/2016 16:56:00
+Type : System.Reflection.TargetInvocationException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 调用的目标发生了异常。
+Source : mscorlib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.Object InvokeMethod(System.Object, System.Object[], System.Signature, Boolean)
+HResult : -2146232828
+Stack Trace :    在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 EFWCoreLib.WebFrame.HttpHandler.HttpHandlerInvoker.CmdInvoke(HttpContext context)
+   在 EFWCoreLib.WebFrame.HttpHandler.APIHttpHandler.ProcessRequest(HttpContext context)
+
+Additional Info:
+
+MachineName : MS-20160219JFVJ
+TimeStamp : 2016/6/15 08:56:00
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : /LM/W3SVC/2/ROOT-1-131104545367048119
+ThreadIdentity : 
+WindowsIdentity : MS-20160219JFVJ\Administrator
+	Inner Exception
+	---------------
+	Type : System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+	Message : 本地插件找不到指定的插件
+连接服务主机失败，请联系管理员！
+	Source : EFWCoreLib
+	Help link : 
+	Data : System.Collections.ListDictionaryInternal
+	TargetSite : EFWCoreLib.WcfFrame.DataSerialize.ServiceResponseData Request(System.String, System.String, System.Action`1[EFWCoreLib.WcfFrame.DataSerialize.ClientRequestData])
+	HResult : -2146233088
+	Stack Trace :    在 EFWCoreLib.WcfFrame.ClientLink.Request(String controller, String method, Action`1 requestAction)
+	   在 EFWCoreLib.WebFrame.HttpHandler.Controller.WebHttpController.InvokeWcfService(String wcfpluginname, String wcfcontroller, String wcfmethod, Action`1 requestAction)
+	   在 EFWCoreLib.WebFrame.HttpHandler.Controller.WebHttpController.InvokeWcfService(String wcfpluginname, String wcfcontroller, String wcfmethod)
+	   在 Books_Web.WebController.bookController.SearchBook() 位置 D:\efwplus_cloudhospital\efwplus_webframe\Plugin\实例Books\Books_Web\WebController\bookController.cs:行号 34
+
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: MS-20160219JFVJ
+
+App Domain: /LM/W3SVC/2/ROOT-1-131104545367048119
+
+ProcessId: 9844
+
+Process Name: C:\Program Files\IIS Express\iisexpress.exe
+
+Thread Name: 
+
+Win32 ThreadId:9632
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016/6/15 09:09:37
+
+Message: HandlingInstanceID: d3f42b07-20ff-4538-b687-620c5ee621db
+An exception of type 'System.Reflection.TargetInvocationException' occurred and was caught.
+-------------------------------------------------------------------------------------------
+06/15/2016 17:09:37
+Type : System.Reflection.TargetInvocationException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 调用的目标发生了异常。
+Source : mscorlib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.Object InvokeMethod(System.Object, System.Object[], System.Signature, Boolean)
+HResult : -2146232828
+Stack Trace :    在 System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   在 System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   在 System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   在 System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   在 EFWCoreLib.WebFrame.HttpHandler.HttpHandlerInvoker.CmdInvoke(HttpContext context)
+   在 EFWCoreLib.WebFrame.HttpHandler.APIHttpHandler.ProcessRequest(HttpContext context)
+
+Additional Info:
+
+MachineName : MS-20160219JFVJ
+TimeStamp : 2016/6/15 09:09:37
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : /LM/W3SVC/2/ROOT-1-131104546190735232
+ThreadIdentity : 
+WindowsIdentity : MS-20160219JFVJ\Administrator
+	Inner Exception
+	---------------
+	Type : System.Data.SqlClient.SqlException, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+	Message : 对象名 'EFWDB.dbo.BaseDept' 无效。
+	Source : .Net SqlClient Data Provider
+	Help link : 
+	Errors : System.Data.SqlClient.SqlErrorCollection
+	ClientConnectionId : b382d924-5178-425c-852b-f1701fb7c8c8
+	Class : 16
+	LineNumber : 1
+	Number : 208
+	Procedure : 
+	Server : .
+	State : 1
+	ErrorCode : -2146232060
+	Data : System.Collections.ListDictionaryInternal
+	TargetSite : Void OnError(System.Data.SqlClient.SqlException, Boolean, System.Action`1[System.Action])
+	HResult : -2146232060
+	Stack Trace :    在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+	   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+	   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+	   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+	   在 System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+	   在 System.Data.SqlClient.SqlDataReader.get_MetaData()
+	   在 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+	   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+	   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+	   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+	   在 System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+	   在 System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+	   在 System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+	   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+	   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+	   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+	   在 Microsoft.Practices.EnterpriseLibrary.Data.Database.DoLoadDataSet(IDbCommand command, DataSet dataSet, String[] tableNames)
+	   在 Microsoft.Practices.EnterpriseLibrary.Data.Database.LoadDataSet(DbCommand command, DataSet dataSet, String[] tableNames)
+	   在 Microsoft.Practices.EnterpriseLibrary.Data.Database.LoadDataSet(DbCommand command, DataSet dataSet, String tableName)
+	   在 Microsoft.Practices.EnterpriseLibrary.Data.Database.ExecuteDataSet(DbCommand command)
+	   在 Microsoft.Practices.EnterpriseLibrary.Data.Database.ExecuteDataSet(CommandType commandType, String commandText)
+	   在 EFWCoreLib.CoreFrame.DbProvider.EntLibDb.GetDataTable(String commandtext)
+	   在 WebUIFrame.WebController.DeptEmployeeController.SearchDeptData() 位置 D:\efwplus_cloudhospital\efwplus_webframe\Plugin\WebUIFrame\WebController\DeptEmployeeController.cs:行号 116
+
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: MS-20160219JFVJ
+
+App Domain: /LM/W3SVC/2/ROOT-1-131104546190735232
+
+ProcessId: 9660
+
+Process Name: C:\Program Files\IIS Express\iisexpress.exe
+
+Thread Name: 
+
+Win32 ThreadId:10008
+
+Extended Properties: 
+----------------------------------------
