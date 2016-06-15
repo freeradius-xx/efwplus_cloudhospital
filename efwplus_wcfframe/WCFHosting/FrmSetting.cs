@@ -35,6 +35,7 @@ namespace WCFHosting
             HostSettingConfig.SetValue("encryption", ckEncryption.Checked ? "1" : "0");
             HostSettingConfig.SetValue("overtime", ckovertime.Checked ? "1" : "0");
             HostSettingConfig.SetValue("overtimetime", txtovertime.Text);
+            HostSettingConfig.SetValue("serializetype", cbSerializeType.SelectedIndex.ToString());
             HostSettingConfig.SaveConfig();
 
 
@@ -77,6 +78,7 @@ namespace WCFHosting
             ckEncryption.Checked = HostSettingConfig.GetValue("encryption") == "1" ? true : false;
             ckovertime.Checked = HostSettingConfig.GetValue("overtime") == "1" ? true : false;
             txtovertime.Text = HostSettingConfig.GetValue("overtimetime");
+            cbSerializeType.SelectedIndex = Convert.ToInt32(HostSettingConfig.GetValue("serializetype"));
 
             txtwcf.Text = HostAddressConfig.GetWcfAddress();
             txtfile.Text = HostAddressConfig.GetFileAddress();

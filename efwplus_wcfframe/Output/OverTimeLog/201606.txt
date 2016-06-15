@@ -32,3 +32,7 @@
 
 时间：2016/6/15 02:11:21		耗时：1081.0618		方法：LoginController.UserLogin(["\"admin\"","\"1\""])
 
+时间：2016/6/15 13:04:03		耗时：1780.1018		方法：LoginController.UserLogin(["\"admin\"","\"1\""])
+
+时间：2016/6/15 13:09:31		耗时：1402.0802		方法：RightController.LoadGroupMenuData(["1"])
+

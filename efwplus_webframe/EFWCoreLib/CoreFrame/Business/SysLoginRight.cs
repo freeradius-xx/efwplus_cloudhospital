@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProtoBuf;
+using System;
 using System.Xml.Serialization;
 
 namespace EFWCoreLib.CoreFrame.Business
@@ -7,10 +8,12 @@ namespace EFWCoreLib.CoreFrame.Business
     /// 系统登录后存在Session中用户的信息
     /// </summary>
     [Serializable]
+    [ProtoContract]
     public class SysLoginRight
     {
         private int _userId;
         [XmlElement]
+        [ProtoMember(1)]
         public int UserId
         {
             get { return _userId; }
@@ -18,6 +21,7 @@ namespace EFWCoreLib.CoreFrame.Business
         }
         private int _empId;
         [XmlElement]
+        [ProtoMember(2)]
         public int EmpId
         {
             get { return _empId; }
@@ -25,6 +29,7 @@ namespace EFWCoreLib.CoreFrame.Business
         }
         private string _empName;
         [XmlElement]
+        [ProtoMember(3)]
         public string EmpName
         {
             get { return _empName; }
@@ -32,6 +37,7 @@ namespace EFWCoreLib.CoreFrame.Business
         }
         private int _deptId;
         [XmlElement]
+        [ProtoMember(4)]
         public int DeptId
         {
             get { return _deptId; }
@@ -42,6 +48,7 @@ namespace EFWCoreLib.CoreFrame.Business
         /// 当前登录科室
         /// </summary>
         [XmlElement]
+        [ProtoMember(5)]
         public string DeptName
         {
             get { return _deptName; }
@@ -49,6 +56,7 @@ namespace EFWCoreLib.CoreFrame.Business
         }
         private int _workId;
         [XmlElement]
+        [ProtoMember(6)]
         public int WorkId
         {
             get { return _workId; }
@@ -57,6 +65,7 @@ namespace EFWCoreLib.CoreFrame.Business
 
         private string _workName;
         [XmlElement]
+        [ProtoMember(7)]
         public string WorkName
         {
             get { return _workName; }
@@ -64,6 +73,7 @@ namespace EFWCoreLib.CoreFrame.Business
         }
 
         [XmlElement]
+        [ProtoMember(8)]
         public Guid token { get; set; }
     }
 }

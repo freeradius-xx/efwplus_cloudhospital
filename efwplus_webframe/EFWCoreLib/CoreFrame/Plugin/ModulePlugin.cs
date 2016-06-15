@@ -13,6 +13,7 @@ using EFWCoreLib.CoreFrame.Init;
 using EFWCoreLib.CoreFrame.Init.AttributeManager;
 using EFWCoreLib.CoreFrame.Business;
 using System.IO;
+using EFWCoreLib.WcfFrame.DataSerialize;
 
 namespace EFWCoreLib.CoreFrame.Plugin
 {
@@ -64,21 +65,48 @@ namespace EFWCoreLib.CoreFrame.Plugin
             
         }
 
+        private void LoadDllList(string plugfile)
+        {
+            //string dllpath = new System.IO.FileInfo(plugfile).DirectoryName + "\\dll";
+            dllList = new List<Assembly>();
+            foreach (businessinfoDll dll in plugin.businessinfoDllList)
+            {
+                switch (appType)
+                {
+                    case AppType.Web:
+                        dllList.Add(Assembly.Load(dll.name.Replace(".dll","")));
+                        break;
+                    default:
+                        //方式一:直接读取文件，这种方式不支持热插拔
+                        //dllList.Add(Assembly.LoadFrom(dllpath + "\\" + dll.name));
+                        dllList.Add(Assembly.Load(dll.name.Replace(".dll","")));
+                        //方式二：把dll读到内存再加载,再次加载内存会不断变大
+                        //FileStream fs = new FileStream(dllpath + "\\" + dll.name, FileMode.Open, FileAccess.Read);
+                        //BinaryReader br = new BinaryReader(fs);
+                        //byte[] bFile = br.ReadBytes((int)fs.Length);
+                        //br.Close();
+                        //fs.Close();
+                        //dllList.Add(Assembly.Load(bFile));
+                        break;
+                }
+            }
+        }
+
         /// <summary>
         /// 导入插件配置文件
         /// </summary>
         /// <param name="plugfile">插件配置文件路径</param>
         public void LoadPlugin(string plugfile)
         {
+            
+
             container = ZhyContainer.CreateUnity();
             plugin = new PluginConfig();
 
             switch (appType)
             {
                 case AppType.WCF:
-#if WcfFrame
                     helper = new WcfFrame.ServerController.ControllerHelper();
-#endif
                     break;
             }
 
@@ -87,13 +115,17 @@ namespace EFWCoreLib.CoreFrame.Plugin
             var fileMap = new ExeConfigurationFileMap { ExeConfigFilename = plugfile };
             System.Configuration.Configuration configuration = ConfigurationManager.OpenMappedExeConfiguration(fileMap, ConfigurationUserLevel.None);
 
+            var plugininfo = (PluginSectionHandler)configuration.GetSection("plugin");
+            if (plugininfo != null)
+                plugin.Load(plugininfo, plugfile);
+
+            LoadDllList(plugfile);//加载程序集
+
             var unitySection = (UnityConfigurationSection)configuration.GetSection("unity");
             if (unitySection != null)
                 container.LoadConfiguration(unitySection);//判断EntLib的路径对不对
 
-            var plugininfo = (PluginSectionHandler)configuration.GetSection("plugin");
-            if (plugininfo != null)
-                plugin.Load(plugininfo,plugfile);
+            
 
             if (plugin.defaultdbkey != "")
                 database = FactoryDatabase.GetDatabase(plugin.defaultdbkey);
@@ -110,28 +142,7 @@ namespace EFWCoreLib.CoreFrame.Plugin
 
         public void LoadAttribute(string plugfile)
         {
-            string dllpath = new System.IO.FileInfo(plugfile).DirectoryName + "\\dll";
-            dllList = new List<Assembly>();
-            foreach (businessinfoDll dll in plugin.businessinfoDllList)
-            {
-                switch (appType)
-                {
-                    case AppType.Web:
-                        dllList.Add(Assembly.LoadFrom(AppGlobal.AppRootPath + "bin\\"+dll.name));
-                        break;
-                    default:
-                        //方式一:直接读取文件，这种方式不支持热插拔
-                        dllList.Add(Assembly.LoadFrom(dllpath + "\\" + dll.name));
-                        //方式二：把dll读到内存再加载,再次加载内存会不断变大
-                        //FileStream fs = new FileStream(dllpath + "\\" + dll.name, FileMode.Open, FileAccess.Read);
-                        //BinaryReader br = new BinaryReader(fs);
-                        //byte[] bFile = br.ReadBytes((int)fs.Length);
-                        //br.Close();
-                        //fs.Close();
-                        //dllList.Add(Assembly.Load(bFile));
-                        break;
-                }
-            }
+            
             if (dllList.Count > 0)
             {
                 switch (appType)
@@ -142,7 +153,7 @@ namespace EFWCoreLib.CoreFrame.Plugin
                         WebServicesManager.LoadAttribute(dllList, cache, plugin.name);
                         break;
                     case AppType.Winform:
-                    case AppType.WCFClient:
+                    //case AppType.WCFClient:
                         EntityManager.LoadAttribute(dllList, cache, plugin.name);
                         WinformControllerManager.LoadAttribute(dllList, this);
                         break;
@@ -166,7 +177,7 @@ namespace EFWCoreLib.CoreFrame.Plugin
                     WebServicesManager.ClearAttributeData(_cache, plugin.name);
                     break;
                 case AppType.Winform:
-                case AppType.WCFClient:
+                //case AppType.WCFClient:
                     EntityManager.ClearAttributeData(_cache, plugin.name);
                     WinformControllerManager.ClearAttributeData(_cache, plugin.name);
                     break;
@@ -176,16 +187,17 @@ namespace EFWCoreLib.CoreFrame.Plugin
                     break;
             }
         }
-#if WcfFrame
-        public Object WcfServerExecuteMethod(string controllername, string methodname, object[] paramValue, string jsondata, EFWCoreLib.WcfFrame.ServerController.WCFClientInfo ClientInfo)
+
+        public Object WcfServerExecuteMethod(string controllername, string methodname, object[] paramValue, ClientRequestData requestData, SysLoginRight loginRight)
         {
             EFWCoreLib.WcfFrame.ServerController.WcfServerController wscontroller = helper.CreateController(plugin.name, controllername) as EFWCoreLib.WcfFrame.ServerController.WcfServerController;
-            wscontroller.ParamJsonData = jsondata;
-            wscontroller.ClientInfo = ClientInfo;
+            wscontroller.requestData = requestData;
+            wscontroller.responseData = new ServiceResponseData(requestData.Iscompressjson,requestData.Isencryptionjson,requestData.Serializetype);
+            wscontroller.BindLoginRight(loginRight);
             MethodInfo methodinfo = helper.CreateMethodInfo(plugin.name, controllername, methodname, wscontroller);
             return methodinfo.Invoke(wscontroller, paramValue);
         }
-#endif
+
         public Object WcfClientExecuteMethod()
         {
             return null;

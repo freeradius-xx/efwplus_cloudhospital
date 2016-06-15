@@ -5,6 +5,7 @@ using EFWCoreLib.UnitTestFrame;
 using EFWCoreLib.WcfFrame;
 using EFWCoreLib.WcfFrame.ClientController;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using EFWCoreLib.WcfFrame.DataSerialize;
 
 namespace UnitTestBook
 {
@@ -34,8 +35,8 @@ namespace UnitTestBook
         {
             try
             {
-                object retobj = InvokeWcfService("GetBooks");
-                List<Books> list = ToListObj<Books>(retobj);
+                ServiceResponseData retobj = InvokeWcfService("GetBooks");
+                List<Books> list = retobj.GetData<List<Books>>(0);
                 Assert.AreEqual(list.Count > 0, true, "没有返回数据");
             }
             catch (Exception e)
@@ -50,18 +51,25 @@ namespace UnitTestBook
             try
             {
                 Books book;
-                object retobj;
+                ServiceResponseData retobj;
 
                 book = new Books();
                 book.BookName = "测试书籍";
-                retobj = InvokeWcfService("SaveBook", ToJson(book));
-                Assert.AreEqual(ToBoolean(retobj), true, "保存数据失败");
+
+                retobj = InvokeWcfService("SaveBook", (ClientRequestData request) =>
+                {
+                    request.AddData(book);
+                });
+                Assert.AreEqual(retobj.GetData<bool>(0), true, "保存数据失败");
 
                 book = new Books();
                 book.BookName = "测试书籍2";
                 book.Flag = 1;
-                retobj = InvokeWcfService("SaveBook", ToJson(book));
-                Assert.AreEqual(ToBoolean(retobj), true, "保存数据失败");
+                retobj = InvokeWcfService("SaveBook", (ClientRequestData request) =>
+                {
+                    request.AddData(book);
+                });
+                Assert.AreEqual(retobj.GetData<bool>(0), true, "保存数据失败");
             }
             catch (Exception e)
             {

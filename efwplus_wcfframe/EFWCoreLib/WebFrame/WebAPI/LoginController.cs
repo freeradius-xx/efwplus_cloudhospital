@@ -30,7 +30,7 @@ namespace EFWCoreLib.WebFrame.WebAPI
                 {
                     request.Iscompressjson = false;
                     request.Isencryptionjson = false;
-                    request.Serializetype = WcfFrame.SDMessageHeader.SerializeType.Newtonsoft;
+                    request.Serializetype = SerializeType.Newtonsoft;
                     request.AddData(loginreq.usercode);
                     request.AddData(loginreq.password);
                 });    

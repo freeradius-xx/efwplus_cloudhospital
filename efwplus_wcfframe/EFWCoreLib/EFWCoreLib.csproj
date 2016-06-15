@@ -61,6 +61,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\OtherTool\lib\DevComponents.DotNetBar2.dll</HintPath>
     </Reference>
+    <Reference Include="fastJSON">
+      <HintPath>..\OtherTool\lib\fastJSON.dll</HintPath>
+    </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.5.452, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\OtherTool\lib\ICSharpCode.SharpZipLib.dll</HintPath>
@@ -258,6 +261,7 @@
     <Compile Include="UnitTestFrame\BaseDaoUnitTest.cs" />
     <Compile Include="UnitTestFrame\wcfBaseUnitTest.cs" />
     <Compile Include="WcfFrame\DataSerialize\ClientRequestData.cs" />
+    <Compile Include="WcfFrame\DataSerialize\SerializeType.cs" />
     <Compile Include="WcfFrame\DataSerialize\ServiceResponseData.cs" />
     <Compile Include="WcfFrame\SDMessageHeader\HeaderOperater.cs" />
     <Compile Include="WcfFrame\SDMessageHeader\HeaderParameter.cs" />

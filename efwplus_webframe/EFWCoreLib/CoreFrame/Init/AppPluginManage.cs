@@ -19,16 +19,16 @@ namespace EFWCoreLib.CoreFrame.Init
     public class AppPluginManage
     {
         public static bool IsOpenDomain = false;//是否开启程序域来动态管理插件
-        public static Dictionary<string, ModulePlugin> PluginDic;//插件
+        public static Dictionary<string, ModulePlugin> PluginDic;//本地插件
+        //public static List<RemotePlugin> RemotePluginDic;//远程注册插件
         public static Dictionary<string, AppDomain> DomainDic;//程序域来动态管理插件
-
-
         /// <summary>
         /// 加载所有插件
         /// </summary>
         public static void LoadAllPlugin()
         {
-            PluginDic = null;
+            PluginDic = new Dictionary<string, ModulePlugin>();
+            //RemotePluginDic = new List<RemotePlugin>();
             List<string> pflist = PluginSysManage.GetAllPluginFile();
             for (int i = 0; i < pflist.Count; i++)
             {
@@ -198,4 +198,6 @@ namespace EFWCoreLib.CoreFrame.Init
             return null;
         }
     }
+
+    
 }

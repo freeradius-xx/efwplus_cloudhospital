@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EFWCoreLib.WcfFrame.DataSerialize;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -40,12 +41,5 @@ namespace EFWCoreLib.WcfFrame.SDMessageHeader
         [DataMember]
         public SerializeType serializetype { get; set; }
     }
-    [DataContract]
-    public enum SerializeType
-    {
-        [EnumMember]
-        Newtonsoft = 0,
-        [EnumMember]
-        protobuf =1
-    }
+    
 }

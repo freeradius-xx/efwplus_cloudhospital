@@ -15,6 +15,7 @@ using System.Diagnostics;
 using EFWCoreLib.WebFrame.WebAPI;
 using WCFHosting.PluginManage;
 using WCFHosting.RouterManage;
+using EFWCoreLib.WcfFrame.DataSerialize;
 
 namespace WCFHosting
 {
@@ -93,7 +94,7 @@ namespace WCFHosting
             WcfServerManage.MessageTime = Convert.ToInt32(HostSettingConfig.GetValue("messagetime"));
             WcfServerManage.IsCompressJson = HostSettingConfig.GetValue("compress") == "1" ? true : false;
             WcfServerManage.IsEncryptionJson = HostSettingConfig.GetValue("encryption") == "1" ? true : false;
-            WcfServerManage.serializeType = (EFWCoreLib.WcfFrame.SDMessageHeader.SerializeType)Convert.ToInt32(HostSettingConfig.GetValue("serializetype"));
+            WcfServerManage.serializeType = (SerializeType)Convert.ToInt32(HostSettingConfig.GetValue("serializetype"));
             WcfServerManage.IsOverTime = HostSettingConfig.GetValue("overtime") == "1" ? true : false;
             WcfServerManage.OverTime = Convert.ToInt32(HostSettingConfig.GetValue("overtimetime"));
             WcfServerManage.StartWCFHost();

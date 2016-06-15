@@ -26,7 +26,7 @@
   </compress>
   <encryption value="0">
   </encryption>
-  <serializetype value="0">
+  <serializetype value="2">
   </serializetype>
   <overtime value="1">
   </overtime>

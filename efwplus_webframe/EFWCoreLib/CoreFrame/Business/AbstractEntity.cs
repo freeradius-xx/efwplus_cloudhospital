@@ -80,8 +80,8 @@ namespace EFWCoreLib.CoreFrame.Business
             return obj;
         }
 
-        public int save() { return save(null); }
-        public int save(string alias)
+        public virtual int save() { return save(null); }
+        public virtual int save(string alias)
         {
             OrmAnalysis ormAnalysis;
             EFWCoreLib.CoreFrame.DbProvider.AbstractDatabase _oleDb = GetDb();
@@ -108,9 +108,9 @@ namespace EFWCoreLib.CoreFrame.Business
             }
         }
 
-        public int delete() { return delete(null, null); }
-        public int delete(object key) { return delete(key, null); }
-        public int delete(object key, string alias)
+        public virtual int delete() { return delete(null, null); }
+        public virtual int delete(object key) { return delete(key, null); }
+        public virtual int delete(object key, string alias)
         {
             OrmAnalysis ormAnalysis;
             EFWCoreLib.CoreFrame.DbProvider.AbstractDatabase _oleDb = GetDb();
@@ -126,9 +126,9 @@ namespace EFWCoreLib.CoreFrame.Business
             return _oleDb.DoCommand(strsql);
         }
 
-        public object getmodel() { return getmodel(null, null); }
-        public object getmodel(object key) { return getmodel(key, null); }
-        public object getmodel(object key, string alias)
+        public virtual object getmodel() { return getmodel(null, null); }
+        public virtual object getmodel(object key) { return getmodel(key, null); }
+        public virtual object getmodel(object key, string alias)
         {
             OrmAnalysis ormAnalysis;
             EFWCoreLib.CoreFrame.DbProvider.AbstractDatabase _oleDb = GetDb();
@@ -155,13 +155,13 @@ namespace EFWCoreLib.CoreFrame.Business
 
             return value;
         }
-        public List<T> getlist<T>()
+        public virtual List<T> getlist<T>()
         {
             return getlist<T>(null, null, null);
         }
-        public List<T> getlist<T>(string where) { return getlist<T>(null, where, null); }
-        public List<T> getlist<T>(PageInfo pageInfo, string where) { return getlist<T>(pageInfo, where, null); }
-        public List<T> getlist<T>(PageInfo pageInfo, string where, string alias)
+        public virtual List<T> getlist<T>(string where) { return getlist<T>(null, where, null); }
+        public virtual List<T> getlist<T>(PageInfo pageInfo, string where) { return getlist<T>(pageInfo, where, null); }
+        public virtual List<T> getlist<T>(PageInfo pageInfo, string where, string alias)
         {
             OrmAnalysis ormAnalysis;
             EFWCoreLib.CoreFrame.DbProvider.AbstractDatabase _oleDb = GetDb();
@@ -185,13 +185,13 @@ namespace EFWCoreLib.CoreFrame.Business
             result.Dispose();
             return resultList;
         }
-        public DataTable gettable()
+        public virtual DataTable gettable()
         {
             return gettable(null, null, null);
         }
-        public DataTable gettable(string where) { return gettable(null, where, null); }
-        public DataTable gettable(PageInfo pageInfo, string where) { return gettable(pageInfo, where,null); }
-        public DataTable gettable(PageInfo pageInfo, string where, string alias)
+        public virtual DataTable gettable(string where) { return gettable(null, where, null); }
+        public virtual DataTable gettable(PageInfo pageInfo, string where) { return gettable(pageInfo, where, null); }
+        public virtual DataTable gettable(PageInfo pageInfo, string where, string alias)
         {
             OrmAnalysis ormAnalysis;
             EFWCoreLib.CoreFrame.DbProvider.AbstractDatabase _oleDb = GetDb();

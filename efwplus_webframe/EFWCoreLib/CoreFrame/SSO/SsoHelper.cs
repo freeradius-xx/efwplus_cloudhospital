@@ -13,9 +13,9 @@ namespace EFWCoreLib.CoreFrame.SSO
         /// <param name="userId"></param>
         /// <param name="tokenid"></param>
         /// <returns></returns>
-        public static bool SignIn(string userId,string userName, out Guid tokenid)
+        public static bool SignIn(string userCode,UserInfo userInfo, out Guid tokenid)
         {
-            TokenInfo existToken = TokenManager.GetToken(userId);
+            TokenInfo existToken = TokenManager.GetToken(userCode);
             if (existToken != null)
             {
                 tokenid = existToken.tokenId;
@@ -27,10 +27,9 @@ namespace EFWCoreLib.CoreFrame.SSO
                 tokenId = Guid.NewGuid(),
                 IsValid = true,
                 CreateTime = DateTime.Now,
-                ActivityTime=DateTime.Now,
-                UserId = userId,
-                UserName=userName//,
-                //RemoteIp = Utility.RemoteIp
+                ActivityTime = DateTime.Now,
+                UserId = userCode,
+                userinfo = userInfo
             };
             tokenid = token.tokenId;
             return TokenManager.AddToken(token);
@@ -72,7 +71,8 @@ namespace EFWCoreLib.CoreFrame.SSO
                 }
                 else  
                 {
-                    result.User = new UserInfo() { UserId = existToken.UserId,UserName=existToken.UserName, CreateDate = existToken.CreateTime };
+                    result.token = existToken.tokenId.ToString();
+                    result.User = existToken.userinfo;
                     result.ErrorMsg = string.Empty;
                 }
             }
@@ -80,6 +80,35 @@ namespace EFWCoreLib.CoreFrame.SSO
             return result;
         }
 
+        public static AuthResult ValidateUserId(string userCode)
+        {
+            AuthResult result = new AuthResult() { ErrorMsg = "Token不存在" };
+            TokenInfo existToken = TokenManager.GetToken(userCode);
+
+            if (existToken != null)
+            {
+                #region 客户端IP不一致
+                //if (existToken.RemoteIp != entity.RemoteIp)
+                //{
+                //    result.ErrorMsg = "客户端IP不一致";
+                //}
+                #endregion
+
+                if (existToken.IsValid == false)
+                {
+                    result.ErrorMsg = "Token已过期" + existToken.ActivityTime.ToLongTimeString() + ":" + DateTime.Now.ToLocalTime();
+                    TokenManager.RemoveToken(existToken.tokenId);//移除
+                }
+                else
+                {
+                    result.token = existToken.tokenId.ToString();
+                    result.User = existToken.userinfo;
+                    result.ErrorMsg = string.Empty;
+                }
+            }
+
+            return result;
+        }
         /// <summary>
         /// 定时触发登录码的活动时间，频率必须小于4分钟
         /// </summary>
@@ -95,9 +124,9 @@ namespace EFWCoreLib.CoreFrame.SSO
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>
-        public static bool IsUserOnline(string userId)
+        public static bool IsUserOnline(string userCode)
         {
-            TokenInfo existToken = TokenManager.GetToken(userId);
+            TokenInfo existToken = TokenManager.GetToken(userCode);
             if (existToken != null) return true;
             return false;
         }

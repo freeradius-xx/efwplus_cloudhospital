@@ -11,6 +11,7 @@ using EFWCoreLib.CoreFrame.Init;
 using EFWCoreLib.WcfFrame;
 using EFWCoreLib.WcfFrame.ClientController;
 using EFWCoreLib.WcfFrame.ServerController;
+using EFWCoreLib.WcfFrame.DataSerialize;
 
 namespace TestWcfService
 {
@@ -69,8 +70,12 @@ namespace TestWcfService
             try
             {
                 btnRequest.Enabled = false;
-                string retjson = ClientLinkManage.CreateConnection(cbplugin.Text).Request(string.Format("{0}", cbcontroller.Text), cbmothed.Text, txtparams.Text.Trim());
-                txtResult.Text = retjson;
+                ServiceResponseData retjson = ClientLinkManage.CreateConnection(cbplugin.Text).Request(string.Format("{0}", cbcontroller.Text), cbmothed.Text,
+                    (ClientRequestData request) =>
+                    {
+                        request.SetJsonData(txtparams.Text.Trim());
+                    });
+                txtResult.Text = retjson.GetJsonData();
             }
             catch (Exception err)
             {

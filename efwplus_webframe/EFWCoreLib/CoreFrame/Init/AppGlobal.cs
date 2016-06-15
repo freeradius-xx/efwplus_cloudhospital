@@ -15,6 +15,7 @@ using EFWCoreLib.CoreFrame.Init.AttributeManager;
 using EFWCoreLib.CoreFrame.Plugin;
 using System.Windows.Forms;
 using System.Reflection;
+using EFWCoreLib.WinformFrame.Controller;
 
 
 namespace EFWCoreLib.CoreFrame.Init
@@ -104,11 +105,11 @@ namespace EFWCoreLib.CoreFrame.Init
                             appType = AppType.WCF;
                             AppRootPath = System.Windows.Forms.Application.StartupPath + "\\";
                         }
-                        else if (ClientType == "WCFClient")
-                        {
-                            appType = AppType.WCFClient;
-                            AppRootPath = System.Windows.Forms.Application.StartupPath + "\\";
-                        }
+                        //else if (ClientType == "WCFClient")
+                        //{
+                        //    appType = AppType.WCFClient;
+                        //    AppRootPath = System.Windows.Forms.Application.StartupPath + "\\";
+                        //}
 
 
                         IsSaas = System.Configuration.ConfigurationManager.AppSettings["IsSaas"] == "true" ? true : false;
@@ -195,18 +196,7 @@ namespace EFWCoreLib.CoreFrame.Init
         public static void AppEnd()
         {
             GlobalExtend.EndInit();
-
-            switch (appType)
-            {
-                case AppType.Winform:
-
-                    break;
-                case AppType.WCFClient:
-#if WcfFrame
-                    EFWCoreLib.WcfFrame.ClientController.WcfClientManage.UnConnection();
-#endif
-                    break;
-            }
+            EFWCoreLib.WcfFrame.ClientLinkManage.UnAllConnection();
         }
 
         public static void WriterLog(string info)
@@ -255,7 +245,6 @@ namespace EFWCoreLib.CoreFrame.Init
                 switch (appType)
                 {
                     case AppType.Winform:
-#if WinfromFrame
                         PluginSysManage.GetWinformEntry(out entryplugin, out entrycontroller);
                         EFWCoreLib.WinformFrame.Controller.WinformController controller = EFWCoreLib.WinformFrame.Controller.ControllerHelper.CreateController(entryplugin + "@" + entrycontroller);
                         //controller.Init();
@@ -263,21 +252,6 @@ namespace EFWCoreLib.CoreFrame.Init
                             throw new Exception("插件配置的启动项（插件名或控制器名称）不正确！");
                         ((System.Windows.Forms.Form)controller.DefaultView).Show();
                         winfromMain.MainForm = ((System.Windows.Forms.Form)controller.DefaultView);
-#endif
-                        break;
-                    case AppType.WCFClient:
-#if WcfFrame
-                        PluginSysManage.GetWcfClientEntry(out entryplugin, out entrycontroller);
-                        EFWCoreLib.WcfFrame.ClientController.WcfClientController wcfcontroller = EFWCoreLib.WcfFrame.ClientController.ControllerHelper.CreateController(entryplugin + "@" + entrycontroller);
-                        if (wcfcontroller == null)
-                            throw new Exception("插件配置的启动项（插件名或控制器名称）不正确！！");
-
-                        EFWCoreLib.WcfFrame.ClientController.ReplyClientCallBack callback = new WcfFrame.ClientController.ReplyClientCallBack();
-                        EFWCoreLib.WcfFrame.ClientController.WcfClientManage.CreateConnection(callback);
-                        //wcfcontroller.Init();
-                        ((System.Windows.Forms.Form)wcfcontroller.DefaultView).Show();
-                        winfromMain.MainForm = ((System.Windows.Forms.Form)wcfcontroller.DefaultView);
-#endif
                         break;
                 }
 
@@ -299,7 +273,7 @@ namespace EFWCoreLib.CoreFrame.Init
 
     public enum AppType
     {
-        Web,Winform,WCF,WCFClient
+        Web,Winform,WCF
     }
 
     public interface ILoading

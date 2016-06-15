@@ -71,6 +71,8 @@
             this.txtwcfurl = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.cbSerializeType = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -277,11 +279,13 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(430, 282);
+            this.tabControl1.Size = new System.Drawing.Size(430, 314);
             this.tabControl1.TabIndex = 18;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.cbSerializeType);
+            this.tabPage1.Controls.Add(this.label13);
             this.tabPage1.Controls.Add(this.ckWebapi);
             this.tabPage1.Controls.Add(this.ckfile);
             this.tabPage1.Controls.Add(this.ckdebug);
@@ -303,7 +307,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(422, 256);
+            this.tabPage1.Size = new System.Drawing.Size(422, 288);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "基本参数";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -345,7 +349,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(422, 256);
+            this.tabPage2.Size = new System.Drawing.Size(422, 288);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "发布服务地址";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -451,7 +455,7 @@
             this.tabPage3.Controls.Add(this.label9);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(422, 256);
+            this.tabPage3.Size = new System.Drawing.Size(422, 288);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "数据库连接";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -485,7 +489,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(422, 256);
+            this.tabPage4.Size = new System.Drawing.Size(422, 288);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "通讯连接地址";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -532,16 +536,39 @@
             this.panel1.Controls.Add(this.btnOk);
             this.panel1.Controls.Add(this.btnCancel);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 282);
+            this.panel1.Location = new System.Drawing.Point(0, 314);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(430, 61);
             this.panel1.TabIndex = 19;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label13.Location = new System.Drawing.Point(84, 254);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(92, 17);
+            this.label13.TabIndex = 20;
+            this.label13.Text = "数据序列化策略";
+            // 
+            // cbSerializeType
+            // 
+            this.cbSerializeType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSerializeType.FormattingEnabled = true;
+            this.cbSerializeType.Items.AddRange(new object[] {
+            "Newtonsoft",
+            "protobuf",
+            "fastJSON"});
+            this.cbSerializeType.Location = new System.Drawing.Point(238, 254);
+            this.cbSerializeType.Name = "cbSerializeType";
+            this.cbSerializeType.Size = new System.Drawing.Size(133, 20);
+            this.cbSerializeType.TabIndex = 21;
             // 
             // FrmSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(430, 343);
+            this.ClientSize = new System.Drawing.Size(430, 375);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -611,5 +638,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtwcfurl;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ComboBox cbSerializeType;
+        private System.Windows.Forms.Label label13;
     }
 }

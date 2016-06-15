@@ -45,6 +45,7 @@ namespace EFWCoreLib.CoreFrame.Init.AttributeManager
                                 cmdM.methodInfo = property[n];
                                 if (WcfM[0].OpenDBKeys != null && WcfM[0].OpenDBKeys.ToString().Trim() != "")
                                     cmdM.dbkeys = WcfM[0].OpenDBKeys.Split(new char[] { ',' }).ToList();
+                                cmdM.IsAuthentication = WcfM[0].IsAuthentication;
                                 cmdC.MethodList.Add(cmdM);
                             }
                         }
@@ -86,5 +87,6 @@ namespace EFWCoreLib.CoreFrame.Init.AttributeManager
         public string methodName { get; set; }
         public System.Reflection.MethodInfo methodInfo { get; set; }
         public List<string> dbkeys { get; set; }
+        public bool IsAuthentication { get; set; }
     }
 }

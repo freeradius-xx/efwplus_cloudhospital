@@ -3087,6 +3087,99 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:EFWCoreLib.WcfFrame.DataSerialize.ClientRequestData">
+            <summary>
+            客户端请求数据
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.DataSerialize.ClientRequestData.#ctor(System.Boolean,System.Boolean,EFWCoreLib.WcfFrame.DataSerialize.SerializeType)">
+            <summary>
+            初始化
+            </summary>
+            <param name="IsCustomWcfConfig">是否自定义Wcf配置</param>
+            <param name="IsCompress">是否压缩</param>
+            <param name="IsEncrytion">是否加密</param>
+            <param name="SerializeType">序列化方式</param>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.DataSerialize.ClientRequestData.AddData``1(``0)">
+            <summary>
+            添加输入数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="data"></param>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.DataSerialize.ClientRequestData.GetData``1(System.Int32)">
+            <summary>
+            获取指定输入的数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="index">索引</param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.DataSerialize.ClientRequestData.GetJsonData">
+            <summary>
+            得到请求输入的Json数据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.DataSerialize.ClientRequestData.SetJsonData(System.String)">
+            <summary>
+            设置请求输入的Json数据
+            </summary>
+            <param name="retData"></param>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.DataSerialize.ServiceResponseData">
+            <summary>
+            服务输出数据
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.DataSerialize.ServiceResponseData.AddData``1(``0)">
+            <summary>
+            添加输出数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="data"></param>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.DataSerialize.ServiceResponseData.GetData``1(System.Int32)">
+            <summary>
+            获取输出的指定数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="index">索引</param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.DataSerialize.ServiceResponseData.GetJsonData">
+            <summary>
+            获取输出的Json数据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.DataSerialize.ServiceResponseData.SetJsonData(System.String)">
+            <summary>
+            设置输出的Json数据
+            </summary>
+            <param name="retData"></param>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.SDMessageHeader.HeaderParameter">
+            <summary>
+            自定义消息头参数
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WcfFrame.SDMessageHeader.HeaderParameter.iscompressjson">
+            <summary>
+            压缩Json字符
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WcfFrame.SDMessageHeader.HeaderParameter.isencryptionjson">
+            <summary>
+            加密Json字符
+            </summary>
+        </member>
+        <member name="P:EFWCoreLib.WcfFrame.SDMessageHeader.HeaderParameter.serializetype">
+            <summary>
+            序列化类型
+            </summary>
+        </member>
         <member name="T:EFWCoreLib.WcfFrame.ServerController.DistributedCacheManage">
             <summary>
             分布式缓存管理
@@ -3212,7 +3305,7 @@
             缓存标识
             </summary>
         </member>
-        <member name="M:EFWCoreLib.WcfFrame.ServerController.RouterServerManage.AddClient(System.ServiceModel.Channels.Message,EFWCoreLib.WcfFrame.ServerController.MessageHeaderParameter,System.ServiceModel.EndpointAddress@,System.Uri@)">
+        <member name="M:EFWCoreLib.WcfFrame.ServerController.RouterServerManage.AddClient(System.ServiceModel.Channels.Message,EFWCoreLib.WcfFrame.SDMessageHeader.HeaderParameter,System.ServiceModel.EndpointAddress@,System.Uri@)">
             <summary>
             从注册表容器中根据Message的Action找到匹配的 binding和 endpointaddress
             </summary>
@@ -3281,14 +3374,14 @@
             初始化全局web服务参数对象
             </summary>
         </member>
-        <member name="P:EFWCoreLib.WcfFrame.ServerController.WcfServerController.ParamJsonData">
+        <member name="P:EFWCoreLib.WcfFrame.ServerController.WcfServerController.requestData">
             <summary>
             客户端传递的参数
             </summary>
         </member>
-        <member name="P:EFWCoreLib.WcfFrame.ServerController.WcfServerController.ClientInfo">
+        <member name="P:EFWCoreLib.WcfFrame.ServerController.WcfServerController.responseData">
             <summary>
-            当前客户端信息
+            服务输出数据
             </summary>
         </member>
         <member name="T:EFWCoreLib.WcfFrame.ServerController.WcfServerManage">
@@ -3311,6 +3404,11 @@
             连接客户端信息
             </summary>
         </member>
+        <member name="P:EFWCoreLib.WcfFrame.ServerController.WCFClientInfo.IsConnect">
+            <summary>
+            是否连接
+            </summary>
+        </member>
         <member name="P:EFWCoreLib.WcfFrame.ServerController.WCFClientInfo.RequestCount">
             <summary>
             请求次数
@@ -3331,6 +3429,11 @@
             插件名称
             </summary>
         </member>
+        <member name="P:EFWCoreLib.WcfFrame.ServerController.WCFClientInfo.ServerIdentify">
+            <summary>
+            中间件标识，只有超级客户端才有值
+            </summary>
+        </member>
         <member name="T:EFWCoreLib.WcfFrame.ServerController.LocalPlgin">
             <summary>
             本地插件
@@ -3340,6 +3443,220 @@
             <summary>
             远程插件
             </summary>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.WcfService.Contract.IDistributedCache">
+            <summary>
+            分布式缓存契约
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.WcfService.Contract.IHeartbeat">
+            <summary>
+            心跳契约
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.WcfService.Contract.IFileTransfer">
+            <summary>
+            文件传输服务
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IFileTransfer.UpLoadFile(EFWCoreLib.WcfFrame.WcfService.Contract.UpFile)">
+            <summary>
+            上传文件
+            </summary>
+            <param name="filestream">文件信息</param>
+            <returns>返回上传结果</returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IFileTransfer.DownLoadFile(EFWCoreLib.WcfFrame.WcfService.Contract.DownFile)">
+            <summary>
+            下载文件
+            </summary>
+            <param name="downfile">文件信息</param>
+            <returns>返回下载结果</returns>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.WcfService.Contract.UpFile">
+            <summary>
+            上传文件结构
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.WcfService.Contract.UpFileResult">
+            <summary>
+            上传文件后返回结果数据
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.WcfService.Contract.DownFile">
+            <summary>
+            下载文件结构
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.WcfService.Contract.DownFileResult">
+            <summary>
+            下载文件后返回结果数据
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.WcfService.Contract.IRouterService">
+            <summary>
+            WCF路由服务
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService">
+            <summary>
+            WCF处理服务
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService.CreateDomain(System.String)">
+            <summary>
+            创建客户端运行环境
+            </summary>
+            <returns>返回clientId</returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService.ProcessRequest(System.String,System.String,System.String,System.String)">
+            <summary>
+            执行请求
+            </summary>
+            <param name="clientId">客户端ID</param>
+            <param name="controller">控制器</param>
+            <param name="method">方法</param>
+            <param name="jsondata">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService.BeginProcessRequest(System.String,System.String,System.String,System.String,System.AsyncCallback,System.Object)">
+            <summary>
+            开始异步请求
+            </summary>
+            <param name="clientId"></param>
+            <param name="controller"></param>
+            <param name="method"></param>
+            <param name="jsondata"></param>
+            <param name="callback"></param>
+            <param name="asyncState"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService.EndProcessRequest(System.IAsyncResult)">
+            <summary>
+            结束异步请求
+            </summary>
+            <param name="result"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService.UnDomain(System.String)">
+            <summary>
+            卸载制定客户端环境
+            </summary>
+            <param name="clientId"></param>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService.Heartbeat(System.String)">
+            <summary>
+            WCF心跳检测
+            </summary>
+            <param name="clientId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService.SendBroadcast(System.String)">
+            <summary>
+            发送广播消息
+            </summary>
+            <param name="jsondata"></param>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService.ServerConfig">
+            <summary>
+            返回服务端配置
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService.WcfServicesAllInfo">
+            <summary>
+            返回所有WCF服务的配置信息，包括插件名称、控制器名称、方法名称
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService.RegisterReplyPlugin(System.String,System.String[])">
+            <summary>
+            注册远程插件
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService.DistributedCacheSyncIdentify(EFWCoreLib.WcfFrame.ServerController.CacheIdentify)">
+            <summary>
+            分布式缓存同步标识
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService.DistributedCacheSync(EFWCoreLib.WcfFrame.ServerController.CacheObject)">
+            <summary>
+            分布式缓存同步
+            </summary>
+            <param name="data"></param>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService.DistributedAllCacheSync(System.Collections.Generic.List{EFWCoreLib.WcfFrame.ServerController.CacheObject})">
+            <summary>
+            分布式缓存同步
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.WcfService.Contract.IClientService">
+            <summary>
+            回调契约
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IClientService.ReplyClient(System.String)">
+            <summary>
+            回调客户端
+            </summary>
+            <param name="jsondata">回调数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IClientService.SuperReplyClient(EFWCoreLib.WcfFrame.SDMessageHeader.HeaderParameter,System.String,System.String,System.String,System.String)">
+            <summary>
+            超级回调中间件
+            </summary>
+            <param name="replyidentify">回调中间件唯一标识</param>
+            <param name="plugin"></param>
+            <param name="controller"></param>
+            <param name="method"></param>
+            <param name="jsondata"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IClientService.DistributedCacheSyncIdentify(EFWCoreLib.WcfFrame.ServerController.CacheIdentify)">
+            <summary>
+            分布式缓存同步标识
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IClientService.DistributedCacheSync(EFWCoreLib.WcfFrame.ServerController.CacheObject)">
+            <summary>
+            分布式缓存同步
+            </summary>
+            <param name="cache"></param>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IClientService.DistributedAllCacheSync(System.Collections.Generic.List{EFWCoreLib.WcfFrame.ServerController.CacheObject})">
+            <summary>
+            分布式缓存同步
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.WcfService.FileTransferHandlerService">
+            <summary>
+            文件传输服务，使用流模式
+            </summary>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.WcfService.RouterHandlerService">
+            <summary>
+            路由服务
+            </summary>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.RouterHandlerService.ProcessMessage(System.ServiceModel.Channels.Message)">
+            <summary>
+            截获从Client端发送的消息转发到目标终结点并获得返回值给Client端
+            </summary>
+            <param name="requestMessage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.WcfService.FileRouterHandlerService.ProcessMessage(System.ServiceModel.Channels.Message)">
+            <summary>
+            截获从Client端发送的消息转发到目标终结点并获得返回值给Client端
+            </summary>
+            <param name="requestMessage"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EFWCoreLib.WcfFrame.WcfService.CompletedAsyncResult`1">
+            <summary>
+            异步结果
+            </summary>
+            <typeparam name="T"></typeparam>
         </member>
         <member name="T:EFWCoreLib.WcfFrame.ClientController.WcfClientController">
             <summary>
@@ -3405,16 +3722,16 @@
             创建连接
             </summary>
         </member>
-        <member name="M:EFWCoreLib.WcfFrame.ClientLink.Request(System.String,System.String,System.String)">
+        <member name="M:EFWCoreLib.WcfFrame.ClientLink.Request(System.String,System.String,System.Action{EFWCoreLib.WcfFrame.DataSerialize.ClientRequestData})">
             <summary>
             向服务发送请求
             </summary>
             <param name="controller">控制器名称</param>
             <param name="method">方法名称</param>
-            <param name="jsondata">数据</param>
+            <param name="requestAction">数据</param>
             <returns>返回Json数据</returns>
         </member>
-        <member name="M:EFWCoreLib.WcfFrame.ClientLink.RequestAsync(System.String,System.String,System.String,System.Action{System.String})">
+        <member name="M:EFWCoreLib.WcfFrame.ClientLink.RequestAsync(System.String,System.String,System.Action{EFWCoreLib.WcfFrame.DataSerialize.ClientRequestData},System.Action{EFWCoreLib.WcfFrame.DataSerialize.ServiceResponseData})">
             <summary>
             向服务发送异步请求
             客户端建议不要用多线程，都采用异步请求方式
@@ -3545,11 +3862,11 @@
             </summary>
             <param name="jsondata"></param>
         </member>
-        <member name="M:EFWCoreLib.WcfFrame.ReplyClientCallBack.SuperReplyClient(System.String,System.String,System.String,System.String,System.String)">
+        <member name="M:EFWCoreLib.WcfFrame.ReplyClientCallBack.SuperReplyClient(EFWCoreLib.WcfFrame.SDMessageHeader.HeaderParameter,System.String,System.String,System.String,System.String)">
             <summary>
             超级回调中间件
             </summary>
-            <param name="replyidentify"></param>
+            <param name="para"></param>
             <param name="plugin"></param>
             <param name="controller"></param>
             <param name="method"></param>
@@ -3595,202 +3912,6 @@
             <summary>
             关闭所有连接
             </summary>
-        </member>
-        <member name="T:EFWCoreLib.WcfFrame.WcfService.Contract.IFileTransfer">
-            <summary>
-            文件传输服务
-            </summary>
-        </member>
-        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IFileTransfer.UpLoadFile(EFWCoreLib.WcfFrame.WcfService.Contract.UpFile)">
-            <summary>
-            上传文件
-            </summary>
-            <param name="filestream">文件信息</param>
-            <returns>返回上传结果</returns>
-        </member>
-        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IFileTransfer.DownLoadFile(EFWCoreLib.WcfFrame.WcfService.Contract.DownFile)">
-            <summary>
-            下载文件
-            </summary>
-            <param name="downfile">文件信息</param>
-            <returns>返回下载结果</returns>
-        </member>
-        <member name="T:EFWCoreLib.WcfFrame.WcfService.Contract.UpFile">
-            <summary>
-            上传文件结构
-            </summary>
-        </member>
-        <member name="T:EFWCoreLib.WcfFrame.WcfService.Contract.UpFileResult">
-            <summary>
-            上传文件后返回结果数据
-            </summary>
-        </member>
-        <member name="T:EFWCoreLib.WcfFrame.WcfService.Contract.DownFile">
-            <summary>
-            下载文件结构
-            </summary>
-        </member>
-        <member name="T:EFWCoreLib.WcfFrame.WcfService.Contract.DownFileResult">
-            <summary>
-            下载文件后返回结果数据
-            </summary>
-        </member>
-        <member name="T:EFWCoreLib.WcfFrame.WcfService.Contract.IRouterService">
-            <summary>
-            WCF路由服务
-            </summary>
-        </member>
-        <member name="T:EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService">
-            <summary>
-            WCF处理服务
-            </summary>
-        </member>
-        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService.CreateDomain(System.String)">
-            <summary>
-            创建客户端运行环境
-            </summary>
-            <returns>返回mProxyID</returns>
-        </member>
-        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService.ProcessRequest(System.String,System.String,System.String,System.String)">
-            <summary>
-            执行请求
-            </summary>
-            <param name="controller">控制器</param>
-            <param name="method">方法</param>
-            <param name="paramValue">参数</param>
-            <returns></returns>
-        </member>
-        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService.BeginProcessRequest(System.String,System.String,System.String,System.String,System.AsyncCallback,System.Object)">
-            <summary>
-            异步请求
-            </summary>
-            <param name="mProxyID"></param>
-            <param name="controller"></param>
-            <param name="method"></param>
-            <param name="jsondata"></param>
-            <param name="callback"></param>
-            <param name="asyncState"></param>
-            <returns></returns>
-        </member>
-        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService.UnDomain(System.String)">
-            <summary>
-            卸载制定客户端环境
-            </summary>
-            <param name="mProxyID"></param>
-        </member>
-        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService.Heartbeat(System.String)">
-            <summary>
-            WCF心跳检测
-            </summary>
-            <param name="mProxyID"></param>
-            <returns></returns>
-        </member>
-        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService.SendBroadcast(System.String)">
-            <summary>
-            发送广播消息
-            </summary>
-            <param name="jsondata"></param>
-        </member>
-        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService.ServerConfig">
-            <summary>
-            返回服务端配置
-            </summary>
-        </member>
-        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService.WcfServicesAllInfo">
-            <summary>
-            返回所有WCF服务的配置信息，包括插件名称、控制器名称、方法名称
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService.RegisterReplyPlugin(System.String,System.String[])">
-            <summary>
-            注册远程插件
-            </summary>
-        </member>
-        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService.DistributedCacheSyncIdentify(EFWCoreLib.WcfFrame.ServerController.CacheIdentify)">
-            <summary>
-            分布式缓存同步标识
-            </summary>
-        </member>
-        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService.DistributedCacheSync(EFWCoreLib.WcfFrame.ServerController.CacheObject)">
-            <summary>
-            分布式缓存同步
-            </summary>
-            <param name="data"></param>
-        </member>
-        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IWCFHandlerService.DistributedAllCacheSync(System.Collections.Generic.List{EFWCoreLib.WcfFrame.ServerController.CacheObject})">
-            <summary>
-            分布式缓存同步
-            </summary>
-        </member>
-        <member name="T:EFWCoreLib.WcfFrame.WcfService.Contract.IClientService">
-            <summary>
-            回调契约
-            </summary>
-        </member>
-        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IClientService.ReplyClient(System.String)">
-            <summary>
-            回调客户端
-            </summary>
-            <param name="method">方法名</param>
-            <param name="paramValue">参数</param>
-            <returns></returns>
-        </member>
-        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IClientService.SuperReplyClient(System.String,System.String,System.String,System.String,System.String)">
-            <summary>
-            超级回调中间件
-            </summary>
-            <param name="plugin"></param>
-            <param name="controller"></param>
-            <param name="method"></param>
-            <param name="jsondata"></param>
-            <returns></returns>
-        </member>
-        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IClientService.DistributedCacheSyncIdentify(EFWCoreLib.WcfFrame.ServerController.CacheIdentify)">
-            <summary>
-            分布式缓存同步标识
-            </summary>
-        </member>
-        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IClientService.DistributedCacheSync(EFWCoreLib.WcfFrame.ServerController.CacheObject)">
-            <summary>
-            分布式缓存同步
-            </summary>
-            <param name="data"></param>
-        </member>
-        <member name="M:EFWCoreLib.WcfFrame.WcfService.Contract.IClientService.DistributedAllCacheSync(System.Collections.Generic.List{EFWCoreLib.WcfFrame.ServerController.CacheObject})">
-            <summary>
-            分布式缓存同步
-            </summary>
-        </member>
-        <member name="T:EFWCoreLib.WcfFrame.WcfService.FileTransferHandlerService">
-            <summary>
-            文件传输服务，使用流模式
-            </summary>
-        </member>
-        <member name="T:EFWCoreLib.WcfFrame.WcfService.RouterHandlerService">
-            <summary>
-            路由服务
-            </summary>
-        </member>
-        <member name="M:EFWCoreLib.WcfFrame.WcfService.RouterHandlerService.ProcessMessage(System.ServiceModel.Channels.Message)">
-            <summary>
-            截获从Client端发送的消息转发到目标终结点并获得返回值给Client端
-            </summary>
-            <param name="requestMessage"></param>
-            <returns></returns>
-        </member>
-        <member name="M:EFWCoreLib.WcfFrame.WcfService.FileRouterHandlerService.ProcessMessage(System.ServiceModel.Channels.Message)">
-            <summary>
-            截获从Client端发送的消息转发到目标终结点并获得返回值给Client端
-            </summary>
-            <param name="requestMessage"></param>
-            <returns></returns>
-        </member>
-        <member name="T:EFWCoreLib.WcfFrame.WcfService.CompletedAsyncResult`1">
-            <summary>
-            异步结果
-            </summary>
-            <typeparam name="T"></typeparam>
         </member>
         <member name="T:EFWCoreLib.WebFrame.WebAPI.FileController">
             <summary>

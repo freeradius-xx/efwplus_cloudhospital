@@ -3092,19 +3092,73 @@
             客户端请求数据
             </summary>
         </member>
-        <member name="M:EFWCoreLib.WcfFrame.DataSerialize.ClientRequestData.#ctor(System.Boolean,System.Boolean,EFWCoreLib.WcfFrame.SDMessageHeader.SerializeType)">
+        <member name="M:EFWCoreLib.WcfFrame.DataSerialize.ClientRequestData.#ctor(System.Boolean,System.Boolean,EFWCoreLib.WcfFrame.DataSerialize.SerializeType)">
             <summary>
-            
+            初始化
             </summary>
             <param name="IsCustomWcfConfig">是否自定义Wcf配置</param>
             <param name="IsCompress">是否压缩</param>
             <param name="IsEncrytion">是否加密</param>
             <param name="SerializeType">序列化方式</param>
         </member>
+        <member name="M:EFWCoreLib.WcfFrame.DataSerialize.ClientRequestData.AddData``1(``0)">
+            <summary>
+            添加输入数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="data"></param>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.DataSerialize.ClientRequestData.GetData``1(System.Int32)">
+            <summary>
+            获取指定输入的数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="index">索引</param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.DataSerialize.ClientRequestData.GetJsonData">
+            <summary>
+            得到请求输入的Json数据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.DataSerialize.ClientRequestData.SetJsonData(System.String)">
+            <summary>
+            设置请求输入的Json数据
+            </summary>
+            <param name="retData"></param>
+        </member>
         <member name="T:EFWCoreLib.WcfFrame.DataSerialize.ServiceResponseData">
             <summary>
             服务输出数据
             </summary>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.DataSerialize.ServiceResponseData.AddData``1(``0)">
+            <summary>
+            添加输出数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="data"></param>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.DataSerialize.ServiceResponseData.GetData``1(System.Int32)">
+            <summary>
+            获取输出的指定数据
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="index">索引</param>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.DataSerialize.ServiceResponseData.GetJsonData">
+            <summary>
+            获取输出的Json数据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EFWCoreLib.WcfFrame.DataSerialize.ServiceResponseData.SetJsonData(System.String)">
+            <summary>
+            设置输出的Json数据
+            </summary>
+            <param name="retData"></param>
         </member>
         <member name="T:EFWCoreLib.WcfFrame.SDMessageHeader.HeaderParameter">
             <summary>

@@ -24,5 +24,15 @@ namespace EFWCoreLib.CoreFrame.Business.AttributeInfo
             get { return _memo; }
             set { _memo = value; }
         }
+
+        private bool _isauth = true;
+        /// <summary>
+        /// 是否身份验证，默认验证
+        /// </summary>
+        public bool IsAuthentication
+        {
+            get { return _isauth; }
+            set { _isauth = value; }
+        }
     }
 }

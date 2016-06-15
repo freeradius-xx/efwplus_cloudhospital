@@ -37,7 +37,7 @@ namespace EFWCoreLib.CoreFrame.Plugin
                     nl = xmlDoc.DocumentElement.SelectNodes("WinformModulePlugin/Plugin");
                     break;
                 case AppType.WCF:
-                case AppType.WCFClient:
+                //case AppType.WCFClient:
                     nl = xmlDoc.DocumentElement.SelectNodes("WcfModulePlugin/Plugin");
                     break;
             }
@@ -47,6 +47,7 @@ namespace EFWCoreLib.CoreFrame.Plugin
             }
             return pflist;
         }
+
         /// <summary>
         /// 根据插件名获取插件路径
         /// </summary>
@@ -68,7 +69,7 @@ namespace EFWCoreLib.CoreFrame.Plugin
                     xn = xmlDoc.DocumentElement.SelectSingleNode("WinformModulePlugin/Plugin[@name=" + pluginname + "]");
                     break;
                 case AppType.WCF:
-                case AppType.WCFClient:
+                //case AppType.WCFClient:
                     xn = xmlDoc.DocumentElement.SelectSingleNode("WcfModulePlugin/Plugin[@name=" + pluginname + "]");
                     break;
             }
@@ -87,12 +88,12 @@ namespace EFWCoreLib.CoreFrame.Plugin
             entrycontroller = xmlDoc.DocumentElement.SelectNodes("WinformModulePlugin")[0].Attributes["EntryController"].Value.ToString();
         }
 
-        public static void GetWcfClientEntry(out string entryplugin, out string entrycontroller)
-        {
-            if (xmlDoc == null) InitConfig();
+        //public static void GetWcfClientEntry(out string entryplugin, out string entrycontroller)
+        //{
+        //    if (xmlDoc == null) InitConfig();
 
-            entryplugin = xmlDoc.DocumentElement.SelectNodes("WcfModulePlugin")[0].Attributes["EntryPlugin"].Value.ToString();
-            entrycontroller = xmlDoc.DocumentElement.SelectNodes("WcfModulePlugin")[0].Attributes["EntryController"].Value.ToString();
-        }
+        //    entryplugin = xmlDoc.DocumentElement.SelectNodes("WcfModulePlugin")[0].Attributes["EntryPlugin"].Value.ToString();
+        //    entrycontroller = xmlDoc.DocumentElement.SelectNodes("WcfModulePlugin")[0].Attributes["EntryController"].Value.ToString();
+        //}
     }
 }

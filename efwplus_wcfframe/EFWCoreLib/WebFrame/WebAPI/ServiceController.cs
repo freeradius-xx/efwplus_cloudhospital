@@ -30,7 +30,7 @@ namespace EFWCoreLib.WebFrame.WebAPI
                 {
                     request.Iscompressjson = false;
                     request.Isencryptionjson = false;
-                    request.Serializetype = WcfFrame.SDMessageHeader.SerializeType.Newtonsoft;
+                    request.Serializetype = SerializeType.Newtonsoft;
                     request.SetJsonData(para.jsondata);
                 });
 
@@ -54,7 +54,7 @@ namespace EFWCoreLib.WebFrame.WebAPI
                 {
                     request.Iscompressjson = false;
                     request.Isencryptionjson = false;
-                    request.Serializetype = WcfFrame.SDMessageHeader.SerializeType.Newtonsoft;
+                    request.Serializetype = SerializeType.Newtonsoft;
                     request.SetJsonData(data.jsondata);
                 });
                 ServiceResponseData response = InvokeWcfService(data.wcfpluginname, data.wcfcontroller, data.wcfmethod, requestAction);

@@ -62,6 +62,10 @@
       <Project>{c5a8c124-18c0-43f4-b5a2-0f71bb833e82}</Project>
       <Name>EFWCoreLib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\PluginService\实例Books\Books_Wcf\Books_Wcf.csproj">
+      <Project>{79168a48-52a6-4486-9cd1-c3e05f9bd94b}</Project>
+      <Name>Books_Wcf</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
