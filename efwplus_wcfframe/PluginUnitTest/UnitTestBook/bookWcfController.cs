@@ -18,7 +18,7 @@ namespace UnitTestBook
         {
             //clientlink = new ClientLink("wcfendpoint", callback, "kakake");
             //clientlink.CreateConnection();
-            wcfpluginname = "Books_Wcf";
+            wcfpluginname = "Books.Service";
             wcfcontroller = "bookWcfController";
         }
 
@@ -49,8 +49,18 @@ namespace UnitTestBook
         {
             try
             {
-                Books book = new Books();
-                object retobj = InvokeWcfService("SaveBook", ToJson(book));
+                Books book;
+                object retobj;
+
+                book = new Books();
+                book.BookName = "测试书籍";
+                retobj = InvokeWcfService("SaveBook", ToJson(book));
+                Assert.AreEqual(ToBoolean(retobj), true, "保存数据失败");
+
+                book = new Books();
+                book.BookName = "测试书籍2";
+                book.Flag = 1;
+                retobj = InvokeWcfService("SaveBook", ToJson(book));
                 Assert.AreEqual(ToBoolean(retobj), true, "保存数据失败");
             }
             catch (Exception e)

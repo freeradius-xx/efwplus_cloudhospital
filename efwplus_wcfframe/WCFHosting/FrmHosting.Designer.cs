@@ -36,7 +36,9 @@
             this.btnStop = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnSetting = new System.Windows.Forms.ToolStripButton();
+            this.btnrouter = new System.Windows.Forms.ToolStripButton();
             this.btnplugin = new System.Windows.Forms.ToolStripButton();
+            this.btnInfo = new System.Windows.Forms.ToolStripButton();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.注册ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -82,7 +84,8 @@
             this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lbRunTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.btnrouter = new System.Windows.Forms.ToolStripButton();
+            this.timermsg = new System.Windows.Forms.Timer(this.components);
+            this.暂停日志ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.tabMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -104,6 +107,7 @@
             this.btnSetting,
             this.btnrouter,
             this.btnplugin,
+            this.btnInfo,
             this.toolStripDropDownButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -143,6 +147,15 @@
             this.btnSetting.Text = "设置";
             this.btnSetting.Click += new System.EventHandler(this.btnSetting_Click);
             // 
+            // btnrouter
+            // 
+            this.btnrouter.Image = ((System.Drawing.Image)(resources.GetObject("btnrouter.Image")));
+            this.btnrouter.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnrouter.Name = "btnrouter";
+            this.btnrouter.Size = new System.Drawing.Size(64, 22);
+            this.btnrouter.Text = "路由表";
+            this.btnrouter.Click += new System.EventHandler(this.btnrouter_Click);
+            // 
             // btnplugin
             // 
             this.btnplugin.Image = ((System.Drawing.Image)(resources.GetObject("btnplugin.Image")));
@@ -151,6 +164,15 @@
             this.btnplugin.Size = new System.Drawing.Size(52, 22);
             this.btnplugin.Text = "插件";
             this.btnplugin.Click += new System.EventHandler(this.btnplugin_Click);
+            // 
+            // btnInfo
+            // 
+            this.btnInfo.Image = ((System.Drawing.Image)(resources.GetObject("btnInfo.Image")));
+            this.btnInfo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnInfo.Name = "btnInfo";
+            this.btnInfo.Size = new System.Drawing.Size(76, 22);
+            this.btnInfo.Text = "综合信息";
+            this.btnInfo.Click += new System.EventHandler(this.btnInfo_Click);
             // 
             // toolStripDropDownButton1
             // 
@@ -169,26 +191,26 @@
             // 帮助ToolStripMenuItem
             // 
             this.帮助ToolStripMenuItem.Name = "帮助ToolStripMenuItem";
-            this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.帮助ToolStripMenuItem.Text = "帮助";
             this.帮助ToolStripMenuItem.Click += new System.EventHandler(this.帮助ToolStripMenuItem_Click);
             // 
             // 注册ToolStripMenuItem
             // 
             this.注册ToolStripMenuItem.Name = "注册ToolStripMenuItem";
-            this.注册ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.注册ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.注册ToolStripMenuItem.Text = "注册";
             this.注册ToolStripMenuItem.Click += new System.EventHandler(this.注册ToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(97, 6);
             // 
             // 关于ToolStripMenuItem
             // 
             this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
-            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.关于ToolStripMenuItem.Text = "关于";
             this.关于ToolStripMenuItem.Click += new System.EventHandler(this.关于ToolStripMenuItem_Click);
             // 
@@ -237,21 +259,22 @@
             // 
             this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.清除日志ToolStripMenuItem,
-            this.复制日志ToolStripMenuItem});
+            this.复制日志ToolStripMenuItem,
+            this.暂停日志ToolStripMenuItem});
             this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(125, 48);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(153, 92);
             // 
             // 清除日志ToolStripMenuItem
             // 
             this.清除日志ToolStripMenuItem.Name = "清除日志ToolStripMenuItem";
-            this.清除日志ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.清除日志ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.清除日志ToolStripMenuItem.Text = "清除日志";
             this.清除日志ToolStripMenuItem.Click += new System.EventHandler(this.清除日志ToolStripMenuItem_Click);
             // 
             // 复制日志ToolStripMenuItem
             // 
             this.复制日志ToolStripMenuItem.Name = "复制日志ToolStripMenuItem";
-            this.复制日志ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.复制日志ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.复制日志ToolStripMenuItem.Text = "复制日志";
             this.复制日志ToolStripMenuItem.Click += new System.EventHandler(this.复制日志ToolStripMenuItem_Click);
             // 
@@ -577,14 +600,16 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // btnrouter
+            // timermsg
             // 
-            this.btnrouter.Image = ((System.Drawing.Image)(resources.GetObject("btnrouter.Image")));
-            this.btnrouter.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnrouter.Name = "btnrouter";
-            this.btnrouter.Size = new System.Drawing.Size(64, 22);
-            this.btnrouter.Text = "路由表";
-            this.btnrouter.Click += new System.EventHandler(this.btnrouter_Click);
+            this.timermsg.Tick += new System.EventHandler(this.timermsg_Tick);
+            // 
+            // 暂停日志ToolStripMenuItem
+            // 
+            this.暂停日志ToolStripMenuItem.Name = "暂停日志ToolStripMenuItem";
+            this.暂停日志ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.暂停日志ToolStripMenuItem.Text = "暂停日志";
+            this.暂停日志ToolStripMenuItem.Click += new System.EventHandler(this.暂停日志ToolStripMenuItem_Click);
             // 
             // FrmHosting
             // 
@@ -675,7 +700,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.ToolStripButton btnrouter;
-
+        private System.Windows.Forms.ToolStripButton btnInfo;
+        private System.Windows.Forms.Timer timermsg;
+        private System.Windows.Forms.ToolStripMenuItem 暂停日志ToolStripMenuItem;
     }
 }
 

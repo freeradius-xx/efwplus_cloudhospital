@@ -9,6 +9,7 @@ namespace EFWCoreLib.CoreFrame.SSO
 
     public class AuthResult
     {
+        public string token { get; set; }
 
         public UserInfo User { get; set; }
 

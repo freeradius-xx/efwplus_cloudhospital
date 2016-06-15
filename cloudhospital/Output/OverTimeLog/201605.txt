@@ -62,3 +62,5 @@
 
 时间：2016-05-18 10:37:31		耗时：4873.2787		方法：Books_Wcf@bookWcfController.GetBooks([])
 
+时间：2016-05-27 13:38:27		耗时：1426.0816		方法：LoginController.UserLogin(H4sIANFNSFcA/4tWSkzJzcxT0lEyVIoFAF1pxTYNAAAA)
+

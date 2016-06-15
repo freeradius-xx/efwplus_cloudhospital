@@ -7,37 +7,56 @@ using System.ServiceModel;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using EFWCoreLib.CoreFrame.Common;
-using EFWCoreLib.CoreFrame.Init;
-using EFWCoreLib.WcfFrame.ClientController;
-using EFWCoreLib.WcfFrame.ServerController;
-using EFWCoreLib.WcfFrame.WcfService.Contract;
 using Newtonsoft.Json;
+
+
+using EFWCoreLib.WcfFrame.WcfService.Contract;
+using EFWCoreLib.CoreFrame.Common;
+using EFWCoreLib.WcfFrame.ServerController;
+using EFWCoreLib.WcfFrame.SDMessageHeader;
+using EFWCoreLib.WcfFrame.DataSerialize;
 
 namespace EFWCoreLib.WcfFrame
 {
     /// <summary>
-    /// 客户端连接WCF服务，一个对象一个会话通道
+    /// 客户端连接对象，一个对象一个会话通道
     /// </summary>
     public class ClientLink : IDisposable
     {
+        /// <summary>
+        /// 平台连接对象
+        /// </summary>
         public CHDEPConnection mConn;
+        private string AppRootPath = System.Windows.Forms.Application.StartupPath + "\\";
 
         private readonly string myNamespace = "http://www.efwplus.cn/";
         private DuplexChannelFactory<IWCFHandlerService> mChannelFactory;
         private ChannelFactory<IFileTransfer> mfileChannelFactory = null;
-        private Action<bool, int> backConfig = null;
-
+        private Action<bool, int> backConfig = null;//参数配置回调
+        private Action createconnAction = null;//创建连接后回调
+        /// <summary>
+        /// 初始化通讯连接
+        /// </summary>
+        /// <param name="pluginname">插件名称</param>
         public ClientLink(string pluginname)
         {
             InitComm(null, pluginname);
         }
-        
+        /// <summary>
+        /// 初始化通讯连接
+        /// </summary>
+        /// <param name="clientname">客户端名称</param>
+        /// <param name="pluginname">插件名称</param>
         public ClientLink(string clientname,string pluginname)
         {
             InitComm(clientname,pluginname);
         }
-
+        /// <summary>
+        /// 初始化通讯连接
+        /// </summary>
+        /// <param name="clientname">客户端名称</param>
+        /// <param name="pluginname">插件名称</param>
+        /// <param name="actionConfig">获取消息配置</param>
         public ClientLink(string clientname, string pluginname, Action<bool, int> actionConfig)
         {
             backConfig = actionConfig;
@@ -45,10 +64,19 @@ namespace EFWCoreLib.WcfFrame
         }
 
 
+        public ClientLink(string clientname, Action _createconnAction)
+        {
+            createconnAction = _createconnAction;
+            InitComm(clientname, null);
+        }
+
+
         private void InitComm(string clientname, string pluginname)
         {
             if (string.IsNullOrEmpty(clientname))
                 clientname = getLocalIPAddress();
+            if (string.IsNullOrEmpty(pluginname))
+                pluginname = "SuperPlugin";
 
             mConn = new CHDEPConnection();
             mConn.ClientName = clientname;
@@ -63,12 +91,16 @@ namespace EFWCoreLib.WcfFrame
         }
 
         #region IDisposable 成员
-
+        /// <summary>
+        /// 释放连接
+        /// </summary>
         ~ClientLink()
         {
             Dispose();
         } 
-
+        /// <summary>
+        /// 释放连接
+        /// </summary>
         public void Dispose()
         {
             UnConnection();
@@ -99,6 +131,8 @@ namespace EFWCoreLib.WcfFrame
         private int MessageTime = 1;//默认间隔1秒
         private bool IsCompressJson = false;//是否压缩Json数据
         private bool IsEncryptionJson = false;//是否加密Json数据
+        private SerializeType serializeType = SerializeType.Newtonsoft;//序列化方式
+
         private bool ServerConfigRequestState = false;//获取服务端配置读取状态
 
         /// <summary>
@@ -110,7 +144,7 @@ namespace EFWCoreLib.WcfFrame
             mConn.WcfService = wcfHandlerService;
             string serverConfig = null;
 
-            AddMessageHeader(wcfHandlerService as IContextChannel, "", "wcfservice", (() =>
+            AddMessageHeader(wcfHandlerService as IContextChannel, "", (() =>
             {
 
                 mConn.ClientID = wcfHandlerService.CreateDomain(mConn.ClientName);//创建连接获取ClientID
@@ -130,10 +164,7 @@ namespace EFWCoreLib.WcfFrame
                 MessageTime = Convert.ToInt32(serverConfig.Split(new char[] { '#' })[3]);
                 IsCompressJson = serverConfig.Split(new char[] { '#' })[4] == "1" ? true : false;
                 IsEncryptionJson = serverConfig.Split(new char[] { '#' })[5] == "1" ? true : false;
-
-                if (backConfig != null)
-                    backConfig(IsMessage, MessageTime);
-
+                serializeType = (SerializeType)Convert.ToInt32(serverConfig.Split(new char[] { '#' })[6]);
                 if (IsHeartbeat)
                 {
                     //开启发送心跳
@@ -148,47 +179,81 @@ namespace EFWCoreLib.WcfFrame
                         timer.Stop();
                 }
             }
+
+            if (backConfig != null)
+                backConfig(IsMessage, MessageTime);
+
+            //创建连接成功后回调
+            if (createconnAction != null)
+                createconnAction.BeginInvoke(null,null);
         }
 
         /// <summary>
         /// 向服务发送请求
         /// </summary>
-        /// <param name="controller">插件名@控制器名称</param>
+        /// <param name="controller">控制器名称</param>
         /// <param name="method">方法名称</param>
-        /// <param name="jsondata">数据</param>
+        /// <param name="requestAction">数据</param>
         /// <returns>返回Json数据</returns>
-        public string Request(string controller, string method, string jsondata)
+        public ServiceResponseData Request(string controller, string method, Action<ClientRequestData> requestAction)
         {
             if (mConn == null) throw new Exception("还没有创建连接！");
             try
             {
-                if (IsCompressJson)//开启压缩
+                ClientRequestData requestData = new ClientRequestData(IsCompressJson, IsEncryptionJson, serializeType);
+                if (requestAction != null)
+                    requestAction(requestData);
+
+                string jsondata = requestData.GetJsonData();//获取序列化的请求数据
+
+                if (requestData.Iscompressjson)//开启压缩
                 {
                     jsondata = ZipComporessor.Compress(jsondata);//压缩传入参数
-                    //jsondata = JsonComporessor.Compress(jsondata);//压缩传入参数
                 }
 
                 IWCFHandlerService _wcfService = mConn.WcfService;
                 string retJson = "";
 
-                AddMessageHeader(_wcfService as IContextChannel, "", "wcfservice", (() =>
-                {
-                    retJson = _wcfService.ProcessRequest(mConn.ClientID, controller, method, jsondata);
-                }));
+                AddMessageHeader(_wcfService as IContextChannel, "", requestData.Iscompressjson, requestData.Isencryptionjson, requestData.Serializetype, (() =>
+                   {
+                       retJson = _wcfService.ProcessRequest(mConn.ClientID, mConn.PluginName + "@" + controller, method, jsondata);
+                   }));
 
-                if (IsCompressJson)
+                if (requestData.Iscompressjson)
                 {
                     retJson = ZipComporessor.Decompress(retJson);
                     //retJson = JsonComporessor.Decompress(retJson);
                 }
 
-                if (IsHeartbeat == false)//如果没有启动心跳，则请求发送心跳
+                new Action(delegate ()
                 {
-                    ServerConfigRequestState = false;
-                    Heartbeat();
+                    if (IsHeartbeat == false)//如果没有启动心跳，则请求发送心跳
+                    {
+                        ServerConfigRequestState = false;
+                        Heartbeat();
+                    }
+                }).BeginInvoke(null, null);//异步执行
+
+                string retData = "";
+                object Result = JsonConvert.DeserializeObject(retJson);
+                int ret = Convert.ToInt32((((Newtonsoft.Json.Linq.JObject)Result)["flag"]).ToString());
+                string msg = (((Newtonsoft.Json.Linq.JObject)Result)["msg"]).ToString();
+                if (ret == 1)
+                {
+                    throw new Exception(msg);
+                }
+                else
+                {
+                    retData = ((Newtonsoft.Json.Linq.JObject)(Result))["data"].ToString();
                 }
 
-                return retJson;
+                ServiceResponseData responsedata = new ServiceResponseData();
+                responsedata.Iscompressjson = requestData.Iscompressjson;
+                responsedata.Isencryptionjson = requestData.Isencryptionjson;
+                responsedata.Serializetype = requestData.Serializetype;
+                responsedata.SetJsonData(retData);
+
+                return responsedata;
             }
             catch (Exception e)
             {
@@ -198,6 +263,7 @@ namespace EFWCoreLib.WcfFrame
             }
         }
 
+
         /// <summary>
         /// 向服务发送异步请求
         /// 客户端建议不要用多线程，都采用异步请求方式
@@ -206,44 +272,69 @@ namespace EFWCoreLib.WcfFrame
         /// <param name="method">方法名称</param>
         /// <param name="jsondata">数据</param>
         /// <returns>返回Json数据</returns>
-        public IAsyncResult RequestAsync(string controller, string method, string jsondata, Action<string> action)
+        public IAsyncResult RequestAsync(string controller, string method, Action<ClientRequestData> requestAction, Action<ServiceResponseData> action)
         {
             if (mConn == null) throw new Exception("还没有创建连接！");
             try
             {
-                if (IsCompressJson)//开启压缩
+                ClientRequestData requestData = new ClientRequestData(IsCompressJson, IsEncryptionJson, serializeType);
+                if (requestAction != null)
+                    requestAction(requestData);
+
+                string jsondata = requestData.GetJsonData();//获取序列化的请求数据
+
+                if (requestData.Iscompressjson)//开启压缩
                 {
                     jsondata = ZipComporessor.Compress(jsondata);//压缩传入参数
-                    //jsondata = JsonComporessor.Compress(jsondata);//压缩传入参数
                 }
 
                 IWCFHandlerService _wcfService = mConn.WcfService;
                 IAsyncResult result = null;
 
-                AddMessageHeader(_wcfService as IContextChannel, "", "wcfservice", (() =>
+                AddMessageHeader(_wcfService as IContextChannel, "", requestData.Iscompressjson, requestData.Isencryptionjson, requestData.Serializetype,  (() =>
                 {
                     AsyncCallback callback = delegate(IAsyncResult r)
                     {
                         string retJson = _wcfService.EndProcessRequest(r);
 
-                        if (IsCompressJson)
+                        if (requestData.Iscompressjson)
                         {
                             retJson = ZipComporessor.Decompress(retJson);
-                            //retJson = JsonComporessor.Decompress(retJson);
                         }
 
-                        action(retJson);
+                        string retData = "";
+                        object Result = JsonConvert.DeserializeObject(retJson);
+                        int ret = Convert.ToInt32((((Newtonsoft.Json.Linq.JObject)Result)["flag"]).ToString());
+                        string msg = (((Newtonsoft.Json.Linq.JObject)Result)["msg"]).ToString();
+                        if (ret == 1)
+                        {
+                            throw new Exception(msg);
+                        }
+                        else
+                        {
+                            retData = ((Newtonsoft.Json.Linq.JObject)(Result))["data"].ToString();
+                        }
+
+                        ServiceResponseData responsedata = new ServiceResponseData();
+                        responsedata.Iscompressjson = requestData.Iscompressjson;
+                        responsedata.Isencryptionjson = requestData.Isencryptionjson;
+                        responsedata.Serializetype = requestData.Serializetype;
+                        responsedata.SetJsonData(retData);
+
+                        action(responsedata);
                     };
-                    result = _wcfService.BeginProcessRequest(mConn.ClientID, controller, method, jsondata, callback, null);
+                    result = _wcfService.BeginProcessRequest(mConn.ClientID, mConn.PluginName + "@" + controller, method, jsondata, callback, null);
                 }));
 
-                if (IsHeartbeat == false)//如果没有启动心跳，则请求发送心跳
+                new Action(delegate ()
                 {
-                    ServerConfigRequestState = false;
-                    Heartbeat();
-                }
+                    if (IsHeartbeat == false)//如果没有启动心跳，则请求发送心跳
+                    {
+                        ServerConfigRequestState = false;
+                        Heartbeat();
+                    }
+                }).BeginInvoke(null, null);//异步执行
 
-                //return retJson;
                 return result;
             }
             catch (Exception e)
@@ -254,6 +345,7 @@ namespace EFWCoreLib.WcfFrame
             }
         }
 
+       
         /// <summary>
         /// 卸载连接
         /// </summary>
@@ -264,13 +356,14 @@ namespace EFWCoreLib.WcfFrame
             IWCFHandlerService mWcfService = mConn.WcfService;
             if (mClientID != null)
             {
-                AddMessageHeader(mWcfService as IContextChannel, "Quit", "wcfservice", (() =>
-                {
-                    mWcfService.UnDomain(mClientID);
-                }));
-
                 try
                 {
+                    AddMessageHeader(mWcfService as IContextChannel, "Quit", (() =>
+                       {
+                           mWcfService.UnDomain(mClientID);
+                       }));
+
+
                     //mChannelFactory.Close();//关闭通道
                     (mWcfService as IContextChannel).Close();
 
@@ -287,10 +380,12 @@ namespace EFWCoreLib.WcfFrame
             }
         }
 
+        
+
         /// <summary>
         /// 重新连接wcf服务，服务端存在ClientID
         /// </summary>
-        /// <param name="mainfrm"></param>
+        /// <param name="isRequest">是否请求调用</param>
         private void ReConnection(bool isRequest)
         {
             try
@@ -317,7 +412,7 @@ namespace EFWCoreLib.WcfFrame
             {
                 bool ret = false;
                 string serverConfig = null;
-                AddMessageHeader(_wcfService as IContextChannel, "", "wcfservice", (() =>
+                AddMessageHeader(_wcfService as IContextChannel, "",  (() =>
                 {
                     ret = _wcfService.Heartbeat(mConn.ClientID);
                     if (ServerConfigRequestState == false)
@@ -336,6 +431,7 @@ namespace EFWCoreLib.WcfFrame
                     MessageTime = Convert.ToInt32(serverConfig.Split(new char[] { '#' })[3]);
                     IsCompressJson = serverConfig.Split(new char[] { '#' })[4] == "1" ? true : false;
                     IsEncryptionJson = serverConfig.Split(new char[] { '#' })[5] == "1" ? true : false;
+                    serializeType = (SerializeType)Convert.ToInt32(serverConfig.Split(new char[] { '#' })[6]);
 
                     if (backConfig != null)
                         backConfig(IsMessage, MessageTime);
@@ -371,20 +467,6 @@ namespace EFWCoreLib.WcfFrame
             }
         }
 
-
-        public List<dwPlugin> GetWcfServicesAllInfo()
-        {
-            IWCFHandlerService _wcfService = mConn.WcfService;
-            List<dwPlugin> list = new List<dwPlugin>();
-            AddMessageHeader(_wcfService as IContextChannel, "", "wcfservice", (() =>
-            {
-                string ret = _wcfService.WcfServicesAllInfo();
-                list = JsonConvert.DeserializeObject<List<dwPlugin>>(ret);
-            }));
-
-            return list;
-        }
-
         private string getLocalIPAddress()
         {
             IPHostEntry IpEntry = Dns.GetHostEntry(Dns.GetHostName());
@@ -400,6 +482,30 @@ namespace EFWCoreLib.WcfFrame
             return myip;
         }
 
+        private void AddMessageHeader(IContextChannel channel, string cmd, Action callback)
+        {
+            AddMessageHeader(channel, cmd, IsCompressJson, IsEncryptionJson, serializeType, callback);
+        }
+        private void AddMessageHeader(IContextChannel channel, string cmd,bool iscompressjson,bool isencryptionjson,SerializeType serializetype, Action callback)
+        {
+            using (var scope = new OperationContextScope(channel as IContextChannel))
+            {
+                if (string.IsNullOrEmpty(cmd)) cmd = "";
+
+                HeaderParameter para = new HeaderParameter();
+                para.cmd = cmd;
+                para.routerid = mConn.RouterID;
+                para.pluginname = mConn.PluginName;
+                //ReplyIdentify如果客户端创建连接为空，如果中间件连接上级中间件那就是本地中间件标识
+                para.replyidentify = WcfServerManage.Identify;
+                para.token = mConn.Token;
+                para.iscompressjson = iscompressjson;
+                para.isencryptionjson = isencryptionjson;
+                para.serializetype = serializetype;
+                HeaderOperater.AddMessageHeader(OperationContext.Current.OutgoingMessageHeaders, para);
+                callback();
+            }
+        }
         //向服务端发送心跳，间隔时间为5s
         System.Timers.Timer timer;
         void StartTimer()
@@ -426,9 +532,26 @@ namespace EFWCoreLib.WcfFrame
         }
         #endregion
 
+        /// <summary>
+        /// 获取所有服务插件的控制器和方法
+        /// </summary>
+        /// <returns></returns>
+        public List<EFWCoreLib.WcfFrame.ServerController.dwPlugin> GetWcfServicesAllInfo()
+        {
+            IWCFHandlerService _wcfService = mConn.WcfService;
+            List<EFWCoreLib.WcfFrame.ServerController.dwPlugin> list = new List<EFWCoreLib.WcfFrame.ServerController.dwPlugin>();
+            AddMessageHeader(_wcfService as IContextChannel, "", (() =>
+            {
+                string ret = _wcfService.WcfServicesAllInfo();
+                list = JsonConvert.DeserializeObject<List<EFWCoreLib.WcfFrame.ServerController.dwPlugin>>(ret);
+            }));
+
+            return list;
+        }
+
         #region 上传下载文件
         /// <summary>
-        /// 上传文件，上传文件的进度只能通过时时获取服务端Read的进度
+        /// 上传文件
         /// </summary>
         /// <param name="filepath">文件本地路径</param>
         /// <returns>上传成功后返回的文件名</returns>
@@ -437,13 +560,14 @@ namespace EFWCoreLib.WcfFrame
             return UpLoadFile(filepath, null);
         }
         /// <summary>
-        /// 上传文件，上传文件的进度只能通过时时获取服务端Read的进度
+        /// 上传文件，有进度显示
         /// </summary>
         /// <param name="filepath">文件本地路径</param>
+        /// <param name="action">进度0-100</param>
         /// <returns>上传成功后返回的文件名</returns>
         public string UpLoadFile(string filepath, Action<int> action)
         {
-            
+
             IFileTransfer fileHandlerService = null;
             try
             {
@@ -463,16 +587,10 @@ namespace EFWCoreLib.WcfFrame
                 uf.FileStream = finfo.OpenRead();
 
                 if (action != null)
-                    getUpLoadFileProgress(uf.UpKey, action);//获取上传进度条
+                    getupdownprogress(uf.FileStream, uf.FileSize, action);//获取进度条
 
                 UpFileResult result = new UpFileResult();
-
-                //AddMessageHeader(fileHandlerService as IContextChannel, "", "fileservice", (() =>
-                //{
-                    result = fileHandlerService.UpLoadFile(uf);
-                //}));
-
-                
+                result = fileHandlerService.UpLoadFile(uf);
 
                 if (result.IsSuccess)
                     return result.Message;
@@ -487,12 +605,12 @@ namespace EFWCoreLib.WcfFrame
             {
                 if (fileHandlerService != null)
                 {
-                    (fileHandlerService as IContextChannel).Close();
+                    (fileHandlerService as IContextChannel).Abort();
                 }
             }
         }
         /// <summary>
-        /// 下载文件，下载文件进度在Read的时候可以显示
+        /// 下载文件
         /// </summary>
         /// <param name="filename">下载文件名</param>
         /// <returns>下载成功后返回存储在本地文件路径</returns>
@@ -501,7 +619,7 @@ namespace EFWCoreLib.WcfFrame
             return DownLoadFile(filename, null);
         }
         /// <summary>
-        /// 下载文件，下载文件进度在Read的时候可以显示
+        /// 下载文件，有进度显示
         /// </summary>
         /// <param name="filename">下载文件名</param>
         /// <param name="action">进度0-100</param>
@@ -514,7 +632,7 @@ namespace EFWCoreLib.WcfFrame
                 if (string.IsNullOrEmpty(filename))
                     throw new Exception("文件名不为空！");
 
-                string filebufferpath = AppGlobal.AppRootPath + @"filebuffer\";
+                string filebufferpath = AppRootPath + @"filebuffer\";
                 if (!Directory.Exists(filebufferpath))
                 {
                     Directory.CreateDirectory(filebufferpath);
@@ -529,12 +647,8 @@ namespace EFWCoreLib.WcfFrame
 
                 DownFileResult result = new DownFileResult();
 
-                //AddMessageHeader(fileHandlerService as IContextChannel, "", "fileservice", (() =>
-                //{
-                    result = fileHandlerService.DownLoadFile(df);
-                //}));
+                result = fileHandlerService.DownLoadFile(df);
 
-                //mfileChannelFactory.Close();//关闭会话
                 if (result.IsSuccess)
                 {
                     string filepath = filebufferpath + filename;
@@ -545,41 +659,22 @@ namespace EFWCoreLib.WcfFrame
 
                     FileStream fs = new FileStream(filepath, FileMode.Create, FileAccess.Write);
 
-                    int oldprogressnum = 0;
-                    int progressnum = 0;
                     int bufferlen = 4096;
                     int count = 0;
-                    long readnum = 0;
                     byte[] buffer = new byte[bufferlen];
 
-                    //设置服务端的下载进度
-                    setDownFileProgress(df.clientId, df.DownKey, (delegate()
-                    {
-                        return progressnum;
-                    }));
+                    if (action != null)
+                        getupdownprogress(result.FileStream, result.FileSize, action);//获取进度条
+
 
                     while ((count = result.FileStream.Read(buffer, 0, bufferlen)) > 0)
                     {
                         fs.Write(buffer, 0, count);
-                        readnum += count;
-                        //获取下载进度
-                        getprogress(result.FileSize, readnum, ref progressnum);
-                        if (oldprogressnum < progressnum)
-                        {
-                            oldprogressnum = progressnum;
-                            //setDownFileProgress(df.clientId, df.DownKey, oldprogressnum);//设置服务端的下载进度
-                            if (action != null)
-                            {
-                                action(progressnum);
-                            }
-                        }
                     }
                     //清空缓冲区
                     fs.Flush();
                     //关闭流
                     fs.Close();
-
-                    //System.Threading.Thread.Sleep(200);
                     return filepath;
                 }
                 else
@@ -592,7 +687,7 @@ namespace EFWCoreLib.WcfFrame
             finally
             {
                 if (fileHandlerService != null)
-                    (fileHandlerService as IContextChannel).Close();
+                    (fileHandlerService as IContextChannel).Abort();
             }
         }
 
@@ -603,97 +698,95 @@ namespace EFWCoreLib.WcfFrame
             decimal percent = Convert.ToDecimal(readnum) / Convert.ToDecimal(filesize) * 100;
             progressnum = Convert.ToInt32(Math.Ceiling(percent));
         }
-        void getUpLoadFileProgress(string upkey, Action<int> action)
+        private void getupdownprogress(Stream file, long flength, Action<int> action)
         {
-            new Action<string, Action<int>>(delegate(string _upkey, Action<int> _action)
+            new Action<Stream, long, Action<int>>(delegate(Stream _file, long _flength, Action<int> _action)
             {
-                IFileTransfer fileHandlerService = null;
                 try
                 {
-
-                    fileHandlerService = mfileChannelFactory.CreateChannel();
-
                     int oldnum = 0;
                     int num = 0;
-                    //AddMessageHeader(fileHandlerService as IContextChannel, "", "fileservice", (() =>
-                    //{
-                    while ((num = fileHandlerService.GetUpLoadFileProgress(_upkey)) != 100)
+
+                    while (num != 100)
                     {
+                        getprogress(_flength - 1, _file.Position, ref num);
                         if (oldnum < num)
                         {
                             oldnum = num;
-                            _action(num);
+                            _action.BeginInvoke(num, null, null);
                         }
                         System.Threading.Thread.Sleep(100);
                     }
-                    //}));
-
-
-                    _action(100);
+                    //_action(100);
                 }
                 catch (Exception e)
                 {
-                    throw new Exception(e.Message + "\n获取上传文件进度失败！");
-                }
-                finally
-                {
-                    if (fileHandlerService != null)
-                        (fileHandlerService as IContextChannel).Close();
+                    throw new Exception(e.Message + "\n获取文件进度失败！");
                 }
 
-            }).BeginInvoke(upkey, action, null, null);
+            }).BeginInvoke(file, flength, action, null, null);
         }
-        void setDownFileProgress(string clientId, string downkey, Func<int> func)
-        {
-            //string _clientId = clientId;
-            //string _downkey = downkey;
-            //int _progressnum = progressnum;
-            new Action<string, string, Func<int>>(delegate(string _clientId, string _downkey, Func<int> _func)
-            {
-                IFileTransfer fileHandlerService = null;
-                try
-                {
-                    fileHandlerService = mfileChannelFactory.CreateChannel();
-
-                    //AddMessageHeader(fileHandlerService as IContextChannel, "", "fileservice", (() =>
-                    //{
-                    int _oldprogressnum = 0;
-                    int _progressnum = 0;
-                    while ((_progressnum = _func()) != 100)
-                    {
-                        if (_oldprogressnum < _progressnum)
-                        {
-                            _oldprogressnum = _progressnum;
-                            fileHandlerService.SetDownLoadFileProgress(_clientId, _downkey, _progressnum);
-                        }
-                        System.Threading.Thread.Sleep(100);
-                    }
-                    fileHandlerService.SetDownLoadFileProgress(_clientId, _downkey, 100);
-                    //}));
-                }
-                catch (Exception e)
-                {
-                    throw new Exception(e.Message + "\n设置下载文件进度失败！");
-                }
-                finally
-                {
-                    if (fileHandlerService != null)
-                        (fileHandlerService as IContextChannel).Close();
- 
-                }
-            }).BeginInvoke(clientId, downkey, func, null, null);
-        }
+        
         #endregion
 
         #region 超级回调
-
-        public void RegisterReplyPlugin(string serverHostName, string[] plugin)
+        /// <summary>
+        /// 注册远程插件
+        /// </summary>
+        /// <param name="ServerIdentify"></param>
+        /// <param name="plugin"></param>
+        public void RegisterReplyPlugin(string ServerIdentify, string[] plugin)
         {
             if (mConn == null) throw new Exception("还没有创建连接！");
             try
             {
                 IWCFHandlerService _wcfService = mConn.WcfService;
-                _wcfService.RegisterReplyPlugin(serverHostName, plugin);
+                _wcfService.RegisterReplyPlugin(ServerIdentify, plugin);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message + "\n连接服务主机失败，请联系管理员！");
+            }
+        }
+        #endregion 
+
+        #region 分布式缓存
+
+        public CacheIdentify DistributedCacheSyncIdentify(CacheIdentify cacheId)
+        {
+            if (mConn == null) throw new Exception("还没有创建连接！");
+            try
+            {
+                IWCFHandlerService _wcfService = mConn.WcfService;
+                return _wcfService.DistributedCacheSyncIdentify(cacheId);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message + "\n连接服务主机失败，请联系管理员！");
+            }
+        }
+
+        public void DistributedCacheSync(CacheObject cache)
+        {
+            if (mConn == null) throw new Exception("还没有创建连接！");
+            try
+            {
+                IWCFHandlerService _wcfService = mConn.WcfService;
+                _wcfService.DistributedCacheSync(cache);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message + "\n连接服务主机失败，请联系管理员！");
+            }
+        }
+
+        public void DistributedAllCacheSync(List<CacheObject> cachelist)
+        {
+            if (mConn == null) throw new Exception("还没有创建连接！");
+            try
+            {
+                IWCFHandlerService _wcfService = mConn.WcfService;
+                _wcfService.DistributedAllCacheSync(cachelist);
             }
             catch (Exception e)
             {
@@ -701,33 +794,195 @@ namespace EFWCoreLib.WcfFrame
             }
         }
         #endregion
-
-        private void AddMessageHeader(IContextChannel channel, string cmd,string stype,Action callback)
-        {
-            using (var scope = new OperationContextScope(channel as IContextChannel))
-            {
-                var CMD = System.ServiceModel.Channels.MessageHeader.CreateHeader("CMD", myNamespace, cmd);
-                OperationContext.Current.OutgoingMessageHeaders.Add(CMD);
-                var router = System.ServiceModel.Channels.MessageHeader.CreateHeader("routerID", myNamespace, mConn.RouterID);
-                OperationContext.Current.OutgoingMessageHeaders.Add(router);
-                var plugin = System.ServiceModel.Channels.MessageHeader.CreateHeader("Plugin", myNamespace, mConn.PluginName);
-                OperationContext.Current.OutgoingMessageHeaders.Add(plugin);
-                if (string.IsNullOrEmpty(stype))
-                    stype = "wcfservice";
-                var servicetype = System.ServiceModel.Channels.MessageHeader.CreateHeader("ServiceType", myNamespace, stype);
-                OperationContext.Current.OutgoingMessageHeaders.Add(servicetype);
-                callback();
-            }
-        }
     }
-
+    /// <summary>
+    /// 平台连接对象
+    /// </summary>
     public class CHDEPConnection
     {
+        /// <summary>
+        /// 业务数据服务
+        /// </summary>
         public IWCFHandlerService WcfService { get; set; }
+        /// <summary>
+        /// 客户端回调服务
+        /// </summary>
         public IClientService ClientService { get; set; }
+        /// <summary>
+        /// 客户端ID，服务端生成
+        /// </summary>
         public string ClientID { get; set; }//服务端返回
+        /// <summary>
+        /// 客户端名称
+        /// </summary>
         public string ClientName { get; set; }
+        /// <summary>
+        /// 路由ID
+        /// </summary>
         public string RouterID { get; set; }
+        /// <summary>
+        /// 服务插件名称
+        /// </summary>
         public string PluginName { get; set; }
+        /// <summary>
+        /// 客户端令牌
+        /// </summary>
+        public string Token { get; set; }
+    }
+
+    /// <summary>
+    /// 客户端回调对象
+    /// </summary>
+    [CallbackBehavior(ConcurrencyMode = ConcurrencyMode.Multiple, UseSynchronizationContext = false)]
+    public class ReplyClientCallBack : IClientService
+    {
+        /// <summary>
+        /// 回调委托
+        /// </summary>
+        public Action<string> ReplyClientAction
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// 超级回调委托
+        /// </summary>
+        public Func<HeaderParameter, string, string, string, string, string> SuperReplyClientAction
+        {
+            get;
+            set;
+        }
+
+        #region IClientService 成员
+        /// <summary>
+        /// 回调客户端
+        /// </summary>
+        /// <param name="jsondata"></param>
+        public void ReplyClient(string jsondata)
+        {
+            if (ReplyClientAction != null)
+            {
+                ReplyClientAction(jsondata);
+            }
+        }
+        /// <summary>
+        /// 超级回调中间件
+        /// </summary>
+        /// <param name="para"></param>
+        /// <param name="plugin"></param>
+        /// <param name="controller"></param>
+        /// <param name="method"></param>
+        /// <param name="jsondata"></param>
+        /// <returns></returns>
+        public string SuperReplyClient(HeaderParameter para, string plugin, string controller, string method, string jsondata)
+        {
+            if (SuperReplyClientAction != null)
+            {
+                return SuperReplyClientAction(para, plugin, controller, method, jsondata);
+            }
+            return null;
+        }
+
+        #endregion
+
+        #region 分布式缓存同步
+
+
+        public ServerController.CacheIdentify DistributedCacheSyncIdentify(ServerController.CacheIdentify cacheId)
+        {
+            return EFWCoreLib.WcfFrame.ServerController.DistributedCacheManage.CompareCache(cacheId);
+        }
+
+        public void DistributedCacheSync(ServerController.CacheObject cache)
+        {
+            EFWCoreLib.WcfFrame.ServerController.DistributedCacheManage.SyncLocalCache(cache);
+        }
+
+
+        public void DistributedAllCacheSync(List<ServerController.CacheObject> cachelist)
+        {
+            foreach (var cache in cachelist)
+            {
+                EFWCoreLib.WcfFrame.ServerController.DistributedCacheManage.SyncLocalCache(cache);
+            }
+        }
+
+        #endregion
+    }
+
+    /// <summary>
+    /// 客户端管理类
+    /// </summary>
+    public class ClientLinkManage
+    {
+        /// <summary>
+        /// 是否开启业务消息
+        /// </summary>
+        public static bool IsMessage = false;
+        /// <summary>
+        /// 业务消息触发时间间隔，单位秒
+        /// </summary>
+        public static int MessageTime = 1;//默认间隔1秒
+        /// <summary>
+        /// 登陆后缓存令牌
+        /// </summary>
+        public static string Token = null;//
+
+        /// <summary>
+        /// 缓存的客户连接
+        /// </summary>
+        private static Dictionary<string, ClientLink> ClientLinkDic = new Dictionary<string, ClientLink>();
+        /// <summary>
+        /// 创建wcf服务连接
+        /// </summary>
+        public static ClientLink CreateConnection(string pluginname)
+        {
+            try
+            {
+                if (ClientLinkDic.ContainsKey(pluginname))
+                {
+                    return ClientLinkDic[pluginname];
+                }
+
+                ClientLink link = new ClientLink(null, pluginname, ((ism, met) =>
+                {
+                    IsMessage = ism;
+                    MessageTime = met;
+                }));
+                link.CreateConnection();
+                link.mConn.Token = Token;//赋值令牌
+                ClientLinkDic.Add(pluginname, link);
+                return link;
+            }
+            catch (Exception err)
+            {
+                throw new Exception(err.Message);
+            }
+        }
+
+        /// <summary>
+        /// 卸载连接
+        /// </summary>
+        public static void UnConnection(string pluginname)
+        {
+            if (ClientLinkDic.Count == 0) return;
+            if (ClientLinkDic.ContainsKey(pluginname) == false) return;
+            ClientLinkDic[pluginname].Dispose();
+            ClientLinkDic.Remove(pluginname);
+        }
+
+        /// <summary>
+        /// 关闭所有连接
+        /// </summary>
+        public static void UnAllConnection()
+        {
+            if (ClientLinkDic.Count == 0) return;
+            foreach (var c in ClientLinkDic)
+            {
+                c.Value.Dispose();
+            }
+            ClientLinkDic.Clear();
+        }
     }
 }

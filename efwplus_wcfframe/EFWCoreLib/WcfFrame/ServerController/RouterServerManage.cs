@@ -12,16 +12,22 @@ using EFWCoreLib.WcfFrame.WcfService.Contract;
 using EFWCoreLib.WcfFrame.ServerController;
 using System.Drawing;
 using EFWCoreLib.WcfFrame.WcfService;
+using System.Xml;
+using EFWCoreLib.WcfFrame.SDMessageHeader;
 
 namespace EFWCoreLib.WcfFrame.ServerController
 {
     public class RouterServerManage
     {
-        public static  IDictionary<int, RegistrationInfo> RegistrationList = new Dictionary<int, RegistrationInfo>();
-        public static  IDictionary<string, int> RoundRobinCount = new Dictionary<string, int>();
+        public static IDictionary<string, IRouterService> routerDic = new Dictionary<string, IRouterService>();
+        public static IDictionary<string, HeaderParameter> headParaDic = new Dictionary<string, HeaderParameter>();
+
+        public static IDictionary<int, RegistrationInfo> RegistrationList = new Dictionary<int, RegistrationInfo>();
+        public static IDictionary<string, int> RoundRobinCount = new Dictionary<string, int>();
         public static HostWCFMsgHandler hostwcfMsg;
         public static HostWCFRouterListHandler hostwcfRouter;
         public static string ns = "http://www.efwplus.cn/";
+        public static string routerfile = System.Windows.Forms.Application.StartupPath + "\\Config\\RouterBill.xml";
 
         public static void Start()
         {
@@ -37,58 +43,62 @@ namespace EFWCoreLib.WcfFrame.ServerController
             hostwcfRouter(RegistrationList.Values.ToList());
         }
 
+
+        public static void RemoveClient(HeaderParameter para)
+        {
+            if (RouterServerManage.routerDic.ContainsKey(para.routerid))
+            {
+                lock (RouterServerManage.routerDic)
+                {
+                    (RouterServerManage.routerDic[para.routerid] as IContextChannel).Abort();
+                    RouterServerManage.routerDic.Remove(para.routerid);
+                    RouterServerManage.headParaDic.Remove(para.routerid);
+                }
+
+            }
+            if (RouterServerManage.RoundRobinCount.ContainsKey(para.routerid))
+            {
+                lock (RouterServerManage.RegistrationList)
+                {
+                    int key = RouterServerManage.RoundRobinCount[para.routerid];
+                    RegistrationInfo regInfo = RouterServerManage.RegistrationList[key];
+                    regInfo.ClientNum -= 1;
+                }
+            }
+
+            //界面显示
+            hostwcfRouter(RegistrationList.Values.ToList());
+        }
+
         /// <summary>
         /// 从注册表容器中根据Message的Action找到匹配的 binding和 endpointaddress
         /// </summary>
         /// <param name="requestMessage"></param>
         /// <param name="binding"></param>
         /// <param name="endpointAddress"></param>
-        public static void GetServiceEndpoint(Message requestMessage, out EndpointAddress endpointAddress, out Uri touri)
+        public static HeaderParameter AddClient(Message requestMessage, HeaderParameter para, out EndpointAddress endpointAddress, out Uri touri)
         {
-            string routerID = GetHeaderValue(requestMessage, "routerID", ns);
-            string cmd = GetHeaderValue(requestMessage, "CMD", ns);
-            string pluginname = GetHeaderValue(requestMessage, "Plugin", ns);
-            //string stype = GetHeaderValue(requestMessage, "ServiceType", ns);
             string contractNamespace = requestMessage.Headers.Action.Substring(0, requestMessage.Headers.Action.LastIndexOf("/"));
 
             RegistrationInfo regInfo = null;
 
-            if (RoundRobinCount.ContainsKey(routerID))
+            lock (RegistrationList)
             {
-                lock (RegistrationList)
+                List<KeyValuePair<int, RegistrationInfo>> krlist = RegistrationList.OrderBy(x => x.Value.ClientNum).ToList().FindAll(x => x.Value.ContractNamespace.Contains(contractNamespace));
+                if (krlist.Count > 0)
                 {
-                    int key = RoundRobinCount[routerID];
-                    regInfo = RegistrationList[key];
-                    if (cmd == "Quit")
+                    foreach (var r in krlist)
                     {
-
-                        regInfo.ClientNum -= 1;
-                    }
-                }
-            }
-            else
-            {
-                lock (RegistrationList)
-                {
-                    List<KeyValuePair<int, RegistrationInfo>> krlist = RegistrationList.OrderBy(x => x.Value.ClientNum).ToList().FindAll(x => x.Value.ContractNamespace.Contains(contractNamespace));
-                    if (krlist.Count > 0)
-                    {
-                        foreach (var r in krlist)
+                        if (r.Value.pluginList.FindIndex(x => x.name == para.pluginname) > -1)
                         {
-                            if (r.Value.pluginList.FindIndex(x => x.name == pluginname) > -1)
-                            {
-                                RoundRobinCount.Add(routerID, r.Key);
-                                r.Value.ClientNum += 1;
-                                regInfo = r.Value;
-                                break;
-                            }
+                            RoundRobinCount.Add(para.routerid, r.Key);
+                            r.Value.ClientNum += 1;
+                            regInfo = r.Value;
+                            break;
                         }
                     }
                 }
-
             }
-
-
             if (regInfo == null)
                 throw new Exception("找不到对应的路由地址");
 
@@ -99,7 +109,13 @@ namespace EFWCoreLib.WcfFrame.ServerController
             //重设Message的目标终结点
             touri = new Uri(regInfo.Address);
 
+            PluginInfo pinfo = regInfo.pluginList.Find(x => x.name == para.pluginname);
+            if (pinfo != null && !string.IsNullOrEmpty(pinfo.replyidentify))
+                para.replyidentify = pinfo.replyidentify;
+            //界面显示
             hostwcfRouter(RegistrationList.Values.ToList());
+
+            return para;
         }
 
         public static void GetServiceEndpointFile(Message requestMessage, out EndpointAddress endpointAddress, out Uri touri)
@@ -114,6 +130,7 @@ namespace EFWCoreLib.WcfFrame.ServerController
                 if (krlist.Count > 0)
                 {
                     regInfo = krlist.First().Value;
+                    regInfo.ClientNum += 1;
                 }
             }
 
@@ -128,19 +145,11 @@ namespace EFWCoreLib.WcfFrame.ServerController
             //重设Message的目标终结点
             touri = new Uri(regInfo.Address);
 
+            //界面显示
             hostwcfRouter(RegistrationList.Values.ToList());
         }
 
-
-        public static string GetHeaderValue(Message requestMessage, string name, string ns)
-        {
-            var headers = requestMessage.Headers;
-            var index = headers.FindHeader(name, ns);
-            if (index > -1)
-                return headers.GetHeader<string>(index);
-            else
-                return null;
-        }
+        
     }
 
     public delegate void HostWCFRouterListHandler(List<RegistrationInfo> dic);
@@ -185,27 +194,31 @@ namespace EFWCoreLib.WcfFrame.ServerController
             string _contractname = null;
             string _contractnamespace = null;
 
-            XElement xes = XElement.Load(System.Windows.Forms.Application.StartupPath + "\\Config\\RouterBill.xml");
-            IEnumerable<XElement> elements = from e in xes.Elements("record")
-                                             select e;
-            foreach (XElement xe in elements)
+            XmlDocument xmlDoc =new System.Xml.XmlDocument();
+            xmlDoc.Load(RouterServerManage.routerfile);
+
+            XmlNodeList rlist= xmlDoc.DocumentElement.SelectNodes("record");
+
+            foreach (XmlNode xe in rlist)
             {
-                _hostname = xe.Element("hostname").Value;
-                _servicetype = xe.Element("servicetype").Value;
-                _address = xe.Element("address").Value;
-                _contractname = xe.Element("ContractName").Value;
-                _contractnamespace = xe.Element("ContractNamespace").Value;
+                _hostname = xe.SelectSingleNode("hostname").InnerText;
+                _servicetype = xe.SelectSingleNode("servicetype").InnerText;
+                _address = xe.SelectSingleNode("address").InnerText;
+                _contractname = xe.SelectSingleNode("ContractName").InnerText;
+                _contractnamespace = xe.SelectSingleNode("ContractNamespace").InnerText;
+
                 RegistrationInfo registrationInfo = new RegistrationInfo { HostName = _hostname, ServiceType = _servicetype, Address = _address, ContractName = _contractname, ContractNamespace = _contractnamespace };
                 registrationInfo.pluginList = new List<PluginInfo>();
-                IEnumerable<XElement> elementps = from p in xe.Elements("plugins")
-                                                  select p;
-                foreach (XElement ps in elementps)
+                XmlNodeList plist = xe.SelectNodes("plugins/plugin");
+                foreach (XmlNode ps in plist)
                 {
-                    string name = ps.Element("plugin").Attribute("name").Value;
-                    string title = ps.Element("plugin").Attribute("title").Value;
+                    string name = ps.Attributes["name"].Value;
+                    string title = ps.Attributes["title"].Value;
+                    string replyidentify = ps.Attributes["replyidentify"].Value;
                     PluginInfo plugin = new PluginInfo();
                     plugin.name = name;
                     plugin.title = title;
+                    plugin.replyidentify = replyidentify;
                     registrationInfo.pluginList.Add(plugin);
                 }
 
@@ -226,5 +239,9 @@ namespace EFWCoreLib.WcfFrame.ServerController
 
         [DataMember(IsRequired = true, Order = 2)]
         public string title { get; set; }
+
+        [DataMember(IsRequired = true, Order = 3)]
+        public string replyidentify { get; set; }
     }
+
 }

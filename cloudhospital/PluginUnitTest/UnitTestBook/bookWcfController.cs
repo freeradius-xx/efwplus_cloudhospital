@@ -10,19 +10,15 @@ namespace UnitTestBook
 {
     [TestClass]
     public class bookWcfController : wcfBaseUnitTest
-    {
-        //创建对象
-        //private static ReplyClientCallBack callback = new ReplyClientCallBack();
-        //private static ClientLink clientlink = null;
-         
+    { 
 
         //使用 ClassInitialize 在运行类中的第一个测试前先运行代码
         [ClassInitialize()]
         public static void Init(TestContext testContext)
         {
-            //clientlink = new ClientLink("myendpoint", callback, "kakake");
+            //clientlink = new ClientLink("wcfendpoint", callback, "kakake");
             //clientlink.CreateConnection();
-            wcfpluginname = "Books_Wcf";
+            wcfpluginname = "Books.Service";
             wcfcontroller = "bookWcfController";
         }
 

@@ -85,6 +85,10 @@
     <Content Include="ModulePlugin\Books_Web\Aspx\Hello.aspx" />
     <Content Include="ModulePlugin\Books_Web\JS\Books.js" />
     <Content Include="ModulePlugin\Books_Web\JS\Hello.js" />
+    <Content Include="ModulePlugin\RegisterCenter\Aspx\Books.aspx" />
+    <Content Include="ModulePlugin\RegisterCenter\Aspx\Hello.aspx" />
+    <Content Include="ModulePlugin\RegisterCenter\JS\Books.js" />
+    <Content Include="ModulePlugin\RegisterCenter\JS\Hello.js" />
     <Content Include="ModulePlugin\WebUIFrame\Aspx\default\defaultlogin\center-plugin.js" />
     <Content Include="ModulePlugin\WebUIFrame\Aspx\default\defaultlogin\jquery.js" />
     <Content Include="ModulePlugin\WebUIFrame\Aspx\default\defaultlogin\login.html" />

@@ -97,6 +97,12 @@
     <Compile Include="frmCDKEY.Designer.cs">
       <DependentUpon>frmCDKEY.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInfo.Designer.cs">
+      <DependentUpon>FrmInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="PluginManage\FastZipHelper.cs" />
     <Compile Include="FrmHosting.cs">
       <SubType>Form</SubType>
@@ -127,6 +133,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReadConfig.cs" />
+    <Compile Include="RouterManage\FrmRouterXML.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RouterManage\FrmRouterXML.Designer.cs">
+      <DependentUpon>FrmRouterXML.cs</DependentUpon>
+    </Compile>
     <Compile Include="TimeCDKEY.cs" />
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
@@ -136,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmHosting.resx">
       <DependentUpon>FrmHosting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInfo.resx">
+      <DependentUpon>FrmInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PluginManage\FrmPlugin.resx">
       <DependentUpon>FrmPlugin.cs</DependentUpon>
@@ -156,6 +171,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RouterManage\FrmRouterXML.resx">
+      <DependentUpon>FrmRouterXML.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -188,6 +206,7 @@
   <ItemGroup>
     <Content Include="server.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -9,12 +9,19 @@ using Newtonsoft.Json;
 
 namespace EFWCoreLib.WcfFrame.ServerController
 {
+    /// <summary>
+    /// 调试服务
+    /// </summary>
     public class DebugWcfServices
     {
+        /// <summary>
+        /// 获取所有的服务信息
+        /// </summary>
+        /// <returns></returns>
         public static string getWcfServicesAllInfo()
         {
             List<dwPlugin> pluginlist=new List<dwPlugin>();
-            foreach (var item in AppPluginManage.PluginDic)
+            foreach (var item in WcfServerManage.localPlugin.PluginDic)
             {
                 dwPlugin p = new dwPlugin();
                 p.pluginname = item.Key;
@@ -37,17 +44,33 @@ namespace EFWCoreLib.WcfFrame.ServerController
             return JsonConvert.SerializeObject(pluginlist);
         }
     }
-
+    /// <summary>
+    /// 服务插件对象
+    /// </summary>
     public class dwPlugin
     {
+        /// <summary>
+        /// 插件名称
+        /// </summary>
         public string pluginname { get; set; }
+        /// <summary>
+        /// 插件内的控制器集合
+        /// </summary>
         public List<dwController> controllerlist { get; set; }
 
     }
-
+    /// <summary>
+    /// 服务控制器对象
+    /// </summary>
     public class dwController
     {
+        /// <summary>
+        /// 控制器名称
+        /// </summary>
         public string controllername { get; set; }
+        /// <summary>
+        /// 控制器内的方法集合
+        /// </summary>
         public List<string> methodlist { get; set; }
     }
 }

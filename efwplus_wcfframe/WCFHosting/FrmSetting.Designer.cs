@@ -172,9 +172,9 @@
             this.ckJsoncompress.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.ckJsoncompress.Location = new System.Drawing.Point(87, 205);
             this.ckJsoncompress.Name = "ckJsoncompress";
-            this.ckJsoncompress.Size = new System.Drawing.Size(101, 21);
+            this.ckJsoncompress.Size = new System.Drawing.Size(99, 21);
             this.ckJsoncompress.TabIndex = 8;
-            this.ckJsoncompress.Text = "开启Json压缩";
+            this.ckJsoncompress.Text = "开启数据压缩";
             this.ckJsoncompress.UseVisualStyleBackColor = true;
             // 
             // ckEncryption

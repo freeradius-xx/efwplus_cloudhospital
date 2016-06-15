@@ -1,20 +1,20 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <root>
   <record>
-    <hostname>HIS中间件2号</hostname>
-    <servicetype>wcfservice</servicetype>
-    <address>net.tcp://127.0.0.1:5999/WCFHandlerService</address>
+    <hostname>HIS中间件</hostname>
+    <servicetype>业务数据服务</servicetype>
+    <address>net.tcp://127.0.0.1:8881/WCFHandlerService</address>
     <ContractName>WCFHandlerService</ContractName>
     <ContractNamespace>http://www.efwplus.cn/WCFHandlerService</ContractNamespace>
     <plugins>
-      <plugin name="Books_Wcf" title="Books实例(Wcf版)"></plugin>
-      <plugin name="WcfMainUIFrame" title="Wcf通用权限管理"></plugin>
+      <plugin name="Books.Service" title="Books服务插件" replyidentify=""></plugin>
+      <plugin name="MainFrame.Service" title="主框架服务插件" replyidentify=""></plugin>
     </plugins>
   </record>
   <record>
-    <hostname>HIS中间件2号</hostname>
-    <servicetype>fileservice</servicetype>
-    <address>net.tcp://127.0.0.1:5991/FileTransferHandlerService</address>
+    <hostname>HIS中间件</hostname>
+    <servicetype>文件传输服务</servicetype>
+    <address>net.tcp://127.0.0.1:8882/FileTransferHandlerService</address>
     <ContractName>FileTransferHandlerService</ContractName>
     <ContractNamespace>http://www.efwplus.cn/FileTransferHandlerService</ContractNamespace>
   </record>

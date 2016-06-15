@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="EFWCoreLib.WcfFrame.ClientLink" Collapsed="true">
+    <Position X="2.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CCwACAAASCIIAAGAAQAEgAQAhkACgAAEACAAAiAMgAg=</HashCode>
+      <FileName>WcfFrame\ClientLink.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="mConn" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="EFWCoreLib.WcfFrame.CHDEPConnection" Collapsed="true">
+    <Position X="4.75" Y="7.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAQAAAAAAAAAAGAAAQQAAAAAAAAAA=</HashCode>
+      <FileName>WcfFrame\ClientLink.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EFWCoreLib.WcfFrame.ClientLinkManage" Collapsed="true">
+    <Position X="2.25" Y="8.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAQEAAQAEAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>WcfFrame\ClientLinkManage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EFWCoreLib.WcfFrame.ClientController.ReplyClientCallBack" Collapsed="true">
+    <Position X="2.25" Y="3" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIQAAAAAAAAAAAAAAgAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>WcfFrame\ClientController\ReplyClientCallBack.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="EFWCoreLib.WcfFrame.WcfService.WCFHandlerService" Collapsed="true">
+    <Position X="2.25" Y="4" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAgIAAgAABAAAAAAAAAAABCEgAACEAAAEAA=</HashCode>
+      <FileName>WcfFrame\WcfService\WCFHandlerService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="EFWCoreLib.WcfFrame.WcfService.FileTransferHandlerService" Collapsed="true">
+    <Position X="4.5" Y="4" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>ACQAAAAAAAAAAAAAEAAAAAAAAiAAAAAAACAAACAFAAE=</HashCode>
+      <FileName>WcfFrame\WcfService\FileTransferHandlerService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="EFWCoreLib.WcfFrame.WcfService.RouterHandlerService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>WcfFrame\WcfService\RouterHandlerService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="EFWCoreLib.WcfFrame.WcfService.DuplexRouterCallback" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="3" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>WcfFrame\WcfService\RouterHandlerService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="EFWCoreLib.WcfFrame.WcfService.FileRouterHandlerService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.75" Y="4" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>WcfFrame\WcfService\RouterHandlerService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="EFWCoreLib.WcfFrame.ClientController.WcfClientController" Collapsed="true">
+    <Position X="2.25" Y="9.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAIAAAAAAACEABAAAAAAAAAAAEAIJIAAIABUAAA=</HashCode>
+      <FileName>WcfFrame\ClientController\WcfClientController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EFWCoreLib.WcfFrame.ServerController.WcfServerManage" Collapsed="true">
+    <Position X="2.25" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>gAVEAAAQSiAIAAGAnhAMAAWIjgBgABAEDAAKAQKBEAA=</HashCode>
+      <FileName>WcfFrame\ServerController\WcfServerManage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EFWCoreLib.WcfFrame.ServerController.WcfServerController" Collapsed="true">
+    <Position X="5.5" Y="9.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAIAAAAAAASMABAAAAAAAAAAAFAIJIACIABQAAA=</HashCode>
+      <FileName>WcfFrame\ServerController\WcfServerController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EFWCoreLib.WcfFrame.ServerController.RouterServerManage" Collapsed="true">
+    <Position X="7.5" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAACIAAAAAAAAAgAAAAAAEAACAoAAAgAABAEA=</HashCode>
+      <FileName>WcfFrame\ServerController\RouterServerManage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EFWCoreLib.WcfFrame.ServerController.DebugWcfServices" Collapsed="true">
+    <Position X="2.25" Y="5.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>WcfFrame\ServerController\DebugWcfServices.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="微软雅黑" Size="9" />
+</ClassDiagram>

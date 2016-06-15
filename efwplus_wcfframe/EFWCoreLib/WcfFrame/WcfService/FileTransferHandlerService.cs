@@ -14,7 +14,10 @@ namespace EFWCoreLib.WcfFrame.WcfService
 {
     //文件传输调用次数少，用Single这种方式即可
     //文件流传输是按Read字节数传输的
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Multiple, UseSynchronizationContext = false, IncludeExceptionDetailInFaults = true)]
+    /// <summary>
+    /// 文件传输服务，使用流模式
+    /// </summary>
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Multiple, UseSynchronizationContext = false, IncludeExceptionDetailInFaults = false)]
     public class FileTransferHandlerService : IFileTransfer
     {
         public static HostWCFMsgHandler hostwcfMsg;
@@ -40,6 +43,34 @@ namespace EFWCoreLib.WcfFrame.WcfService
             decimal percent = Convert.ToDecimal(readnum) / Convert.ToDecimal(filesize) * 100;
             progressnum = Convert.ToInt32(Math.Ceiling(percent));
         }
+        private void getupdownprogress(Stream file, long flength, Action<int> action)
+        {
+            new Action<Stream, long, Action<int>>(delegate(Stream _file, long _flength, Action<int> _action)
+            {
+                try
+                {
+                    int oldnum = 0;
+                    int num = 0;
+
+                    while (num != 100)
+                    {
+                        getprogress(_flength - 1, _file.Position, ref num);
+                        if (oldnum < num)
+                        {
+                            oldnum = num;
+                            _action.BeginInvoke(num, null, null);
+                        }
+                        System.Threading.Thread.Sleep(100);
+                    }
+                    //_action(100);
+                }
+                catch (Exception e)
+                {
+                    throw new Exception(e.Message + "\n获取文件进度失败！");
+                }
+
+            }).BeginInvoke(file, flength, action, null, null);
+        }
 
         public UpFileResult UpLoadFile(UpFile filedata)
         {
@@ -58,34 +89,42 @@ namespace EFWCoreLib.WcfFrame.WcfService
                 string _filename = DateTime.Now.Ticks.ToString() + filedata.FileExt;//生成唯一文件名，防止文件名相同会覆盖
                 fs = new FileStream(filebufferpath + _filename, FileMode.Create, FileAccess.Write);
 
-                int oldprogressnum = 0;
-                int progressnum = 0;
+                if (WcfServerManage.IsDebug)
+                {
+                    //获取进度
+                    getupdownprogress(filedata.FileStream, filedata.FileSize, (delegate(int _num)
+                    {
+                        ShowHostMsg(Color.Black, DateTime.Now, "客户端[" + filedata.clientId + "]上传文件进度：%" + _num);
+                    }));
+                }
+                //int oldprogressnum = 0;
+                //int progressnum = 0;
                 int bufferlen = 4096;
                 int count = 0;
-                long readnum = 0;
+                //long readnum = 0;
                 byte[] buffer = new byte[bufferlen];
                 while ((count = filedata.FileStream.Read(buffer, 0, bufferlen)) > 0)
                 {
                     fs.Write(buffer, 0, count);
-                    readnum += count;
-                    //获取上传进度
-                    getprogress(filedata.FileSize, readnum, ref progressnum);
-                    if (oldprogressnum < progressnum)
-                    {
-                        oldprogressnum = progressnum;
-                        if (progressDic_Up.ContainsKey(filedata.UpKey))
-                        {
-                            progressDic_Up[filedata.UpKey] = progressnum;
-                        }
-                        else
-                        {
-                            progressDic_Up.Add(filedata.UpKey, progressnum);
-                        }
-                        if (WcfServerManage.IsDebug)
-                        {
-                            ShowHostMsg(Color.Black, DateTime.Now, "客户端[" + filedata.clientId + "]上传文件进度：%" + oldprogressnum);
-                        }
-                    }
+                    //readnum += count;
+                    ////获取上传进度
+                    //getprogress(filedata.FileSize, readnum, ref progressnum);
+                    //if (oldprogressnum < progressnum)
+                    //{
+                    //    oldprogressnum = progressnum;
+                    //    if (progressDic_Up.ContainsKey(filedata.UpKey))
+                    //    {
+                    //        progressDic_Up[filedata.UpKey] = progressnum;
+                    //    }
+                    //    else
+                    //    {
+                    //        progressDic_Up.Add(filedata.UpKey, progressnum);
+                    //    }
+                    //    if (WcfServerManage.IsDebug)
+                    //    {
+                    //        ShowHostMsg(Color.Black, DateTime.Now, "客户端[" + filedata.clientId + "]上传文件进度：%" + oldprogressnum);
+                    //    }
+                    //}
                 }
 
                 //清空缓冲区
@@ -115,16 +154,7 @@ namespace EFWCoreLib.WcfFrame.WcfService
                 return result;
             }
         }
-
-        public int GetUpLoadFileProgress(string upkey)
-        {
-            if (progressDic_Up.ContainsKey(upkey))
-            {
-                return progressDic_Up[upkey];
-            }
-            return 0;
-        }
-
+ 
         //下载文件
         public DownFileResult DownLoadFile(DownFile filedata)
         {
@@ -153,6 +183,16 @@ namespace EFWCoreLib.WcfFrame.WcfService
                 result.IsSuccess = true;
                 result.FileSize = ms.Length;
                 result.FileStream = ms;
+
+                if (WcfServerManage.IsDebug)
+                {
+                    //获取进度
+                    getupdownprogress(result.FileStream, result.FileSize, (delegate(int _num)
+                    {
+                        ShowHostMsg(Color.Black, DateTime.Now, "客户端[" + filedata.clientId + "]下载文件进度：%" + _num);
+                    }));
+                }
+              
 
                 fs.Flush();
                 fs.Close();
@@ -189,24 +229,5 @@ namespace EFWCoreLib.WcfFrame.WcfService
             //}
         }
 
-        #region IFileTransfer 成员
-
-        public void SetDownLoadFileProgress(string clientId,string downkey, int progressnum)
-        {
-            if (progressDic_Down.ContainsKey(downkey))
-            {
-                progressDic_Down[downkey] = progressnum;
-            }
-            else
-            {
-                progressDic_Down.Add(downkey, progressnum);
-            }
-            if (WcfServerManage.IsDebug)
-            {
-                ShowHostMsg(Color.Black, DateTime.Now, "客户端[" + clientId + "]下载文件进度：%" + progressnum);
-            }
-        }
-
-        #endregion
     }
 }

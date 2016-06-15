@@ -15,43 +15,26 @@ namespace EFWCoreLib.WcfFrame.WcfService.Contract
     [ServiceContract(Namespace = "http://www.efwplus.cn/", Name = "FileTransferHandlerService", SessionMode = SessionMode.Allowed)]
     public interface IFileTransfer
     {
-        //上传文件
+        /// <summary>
+        /// 上传文件
+        /// </summary>
+        /// <param name="filestream">文件信息</param>
+        /// <returns>返回上传结果</returns>
         [OperationContract]
         UpFileResult UpLoadFile(UpFile filestream);
 
-        //上传进度
-        [OperationContract]
-        int GetUpLoadFileProgress(string upkey);
-
-        //下载文件
+        /// <summary>
+        /// 下载文件
+        /// </summary>
+        /// <param name="downfile">文件信息</param>
+        /// <returns>返回下载结果</returns>
         [OperationContract]
         DownFileResult DownLoadFile(DownFile downfile);
-
-        //下载进度
-        [OperationContract]
-        void SetDownLoadFileProgress(string clientId, string downkey, int progressnum);
     }
 
-    [MessageContract]
-    public class DownFile
-    {
-        [MessageHeader]
-        public string clientId { get; set; }
-        [MessageHeader]
-        public string DownKey { get; set; }
-        [MessageHeader]
-        public string FileName { get; set; }
-    }
-
-    [MessageContract]
-    public class UpFileResult
-    {
-        [MessageHeader]
-        public bool IsSuccess { get; set; }
-        [MessageHeader]
-        public string Message { get; set; }
-    }
-
+    /// <summary>
+    /// 上传文件结构
+    /// </summary>
     [MessageContract]
     public class UpFile
     {
@@ -68,7 +51,33 @@ namespace EFWCoreLib.WcfFrame.WcfService.Contract
         [MessageBodyMember]
         public Stream FileStream { get; set; }
     }
-
+    /// <summary>
+    /// 上传文件后返回结果数据
+    /// </summary>
+    [MessageContract]
+    public class UpFileResult
+    {
+        [MessageHeader]
+        public bool IsSuccess { get; set; }
+        [MessageHeader]
+        public string Message { get; set; }
+    }
+    /// <summary>
+    /// 下载文件结构
+    /// </summary>
+    [MessageContract]
+    public class DownFile
+    {
+        [MessageHeader]
+        public string clientId { get; set; }
+        [MessageHeader]
+        public string DownKey { get; set; }
+        [MessageHeader]
+        public string FileName { get; set; }
+    }
+    /// <summary>
+    /// 下载文件后返回结果数据
+    /// </summary>
     [MessageContract]
     public class DownFileResult
     {

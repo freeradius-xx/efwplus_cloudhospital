@@ -20,7 +20,7 @@ namespace EFWCoreLib.CoreFrame.Init
     {
         public static bool IsOpenDomain = false;//是否开启程序域来动态管理插件
         public static Dictionary<string, ModulePlugin> PluginDic;//本地插件
-        public static List<RemotePlugin> RemotePluginDic;//远程注册插件
+        //public static List<RemotePlugin> RemotePluginDic;//远程注册插件
         public static Dictionary<string, AppDomain> DomainDic;//程序域来动态管理插件
         /// <summary>
         /// 加载所有插件
@@ -28,7 +28,7 @@ namespace EFWCoreLib.CoreFrame.Init
         public static void LoadAllPlugin()
         {
             PluginDic = new Dictionary<string, ModulePlugin>();
-            RemotePluginDic = new List<RemotePlugin>();
+            //RemotePluginDic = new List<RemotePlugin>();
             List<string> pflist = PluginSysManage.GetAllPluginFile();
             for (int i = 0; i < pflist.Count; i++)
             {
@@ -199,10 +199,5 @@ namespace EFWCoreLib.CoreFrame.Init
         }
     }
 
-    public class RemotePlugin
-    {
-        public string serverHostName { get; set; }
-        public string[] plugin { get; set; }
-        public EFWCoreLib.WcfFrame.WcfService.Contract.IClientService clientService { get; set; } 
-    }
+    
 }

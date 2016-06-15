@@ -24,12 +24,11 @@ namespace EFWCoreLib.WcfFrame.ServerController
             string cname = controllername;
             ModulePlugin mp;
             WcfControllerAttributeInfo wattr = AppPluginManage.GetPluginWcfControllerAttributeInfo(pname, cname, out mp);
-            //WcfServerController iController = wattr.wcfController as WcfServerController;
+
             WcfServerController iController = (WcfServerController)EFWCoreLib.CoreFrame.Business.FactoryModel.GetObject(wattr.wcfControllerType, mp.database, mp.container, mp.cache, mp.plugin.name, null);
             iController.BindDb(mp.database, mp.container, mp.cache,mp.plugin.name);
-
-            iController.ParamJsonData = null;
-            iController.ClientInfo = null;
+            iController.requestData = null;
+            iController.responseData = null;
            
             return iController;
         }
@@ -41,7 +40,7 @@ namespace EFWCoreLib.WcfFrame.ServerController
 
             ModulePlugin mp;
             WcfControllerAttributeInfo cattr = AppPluginManage.GetPluginWcfControllerAttributeInfo(pname, cname, out mp);
-
+            if (cattr == null) throw new Exception("插件中没有此控制器名");
             WcfMethodAttributeInfo mattr = cattr.MethodList.Find(x => x.methodName == methodname);
             if (mattr == null) throw new Exception("控制器中没有此方法名");
 

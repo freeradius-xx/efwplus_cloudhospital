@@ -1,0 +1,34 @@
+时间：2016-06-04 23:30:20		耗时：1440.0823		方法：LoginController.UserLogin(["admin","1"])
+
+时间：2016-06-04 23:37:33		耗时：4766.2727		方法：LoginController.UserLogin(["admin","1"])
+
+时间：2016-06-04 23:52:59		耗时：1347.0771		方法：LoginController.UserLogin(["admin","1"])
+
+时间：2016-06-04 23:58:15		耗时：1414.0809		方法：LoginController.UserLogin(H4sIABZrU1cA/4tWSkzJzcxT0lEyVIoFAF1pxTYNAAAA)
+
+时间：2016-06-07 11:26:39		耗时：1158.0663		方法：bookWcfController.GetBooks(H4sIAG2vVlcA/4uOBQApu0wNAgAAAA==)
+
+时间：2016-06-07 11:26:39		耗时：1193.0683		方法：bookWcfController.GetBooks(H4sIAG2vVlcA/4uOBQApu0wNAgAAAA==)
+
+时间：2016-06-07 11:27:18		耗时：1024.0585		方法：bookWcfController.GetBooks(H4sIAI+vVlcA/4uOBQApu0wNAgAAAA==)
+
+时间：2016-06-07 11:28:04		耗时：1109.0635		方法：bookWcfController.GetBooks(H4sIAMGvVlcA/4uOBQApu0wNAgAAAA==)
+
+时间：2016-06-07 11:28:04		耗时：1121.0642		方法：bookWcfController.GetBooks(H4sIALyvVlcA/4uOBQApu0wNAgAAAA==)
+
+时间：2016-06-07 11:28:15		耗时：1078.0617		方法：bookWcfController.GetBooks(H4sIAMyvVlcA/4uOBQApu0wNAgAAAA==)
+
+时间：2016/6/14 22:56:25		耗时：1469.084		方法：LoginController.UserLogin(H4sIAJeLYFcA/4tWilFKTMnNzItRUtIBsg2BdCwAiPbGrhUAAAA=)
+
+时间：2016/6/14 23:00:07		耗时：1141.0653		方法：LoginController.UserLogin(["\"admin\"","\"1\""])
+
+时间：2016/6/15 01:47:07		耗时：1199.0686		方法：LoginController.UserLogin(["\n\u0005admin","\n\u00011"])
+
+时间：2016/6/15 02:03:14		耗时：1345.0769		方法：LoginController.UserLogin(["\n\u0005admin","\n\u00011"])
+
+时间：2016/6/15 02:05:18		耗时：1100.0629		方法：LoginController.UserLogin(["\n\u0005admin","\n\u00011"])
+
+时间：2016/6/15 02:05:41		耗时：2073.1186		方法：LoginController.UserLogin(["\n\u0005admin","\n\u00011"])
+
+时间：2016/6/15 02:11:21		耗时：1081.0618		方法：LoginController.UserLogin(["\"admin\"","\"1\""])
+

@@ -12,17 +12,18 @@ namespace WCFHosting
 {
     public class TimeCDKEY
     {
-        public static int InitRegedit(out string expireDate)
+        public static int InitRegedit(out string expireDate,out string identify)
         {
             expireDate = "";
+            identify = "";
             /*检查注册表*/
-            string SericalNumber = ReadSetting("", "SerialNumber", "-1");    // 读取注册表， 检查是否注册 -1为未注册
+            string SericalNumber = ReadSetting();    // 读取注册表， 检查是否注册 -1为未注册
             if (SericalNumber == "-1")
             {
                 return 1;
             }
             /* 比较CPUid */
-            string CpuId = GetSoftEndDateAllCpuId(1, SericalNumber);   //从注册表读取CPUid
+            string CpuId = TimeCDKEY.GetSoftEndDateAllCpuId(1, SericalNumber);   //从注册表读取CPUid
             string CpuIdThis = GetCpuId();           //获取本机CPUId         
             if (CpuId != CpuIdThis)
             {
@@ -36,7 +37,9 @@ namespace WCFHosting
                 return 3;
             }
             DateTime dt = DateTime.ParseExact(EndDate, "yyyyMMdd", System.Globalization.CultureInfo.CurrentCulture);
-            expireDate = dt.ToString("yyyy年MM月dd日"); 
+            expireDate = dt.ToString("yyyy年MM月dd日");
+            identify = TimeCDKEY.GetSoftEndDateAllCpuId(2, SericalNumber);
+
             return 0;
         }
 
@@ -60,8 +63,12 @@ namespace WCFHosting
             return NowDate;
         }
         /* 生成序列号 */
-        public static string CreatSerialNumber(string cpu, string expiredate)
+        public static string CreatSerialNumber(string identify, string cpu, string expiredate)
         {
+            if (string.IsNullOrEmpty(identify))
+            {
+                identify = DateTime.Now.Ticks.ToString();
+            }
             if (string.IsNullOrEmpty(cpu))
             {
                 cpu = GetCpuId();
@@ -70,24 +77,33 @@ namespace WCFHosting
             {
                 expiredate = DateTime.Now.AddYears(2).ToString("yyyyMMdd");
             }
-            string SerialNumber = cpu + "-" + expiredate;
+            string SerialNumber = identify + "-" + cpu + "-" + expiredate;
             return SerialNumber;
         }
         /* 
+         * i=2 得到中间件标识
          * i=1 得到 CUP 的id 
          * i=0 得到上次或者 开始时间 
          */
         public static string GetSoftEndDateAllCpuId(int i, string SerialNumber)
         {
-            if (i == 1)
+            string[] data = SerialNumber.Split('-');
+            if (data.Length == 3)
             {
-                string cupId = SerialNumber.Substring(0, SerialNumber.LastIndexOf("-")); // .LastIndexOf("-"));
-                return cupId;
-            }
-            if (i == 0)
-            {
-                string dateTime = SerialNumber.Substring(SerialNumber.LastIndexOf("-") + 1);
-                return dateTime;
+                if (i == 2)
+                {
+                    return data[0];
+                }
+                if (i == 1)
+                {
+                    return data[1];
+                }
+                if (i == 0)
+                {
+                    return data[2];
+                }
+
+                return string.Empty;
             }
             else
             {
@@ -95,54 +111,20 @@ namespace WCFHosting
             }
         }
         /*写入注册表*/
-        public static void WriteSetting(string Section, string Key, string Setting)  // name = key  value=setting  Section= path
+        public static void WriteSetting(string Setting)
         {
-            string text1 = Section;
-            RegistryKey key1 = Registry.CurrentUser.CreateSubKey("Software\\efwplusServer\\cdkey"); // .LocalMachine.CreateSubKey("Software\\mytest");
-            if (key1 == null)
-            {
-                return;
-            }
-            try
-            {
-                key1.SetValue(Key, Setting);
-            }
-            catch (Exception exception1)
-            {
-                return;
-            }
-            finally
-            {
-                key1.Close();
-            }
+            HostSettingConfig.SetValue("cdkey", Setting);
+            HostSettingConfig.SaveConfig();
         }
         /*读取注册表*/
-        public static string ReadSetting(string Section, string Key, string Default)
+        public static string ReadSetting()
         {
-            if (Default == null)
+            string key1 = HostSettingConfig.GetValue("cdkey");
+            if (key1 != "")
             {
-                Default = "-1";
+                return Encryption.DisEncryPW(key1, "kakake!@#123");
             }
-            string text2 = Section;
-            RegistryKey key1 = Registry.CurrentUser.OpenSubKey("Software\\efwplusServer\\cdkey");
-            if (key1 != null)
-            {
-                object obj1 = key1.GetValue(Key, Default);
-                key1.Close();
-                if (obj1 != null)
-                {
-                    if (!(obj1 is string))
-                    {
-                        return "-1";
-                    }
-                    string obj2 = obj1.ToString();
-                    obj2 = Encryption.DisEncryPW(obj2, "kakake!@#123");
-                    return obj2;
-                }
-                return "-1";
-            }
-
-            return Default;
+            return "-1";
         }
     }
 

@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <hostname value="HIS中间件2号">
+  <hostname value="开发调试中间件">
   </hostname>
   <debug value="1">
   </debug>
   <wcfservice value="1">
   </wcfservice>
-  <router value="0">
+  <router value="1">
   </router>
   <filetransfer value="1">
   </filetransfer>
@@ -14,7 +14,7 @@
   </webapi>
   <heartbeat value="1">
   </heartbeat>
-  <heartbeattime value="1">
+  <heartbeattime value="2">
   </heartbeattime>
   <message value="0">
   </message>

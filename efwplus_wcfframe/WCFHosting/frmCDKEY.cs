@@ -22,15 +22,16 @@ namespace WCFHosting
         {
             if (txtCode.Text.Trim() == "kakake!@#123")
             {
-                txtCode.Text = Encryption.EncryPW(TimeCDKEY.CreatSerialNumber(txtcpu.Text.Trim(),null), "kakake!@#123");
+                txtCode.Text = Encryption.EncryPW(TimeCDKEY.CreatSerialNumber(null, txtcpu.Text.Trim(), null), "kakake!@#123");
             }
         }
 
         private void btnOk_Click(object sender, EventArgs e)
         {
-            TimeCDKEY.WriteSetting("", "SerialNumber", txtCode.Text);
+            TimeCDKEY.WriteSetting(txtCode.Text);
             string expireDate;
-            int res = TimeCDKEY.InitRegedit(out expireDate);
+            string identify;
+            int res = TimeCDKEY.InitRegedit(out expireDate,out identify);
             if (res == 0)
             {
                 MessageBox.Show("激活成功，到期时间【" + expireDate + "】，请重新启动软件！");

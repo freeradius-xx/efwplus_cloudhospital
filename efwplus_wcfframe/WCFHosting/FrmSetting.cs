@@ -13,15 +13,10 @@ namespace WCFHosting
 {
     public partial class FrmSetting : Form
     {
-        private string entlibconfig = AppGlobal.AppRootPath + "Config\\EntLib.config";
-        private string appconfig = AppGlobal.AppRootPath + "efwplusServer.exe.config";
-        private XmlDocument xmldoc_entlib;
-        private XmlDocument xmldoc_app;
         public bool isOk = false;
         public FrmSetting()
         {
             InitializeComponent();
-            appconfig = AppGlobal.AppRootPath + System.IO.Path.GetFileName(Application.ExecutablePath) + ".config";
         }
 
         private void btnOk_Click(object sender, EventArgs e)
@@ -42,54 +37,19 @@ namespace WCFHosting
             HostSettingConfig.SetValue("overtimetime", txtovertime.Text);
             HostSettingConfig.SaveConfig();
 
-            XmlNode node;
-            node = xmldoc_app.DocumentElement.SelectSingleNode("system.serviceModel/services/service[@name='EFWCoreLib.WcfFrame.WcfService.WCFHandlerService']/host/baseAddresses/add");
-            if (node != null)
-            {
-                node.Attributes["baseAddress"].Value = txtwcf.Text;
-            }
-            
-            node = xmldoc_app.DocumentElement.SelectSingleNode("system.serviceModel/services/service[@name='EFWCoreLib.WcfFrame.WcfService.FileTransferHandlerService']/host/baseAddresses/add");
-            if (node != null)
-            {
-                node.Attributes["baseAddress"].Value = txtfile.Text;
-            }
-            node = xmldoc_app.DocumentElement.SelectSingleNode("system.serviceModel/services/service[@name='EFWCoreLib.WcfFrame.WcfService.RouterHandlerService']/host/baseAddresses/add");
-            if (node != null)
-            {
-                node.Attributes["baseAddress"].Value = txtrouter.Text;
-            }
-            node = xmldoc_app.DocumentElement.SelectSingleNode("system.serviceModel/services/service[@name='EFWCoreLib.WcfFrame.WcfService.FileRouterHandlerService']/host/baseAddresses/add");
-            if (node != null)
-            {
-                node.Attributes["baseAddress"].Value = txtfilerouter.Text;
-            }
 
-            node = xmldoc_app.DocumentElement.SelectSingleNode("system.serviceModel/client/endpoint[@name='wcfendpoint']");
-            if (node != null)
-            {
-                node.Attributes["address"].Value = txtwcfurl.Text;
-            }
-            node = xmldoc_app.DocumentElement.SelectSingleNode("system.serviceModel/client/endpoint[@name='fileendpoint']");
-            if (node != null)
-            {
-                node.Attributes["address"].Value = txtfileurl.Text;
-            }
-
-            node = xmldoc_app.DocumentElement.SelectSingleNode("appSettings/add[@key='WebApiUri']");
-            if (node != null)
-            {
-                node.Attributes["value"].Value = txtweb.Text;
-            }
+            HostAddressConfig.SetWcfAddress(txtwcf.Text);
+            HostAddressConfig.SetFileAddress(txtfile.Text);
+            HostAddressConfig.SetRouterAddress(txtrouter.Text);
+            HostAddressConfig.SetfileRouterAddress(txtfilerouter.Text);
+            HostAddressConfig.SetClientWcfAddress(txtwcfurl.Text);
+            HostAddressConfig.SetClientFileAddress(txtfileurl.Text);
+            HostAddressConfig.SetWebapiAddress(txtweb.Text);
+            HostAddressConfig.SaveConfig();
 
 
-            node = xmldoc_entlib.DocumentElement.SelectSingleNode("connectionStrings");
-            if (node != null)
-            {
-                node.InnerXml = txtconnstr.Text;
-            }
-            xmldoc_app.Save(appconfig);
-            xmldoc_entlib.Save(entlibconfig);
+            HostDataBaseConfig.SetConnString(txtconnstr.Text);
+            HostDataBaseConfig.SaveConfig();
 
             isOk = true;
             MessageBox.Show("保存参数后，需重启程序才会生效！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -117,69 +77,16 @@ namespace WCFHosting
             ckEncryption.Checked = HostSettingConfig.GetValue("encryption") == "1" ? true : false;
             ckovertime.Checked = HostSettingConfig.GetValue("overtime") == "1" ? true : false;
             txtovertime.Text = HostSettingConfig.GetValue("overtimetime");
-            
-            
-            //读取配置文件
-            xmldoc_entlib = new XmlDocument();
-            xmldoc_app = new XmlDocument();
-            xmldoc_entlib.Load(entlibconfig);
-            xmldoc_app.Load(appconfig);
 
-            XmlNode node;
-            node = xmldoc_app.DocumentElement.SelectSingleNode("system.serviceModel/services/service[@name='EFWCoreLib.WcfFrame.WcfService.WCFHandlerService']/host/baseAddresses/add");
-            if (node != null)
-            {
-                string address = node.Attributes["baseAddress"].Value;
-                txtwcf.Text = address;
-            }
+            txtwcf.Text = HostAddressConfig.GetWcfAddress();
+            txtfile.Text = HostAddressConfig.GetFileAddress();
+            txtrouter.Text = HostAddressConfig.GetRouterAddress();
+            txtfilerouter.Text = HostAddressConfig.GetfileRouterAddress();
+            txtwcfurl.Text = HostAddressConfig.GetClientWcfAddress();
+            txtfileurl.Text = HostAddressConfig.GetClientFileAddress();
+            txtweb.Text = HostAddressConfig.GetWebapiAddress();
 
-            node = xmldoc_app.DocumentElement.SelectSingleNode("system.serviceModel/services/service[@name='EFWCoreLib.WcfFrame.WcfService.FileTransferHandlerService']/host/baseAddresses/add");
-            if (node != null)
-            {
-                string address = node.Attributes["baseAddress"].Value;
-                txtfile.Text = address;
-            }
-
-            node = xmldoc_app.DocumentElement.SelectSingleNode("system.serviceModel/services/service[@name='EFWCoreLib.WcfFrame.WcfService.RouterHandlerService']/host/baseAddresses/add");
-            if (node != null)
-            {
-                string address = node.Attributes["baseAddress"].Value;
-                txtrouter.Text = address;
-            }
-
-            node = xmldoc_app.DocumentElement.SelectSingleNode("system.serviceModel/services/service[@name='EFWCoreLib.WcfFrame.WcfService.FileRouterHandlerService']/host/baseAddresses/add");
-            if (node != null)
-            {
-                string address = node.Attributes["baseAddress"].Value;
-                txtfilerouter.Text = address;
-            }
-
-            node = xmldoc_app.DocumentElement.SelectSingleNode("system.serviceModel/client/endpoint[@name='wcfendpoint']");
-            if (node != null)
-            {
-                string address = node.Attributes["address"].Value;
-                txtwcfurl.Text = address;
-            }
-            node = xmldoc_app.DocumentElement.SelectSingleNode("system.serviceModel/client/endpoint[@name='fileendpoint']");
-            if (node != null)
-            {
-                string address = node.Attributes["address"].Value;
-                txtfileurl.Text = address;
-            }
-
-            node = xmldoc_app.DocumentElement.SelectSingleNode("appSettings/add[@key='WebApiUri']");
-            if (node != null)
-            {
-                string address = node.Attributes["value"].Value;
-                txtweb.Text = address;
-            }
-
-            node = xmldoc_entlib.DocumentElement.SelectSingleNode("connectionStrings");
-            if (node != null)
-            {
-                string connectionString = node.InnerXml;
-                txtconnstr.Text = connectionString;
-            }
+            txtconnstr.Text = HostDataBaseConfig.GetConnString();
         }
 
 

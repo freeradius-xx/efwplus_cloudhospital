@@ -44,8 +44,7 @@
     <DefineConstants>TRACE;DEBUG;WcfFrame</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>
-    </DocumentationFile>
+    <DocumentationFile>..\Output\EFWCoreLib.XML</DocumentationFile>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -131,6 +130,12 @@
     <Reference Include="NVelocity">
       <HintPath>..\OtherTool\lib\NVelocity.dll</HintPath>
       <Private>False</Private>
+    </Reference>
+    <Reference Include="protobuf-net">
+      <HintPath>..\OtherTool\lib\protobuf-net.dll</HintPath>
+    </Reference>
+    <Reference Include="protobuf-net-data">
+      <HintPath>..\OtherTool\lib\protobuf-net-data.dll</HintPath>
     </Reference>
     <Reference Include="RazorEngine">
       <HintPath>..\OtherTool\lib\RazorEngine.dll</HintPath>
@@ -252,13 +257,20 @@
     </Compile>
     <Compile Include="UnitTestFrame\BaseDaoUnitTest.cs" />
     <Compile Include="UnitTestFrame\wcfBaseUnitTest.cs" />
-    <Compile Include="WcfFrame\ClientLinkManage.cs" />
-    <Compile Include="WcfFrame\ServerController\ReplyClientManage.cs" />
+    <Compile Include="WcfFrame\DataSerialize\ClientRequestData.cs" />
+    <Compile Include="WcfFrame\DataSerialize\ServiceResponseData.cs" />
+    <Compile Include="WcfFrame\SDMessageHeader\HeaderOperater.cs" />
+    <Compile Include="WcfFrame\SDMessageHeader\HeaderParameter.cs" />
+    <Compile Include="WcfFrame\ServerController\DistributedCacheManage.cs" />
     <Compile Include="WcfFrame\ServerController\RouterServerManage.cs" />
+    <Compile Include="WcfFrame\WcfService\Contract\IDistributedCache.cs" />
+    <Compile Include="WcfFrame\WcfService\Contract\IHeartbeat.cs" />
     <Compile Include="WebFrame\WebAPI\FileController.cs" />
+    <Compile Include="WebFrame\WebAPI\LoginController.cs" />
     <Compile Include="WebFrame\WebAPI\PluginAssembliesResolver.cs" />
     <Compile Include="WebFrame\WebAPI\PluginHttpControllerActivator.cs" />
     <Compile Include="WebFrame\WebAPI\PluginHttpControllerTypeResolver.cs" />
+    <Compile Include="WebFrame\WebAPI\ServiceController.cs" />
     <Compile Include="WebFrame\WebAPI\ShowExceptionFilter.cs" />
     <Compile Include="WebFrame\WebAPI\TimingActionFilter.cs" />
     <Compile Include="WebFrame\WebAPI\UserTokenActionFilter.cs" />
@@ -339,6 +351,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="ClassDiagram.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -355,7 +368,6 @@
     <Compile Include="CoreFrame\Business\AttributeInfo\WinformViewAttribute.cs" />
     <Compile Include="CoreFrame\Business\AttributeInfo\WCFControllerAttribute.cs" />
     <Compile Include="CoreFrame\Business\AttributeInfo\WCFMethodAttribute.cs" />
-    <Compile Include="WcfFrame\ClientController\ReplyClientCallBack.cs" />
     <Compile Include="WcfFrame\ClientController\WcfClientController.cs" />
     <Compile Include="WcfFrame\ClientLink.cs" />
     <Compile Include="WcfFrame\ServerController\ControllerHelper.cs" />
@@ -364,7 +376,7 @@
     <Compile Include="WcfFrame\ServerController\WcfServerManage.cs" />
     <Compile Include="WcfFrame\WcfService\Contract\IFileTransfer.cs" />
     <Compile Include="WcfFrame\WcfService\Contract\IRouterService.cs" />
-    <Compile Include="WcfFrame\WcfService\Contract\IWCFHandlerService.cs" />
+    <Compile Include="WcfFrame\WcfService\Contract\IDataHandlerService.cs" />
     <Compile Include="WcfFrame\WcfService\FileTransferHandlerService.cs" />
     <Compile Include="WcfFrame\WcfService\RouterHandlerService.cs" />
     <Compile Include="WcfFrame\WcfService\WCFHandlerService.cs" />

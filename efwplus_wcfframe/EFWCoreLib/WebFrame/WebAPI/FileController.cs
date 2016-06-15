@@ -13,6 +13,10 @@ using EFWCoreLib.CoreFrame.Init;
 
 namespace EFWCoreLib.WebFrame.WebAPI
 {
+    /// <summary>
+    /// WepApi 文件传输
+    /// /efwplusApi/coresys/file/
+    /// </summary>
     [efwplusApiController(PluginName = "coresys")]
     public class FileController : ApiController
     {

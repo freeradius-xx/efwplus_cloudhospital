@@ -343,3 +343,162 @@ Win32 ThreadId:8640
 
 Extended Properties: 
 ----------------------------------------
+----------------------------------------
+Timestamp: 2016-05-27 05:34:10
+
+Message: HandlingInstanceID: 3599b8ec-5436-42ea-a530-e65e1c46f343
+An exception of type 'System.Reflection.ReflectionTypeLoadException' occurred and was caught.
+---------------------------------------------------------------------------------------------
+05/27/2016 13:34:10
+Type : System.Reflection.ReflectionTypeLoadException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 无法加载一个或多个请求的类型。有关更多信息，请检索 LoaderExceptions 属性。
+Source : EFWCoreLib
+Help link : 
+Types : System.RuntimeType[]
+LoaderExceptions : System.Exception[]
+Data : System.Collections.ListDictionaryInternal
+TargetSite : Void AppStart()
+HResult : -2146232830
+Stack Trace :    在 EFWCoreLib.CoreFrame.Init.AppGlobal.AppStart()
+   在 EFWCoreLib.CoreFrame.Init.AppGlobal.AppGlobal_Init()
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-05-27 05:34:10
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : efwplusClient.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: efwplusClient.exe
+
+ProcessId: 1444
+
+Process Name: D:\工作台\efwplus产品目录\efwplus_cloudhospital\cloudhospital\Output_Client\efwplusClient.exe
+
+Thread Name: 
+
+Win32 ThreadId:4440
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-05-27 05:35:35
+
+Message: HandlingInstanceID: dfbcd63e-e828-45c6-aef8-c8aace4aee0a
+An exception of type 'System.Reflection.ReflectionTypeLoadException' occurred and was caught.
+---------------------------------------------------------------------------------------------
+05/27/2016 13:35:35
+Type : System.Reflection.ReflectionTypeLoadException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 无法加载一个或多个请求的类型。有关更多信息，请检索 LoaderExceptions 属性。
+Source : EFWCoreLib
+Help link : 
+Types : System.RuntimeType[]
+LoaderExceptions : System.Exception[]
+Data : System.Collections.ListDictionaryInternal
+TargetSite : Void AppStart()
+HResult : -2146232830
+Stack Trace :    在 EFWCoreLib.CoreFrame.Init.AppGlobal.AppStart()
+   在 EFWCoreLib.CoreFrame.Init.AppGlobal.AppGlobal_Init()
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-05-27 05:35:35
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : efwplusClient.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: efwplusClient.exe
+
+ProcessId: 7180
+
+Process Name: D:\工作台\efwplus产品目录\efwplus_cloudhospital\cloudhospital\Output_Client\efwplusClient.exe
+
+Thread Name: 
+
+Win32 ThreadId:7272
+
+Extended Properties: 
+----------------------------------------
+----------------------------------------
+Timestamp: 2016-05-27 05:36:34
+
+Message: HandlingInstanceID: 99b9989a-cea3-422b-abff-29ee2e2d0878
+An exception of type 'System.Reflection.ReflectionTypeLoadException' occurred and was caught.
+---------------------------------------------------------------------------------------------
+05/27/2016 13:36:34
+Type : System.Reflection.ReflectionTypeLoadException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 无法加载一个或多个请求的类型。有关更多信息，请检索 LoaderExceptions 属性。
+Source : EFWCoreLib
+Help link : 
+Types : System.RuntimeType[]
+LoaderExceptions : System.Exception[]
+Data : System.Collections.ListDictionaryInternal
+TargetSite : Void AppStart()
+HResult : -2146232830
+Stack Trace :    在 EFWCoreLib.CoreFrame.Init.AppGlobal.AppStart()
+   在 EFWCoreLib.CoreFrame.Init.AppGlobal.AppGlobal_Init()
+
+Additional Info:
+
+MachineName : UALG394S3SBEXSU
+TimeStamp : 2016-05-27 05:36:34
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : efwplusClient.exe
+ThreadIdentity : 
+WindowsIdentity : UALG394S3SBEXSU\Administrator
+
+
+Category: FileLog
+
+Priority: 0
+
+EventId: 100
+
+Severity: Error
+
+Title:Enterprise Library Exception Handling
+
+Machine: UALG394S3SBEXSU
+
+App Domain: efwplusClient.exe
+
+ProcessId: 4764
+
+Process Name: D:\工作台\efwplus产品目录\efwplus_cloudhospital\cloudhospital\Output_Client\efwplusClient.exe
+
+Thread Name: 
+
+Win32 ThreadId:6604
+
+Extended Properties: 
+----------------------------------------

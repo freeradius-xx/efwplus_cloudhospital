@@ -41,28 +41,28 @@ namespace WCFHosting
             List<PluginClass> plist = new List<PluginClass>();
             XmlNodeList nl = null;
 
-            nl = xmlDoc.DocumentElement.SelectNodes("WebModulePlugin/Plugin");
-            foreach (XmlNode n in nl)
-            {
-                PluginClass plugin = new PluginClass();
-                plugin.plugintype = "WebModulePlugin";
-                plugin.name = n.Attributes["name"].Value;
-                plugin.title = n.Attributes["title"].Value;
-                plugin.path = n.Attributes["path"].Value;
-                plugin.isdevelopment = n.Attributes["isdevelopment"].Value;
-                plist.Add(plugin);
-            }
-            nl = xmlDoc.DocumentElement.SelectNodes("WinformModulePlugin/Plugin");
-            foreach (XmlNode n in nl)
-            {
-                PluginClass plugin = new PluginClass();
-                plugin.plugintype = "WinformModulePlugin";
-                plugin.name = n.Attributes["name"].Value;
-                plugin.title = n.Attributes["title"].Value;
-                plugin.path = n.Attributes["path"].Value;
-                plugin.isdevelopment = n.Attributes["isdevelopment"].Value;
-                plist.Add(plugin);
-            }
+            //nl = xmlDoc.DocumentElement.SelectNodes("WebModulePlugin/Plugin");
+            //foreach (XmlNode n in nl)
+            //{
+            //    PluginClass plugin = new PluginClass();
+            //    plugin.plugintype = "WebModulePlugin";
+            //    plugin.name = n.Attributes["name"].Value;
+            //    plugin.title = n.Attributes["title"].Value;
+            //    plugin.path = n.Attributes["path"].Value;
+            //    plugin.isdevelopment = n.Attributes["isdevelopment"].Value;
+            //    plist.Add(plugin);
+            //}
+            //nl = xmlDoc.DocumentElement.SelectNodes("WinformModulePlugin/Plugin");
+            //foreach (XmlNode n in nl)
+            //{
+            //    PluginClass plugin = new PluginClass();
+            //    plugin.plugintype = "WinformModulePlugin";
+            //    plugin.name = n.Attributes["name"].Value;
+            //    plugin.title = n.Attributes["title"].Value;
+            //    plugin.path = n.Attributes["path"].Value;
+            //    plugin.isdevelopment = n.Attributes["isdevelopment"].Value;
+            //    plist.Add(plugin);
+            //}
             nl = xmlDoc.DocumentElement.SelectNodes("WcfModulePlugin/Plugin");
             foreach (XmlNode n in nl)
             {
@@ -161,24 +161,24 @@ namespace WCFHosting
             xmlDoc.Save(pluginsysFile);   
         }
 
-        public static void GetWcfClientEntry(out string entryplugin, out string entrycontroller)
-        {
-            if (xmlDoc == null) InitConfig();
+        //public static void GetWcfClientEntry(out string entryplugin, out string entrycontroller)
+        //{
+        //    if (xmlDoc == null) InitConfig();
 
-            entryplugin = xmlDoc.DocumentElement.SelectNodes("WcfModulePlugin")[0].Attributes["EntryPlugin"].Value.ToString();
-            entrycontroller = xmlDoc.DocumentElement.SelectNodes("WcfModulePlugin")[0].Attributes["EntryController"].Value.ToString();
-        }
+        //    entryplugin = xmlDoc.DocumentElement.SelectNodes("WcfModulePlugin")[0].Attributes["EntryPlugin"].Value.ToString();
+        //    entrycontroller = xmlDoc.DocumentElement.SelectNodes("WcfModulePlugin")[0].Attributes["EntryController"].Value.ToString();
+        //}
 
-        public static void SetWcfClientEntry(string entryplugin, string entrycontroller)
-        {
-            if (xmlDoc == null) InitConfig();
+        //public static void SetWcfClientEntry(string entryplugin, string entrycontroller)
+        //{
+        //    if (xmlDoc == null) InitConfig();
 
-            XmlNode node = xmlDoc.DocumentElement.SelectSingleNode("WcfModulePlugin");
-            node.Attributes["EntryPlugin"].Value = entryplugin;
-            node.Attributes["EntryController"].Value = entrycontroller;
+        //    XmlNode node = xmlDoc.DocumentElement.SelectSingleNode("WcfModulePlugin");
+        //    node.Attributes["EntryPlugin"].Value = entryplugin;
+        //    node.Attributes["EntryController"].Value = entrycontroller;
 
-            xmlDoc.Save(pluginsysFile);
-        }
+        //    xmlDoc.Save(pluginsysFile);
+        //}
     }
 
     public class PluginClass

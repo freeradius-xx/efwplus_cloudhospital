@@ -112,3 +112,29 @@
 
 时间：2016-05-24 15:34:39		耗时：14222.8135		方法：Books_Wcf@bookWcfController.SaveBook(H4sIAIF0RFcA/6tW8kxRsrLUUXLKz8/2S8xNVbJSMjFRAvJLKwOKMpOBfEMDPQMw3yWxBCRtZGBopmtgomtkEmJgaAVEhiD1bjmJ6UpWBrUAKOuQn1EAAAA=)
 
+时间：2016-05-24 16:34:29		耗时：2137.1223		方法：WcfMainUIFrame@LoginController.UserLogin(H4sIAJKCRFcA/4tWSkzJzcxT0lEyVIoFAF1pxTYNAAAA)
+
+时间：2016-05-26 16:20:49		耗时：1782.102		方法：LoginController.UserLogin(H4sIAF8iR1cA/4tWSkzJzcxT0lEyVIoFAF1pxTYNAAAA)
+
+时间：2016-05-26 16:58:52		耗时：4323.2473		方法：bookWcfController.Test191(H4sIAEMrR1cA/4s2NDCIBQApaIEvBQAAAA==)
+
+时间：2016-05-26 18:59:24		耗时：2089.1195		方法：bookWcfController.Test191(H4sIAIpHR1cA/4s2NDCIBQApaIEvBQAAAA==)
+
+时间：2016-05-26 19:13:22		耗时：1568.0896		方法：bookWcfController.Test191(H4sIANFKR1cA/4s2NDCIBQApaIEvBQAAAA==)
+
+时间：2016-05-26 19:15:13		耗时：1531.0876		方法：bookWcfController.Test191(H4sIAD9LR1cA/4s2NDCIBQApaIEvBQAAAA==)
+
+时间：2016-05-27 10:25:10		耗时：1612.0922		方法：LoginController.UserLogin(H4sIAIQgSFcA/4tWSkzJzcxT0lEyVIoFAF1pxTYNAAAA)
+
+时间：2016-05-27 11:20:56		耗时：1417.0811		方法：LoginController.UserLogin(H4sIAJctSFcA/4tWSkzJzcxT0lEyVIoFAF1pxTYNAAAA)
+
+时间：2016-05-27 15:11:21		耗时：1327.0759		方法：bookWcfController.Test191(H4sIAJhjSFcA/4s2NDCIBQApaIEvBQAAAA==)
+
+时间：2016-05-27 16:26:06		耗时：1005.0575		方法：bookWcfController.Test191(H4sIAB11SFcA/4s2NDCIBQApaIEvBQAAAA==)
+
+时间：2016-05-27 16:54:44		耗时：1084.062		方法：bookWcfController.Test191(H4sIANB7SFcA/4s2NDCIBQApaIEvBQAAAA==)
+
+时间：2016-05-27 16:54:46		耗时：1107.0634		方法：bookWcfController.Test191(H4sIANJ7SFcA/4s2NDCIBQApaIEvBQAAAA==)
+
+时间：2016-05-27 16:58:04		耗时：2750.1573		方法：bookWcfController.Test191(H4sIAJl8SFcA/4s2NDCIBQApaIEvBQAAAA==)
+

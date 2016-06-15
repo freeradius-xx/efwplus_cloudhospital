@@ -11,19 +11,20 @@ using System.Xml.Linq;
 using EFWCoreLib.WcfFrame.WcfService.Contract;
 using EFWCoreLib.WcfFrame.ServerController;
 using System.Drawing;
+using EFWCoreLib.WcfFrame.SDMessageHeader;
 
 namespace EFWCoreLib.WcfFrame.WcfService
 {
     
     /// <summary>
-    /// 路由服务,用InstanceContextMode.Single
+    /// 路由服务
     /// </summary>
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Multiple, AddressFilterMode = AddressFilterMode.Any, UseSynchronizationContext = false, ValidateMustUnderstand = false)]
-    public class RouterHandlerService : IRouterService
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession, ConcurrencyMode = ConcurrencyMode.Multiple, UseSynchronizationContext = false, ValidateMustUnderstand = false)]
+    public class RouterHandlerService : MarshalByRefObject, IRouterService
     {
         public RouterHandlerService()
         {
-           
+            //WcfServerManage.hostwcfMsg(System.Drawing.Color.Blue, DateTime.Now, "New RouterHandlerService");
         }
 
         #region IRouterService Members
@@ -37,45 +38,70 @@ namespace EFWCoreLib.WcfFrame.WcfService
         {
             try
             {
-                //Binding binding = null;
-                EndpointAddress endpointAddress = null;
-                Uri touri = null;
-                RouterServerManage.GetServiceEndpoint(requestMessage, out endpointAddress, out touri);
-                requestMessage.Headers.To = touri;
+                begintime();
+                IRouterService proxy = null;
+                HeaderParameter para = HeaderOperater.GetHeaderValue(requestMessage);
 
-                IDuplexRouterCallback callback = OperationContext.Current.GetCallbackChannel<IDuplexRouterCallback>();
-                NetTcpBinding tbinding = new NetTcpBinding("NetTcpBinding_WCFHandlerService");
-                using (DuplexChannelFactory<IRouterService> factory = new DuplexChannelFactory<IRouterService>(new InstanceContext(null, new DuplexRouterCallback(callback)), tbinding, endpointAddress))
+                if (RouterServerManage.routerDic.ContainsKey(para.routerid))
                 {
-
-                    factory.Endpoint.Behaviors.Add(new MustUnderstandBehavior(false));
-                    IRouterService proxy = factory.CreateChannel();
-
-                    using (proxy as IDisposable)
-                    {
-                        // 请求消息记录
-                        IClientChannel clientChannel = proxy as IClientChannel;
-                        //Console.WriteLine(String.Format("Request received at {0}, to {1}\r\n\tAction: {2}", DateTime.Now, clientChannel.RemoteAddress.Uri.AbsoluteUri, requestMessage.Headers.Action));
-                        if (WcfServerManage.IsDebug)
-                            RouterServerManage.hostwcfMsg(Color.Black, DateTime.Now, String.Format("路由请求消息发送：  {0}", clientChannel.RemoteAddress.Uri.AbsoluteUri));
-                        // 调用绑定的终结点的服务方法
-                        Message responseMessage = proxy.ProcessMessage(requestMessage);
-
-                        // 应答消息记录
-                        //Console.WriteLine(String.Format("Reply received at {0}\r\n\tAction: {1}", DateTime.Now, responseMessage.Headers.Action));
-                        //Console.WriteLine();
-                        //hostwcfMsg(DateTime.Now, String.Format("应答消息： {0}", responseMessage.Headers.Action));
-                        return responseMessage;
-                    }
+                    proxy = RouterServerManage.routerDic[para.routerid];
+                    para.replyidentify = RouterServerManage.headParaDic[para.routerid].replyidentify;
                 }
+                else
+                {
+                    //Binding binding = null;
+                    EndpointAddress endpointAddress = null;
+                    Uri touri = null;
+                    para = RouterServerManage.AddClient(requestMessage, para, out endpointAddress, out touri);
+                    requestMessage.Headers.To = touri;
+
+                    IDuplexRouterCallback callback = OperationContext.Current.GetCallbackChannel<IDuplexRouterCallback>();
+                    NetTcpBinding tbinding = new NetTcpBinding("NetTcpBinding_WCFHandlerService");
+                    DuplexChannelFactory<IRouterService> factory = new DuplexChannelFactory<IRouterService>(new InstanceContext(new DuplexRouterCallback(callback)), tbinding, endpointAddress);
+                    proxy = factory.CreateChannel();
+
+                    //缓存会话
+                    RouterServerManage.routerDic.Add(para.routerid, proxy);
+                    RouterServerManage.headParaDic.Add(para.routerid, para);
+
+                }
+
+                Message responseMessage = null;
+                HeaderOperater.AddMessageHeader(requestMessage, para);//增加自定义消息头
+                responseMessage = proxy.ProcessMessage(requestMessage);
+
+                if (para.cmd == "Quit")
+                {
+                    //关闭连接释放缓存会话
+                    RouterServerManage.RemoveClient(para);
+                }
+
+                double outtime = endtime();
+                // 请求消息记录
+                if (WcfServerManage.IsDebug)
+                    RouterServerManage.hostwcfMsg(Color.Black, DateTime.Now, String.Format("路由请求消息发送(耗时[" + outtime + "])：  {0}", requestMessage.Headers.Action));
+
+
+                return responseMessage;
             }
             catch (Exception e)
             {
                 return Message.CreateMessage(requestMessage.Version, FaultCode.CreateReceiverFaultCode("error", RouterServerManage.ns), e.Message, requestMessage.Headers.Action);
             }
         }
-        
+
         #endregion
+
+        DateTime begindate;
+        void begintime()
+        {
+            begindate = DateTime.Now;
+        }
+        //返回毫秒
+        double endtime()
+        {
+            return DateTime.Now.Subtract(begindate).TotalMilliseconds;
+        }
     }
 
     [CallbackBehavior(ConcurrencyMode = ConcurrencyMode.Multiple, UseSynchronizationContext = false)]
@@ -95,12 +121,12 @@ namespace EFWCoreLib.WcfFrame.WcfService
     }
 
     //UseSynchronizationContext 这个设置为false，必须异步执行
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Multiple, AddressFilterMode = AddressFilterMode.Any, UseSynchronizationContext = false, ValidateMustUnderstand = false)]
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall, ConcurrencyMode = ConcurrencyMode.Multiple, AddressFilterMode = AddressFilterMode.Any, UseSynchronizationContext = false, ValidateMustUnderstand = false)]
     public class FileRouterHandlerService : IFileRouterService
     {
         public FileRouterHandlerService()
         {
-
+            //WcfServerManage.hostwcfMsg(System.Drawing.Color.Blue, DateTime.Now, "New FileRouterHandlerService");
         }
 
         #region IRouterService Members

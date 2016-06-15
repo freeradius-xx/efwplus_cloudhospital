@@ -8,9 +8,9 @@
     <container>
     </container>
   </unity>
-  <plugin name="Books_Wcf" version="1.0" title="Books实例(Wcf版)" author="kakake" plugintype="Wcf" defaultdbkey="SQL2005" defaultcachekey="Cache Manager" isentry="1">
+  <plugin name="Books.UI" version="1.0" title="实例Demo" author="kakake" plugintype="Winform" defaultdbkey="SQL2005" defaultcachekey="Cache Manager" isentry="1">
     <baseinfo>
-      <data key="introduction" value="演示Wcf版框架“增删改查”的一个实例（包含源代码）" />
+      <data key="introduction" value="演示“增删改查”的一个实例（包含源代码）" />
       <data key="updaterecord" value="" />
       <data key="headpic" value="" />
       <data key="StartItem" value="bookwcfclientController" />

@@ -1,13 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <pluginsys>
-  <WebComponentPlugin>
-  </WebComponentPlugin>
   <WebModulePlugin>
   </WebModulePlugin>
   <WinformModulePlugin EntryPlugin="" EntryController="">
   </WinformModulePlugin>
-  <WcfModulePlugin EntryPlugin="" EntryController="">
-    <Plugin name="WcfMainUIFrame" path="ModulePlugin/WcfMainUIFrame/plugin.xml" title="Wcf通用权限管理" isdevelopment="1" />
-    <Plugin name="Books_Wcf" path="ModulePlugin/Books_Wcf/plugin.xml" title="Books_Wcf" isdevelopment="1" />
+  <WcfModulePlugin>
+    <Plugin name="MainFrame.Service" path="ModulePlugin/WcfMainUIFrame/plugin.xml" title="主框架服务插件" isdevelopment="1" />
+    <Plugin name="Books.Service" path="ModulePlugin/Books_Wcf/plugin.xml" title="Books服务插件" isdevelopment="1" />
   </WcfModulePlugin>
 </pluginsys>

@@ -12,17 +12,17 @@
     <namespace name="Books_Wcf.UnitTest.TestEntity"></namespace>
     <container>
       <!--真实环境-->
-      <register type="IBookDao" mapTo="SqlBookDao"></register>
+      <!--<register type="IBookDao" mapTo="SqlBookDao"></register>-->
       <!--测试环境-->
-      <!--
+      
       <register type="IBookDao" mapTo="TestBookDao"></register>
       <register type="Books" mapTo="unBooks"></register>
-      -->
+      
     </container>
   </unity>
-  <plugin name="Books_Wcf" version="1.0" title="Books实例(Wcf版)" author="kakake" plugintype="Wcf" defaultdbkey="SQL2005" defaultcachekey="Cache Manager" isentry="1">
+  <plugin name="Books.Service" version="1.0" title="Books服务" author="kakake" plugintype="Wcf" defaultdbkey="SQL2005" defaultcachekey="Cache Manager" isentry="1">
     <baseinfo>
-      <data key="introduction" value="演示Wcf版框架“增删改查”的一个实例（包含源代码）" />
+      <data key="introduction" value="为“增删改查”的book实例提供后台服务" />
       <data key="updaterecord" value="" />
       <data key="headpic" value="" />
       <data key="StartItem" value="bookwcfclientController" />

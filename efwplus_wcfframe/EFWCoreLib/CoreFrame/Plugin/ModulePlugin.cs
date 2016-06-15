@@ -13,6 +13,7 @@ using EFWCoreLib.CoreFrame.Init;
 using EFWCoreLib.CoreFrame.Init.AttributeManager;
 using EFWCoreLib.CoreFrame.Business;
 using System.IO;
+using EFWCoreLib.WcfFrame.DataSerialize;
 
 namespace EFWCoreLib.CoreFrame.Plugin
 {
@@ -105,9 +106,7 @@ namespace EFWCoreLib.CoreFrame.Plugin
             switch (appType)
             {
                 case AppType.WCF:
-#if WcfFrame
                     helper = new WcfFrame.ServerController.ControllerHelper();
-#endif
                     break;
             }
 
@@ -154,7 +153,7 @@ namespace EFWCoreLib.CoreFrame.Plugin
                         WebServicesManager.LoadAttribute(dllList, cache, plugin.name);
                         break;
                     case AppType.Winform:
-                    case AppType.WCFClient:
+                    //case AppType.WCFClient:
                         EntityManager.LoadAttribute(dllList, cache, plugin.name);
                         WinformControllerManager.LoadAttribute(dllList, this);
                         break;
@@ -178,7 +177,7 @@ namespace EFWCoreLib.CoreFrame.Plugin
                     WebServicesManager.ClearAttributeData(_cache, plugin.name);
                     break;
                 case AppType.Winform:
-                case AppType.WCFClient:
+                //case AppType.WCFClient:
                     EntityManager.ClearAttributeData(_cache, plugin.name);
                     WinformControllerManager.ClearAttributeData(_cache, plugin.name);
                     break;
@@ -188,16 +187,17 @@ namespace EFWCoreLib.CoreFrame.Plugin
                     break;
             }
         }
-#if WcfFrame
-        public Object WcfServerExecuteMethod(string controllername, string methodname, object[] paramValue, string jsondata, EFWCoreLib.WcfFrame.ServerController.WCFClientInfo ClientInfo)
+
+        public Object WcfServerExecuteMethod(string controllername, string methodname, object[] paramValue, ClientRequestData requestData, SysLoginRight loginRight)
         {
             EFWCoreLib.WcfFrame.ServerController.WcfServerController wscontroller = helper.CreateController(plugin.name, controllername) as EFWCoreLib.WcfFrame.ServerController.WcfServerController;
-            wscontroller.ParamJsonData = jsondata;
-            wscontroller.ClientInfo = ClientInfo;
+            wscontroller.requestData = requestData;
+            wscontroller.responseData = new ServiceResponseData(requestData.Iscompressjson,requestData.Isencryptionjson,requestData.Serializetype);
+            wscontroller.BindLoginRight(loginRight);
             MethodInfo methodinfo = helper.CreateMethodInfo(plugin.name, controllername, methodname, wscontroller);
             return methodinfo.Invoke(wscontroller, paramValue);
         }
-#endif
+
         public Object WcfClientExecuteMethod()
         {
             return null;
